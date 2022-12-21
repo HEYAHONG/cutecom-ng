@@ -86,7 +86,7 @@ void SessionManager::openSession(const QHash<QString, QString>& port_cfg)
     bool cfg_ok = true, ok;
 
     // try converting port config from the hash
-    QSerialPort::BaudRate baud_rate = static_cast<QSerialPort::BaudRate>
+    qint32 baud_rate = static_cast<qint32>
             (port_cfg["baud_rate"].toInt(&ok));
     cfg_ok &= ok;
 
@@ -134,7 +134,6 @@ void SessionManager::openSession(const QHash<QString, QString>& port_cfg)
     serial->setParity(parity);
     serial->setStopBits(stop_bits);
     serial->setFlowControl(flow_control);
-
     // flag indicating that a connection is in progress (eventually successful or not)
     in_progress = true;
 
