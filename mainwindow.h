@@ -15,6 +15,7 @@
 #include "filetransfer.h"
 
 #include <QMainWindow>
+#include <QTranslator>
 
 namespace Ui {
 class MainWindow;
@@ -59,6 +60,10 @@ private:
     QToolButton         *search_next_button;
     QProgressDialog     *progress_dialog;
     QByteArray          _end_of_line;
+
+    //翻译
+    QTranslator *translator;
+    friend int main(int argc, char *argv[]);
 
 public:
     explicit MainWindow(QWidget *parent = 0);

@@ -27,6 +27,7 @@
 #include "sessionmanager.h"
 #include "outputmanager.h"
 #include "searchhighlighter.h"
+#include "tchar.h"
 
 /// maximum count of document blocks for the bootom output
 const int MAX_OUTPUT_LINES = 100;
@@ -36,7 +37,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow),
     search_widget(0),
     search_input(0),
-    progress_dialog(0)
+    progress_dialog(0),
+    translator(NULL)
 {
     ui->setupUi(this);
 
@@ -44,6 +46,15 @@ MainWindow::MainWindow(QWidget *parent) :
     output_mgr = new OutputManager(this);
     session_mgr = new SessionManager(this);
     connect_dlg = new ConnectDialog(this);
+
+
+    {
+        //设置图标
+        QIcon icon;
+        icon.addFile(QString::fromWCharArray(_T(":/serial-port.png")));
+        setWindowIcon(icon);
+    }
+
 
     // show connection dialog
     connect(ui->connectButton, &QAbstractButton::clicked, connect_dlg, &ConnectDialog::show);

@@ -1,6 +1,12 @@
-[![Build status](https://ci.appveyor.com/api/projects/status/github/develersrl/cutecom-ng)](https://ci.appveyor.com/project/develer/cutecom-ng)
+# 说明
 
-[![Build status](https://travis-ci.org/develersrl/cutecom-ng.svg?branch=master)](https://travis-ci.org/develersrl/cutecom-ng)
+本分支为个人修改版。添加一些个人常用的功能
+
+## 截图
+
+![cutecom-ng-screenshot-1](doc/cutecom-ng-screenshot-1.png)
+
+
 
 # Cutecom-ng #
 

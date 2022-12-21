@@ -49,3 +49,7 @@ FORMS    += mainwindow.ui \
 
 RESOURCES += \
     cutecom-ng.qrc
+
+TRANSLATIONS+= \
+                zh_CN.ts \
+                en_US.ts
