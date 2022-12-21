@@ -27,7 +27,6 @@
 #include "sessionmanager.h"
 #include "outputmanager.h"
 #include "searchhighlighter.h"
-#include "tchar.h"
 
 /// maximum count of document blocks for the bootom output
 const int MAX_OUTPUT_LINES = 100;
@@ -51,7 +50,7 @@ MainWindow::MainWindow(QWidget *parent) :
     {
         //设置图标
         QIcon icon;
-        icon.addFile(QString::fromWCharArray(_T(":/serial-port.png")));
+        icon.addFile(":/serial-port.png");
         setWindowIcon(icon);
     }
 
