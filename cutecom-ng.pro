@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui serialport uitools
+QT       += core gui serialport
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -21,6 +21,7 @@ UI_DIR = .generated/
 SOURCES += main.cpp\
         mainwindow.cpp \
     connectdialog.cpp \
+    searchwidget.cpp \
     sessionmanager.cpp \
     outputmanager.cpp \
     historycombobox.cpp \
@@ -33,6 +34,7 @@ SOURCES += main.cpp\
 
 HEADERS  += mainwindow.h \
     connectdialog.h \
+    searchwidget.h \
     sessionmanager.h \
     outputmanager.h \
     historycombobox.h \

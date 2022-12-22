@@ -12,7 +12,7 @@
 #include <algorithm>
 #include <iterator>
 
-#include <QUiLoader>
+//#include <QUiLoader>
 #include <QLineEdit>
 #include <QPropertyAnimation>
 #include <QShortcut>
@@ -27,6 +27,7 @@
 #include "sessionmanager.h"
 #include "outputmanager.h"
 #include "searchhighlighter.h"
+#include "searchwidget.h"
 
 /// maximum count of document blocks for the bootom output
 const int MAX_OUTPUT_LINES = 100;
@@ -93,11 +94,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->splitOutputBtn, &QPushButton::clicked, this, &MainWindow::toggleOutputSplitter);
 
     // load search widget and hide it
-    QUiLoader loader;
     {
-        QFile file(":/searchwidget.ui");
-        file.open(QFile::ReadOnly);
-        search_widget = loader.load(&file, ui->mainOutput);
+        search_widget = new SearchWidget(ui->mainOutput);
         search_input = search_widget->findChild<QLineEdit*>("searchInput");
         search_prev_button = search_widget->findChild<QToolButton*>("previousButton");
         search_next_button = search_widget->findChild<QToolButton*>("nextButton");
