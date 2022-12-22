@@ -37,7 +37,8 @@ MainWindow::MainWindow(QWidget *parent) :
     search_widget(0),
     search_input(0),
     progress_dialog(0),
-    translator(NULL)
+    translator(NULL),
+    rightstatus(NULL)
 {
     ui->setupUi(this);
 
@@ -52,6 +53,16 @@ MainWindow::MainWindow(QWidget *parent) :
         QIcon icon;
         icon.addFile(":/serial-port.png");
         setWindowIcon(icon);
+    }
+
+    {
+        //初始化状态栏
+        QStatusBar *qstBar = this->statusBar();
+        if(qstBar!=NULL)
+        {
+            rightstatus=new QLabel(this);
+            qstBar->addPermanentWidget(rightstatus);
+        }
     }
 
 
@@ -176,6 +187,19 @@ void MainWindow::handleSessionOpened()
             session_mgr->setDTR(ui->DTRcheckBox->isChecked());
         }
     }
+
+    if(session_mgr!=NULL)
+    {
+        //打印串口信息
+        QSerialPortInfo info=session_mgr->getInfo();
+        qDebug()<<info.portName()+" ("+info.description()+") "+" Opened";
+        if(rightstatus!=NULL)
+        {
+            QString statusstr;
+            statusstr+= info.portName()+" ("+info.description()+") "+"Opened";
+            rightstatus->setText(statusstr);
+        }
+    }
 }
 
 void MainWindow::handleSessionClosed()
@@ -190,6 +214,14 @@ void MainWindow::handleSessionClosed()
     //关闭RTS与DTR勾选框
     ui->RTScheckBox->setEnabled(false);
     ui->DTRcheckBox->setEnabled(false);
+
+    if(rightstatus!=NULL)
+    {
+        QString statusstr;
+        statusstr+="Closed";
+        rightstatus->setText(statusstr);
+    }
+
 }
 
 void MainWindow::handleFileTransfer()

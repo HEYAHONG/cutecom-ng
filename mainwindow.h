@@ -16,6 +16,9 @@
 
 #include <QMainWindow>
 #include <QTranslator>
+#include <QDebug>
+#include <QSerialPortInfo>
+#include <QLabel>
 
 namespace Ui {
 class MainWindow;
@@ -64,6 +67,9 @@ private:
     //翻译
     QTranslator *translator;
     friend int main(int argc, char *argv[]);
+
+    //状态栏
+    QLabel *rightstatus;
 
 public:
     explicit MainWindow(QWidget *parent = 0);

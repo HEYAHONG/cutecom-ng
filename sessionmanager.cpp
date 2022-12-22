@@ -279,3 +279,12 @@ bool SessionManager::getDTR()
     }
     return false;
 }
+
+QSerialPortInfo SessionManager::getInfo()
+{
+    if(serial==NULL || !serial->isOpen())
+    {
+        return QSerialPortInfo();
+    }
+    return QSerialPortInfo(*serial);
+}

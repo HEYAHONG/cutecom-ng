@@ -112,6 +112,11 @@ public:
      */
     bool getDTR();
 
+    /**
+     * \brief get SerialPortInfo
+     */
+    QSerialPortInfo getInfo();
+
 private:
 
     /**
