@@ -190,11 +190,11 @@ void MainWindow::handleSessionOpened()
     {
         //打印串口信息
         QSerialPortInfo info=session_mgr->getInfo();
-        qDebug()<<info.portName()+" ("+info.description()+") "+" Opened";
+        qDebug()<<info.portName()+" ("+info.description()+") "+tr("Opened");
         if(rightstatus!=NULL)
         {
             QString statusstr;
-            statusstr+= info.portName()+" ("+info.description()+") "+"Opened";
+            statusstr+= info.portName()+" ("+info.description()+") "+tr("Opened");
             rightstatus->setText(statusstr);
         }
     }
@@ -216,7 +216,7 @@ void MainWindow::handleSessionClosed()
     if(rightstatus!=NULL)
     {
         QString statusstr;
-        statusstr+="Closed";
+        statusstr+=tr("Closed");
         rightstatus->setText(statusstr);
     }
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1">
+<TS version="2.1" language="zh_CN">
 <context>
     <name>ConnectDialog</name>
     <message>
@@ -19,57 +19,57 @@
         <translation>波特率</translation>
     </message>
     <message>
-        <location filename="connectdialog.ui" line="62"/>
+        <location filename="connectdialog.ui" line="66"/>
         <source>Data bits</source>
         <translation>数据位</translation>
     </message>
     <message>
-        <location filename="connectdialog.ui" line="72"/>
+        <location filename="connectdialog.ui" line="76"/>
         <source>Stop bits</source>
         <translation>停止位</translation>
     </message>
     <message>
-        <location filename="connectdialog.ui" line="82"/>
+        <location filename="connectdialog.ui" line="86"/>
         <source>Parity</source>
         <translation>校验位</translation>
     </message>
     <message>
-        <location filename="connectdialog.ui" line="98"/>
+        <location filename="connectdialog.ui" line="102"/>
         <source>Flow control</source>
         <translation>流控</translation>
     </message>
     <message>
-        <location filename="connectdialog.ui" line="123"/>
+        <location filename="connectdialog.ui" line="127"/>
         <source>cancel</source>
         <translation>取消</translation>
     </message>
     <message>
-        <location filename="connectdialog.ui" line="130"/>
+        <location filename="connectdialog.ui" line="134"/>
         <source>open device</source>
         <translation>打开设备</translation>
     </message>
     <message>
-        <location filename="connectdialog.ui" line="139"/>
+        <location filename="connectdialog.ui" line="143"/>
         <source>Dump File</source>
         <translation>转储文件</translation>
     </message>
     <message>
-        <location filename="connectdialog.ui" line="154"/>
+        <location filename="connectdialog.ui" line="158"/>
         <source>Path</source>
         <translation>路径</translation>
     </message>
     <message>
-        <location filename="connectdialog.ui" line="161"/>
+        <location filename="connectdialog.ui" line="165"/>
         <source>Type</source>
         <translation>类型</translation>
     </message>
     <message>
-        <location filename="connectdialog.ui" line="168"/>
+        <location filename="connectdialog.ui" line="172"/>
         <source>text</source>
         <translation>文本</translation>
     </message>
     <message>
-        <location filename="connectdialog.ui" line="178"/>
+        <location filename="connectdialog.ui" line="182"/>
         <source>raw</source>
         <translation>原始</translation>
     </message>
@@ -79,7 +79,7 @@
     <message>
         <location filename="mainwindow.ui" line="14"/>
         <source>cutecom-ng</source>
-        <translation  type="unfinished"></translation>
+        <translation>cutecom-ng</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="29"/>
@@ -92,70 +92,96 @@
         <translation>断开连接</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="75"/>
+        <location filename="mainwindow.ui" line="49"/>
+        <source>RTS</source>
+        <translation>RTS</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="59"/>
+        <source>DTR</source>
+        <translation>DTR</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="95"/>
         <source>Clear</source>
         <translation>清除</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="82"/>
+        <location filename="mainwindow.ui" line="102"/>
         <source>Search</source>
         <translation>搜索</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="192"/>
+        <location filename="mainwindow.ui" line="212"/>
         <source>File transfer</source>
         <translation>文件传输</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="234"/>
-        <location filename="mainwindow.ui" line="284"/>
+        <location filename="mainwindow.ui" line="254"/>
+        <location filename="mainwindow.ui" line="304"/>
         <source>End Of Line char sent</source>
         <translation>发送结束符</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="237"/>
+        <location filename="mainwindow.ui" line="257"/>
         <source>EOL char</source>
         <translation>结束符</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="306"/>
+        <location filename="mainwindow.ui" line="326"/>
         <source>file</source>
         <translation>文件</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="312"/>
+        <location filename="mainwindow.ui" line="332"/>
         <source>help</source>
         <translation>帮助</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="318"/>
+        <location filename="mainwindow.ui" line="338"/>
         <source>language</source>
         <translation>语言</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="330"/>
+        <location filename="mainwindow.ui" line="350"/>
         <source>aboutQt</source>
         <translation>关于Qt</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="338"/>
+        <location filename="mainwindow.ui" line="359"/>
         <source>exit</source>
         <translation>退出</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="343"/>
+        <location filename="mainwindow.ui" line="362"/>
+        <source>Alt+E</source>
+        <translation>Alt+E</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="367"/>
         <source>English</source>
         <translation>英语</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="348"/>
+        <location filename="mainwindow.ui" line="372"/>
         <source>Chinese</source>
         <translation>中文</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="236"/>
+        <location filename="mainwindow.cpp" line="193"/>
+        <location filename="mainwindow.cpp" line="197"/>
+        <source>Opened</source>
+        <translation>已打开</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="219"/>
+        <source>Closed</source>
+        <translation>已关闭</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="283"/>
         <source>Cutecom-ng</source>
-        <translation type="unfinished"></translation>
+        <translation>Cutecom-ng</translation>
     </message>
 </context>
 <context>
@@ -163,7 +189,7 @@
     <message>
         <location filename="searchwidget.ui" line="32"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>窗口</translation>
     </message>
     <message>
         <location filename="searchwidget.ui" line="75"/>
