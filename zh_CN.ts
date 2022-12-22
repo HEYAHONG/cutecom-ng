@@ -118,6 +118,41 @@
         <translation>结束符</translation>
     </message>
     <message>
+        <location filename="mainwindow.ui" line="306"/>
+        <source>file</source>
+        <translation>文件</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="312"/>
+        <source>help</source>
+        <translation>帮助</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="318"/>
+        <source>language</source>
+        <translation>语言</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="330"/>
+        <source>aboutQt</source>
+        <translation>关于Qt</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="338"/>
+        <source>exit</source>
+        <translation>退出</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="343"/>
+        <source>English</source>
+        <translation>英语</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="348"/>
+        <source>Chinese</source>
+        <translation>中文</translation>
+    </message>
+    <message>
         <location filename="mainwindow.cpp" line="236"/>
         <source>Cutecom-ng</source>
         <translation type="unfinished"></translation>

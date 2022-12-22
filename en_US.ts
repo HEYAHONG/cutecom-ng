@@ -19,57 +19,57 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="connectdialog.ui" line="62"/>
+        <location filename="connectdialog.ui" line="66"/>
         <source>Data bits</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="connectdialog.ui" line="72"/>
+        <location filename="connectdialog.ui" line="76"/>
         <source>Stop bits</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="connectdialog.ui" line="82"/>
+        <location filename="connectdialog.ui" line="86"/>
         <source>Parity</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="connectdialog.ui" line="98"/>
+        <location filename="connectdialog.ui" line="102"/>
         <source>Flow control</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="connectdialog.ui" line="123"/>
+        <location filename="connectdialog.ui" line="127"/>
         <source>cancel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="connectdialog.ui" line="130"/>
+        <location filename="connectdialog.ui" line="134"/>
         <source>open device</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="connectdialog.ui" line="139"/>
+        <location filename="connectdialog.ui" line="143"/>
         <source>Dump File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="connectdialog.ui" line="154"/>
+        <location filename="connectdialog.ui" line="158"/>
         <source>Path</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="connectdialog.ui" line="161"/>
+        <location filename="connectdialog.ui" line="165"/>
         <source>Type</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="connectdialog.ui" line="168"/>
+        <location filename="connectdialog.ui" line="172"/>
         <source>text</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="connectdialog.ui" line="178"/>
+        <location filename="connectdialog.ui" line="182"/>
         <source>raw</source>
         <translation type="unfinished"></translation>
     </message>
@@ -118,7 +118,44 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="237"/>
+        <location filename="mainwindow.ui" line="306"/>
+        <source>file</source>
+        <oldsource>&amp;file</oldsource>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="312"/>
+        <source>help</source>
+        <oldsource>&amp;help</oldsource>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="318"/>
+        <source>language</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="330"/>
+        <source>aboutQt</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="338"/>
+        <source>exit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="343"/>
+        <source>English</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="348"/>
+        <source>Chinese</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="236"/>
         <source>Cutecom-ng</source>
         <translation type="unfinished"></translation>
     </message>

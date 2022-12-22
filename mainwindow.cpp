@@ -440,3 +440,37 @@ void MainWindow::handleEOLCharChanged(int index)
             break;
     }
 }
+
+void MainWindow::on_actionAbout_Qt_triggered()
+{
+    QApplication::aboutQt();
+}
+
+
+void MainWindow::on_action_Exit_triggered()
+{
+    close();
+}
+
+
+void MainWindow::on_actionEnglish_triggered()
+{
+    if(translator==NULL)
+    {
+        return;
+    }
+    translator->load(":/en_US.qm");
+    ui->retranslateUi(this);
+}
+
+
+void MainWindow::on_actionChinese_triggered()
+{
+    if(translator==NULL)
+    {
+        return;
+    }
+    translator->load(":/zh_CN.qm");
+    ui->retranslateUi(this);
+}
+

@@ -69,6 +69,15 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+private slots:
+    void on_actionAbout_Qt_triggered();
+
+    void on_action_Exit_triggered();
+
+    void on_actionEnglish_triggered();
+
+    void on_actionChinese_triggered();
+
 private:
 
     /**
