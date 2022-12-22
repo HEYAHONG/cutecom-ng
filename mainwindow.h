@@ -78,6 +78,10 @@ private slots:
 
     void on_actionChinese_triggered();
 
+    void on_RTScheckBox_stateChanged(int arg1);
+
+    void on_DTRcheckBox_stateChanged(int arg1);
+
 private:
 
     /**

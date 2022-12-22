@@ -92,6 +92,26 @@ public:
      */
     void handleTransferCancelledByUser();
 
+    /**
+     * \brief set RTS
+     * \param RTS  RTS
+     */
+    void setRTS(bool RTS=true);
+    /**
+     * \brief get RTS
+     */
+    bool getRTS();
+
+    /**
+     * \brief set DTR
+     * \param DTR  DTR
+     */
+    void setDTR(bool DTR=true);
+    /**
+     * \brief get DTR
+     */
+    bool getDTR();
+
 private:
 
     /**

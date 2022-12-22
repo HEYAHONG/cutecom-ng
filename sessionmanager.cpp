@@ -243,3 +243,39 @@ void SessionManager::handleTransferCancelledByUser()
                "file_transfer shound not be NULL");
     file_transfer->quit_requested = true;
 }
+
+
+void SessionManager::setRTS(bool RTS)
+{
+    if(serial!=NULL)
+    {
+        serial->setRequestToSend(RTS);
+    }
+}
+
+bool SessionManager::getRTS()
+{
+    if(serial!=NULL && serial->isOpen())
+    {
+        return serial->isRequestToSend();
+    }
+    return false;
+}
+
+
+void SessionManager::setDTR(bool DTR)
+{
+    if(serial!=NULL)
+    {
+        serial->setDataTerminalReady(DTR);
+    }
+}
+
+bool SessionManager::getDTR()
+{
+    if(serial!=NULL && serial->isOpen())
+    {
+        return serial->isDataTerminalReady();
+    }
+    return false;
+}

@@ -163,6 +163,19 @@ void MainWindow::handleSessionOpened()
     // enable file transfer and input line
     ui->fileTransferButton->setEnabled(true);
     ui->inputBox->setEnabled(true);
+
+    //启用RTS与DTR勾选框
+    ui->RTScheckBox->setEnabled(true);
+    ui->DTRcheckBox->setEnabled(true);
+
+    {
+        //根据勾选框内容设置RTS与DTR
+        if(session_mgr!=NULL)
+        {
+            session_mgr->setRTS(ui->RTScheckBox->isChecked());
+            session_mgr->setDTR(ui->DTRcheckBox->isChecked());
+        }
+    }
 }
 
 void MainWindow::handleSessionClosed()
@@ -173,6 +186,10 @@ void MainWindow::handleSessionClosed()
     // disable file transfer and input line
     ui->fileTransferButton->setDisabled(true);
     ui->inputBox->setDisabled(true);
+
+    //关闭RTS与DTR勾选框
+    ui->RTScheckBox->setEnabled(false);
+    ui->DTRcheckBox->setEnabled(false);
 }
 
 void MainWindow::handleFileTransfer()
@@ -472,5 +489,23 @@ void MainWindow::on_actionChinese_triggered()
     }
     translator->load(":/zh_CN.qm");
     ui->retranslateUi(this);
+}
+
+
+void MainWindow::on_RTScheckBox_stateChanged(int checked)
+{
+    if(session_mgr!=NULL)
+    {
+        session_mgr->setRTS(ui->RTScheckBox->isChecked());
+    }
+}
+
+
+void MainWindow::on_DTRcheckBox_stateChanged(int checked)
+{
+    if(session_mgr!=NULL)
+    {
+        session_mgr->setDTR(ui->DTRcheckBox->isChecked());
+    }
 }
 
