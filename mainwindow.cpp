@@ -438,7 +438,7 @@ void MainWindow::showSearchWidget(bool show)
     }
     else
     {
-        connect(animation, &QPropertyAnimation::destroyed, search_widget, &QWidget::hide);
+        connect(animation, &QPropertyAnimation::destroyed, search_widget, &QFrame::hide);
         prevFocus->setFocus();
     }
     animation->start(QAbstractAnimation::DeleteWhenStopped);
