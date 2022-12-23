@@ -6,6 +6,36 @@
 
 ![cutecom-ng-screenshot-1](doc/cutecom-ng-screenshot-1.png)
 
+![cutecom-ng-screenshot-1](doc/cutecom-ng-screenshot-2.png)
+
+# 编译
+
+安装好Qt5与Qt5的SerialPort扩展。安装好qtcreator。
+
+## 使用qtcreator编译
+
+直接使用qtcreator打开cutecom-ng.pro。
+
+## 使用make编译
+
+使用以下命令生成makefile:
+
+```bash
+qmake -makefile cutecom-ng.pro
+```
+
+若命令成功，则可直接使用make编译：
+
+```bash
+make
+```
+
+编译完成后，可在bin目录中找到编译完成的二进制文件。
+
+
+
+# *<u>**以下是原有说明**</u>*
+
 
 
 # Cutecom-ng #
@@ -100,7 +130,7 @@ are handling the XModem reception
 
  1. install **socat**, **gnu-screen** and **lrzsz** packages:<br>
  ```sudo apt-get install socat screen lrzsz```<br>on ubuntu and other **apt**
- based linux distros
+  based linux distros
 
  2. open 2 terminals
 
