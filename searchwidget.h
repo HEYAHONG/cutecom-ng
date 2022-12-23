@@ -18,6 +18,9 @@ private:
     Ui::SearchWidget *ui;
 signals:
 
+protected:
+     void paintEvent(QPaintEvent *event);
+
 };
 
 #endif // SEARCHWIDGET_H

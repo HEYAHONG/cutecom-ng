@@ -46,6 +46,8 @@ ConnectDialog::ConnectDialog(QWidget *parent) :
     default_cfg[QStringLiteral("dump_format")] = QString::number(Raw);
 
     preselectPortConfig(default_cfg);
+
+
 }
 
 ConnectDialog::~ConnectDialog()
@@ -158,4 +160,11 @@ void ConnectDialog::accept()
     hide();
 
     emit openDeviceClicked(cfg);
+}
+
+void ConnectDialog::paintEvent(QPaintEvent *event)
+{
+    //刷新翻译
+    ui->retranslateUi(this);
+    QDialog::paintEvent(event);
 }

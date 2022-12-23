@@ -166,6 +166,8 @@ private:
      * \param index index of selected item
      */
     void handleEOLCharChanged(int index);
+protected:
+     void paintEvent(QPaintEvent *event);
 };
 
 #endif // MAINWINDOW_H

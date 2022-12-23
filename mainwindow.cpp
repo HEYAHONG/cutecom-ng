@@ -519,6 +519,7 @@ void MainWindow::on_actionChinese_triggered()
     }
     translator->load(":/zh_CN.qm");
     ui->retranslateUi(this);
+
 }
 
 
@@ -539,3 +540,9 @@ void MainWindow::on_DTRcheckBox_stateChanged(int checked)
     }
 }
 
+void MainWindow::paintEvent(QPaintEvent *event)
+{
+    //刷新翻译
+    ui->retranslateUi(this);
+    QMainWindow::paintEvent(event);
+}

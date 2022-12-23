@@ -71,6 +71,8 @@ signals:
      *  - "dump_format" DumpFormat enum 'Raw' or 'Ascii'
      */
     void openDeviceClicked(const QHash<QString, QString>& config);
+protected:
+     void paintEvent(QPaintEvent *event);
 };
 
 #endif // CONNECTDIALOG_H
