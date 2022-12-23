@@ -39,7 +39,8 @@ MainWindow::MainWindow(QWidget *parent) :
     search_input(0),
     progress_dialog(0),
     translator(NULL),
-    rightstatus(NULL)
+    rightstatus(NULL),
+    rightstatus_2(NULL)
 {
     ui->setupUi(this);
 
@@ -63,6 +64,8 @@ MainWindow::MainWindow(QWidget *parent) :
         {
             rightstatus=new QLabel(this);
             qstBar->addPermanentWidget(rightstatus);
+            rightstatus_2=new QLabel(this);
+            qstBar->addPermanentWidget(rightstatus_2);
         }
     }
 
@@ -74,6 +77,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     // handle reception of new data from serial port
     connect(session_mgr, &SessionManager::dataReceived, this, &MainWindow::handleDataReceived);
+    // handle  serial port statistic changed
+    connect(session_mgr,&SessionManager::statisticChanged,this,&MainWindow::sessionManager_statisticChanged);
 
     // get data formatted for display and show it in output view
     connect(output_mgr, &OutputManager::dataConverted, this, &MainWindow::addDataToView);
@@ -487,6 +492,15 @@ void MainWindow::handleEOLCharChanged(int index)
             Q_ASSERT_X(false, "MainWindow::handleEOLCharChanged",
                        "unknown EOL char value: " + ui->eolCombo->currentData().toInt());
             break;
+    }
+}
+
+void MainWindow::sessionManager_statisticChanged(uint64_t bytesRead,uint64_t bytesWrite)
+{
+    QString statistic=QString::fromStdString(std::string("R:")+std::to_string(bytesRead)+",S:"+std::to_string(bytesWrite));
+    if(rightstatus_2!=NULL)
+    {
+        rightstatus_2->setText(statistic);
     }
 }
 

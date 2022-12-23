@@ -70,12 +70,16 @@ private:
 
     //状态栏
     QLabel *rightstatus;
+    QLabel *rightstatus_2;
 
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
 private slots:
+
+    void sessionManager_statisticChanged(uint64_t bytesRead,uint64_t bytesWrite);
+
     void on_actionAbout_Qt_triggered();
 
     void on_action_Exit_triggered();

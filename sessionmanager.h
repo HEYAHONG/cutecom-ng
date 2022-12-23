@@ -119,6 +119,20 @@ public:
 
 private:
 
+    uint64_t bytesWrite;
+
+    uint64_t bytesRead;
+
+    /**
+     * \brief add bytesRead statistic
+     */
+    void addbytesRead(ssize_t size);
+
+    /**
+     * \brief add bytesWrite statistic
+     */
+    void addbytesWrite(ssize_t size);
+
     /**
      * \brief read data from serial port
      */
@@ -141,6 +155,11 @@ private:
     void handleFileTransferEnded(FileTransfer::TransferError error);
 
 signals:
+
+    /**
+     * \brief signal emitted when statistic is changed
+     */
+    void statisticChanged(uint64_t bytesRead,uint64_t bytesWrite);
 
     /**
      * \brief signal emitted when a new session is opened

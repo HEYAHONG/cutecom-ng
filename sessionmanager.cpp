@@ -141,6 +141,9 @@ void SessionManager::openSession(const QHash<QString, QString>& port_cfg)
     if (serial->open(QIODevice::ReadWrite))
     {
         curr_cfg = port_cfg;
+        bytesRead=0;
+        bytesWrite=0;
+        emit statisticChanged(bytesRead,bytesWrite);
         emit sessionOpened();
     }
     else
@@ -182,6 +185,8 @@ void SessionManager::readData()
 {
     QByteArray data(serial->readAll());
 
+    addbytesRead(data.size());
+
     emit dataReceived(data);
 
     // append to dump file if configured
@@ -191,6 +196,8 @@ void SessionManager::readData()
 
 void SessionManager::sendToSerial(const QByteArray &data)
 {
+    addbytesWrite(data.size());
+
     serial->write(data);
 }
 
@@ -287,4 +294,18 @@ QSerialPortInfo SessionManager::getInfo()
         return QSerialPortInfo();
     }
     return QSerialPortInfo(*serial);
+}
+
+void SessionManager::addbytesRead(ssize_t size)
+{
+    bytesRead+=size;
+
+    emit statisticChanged(bytesRead,bytesWrite);
+}
+
+void SessionManager::addbytesWrite(ssize_t size)
+{
+    bytesWrite+=size;
+
+    emit statisticChanged(bytesRead,bytesWrite);
 }
