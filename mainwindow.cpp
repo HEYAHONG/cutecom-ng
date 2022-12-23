@@ -66,6 +66,8 @@ MainWindow::MainWindow(QWidget *parent) :
         }
     }
 
+    setFocusPolicy(Qt::StrongFocus);
+
 
     // show connection dialog
     connect(ui->connectButton, &QAbstractButton::clicked, connect_dlg, &ConnectDialog::show);
@@ -545,4 +547,24 @@ void MainWindow::paintEvent(QPaintEvent *event)
     //刷新翻译
     ui->retranslateUi(this);
     QMainWindow::paintEvent(event);
+}
+
+void MainWindow::keyPressEvent(QKeyEvent *event)
+{
+    //按键按下
+    {
+        QString input=event->text();
+        if(!input.isEmpty())
+        {
+            if(session_mgr!=NULL)
+            {
+                if(session_mgr->isSessionOpen())
+                {
+                    setFocus();
+                    session_mgr->sendToSerial(input.toUtf8());
+                }
+            }
+        }
+    }
+    QMainWindow::keyPressEvent(event);
 }

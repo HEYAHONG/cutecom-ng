@@ -168,6 +168,7 @@ private:
     void handleEOLCharChanged(int index);
 protected:
      void paintEvent(QPaintEvent *event);
+     void keyPressEvent(QKeyEvent *event);
 };
 
 #endif // MAINWINDOW_H
