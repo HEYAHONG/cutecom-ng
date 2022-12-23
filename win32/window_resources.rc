@@ -1,0 +1,33 @@
+
+
+1  24    "window_resources.manifest"
+MAINICON ICON "window_resources.ico"
+
+
+#define VERSIONINT  0,5,0,0
+#define VERSIONSTR  "0,5,0,0"
+
+1 VERSIONINFO
+    FILEVERSION     VERSIONINT
+    PRODUCTVERSION  VERSIONINT
+    BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "CompanyName", "develer-staff"
+            VALUE "FileDescription", "cutecom-ng modified by HEYAHONG "
+            VALUE "FileVersion", VERSIONSTR
+            VALUE "InternalName", "cutecom-ng"
+            VALUE "LegalCopyright", "GPL-3.0"
+            VALUE "OriginalFilename", "cutecom-ng.exe"
+            VALUE "ProductName", "cutecom-ng"
+            VALUE "ProductVersion", VERSIONSTR
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 2052, 1200
+    END
+END
+

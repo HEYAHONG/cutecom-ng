@@ -539,7 +539,7 @@ void MainWindow::on_actionChinese_triggered()
 }
 
 
-void MainWindow::on_RTScheckBox_stateChanged(int checked)
+void MainWindow::on_RTScheckBox_stateChanged(int)
 {
     if(session_mgr!=NULL)
     {
@@ -548,7 +548,7 @@ void MainWindow::on_RTScheckBox_stateChanged(int checked)
 }
 
 
-void MainWindow::on_DTRcheckBox_stateChanged(int checked)
+void MainWindow::on_DTRcheckBox_stateChanged(int)
 {
     if(session_mgr!=NULL)
     {

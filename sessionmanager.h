@@ -14,6 +14,8 @@
 
 #include "connectdialog.h"
 #include "filetransfer.h"
+#include "stdlib.h"
+#include "stdint.h"
 
 #include <QObject>
 #include <QSerialPort>
@@ -126,12 +128,12 @@ private:
     /**
      * \brief add bytesRead statistic
      */
-    void addbytesRead(ssize_t size);
+    void addbytesRead(int size);
 
     /**
      * \brief add bytesWrite statistic
      */
-    void addbytesWrite(ssize_t size);
+    void addbytesWrite(int size);
 
     /**
      * \brief read data from serial port

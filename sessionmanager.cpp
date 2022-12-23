@@ -296,14 +296,14 @@ QSerialPortInfo SessionManager::getInfo()
     return QSerialPortInfo(*serial);
 }
 
-void SessionManager::addbytesRead(ssize_t size)
+void SessionManager::addbytesRead(int size)
 {
     bytesRead+=size;
 
     emit statisticChanged(bytesRead,bytesWrite);
 }
 
-void SessionManager::addbytesWrite(ssize_t size)
+void SessionManager::addbytesWrite(int size)
 {
     bytesWrite+=size;
 

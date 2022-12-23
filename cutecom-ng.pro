@@ -55,3 +55,30 @@ RESOURCES += \
 TRANSLATIONS+= \
                 zh_CN.ts \
                 en_US.ts
+
+CONFIG += debug_and_release
+CONFIG(debug, debug|release){
+    //处理debug
+    win32{
+        win32-msvc*{
+            RC_FILE += win32/window_resources_msvc.rc
+        }else{
+            RC_FILE += win32/window_resources.rc
+        }
+
+    }
+    unix{
+    }
+}else{
+    //处理release
+    win32{
+        win32-msvc*{
+            RC_FILE += win32/window_resources_msvc.rc
+        }else{
+            RC_FILE += win32/window_resources.rc
+        }
+    }
+    unix{
+    }
+}
+
