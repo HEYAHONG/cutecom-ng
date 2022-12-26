@@ -566,6 +566,7 @@ void MainWindow::paintEvent(QPaintEvent *event)
 void MainWindow::keyPressEvent(QKeyEvent *event)
 {
     //按键按下
+    if(ui->actiondirentinput->isChecked())
     {
         QString input=event->text();
         if(!input.isEmpty())

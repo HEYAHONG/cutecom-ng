@@ -143,29 +143,61 @@
         <translation>语言</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="350"/>
+        <location filename="mainwindow.ui" line="345"/>
+        <source>settings</source>
+        <translation>设置</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="357"/>
         <source>aboutQt</source>
         <translation>关于Qt</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="359"/>
+        <location filename="mainwindow.ui" line="360"/>
+        <source>about Qt</source>
+        <translation>关于Qt</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="369"/>
+        <location filename="mainwindow.ui" line="372"/>
         <source>exit</source>
         <translation>退出</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="362"/>
+        <location filename="mainwindow.ui" line="375"/>
         <source>Alt+E</source>
         <translation>Alt+E</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="367"/>
+        <location filename="mainwindow.ui" line="380"/>
         <source>English</source>
         <translation>英语</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="372"/>
+        <location filename="mainwindow.ui" line="383"/>
+        <source>change to english</source>
+        <translation>切换为英文</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="388"/>
         <source>Chinese</source>
         <translation>中文</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="391"/>
+        <source>change to chinese</source>
+        <translation>切换为中文</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="402"/>
+        <source>direntinput</source>
+        <translation>直接输入</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="405"/>
+        <location filename="mainwindow.ui" line="408"/>
+        <source>write to serial when key press</source>
+        <translation>当按键按下时写入串口</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="200"/>

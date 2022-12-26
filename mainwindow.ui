@@ -340,14 +340,24 @@
     <addaction name="actionEnglish"/>
     <addaction name="actionChinese"/>
    </widget>
+   <widget class="QMenu" name="menusettings">
+    <property name="title">
+     <string>settings</string>
+    </property>
+    <addaction name="actiondirentinput"/>
+   </widget>
    <addaction name="menu_File"/>
    <addaction name="menulanguage"/>
+   <addaction name="menusettings"/>
    <addaction name="menu_Help"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionAbout_Qt">
    <property name="text">
     <string>aboutQt</string>
+   </property>
+   <property name="statusTip">
+    <string>about Qt</string>
    </property>
   </action>
   <action name="action_Exit">
@@ -358,6 +368,9 @@
    <property name="text">
     <string>exit</string>
    </property>
+   <property name="statusTip">
+    <string>exit</string>
+   </property>
    <property name="shortcut">
     <string>Alt+E</string>
    </property>
@@ -366,10 +379,33 @@
    <property name="text">
     <string>English</string>
    </property>
+   <property name="statusTip">
+    <string>change to english</string>
+   </property>
   </action>
   <action name="actionChinese">
    <property name="text">
     <string>Chinese</string>
+   </property>
+   <property name="statusTip">
+    <string>change to chinese</string>
+   </property>
+  </action>
+  <action name="actiondirentinput">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>direntinput</string>
+   </property>
+   <property name="toolTip">
+    <string>write to serial when key press</string>
+   </property>
+   <property name="statusTip">
+    <string>write to serial when key press</string>
    </property>
   </action>
  </widget>
