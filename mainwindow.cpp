@@ -74,6 +74,7 @@ MainWindow::MainWindow(QWidget *parent) :
     //设置hexoutput
     ui->hexOutput->setDynamicBytesPerLine(true);
     ui->hexOutput->setReadOnly(true);
+    ui->hexOutput->setHexCaps(true);
     ui->hexOutput->setVisible(false);
 
     // show connection dialog
