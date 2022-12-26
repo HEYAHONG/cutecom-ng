@@ -71,6 +71,10 @@ MainWindow::MainWindow(QWidget *parent) :
 
     setFocusPolicy(Qt::StrongFocus);
 
+    //设置hexoutput
+    ui->hexOutput->setDynamicBytesPerLine(true);
+    ui->hexOutput->setReadOnly(true);
+    ui->hexOutput->setVisible(false);
 
     // show connection dialog
     connect(ui->connectButton, &QAbstractButton::clicked, connect_dlg, &ConnectDialog::show);
@@ -204,6 +208,9 @@ void MainWindow::handleSessionOpened()
             statusstr+= info.portName()+" ("+info.description()+") "+tr("Opened");
             rightstatus->setText(statusstr);
         }
+
+        //清空hex输出
+        ui->hexOutput->setData(QByteArray());
     }
 }
 
@@ -368,6 +375,12 @@ void MainWindow::addDataToView(const QString & textdata)
 void MainWindow::handleDataReceived(const QByteArray &data)
 {
     (*output_mgr) << data;
+
+    //hex输出
+    if(ui->actionhexoutput->isChecked())
+    {
+        ui->hexOutput->insert(ui->hexOutput->data().length(),data);
+    }
 }
 
 void MainWindow::toggleOutputSplitter()
@@ -583,3 +596,17 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
     }
     QMainWindow::keyPressEvent(event);
 }
+
+void MainWindow::on_actionhexoutput_triggered(bool checked)
+{
+    ui->hexOutput->setVisible(checked);
+    if(!checked)
+        ui->hexOutput->setData(QByteArray());
+}
+
+
+void MainWindow::on_clearButton_clicked()
+{
+    ui->hexOutput->setData(QByteArray());
+}
+

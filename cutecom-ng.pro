@@ -11,7 +11,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = cutecom-ng
 TEMPLATE = app
 DESTDIR = bin
-INCLUDEPATH += libs
+INCLUDEPATH += libs libs/qhexedit2/src/
 
 OBJECTS_DIR = .generated/
 MOC_DIR = .generated/
@@ -19,6 +19,9 @@ RCC_DIR = .generated/
 UI_DIR = .generated/
 
 SOURCES += main.cpp\
+    libs/qhexedit2/src/chunks.cpp \
+    libs/qhexedit2/src/commands.cpp \
+    libs/qhexedit2/src/qhexedit.cpp \
         mainwindow.cpp \
     connectdialog.cpp \
     searchwidget.cpp \
@@ -34,6 +37,9 @@ SOURCES += main.cpp\
 
 HEADERS  += mainwindow.h \
     connectdialog.h \
+    libs/qhexedit2/src/chunks.h \
+    libs/qhexedit2/src/commands.h \
+    libs/qhexedit2/src/qhexedit.h \
     searchwidget.h \
     sessionmanager.h \
     outputmanager.h \

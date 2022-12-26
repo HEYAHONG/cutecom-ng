@@ -13,7 +13,7 @@
 #define MAINWINDOW_H
 
 #include "filetransfer.h"
-
+#include "qhexedit.h"
 #include <QMainWindow>
 #include <QTranslator>
 #include <QDebug>
@@ -91,6 +91,10 @@ private slots:
     void on_RTScheckBox_stateChanged(int arg1);
 
     void on_DTRcheckBox_stateChanged(int arg1);
+
+    void on_actionhexoutput_triggered(bool checked);
+
+    void on_clearButton_clicked();
 
 private:
 

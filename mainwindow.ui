@@ -147,6 +147,14 @@
         <bool>true</bool>
        </property>
       </widget>
+      <widget class="QHexEdit" name="hexOutput" native="true">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+      </widget>
      </widget>
     </item>
     <item>
@@ -345,6 +353,7 @@
      <string>settings</string>
     </property>
     <addaction name="actiondirentinput"/>
+    <addaction name="actionhexoutput"/>
    </widget>
    <addaction name="menu_File"/>
    <addaction name="menulanguage"/>
@@ -408,6 +417,20 @@
     <string>write to serial when key press</string>
    </property>
   </action>
+  <action name="actionhexoutput">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>hexoutput</string>
+   </property>
+   <property name="statusTip">
+    <string>Hex Ouput</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
@@ -415,6 +438,12 @@
    <class>HistoryComboBox</class>
    <extends>QComboBox</extends>
    <header>historycombobox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QHexEdit</class>
+   <extends>QWidget</extends>
+   <header>qhexedit.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources>
