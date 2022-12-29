@@ -20,6 +20,7 @@
 #include <QProgressDialog>
 #include <QMessageBox>
 #include <QPushButton>
+#include <QFileDialog>
 
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
@@ -48,7 +49,6 @@ MainWindow::MainWindow(QWidget *parent) :
     output_mgr = new OutputManager(this);
     session_mgr = new SessionManager(this);
     connect_dlg = new ConnectDialog(this);
-
 
     {
         //设置图标
@@ -668,5 +668,18 @@ void MainWindow::on_actionhexoutput_triggered(bool checked)
 void MainWindow::on_clearButton_clicked()
 {
     ui->hexOutput->setData(QByteArray());
+}
+
+
+void MainWindow::on_actionLoadQml_triggered()
+{
+    QUrl qml_path=QFileDialog::getOpenFileUrl(this,tr("qml path"));
+    if(!qml_path.isEmpty())
+    {
+        qml_list[qml_path]=QSharedPointer<QQmlLoader>(new QQmlLoader(this));
+        qml_list[qml_path].data()->LoadQmlSource(qml_path);
+        qml_list[qml_path].data()->show();
+    }
+
 }
 

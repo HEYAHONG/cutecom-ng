@@ -138,79 +138,97 @@
         <translation>文件</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="347"/>
+        <location filename="mainwindow.ui" line="349"/>
         <source>help</source>
         <translation>帮助</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="353"/>
+        <location filename="mainwindow.ui" line="355"/>
         <source>language</source>
         <translation>语言</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="360"/>
+        <location filename="mainwindow.ui" line="362"/>
         <source>settings</source>
         <translation>设置</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="373"/>
+        <location filename="mainwindow.ui" line="375"/>
         <source>aboutQt</source>
         <translation>关于Qt</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="376"/>
+        <location filename="mainwindow.ui" line="378"/>
         <source>about Qt</source>
         <translation>关于Qt</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="385"/>
-        <location filename="mainwindow.ui" line="388"/>
+        <location filename="mainwindow.ui" line="387"/>
+        <location filename="mainwindow.ui" line="390"/>
         <source>exit</source>
         <translation>退出</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="391"/>
+        <location filename="mainwindow.ui" line="393"/>
         <source>Alt+E</source>
         <translation>Alt+E</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="396"/>
+        <location filename="mainwindow.ui" line="398"/>
         <source>English</source>
         <translation>英语</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="399"/>
+        <location filename="mainwindow.ui" line="401"/>
         <source>change to english</source>
         <translation>切换为英文</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="404"/>
+        <location filename="mainwindow.ui" line="406"/>
         <source>Chinese</source>
         <translation>中文</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="407"/>
+        <location filename="mainwindow.ui" line="409"/>
         <source>change to chinese</source>
         <translation>切换为中文</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="418"/>
-        <source>direntinput</source>
+        <location filename="mainwindow.ui" line="420"/>
+        <source>dirent input</source>
         <translation>直接输入</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="421"/>
-        <location filename="mainwindow.ui" line="424"/>
+        <location filename="mainwindow.ui" line="437"/>
+        <source>hex output</source>
+        <translation>HEX输出</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="445"/>
+        <source>load qml script</source>
+        <translation>加载QML脚本</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="448"/>
+        <source>Ctrl+L</source>
+        <translation>Ctrl+L</translation>
+    </message>
+    <message>
+        <source>direntinput</source>
+        <translation type="vanished">直接输入</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="423"/>
+        <location filename="mainwindow.ui" line="426"/>
         <source>write to serial when key press</source>
         <translation>当按键按下时写入串口</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="435"/>
         <source>hexoutput</source>
-        <translation>HEX输出</translation>
+        <translation type="vanished">HEX输出</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="438"/>
+        <location filename="mainwindow.ui" line="440"/>
         <source>Hex Ouput</source>
         <translation>HEX 输出</translation>
     </message>
@@ -245,6 +263,11 @@
         <location filename="mainwindow.cpp" line="363"/>
         <source>Input is not hex string</source>
         <translation>输入不是HEX字符串</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="676"/>
+        <source>qml path</source>
+        <translation>QML 路径</translation>
     </message>
 </context>
 <context>

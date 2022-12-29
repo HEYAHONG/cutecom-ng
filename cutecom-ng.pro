@@ -24,6 +24,7 @@ SOURCES += main.cpp\
     libs/qhexedit2/src/qhexedit.cpp \
         mainwindow.cpp \
     connectdialog.cpp \
+    qqmlloader.cpp \
     searchwidget.cpp \
     sessionmanager.cpp \
     outputmanager.cpp \
@@ -40,6 +41,7 @@ HEADERS  += mainwindow.h \
     libs/qhexedit2/src/chunks.h \
     libs/qhexedit2/src/commands.h \
     libs/qhexedit2/src/qhexedit.h \
+    qqmlloader.h \
     searchwidget.h \
     sessionmanager.h \
     outputmanager.h \

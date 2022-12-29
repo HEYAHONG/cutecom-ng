@@ -14,11 +14,14 @@
 
 #include "filetransfer.h"
 #include "qhexedit.h"
+#include "qqmlloader.h"
 #include <QMainWindow>
 #include <QTranslator>
 #include <QDebug>
 #include <QSerialPortInfo>
 #include <QLabel>
+#include <QMap>
+#include <QSharedPointer>
 
 namespace Ui {
 class MainWindow;
@@ -72,6 +75,9 @@ private:
     QLabel *rightstatus;
     QLabel *rightstatus_2;
 
+    //qml脚本
+    QMap<QUrl,QSharedPointer<QQmlLoader>> qml_list;
+
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
@@ -95,6 +101,8 @@ private slots:
     void on_actionhexoutput_triggered(bool checked);
 
     void on_clearButton_clicked();
+
+    void on_actionLoadQml_triggered();
 
 private:
 
