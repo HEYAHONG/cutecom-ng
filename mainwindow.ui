@@ -191,6 +191,13 @@
        </widget>
       </item>
       <item>
+       <widget class="QCheckBox" name="HexcheckBox">
+        <property name="text">
+         <string>HEX</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QToolButton" name="splitOutputBtn">
         <property name="text">
          <string/>

@@ -314,7 +314,66 @@ void MainWindow::handleNewInput(QString entry)
     if (session_mgr->isSessionOpen())
     {
         QByteArray to_send(entry.toLocal8Bit());
-        to_send.append(_end_of_line);
+        if(!ui->HexcheckBox->isChecked())
+        {
+            //不为HEX输出,添加结束符
+            to_send.append(_end_of_line);
+        }
+        else
+        {
+            //为HEX输出
+            to_send.clear();
+            QString input=entry;
+            input=input.toLower();
+            //去除空格
+            input.replace(QChar(' '),QString());
+            //去除回车
+            input.replace(QChar('\r'),QString());
+            //去除换行
+            input.replace(QChar('\n'),QString());
+
+            if(input.isEmpty())
+            {
+                QMessageBox::warning(this,tr("Warning"),tr("Input is empty"));
+                return;
+            }
+
+            bool IsHexString=true;
+            for(int i=0;i<input.size();i++)
+            {
+                if(input.at(i).isNumber() || input.at(i).isLetter())
+                {
+                    if(input.at(i).isLetter())
+                    {
+                        QChar c=input.at(i).toLower();
+                        if(c > QChar('f'))
+                        {
+                            IsHexString=false;
+                        }
+                    }
+                }
+                else
+                {
+                    IsHexString=false;
+                }
+
+            }
+            if(!IsHexString)
+            {
+                QMessageBox::warning(this,tr("Warning"),tr("Input is not hex string"));
+                return;
+            }
+            else
+            {
+                for(int i=0;i<input.size();i+=2)
+                {
+                    QString hex=QString::fromStdString(input.toStdString().substr(i,2));
+                    to_send.append(hex.toInt(NULL,16));
+                }
+            }
+
+
+        }
         session_mgr->sendToSerial(to_send);
         ui->inputBox->clearEditText();
     }
