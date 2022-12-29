@@ -10,7 +10,13 @@
 
 # 编译
 
-安装好Qt5与Qt5的SerialPort扩展。安装好qtcreator。
+安装好Qt5、SerialPort扩展及QtDeclarative。安装好qtcreator。
+
+对于ubuntu可采用以下命令安装:
+
+```bash
+sudo apt-get install qtcreator libqt5serialport5-dev qtdeclarative5-dev
+```
 
 ## 使用qtcreator编译
 
@@ -130,7 +136,7 @@ are handling the XModem reception
 
  1. install **socat**, **gnu-screen** and **lrzsz** packages:<br>
  ```sudo apt-get install socat screen lrzsz```<br>on ubuntu and other **apt**
-  based linux distros
+    based linux distros
 
  2. open 2 terminals
 
