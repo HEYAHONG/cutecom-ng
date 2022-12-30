@@ -27,7 +27,7 @@ Item {
         console.log("template plugin init");
     }
     /*
-     *说明:插件反初始化。当插件被加载时由C++调用。必须存在。
+     *说明:插件反初始化。当插件被卸载时由C++调用(并非窗口被关闭)。必须存在。
      */
     function onplugindeinit()
     {
