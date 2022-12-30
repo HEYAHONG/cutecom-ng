@@ -3,6 +3,7 @@
 
 #include <QQuickWidget>
 #include <QDialog>
+#include <QVariant>
 
 
 class QQmlLoader:public QDialog
@@ -16,10 +17,16 @@ public:
 
     QQuickWidget::Status GetLoadStatus();
 
+    //获取插件名称属性
+    QString GetPluginName();
+
 private:
     QQuickWidget *quick;
 
     void SetupQmlContext(QQmlContext *root);
+
+    QVariant GetRootItemProperty(QString name);
+
 public slots:
 
     void 	statusChanged(QQuickWidget::Status status);

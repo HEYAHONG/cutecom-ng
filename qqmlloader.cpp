@@ -2,6 +2,7 @@
 #include "QQmlError"
 #include "QList"
 #include "QMessageBox"
+#include "QQuickItem"
 
 QQmlLoader::QQmlLoader(QWidget *parent):QDialog(parent)
 {
@@ -15,6 +16,15 @@ void QQmlLoader::LoadQmlSource(QUrl qml_path)
 {
     quick->setSource(qml_path);
     resize(quick->geometry().size());
+    QString name=GetPluginName();
+    if(!name.isEmpty())
+    {
+        setWindowTitle(name);
+    }
+    else
+    {
+        qDebug()<< qml_path << " is not a plugin";
+    }
 }
 
 QQuickWidget::Status QQmlLoader::GetLoadStatus()
@@ -24,6 +34,27 @@ QQuickWidget::Status QQmlLoader::GetLoadStatus()
         return quick->status();
     }
     return QQuickWidget::Null;
+}
+
+QString QQmlLoader::GetPluginName()
+{
+
+    QVariant name=GetRootItemProperty("pluginname");
+    if(!name.isNull())
+    {
+            return name.toString();
+    }
+
+    return QString();
+}
+
+QVariant QQmlLoader::GetRootItemProperty(QString name)
+{
+    if(quick->rootObject()!=NULL)
+    {
+        return quick->rootObject()->property(name.toStdString().c_str());
+    }
+    return QVariant();
 }
 
 void QQmlLoader::statusChanged(QQuickWidget::Status status)
