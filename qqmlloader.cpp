@@ -93,5 +93,11 @@ void QQmlLoader::SetupQmlContext(QQmlContext *root)
 
 QQmlLoader::~QQmlLoader()
 {
+    QQuickItem * root=quick->rootObject();
+    if(!GetPluginName().isEmpty())
+    {
+        //调用反初始化函数
+        QMetaObject::invokeMethod(root,"onplugindeinit");
+    }
     delete quick;
 }

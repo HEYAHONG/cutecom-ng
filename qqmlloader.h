@@ -1,4 +1,4 @@
-#ifndef QQMLLOADER_H
+﻿#ifndef QQMLLOADER_H
 #define QQMLLOADER_H
 
 #include <QQuickWidget>
