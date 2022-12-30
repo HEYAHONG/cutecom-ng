@@ -20,6 +20,9 @@ void QQmlLoader::LoadQmlSource(QUrl qml_path)
     if(!name.isEmpty())
     {
         setWindowTitle(name);
+        QQuickItem * root=quick->rootObject();
+        //调用初始化函数
+        QMetaObject::invokeMethod(root,"onplugininit");
     }
     else
     {
