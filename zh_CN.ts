@@ -271,6 +271,14 @@
     </message>
 </context>
 <context>
+    <name>QQmlLoader</name>
+    <message>
+        <location filename="qqmlloader.cpp" line="43"/>
+        <source>Error</source>
+        <translation>错误</translation>
+    </message>
+</context>
+<context>
     <name>SearchWidget</name>
     <message>
         <location filename="searchwidget.ui" line="32"/>

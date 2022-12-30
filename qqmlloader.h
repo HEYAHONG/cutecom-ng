@@ -14,10 +14,15 @@ public:
 
     void LoadQmlSource(QUrl qml_path);
 
+    QQuickWidget::Status GetLoadStatus();
+
 private:
     QQuickWidget *quick;
 
     void SetupQmlContext(QQmlContext *root);
+public slots:
+
+    void 	statusChanged(QQuickWidget::Status status);
 };
 
 #endif // QQMLLOADER_H

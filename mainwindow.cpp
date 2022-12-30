@@ -678,7 +678,27 @@ void MainWindow::on_actionLoadQml_triggered()
     {
         qml_list[qml_path]=QSharedPointer<QQmlLoader>(new QQmlLoader(this));
         qml_list[qml_path].data()->LoadQmlSource(qml_path);
-        qml_list[qml_path].data()->show();
+        QQmlLoader *qmlloader=qml_list[qml_path].data();
+        if(qmlloader->GetLoadStatus()!=QQuickWidget::Null)
+        {
+            //加载成功
+            if(qmlloader->GetLoadStatus()!=QQuickWidget::Error)
+            {
+                //目前没有出现错误
+                qmlloader->show();
+            }
+            else
+            {
+                //已出现错误,删除加载的qml窗口
+                qml_list.erase(qml_list.find(qml_path));
+            }
+        }
+        else
+        {
+            //删除加载的qml窗口
+            qml_list.erase(qml_list.find(qml_path));
+        }
+
     }
 
 }
