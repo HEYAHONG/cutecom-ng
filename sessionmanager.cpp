@@ -27,8 +27,13 @@ SessionManager::SessionManager(QObject *parent) :
     file_transfer = 0;
 
     connect(serial, &QSerialPort::readyRead, this, &SessionManager::readData);
+#if (QT_VERSION >= QT_VERSION_CHECK(6,0,0))
+    connect(serial, static_cast<void (QSerialPort::*)(QSerialPort::SerialPortError)>
+                (&QSerialPort::errorOccurred), this, &SessionManager::handleError);
+#else
     connect(serial, static_cast<void (QSerialPort::*)(QSerialPort::SerialPortError)>
                 (&QSerialPort::error), this, &SessionManager::handleError);
+#endif
 }
 
 SessionManager::~SessionManager()
@@ -222,10 +227,13 @@ void SessionManager::transferFile(const QString &filename, Protocol type)
     // forward FileTransfer::transferProgressed signals
     connect(file_transfer, &FileTransfer::transferProgressed,
             this, &SessionManager::fileTransferProgressed);
-
+#if (QT_VERSION >= QT_VERSION_CHECK(6,0,0))
+    disconnect(serial, static_cast<void (QSerialPort::*)(QSerialPort::SerialPortError)>
+                (&QSerialPort::errorOccurred), this, &SessionManager::handleError);
+#else
     disconnect(serial, static_cast<void (QSerialPort::*)(QSerialPort::SerialPortError)>
                 (&QSerialPort::error), this, &SessionManager::handleError);
-
+#endif
     // perform transfer
     if (!file_transfer->startTransfer())
         // transfer never started, manually delete FileTransfer instance
@@ -235,9 +243,13 @@ void SessionManager::transferFile(const QString &filename, Protocol type)
 void SessionManager::handleFileTransferEnded(FileTransfer::TransferError error)
 {
     // re-connect serial port error handling for non-blocking use
+#if (QT_VERSION >= QT_VERSION_CHECK(6,0,0))
+    connect(serial, static_cast<void (QSerialPort::*)(QSerialPort::SerialPortError)>
+                (&QSerialPort::errorOccurred), this, &SessionManager::handleError);
+#else
     connect(serial, static_cast<void (QSerialPort::*)(QSerialPort::SerialPortError)>
                 (&QSerialPort::error), this, &SessionManager::handleError);
-
+#endif
     // schedule file_transfer object deletion on main thread
     QCoreApplication::postEvent(file_transfer, new QEvent(QEvent::DeferredDelete));
     emit fileTransferEnded(error);

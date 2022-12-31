@@ -19,6 +19,7 @@
 
 #include <QObject>
 #include <QSerialPort>
+#include <QHash>
 
 class FileTransfer;
 
