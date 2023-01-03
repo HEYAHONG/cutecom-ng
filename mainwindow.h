@@ -78,9 +78,16 @@ private:
     //qml脚本
     QMap<QUrl,QSharedPointer<QQmlLoader>> qml_list;
 
+
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+
+    /*
+     * 加载QML插件
+     *
+    */
+    bool LoadQmlPlugin(QUrl qml_path);
 
 private slots:
 
