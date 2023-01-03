@@ -239,6 +239,7 @@
     </message>
     <message>
         <location filename="mainwindow.cpp" line="74"/>
+        <location filename="mainwindow.cpp" line="649"/>
         <source>qml plugin</source>
         <translation>QML插件</translation>
     </message>
@@ -275,7 +276,7 @@
         <translation>输入不是HEX字符串</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="689"/>
+        <location filename="mainwindow.cpp" line="690"/>
         <source>qml path</source>
         <translation>QML 路径</translation>
     </message>

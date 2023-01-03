@@ -646,6 +646,7 @@ void MainWindow::paintEvent(QPaintEvent *event)
 {
     //刷新翻译
     ui->retranslateUi(this);
+    qml_plugin_menu->setTitle(tr("qml plugin"));
     QMainWindow::paintEvent(event);
 }
 

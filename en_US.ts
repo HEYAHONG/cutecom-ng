@@ -233,6 +233,7 @@
     </message>
     <message>
         <location filename="mainwindow.cpp" line="74"/>
+        <location filename="mainwindow.cpp" line="649"/>
         <source>qml plugin</source>
         <translation type="unfinished"></translation>
     </message>
@@ -269,7 +270,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="689"/>
+        <location filename="mainwindow.cpp" line="690"/>
         <source>qml path</source>
         <translation type="unfinished"></translation>
     </message>
