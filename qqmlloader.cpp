@@ -18,6 +18,7 @@ void QQmlLoader::LoadQmlSource(QUrl qml_path)
 {
     quick->setSource(qml_path);
     resize(quick->geometry().size());
+    setMaximumSize(size());
     QString name=GetPluginName();
     if(!name.isEmpty())
     {
