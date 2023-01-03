@@ -6,7 +6,7 @@
         <file>serial-port.png</file>
         <file>en_US.qm</file>
         <file>zh_CN.qm</file>
-        <file>script/qml/template-qt6.qml</file>
-        <file>script/qml/template.qml</file>
+        <file>script/qml/template-qt6.qmlscript</file>
+        <file>script/qml/template.qmlscript</file>
     </qresource>
 </RCC>

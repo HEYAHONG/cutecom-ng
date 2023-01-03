@@ -1,6 +1,6 @@
-import QtQuick;
-import QtQuick.Controls;
-import QtQuick.Dialogs;
+import QtQuick 2.0
+import QtQuick.Controls 1.2
+import QtQuick.Dialogs 1.1
 
 
 
@@ -18,6 +18,11 @@ Item {
     */
     property string pluginversion:"1.0.0"
 
+    function timercallback()
+    {
+        console.log("timer timeout");
+    }
+
     /*
      *说明:插件初始化。当插件被加载时由C++调用。必须存在。
      */
@@ -25,6 +30,13 @@ Item {
     {
         //在此处初始化插件
         console.log("template plugin init");
+
+        //打印Qt版本
+        console.log("Qt Version:",cutecomng.QtVersion)
+
+        //启动定时器(5000毫秒一次)
+        cutecomng.SetTimerCallback(timercallback)
+        cutecomng.StartTimer(5000)
     }
     /*
      *说明:插件反初始化。当插件被卸载时由C++调用(并非窗口被关闭)。必须存在。
@@ -33,6 +45,9 @@ Item {
     {
         //在此处反初始化插件
         console.log("template plugin deinit");
+
+        //停止定时器
+        cutecomng.StopTimer();
     }
 
 }

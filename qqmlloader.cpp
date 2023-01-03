@@ -3,11 +3,13 @@
 #include "QList"
 #include "QMessageBox"
 #include "QQuickItem"
+#include "QQmlContext"
 
-QQmlLoader::QQmlLoader(QWidget *parent):QDialog(parent)
+QQmlLoader::QQmlLoader(QWidget *parent):QDialog(parent),QmlTimer(this)
 {
     quick=new QQuickWidget(this);
     connect(quick,&QQuickWidget::statusChanged,this,&QQmlLoader::statusChanged);
+    connect(&QmlTimer,&QTimer::timeout,this,&QQmlLoader::TimerTimeout);
     SetupQmlContext(quick->rootContext());
 }
 
@@ -51,6 +53,11 @@ QString QQmlLoader::GetPluginName()
     return QString();
 }
 
+QString QQmlLoader::getQtVersion()
+{
+    return QString(qVersion());
+}
+
 QVariant QQmlLoader::GetRootItemProperty(QString name)
 {
     if(quick->rootObject()!=NULL)
@@ -89,10 +96,44 @@ void QQmlLoader::SetupQmlContext(QQmlContext *root)
     *
     */
 
+    /*
+     *将本类对象传入qml上下文，名称为cutecomng
+    */
+    root->setContextProperty("cutecomng",this);
+
+}
+
+void QQmlLoader::StartTimer(int interval)
+{
+    QmlTimer.setSingleShot(false);
+    QmlTimer.start(interval);
+}
+
+void QQmlLoader::StopTimer()
+{
+    QmlTimer.stop();
+}
+
+void QQmlLoader::SetTimerCallback(QJSValue callback)
+{
+    QmlTimerCallback=callback;
+}
+
+void QQmlLoader::TimerTimeout()
+{
+    QMutexLocker lock(&QmlCallLock);
+
+    //调用回调函数
+    QJSValue callback=QmlTimerCallback;
+    if(callback.isCallable())
+    {
+        callback.call();
+    }
 }
 
 QQmlLoader::~QQmlLoader()
 {
+    QmlTimer.stop();
     QQuickItem * root=quick->rootObject();
     if(!GetPluginName().isEmpty())
     {

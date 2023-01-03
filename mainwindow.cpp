@@ -75,9 +75,9 @@ MainWindow::MainWindow(QWidget *parent) :
         ui->menuplugin->addMenu(qml_plugin_menu);
         //加载内置插件
 #if (QT_VERSION >= QT_VERSION_CHECK(6,0,0))
-        LoadQmlPlugin(QUrl("qrc:/script/qml/template-qt6.qml"),false);
+        LoadQmlPlugin(QUrl("qrc:/script/qml/template-qt6.qmlscript"),false);
 #else
-        LoadQmlPlugin(QUrl("qrc:/script/qml/template.qml"),false);
+        LoadQmlPlugin(QUrl("qrc:/script/qml/template.qmlscript"),false);
 #endif
 
     }
