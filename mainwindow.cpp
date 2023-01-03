@@ -41,7 +41,8 @@ MainWindow::MainWindow(QWidget *parent) :
     progress_dialog(0),
     translator(NULL),
     rightstatus(NULL),
-    rightstatus_2(NULL)
+    rightstatus_2(NULL),
+    qml_plugin_menu(NULL)
 {
     ui->setupUi(this);
 
@@ -67,6 +68,18 @@ MainWindow::MainWindow(QWidget *parent) :
             rightstatus_2=new QLabel(this);
             qstBar->addPermanentWidget(rightstatus_2);
         }
+    }
+
+    {
+        qml_plugin_menu=new QMenu(tr("qml plugin"));
+        ui->menuplugin->addMenu(qml_plugin_menu);
+        //加载内置插件
+#if (QT_VERSION >= QT_VERSION_CHECK(6,0,0))
+        LoadQmlPlugin(QUrl("qrc:/script/qml/template-qt6.qml"),false);
+#else
+        LoadQmlPlugin(QUrl("qrc:/script/qml/template.qml"),false);
+#endif
+
     }
 
     setFocusPolicy(Qt::StrongFocus);
@@ -681,7 +694,7 @@ void MainWindow::on_actionLoadQml_triggered()
 
 }
 
-bool MainWindow::LoadQmlPlugin(QUrl qml_path)
+bool MainWindow::LoadQmlPlugin(QUrl qml_path,bool Show)
 {
     bool ret=false;
     qml_list[qml_path]=QSharedPointer<QQmlLoader>(new QQmlLoader(this));
@@ -695,7 +708,42 @@ bool MainWindow::LoadQmlPlugin(QUrl qml_path)
             //目前没有出现错误
             if(!qmlloader->GetPluginName().isEmpty())
             {
-                qmlloader->show();
+                if(qml_plugin_menu!=NULL)
+                {
+                    QAction *act=NULL;
+                    auto submenulist=qml_plugin_menu->actions();
+                    for(auto it = submenulist.begin();it!=submenulist.end();it++)
+                    {
+                        act=*it;
+                        if(act->iconText()==qmlloader->GetPluginName())
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            act=NULL;
+                        }
+                    }
+                    if(act!=NULL)
+                    {
+                        //删除重复名字的子菜单
+                        qDebug()<< QString("repeated pulgin");
+                        qml_plugin_menu->removeAction(act);
+                    }
+                    auto cb=[=]()
+                    {
+                        auto it=qml_list.find(qml_path);
+                        if(it!=qml_list.end())
+                        {
+                            qml_list[qml_path].data()->show();
+                        }
+                    };
+                    qml_plugin_menu->addAction(qmlloader->GetPluginName(),cb);
+                }
+                if(Show)
+                {
+                    qmlloader->show();
+                }
                 ret=true;
             }
             else

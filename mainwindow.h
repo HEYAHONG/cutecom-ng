@@ -77,6 +77,7 @@ private:
 
     //qml脚本
     QMap<QUrl,QSharedPointer<QQmlLoader>> qml_list;
+    QMenu *qml_plugin_menu;
 
 
 public:
@@ -87,7 +88,7 @@ public:
      * 加载QML插件
      *
     */
-    bool LoadQmlPlugin(QUrl qml_path);
+    bool LoadQmlPlugin(QUrl qml_path,bool Show=true);
 
 private slots:
 

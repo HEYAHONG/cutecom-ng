@@ -364,9 +364,15 @@
     <addaction name="actiondirentinput"/>
     <addaction name="actionhexoutput"/>
    </widget>
+   <widget class="QMenu" name="menuplugin">
+    <property name="title">
+     <string>plugin</string>
+    </property>
+   </widget>
    <addaction name="menu_File"/>
    <addaction name="menulanguage"/>
    <addaction name="menusettings"/>
+   <addaction name="menuplugin"/>
    <addaction name="menu_Help"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
