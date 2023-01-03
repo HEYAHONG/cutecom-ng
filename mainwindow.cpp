@@ -29,6 +29,7 @@
 #include "outputmanager.h"
 #include "searchhighlighter.h"
 #include "searchwidget.h"
+#include "pluginmanager.h"
 
 /// maximum count of document blocks for the bootom output
 const int MAX_OUTPUT_LINES = 100;
@@ -773,3 +774,11 @@ SessionManager * MainWindow::GetSessionManager()
 {
     return session_mgr;
 }
+
+void MainWindow::on_actionpluginmanager_triggered()
+{
+    PluginManager dlg(this);
+    dlg.setModal(true);
+    dlg.exec();
+}
+

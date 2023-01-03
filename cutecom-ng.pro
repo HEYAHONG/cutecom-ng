@@ -24,6 +24,7 @@ SOURCES += main.cpp\
     libs/qhexedit2/src/qhexedit.cpp \
         mainwindow.cpp \
     connectdialog.cpp \
+    pluginmanager.cpp \
     qqmlloader.cpp \
     searchwidget.cpp \
     sessionmanager.cpp \
@@ -41,6 +42,7 @@ HEADERS  += mainwindow.h \
     libs/qhexedit2/src/chunks.h \
     libs/qhexedit2/src/commands.h \
     libs/qhexedit2/src/qhexedit.h \
+    pluginmanager.h \
     qqmlloader.h \
     searchwidget.h \
     sessionmanager.h \
@@ -55,6 +57,7 @@ HEADERS  += mainwindow.h \
 
 FORMS    += mainwindow.ui \
     connectdialog.ui \
+    pluginmanager.ui \
     searchwidget.ui
 
 RESOURCES += \

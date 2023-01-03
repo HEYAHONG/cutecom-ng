@@ -368,6 +368,8 @@
     <property name="title">
      <string>plugin</string>
     </property>
+    <addaction name="actionpluginmanager"/>
+    <addaction name="separator"/>
    </widget>
    <addaction name="menu_File"/>
    <addaction name="menulanguage"/>
@@ -452,6 +454,11 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+L</string>
+   </property>
+  </action>
+  <action name="actionpluginmanager">
+   <property name="text">
+    <string>pluginmanager</string>
    </property>
   </action>
  </widget>

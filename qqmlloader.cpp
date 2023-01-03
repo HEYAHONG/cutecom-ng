@@ -34,6 +34,7 @@ void QQmlLoader::LoadQmlSource(QUrl qml_path)
     QString name=GetPluginName();
     if(!name.isEmpty())
     {
+        loadurl=qml_path;
         setWindowTitle(name);
         QQuickItem * root=quick->rootObject();
         //调用初始化函数
@@ -52,6 +53,11 @@ QQuickWidget::Status QQmlLoader::GetLoadStatus()
         return quick->status();
     }
     return QQuickWidget::Null;
+}
+
+QUrl QQmlLoader::GetPluginUrl()
+{
+    return loadurl;
 }
 
 QString QQmlLoader::GetPluginName()

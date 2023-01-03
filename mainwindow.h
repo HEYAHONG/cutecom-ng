@@ -33,6 +33,7 @@ class ConnectDialog;
 class QLineEdit;
 class QToolButton;
 class QProgressDialog;
+class PluginManager;
 
 /**
  * \brief main cutecom-ng window
@@ -84,6 +85,8 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+    friend class PluginManager;
+
     /*
      * 加载QML插件
      *
@@ -116,6 +119,8 @@ private slots:
     void on_clearButton_clicked();
 
     void on_actionLoadQml_triggered();
+
+    void on_actionpluginmanager_triggered();
 
 private:
 

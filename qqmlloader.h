@@ -26,6 +26,9 @@ public:
 
     QQuickWidget::Status GetLoadStatus();
 
+    //获取插件Url
+    QUrl GetPluginUrl();
+
     //获取插件名称属性
     QString GetPluginName();
 
@@ -49,6 +52,7 @@ public:
 
 private:
     QQuickWidget *quick;
+    QUrl loadurl;
 
     void SetupQmlContext(QQmlContext *root);
 
