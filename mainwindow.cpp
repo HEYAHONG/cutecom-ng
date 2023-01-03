@@ -179,6 +179,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
 MainWindow::~MainWindow()
 {
+    if(session_mgr->isSessionOpen())
+        session_mgr->closeSession();
     delete ui;
 }
 
@@ -767,3 +769,7 @@ bool MainWindow::LoadQmlPlugin(QUrl qml_path,bool Show)
     return ret;
 }
 
+SessionManager * MainWindow::GetSessionManager()
+{
+    return session_mgr;
+}

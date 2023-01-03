@@ -7,6 +7,7 @@
 #include <QMutex>
 #include <QJSValue>
 #include <QTimer>
+#include <sessionmanager.h>
 
 class QQmlLoader:public QDialog
 {
@@ -39,6 +40,13 @@ public:
     Q_INVOKABLE void StartTimer(int interval);
     Q_INVOKABLE void StopTimer();
 
+    /*
+     *串口相关
+    */
+    Q_INVOKABLE bool IsSerialOpen();
+    Q_INVOKABLE void SetSerialDataCallback(QJSValue callback);
+    Q_INVOKABLE bool SendSerialData(QString data);
+
 private:
     QQuickWidget *quick;
 
@@ -57,6 +65,12 @@ private:
     QTimer QmlTimer;
     QJSValue QmlTimerCallback;
 
+    /*
+     *串口相关
+    */
+    SessionManager *serialsession;
+    QJSValue QmlSerialDataCallback;
+
 public slots:
 
     void    statusChanged(QQuickWidget::Status status);
@@ -65,6 +79,11 @@ public slots:
      *定时器超时
     */
     void    TimerTimeout();
+
+    /*
+     *接收到串口数据
+    */
+    void handleDataReceived(const QByteArray &data);
 };
 
 #endif // QQMLLOADER_H

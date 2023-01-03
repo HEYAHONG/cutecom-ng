@@ -21,6 +21,16 @@ Item {
     function timercallback()
     {
         console.log("timer timeout");
+
+        if(cutecomng.IsSerialOpen())
+        {
+            console.log("serial open");
+        }
+    }
+
+    function serialdatacallback(data)
+    {
+        console.log(data);
     }
 
     /*
@@ -34,9 +44,12 @@ Item {
         //打印Qt版本
         console.log("Qt Version:",cutecomng.QtVersion)
 
-        //启动定时器(5000毫秒一次)
+        //启动定时器(60000毫秒一次)
         cutecomng.SetTimerCallback(timercallback)
-        cutecomng.StartTimer(5000)
+        cutecomng.StartTimer(60000)
+
+        //设置串口回调
+        cutecomng.SetSerialDataCallback(serialdatacallback)
     }
     /*
      *说明:插件反初始化。当插件被卸载时由C++调用(并非窗口被关闭)。必须存在。

@@ -1,12 +1,24 @@
 #include "qqmlloader.h"
+#include "mainwindow.h"
 #include "QQmlError"
 #include "QList"
 #include "QMessageBox"
 #include "QQuickItem"
 #include "QQmlContext"
 
-QQmlLoader::QQmlLoader(QWidget *parent):QDialog(parent),QmlTimer(this)
+QQmlLoader::QQmlLoader(QWidget *parent):QDialog(parent),QmlTimer(this),serialsession(NULL)
 {
+    {
+        MainWindow *ptr=dynamic_cast<MainWindow *>(parent);
+        if(ptr!=NULL)
+        {
+            serialsession=ptr->GetSessionManager();
+            if(serialsession!=NULL)
+            {
+                connect(serialsession,&SessionManager::dataReceived,this,&QQmlLoader::handleDataReceived);
+            }
+        }
+    }
     quick=new QQuickWidget(this);
     connect(quick,&QQuickWidget::statusChanged,this,&QQmlLoader::statusChanged);
     connect(&QmlTimer,&QTimer::timeout,this,&QQmlLoader::TimerTimeout);
@@ -115,6 +127,35 @@ void QQmlLoader::StopTimer()
     QmlTimer.stop();
 }
 
+bool QQmlLoader::IsSerialOpen()
+{
+    bool ret=false;
+    if(serialsession!=NULL)
+    {
+        ret=serialsession->isSessionOpen();
+    }
+    return ret;
+}
+
+void QQmlLoader::SetSerialDataCallback(QJSValue callback)
+{
+    QmlSerialDataCallback=callback;
+}
+
+ bool QQmlLoader::SendSerialData(QString data)
+ {
+     bool ret=false;
+     if(serialsession!=NULL)
+     {
+        if(serialsession->isSessionOpen())
+        {
+            serialsession->sendToSerial(QByteArray(data.toStdString().c_str(),data.toStdString().length()));
+            ret=true;
+        }
+     }
+     return ret;
+ }
+
 void QQmlLoader::SetTimerCallback(QJSValue callback)
 {
     QmlTimerCallback=callback;
@@ -132,9 +173,26 @@ void QQmlLoader::TimerTimeout()
     }
 }
 
+void QQmlLoader::handleDataReceived(const QByteArray &data)
+{
+    if(data.length()>0)
+    {
+        QMutexLocker lock(&QmlCallLock);
+        //调用回调函数
+        QJSValue callback=QmlSerialDataCallback;
+        if(callback.isCallable())
+        {
+            QJSValueList args;
+            args.append(QString(data));
+            callback.call(args);
+        }
+    }
+}
+
 QQmlLoader::~QQmlLoader()
 {
     QmlTimer.stop();
+    serialsession=NULL;
     QQuickItem * root=quick->rootObject();
     if(!GetPluginName().isEmpty())
     {

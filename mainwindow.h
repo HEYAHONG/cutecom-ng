@@ -90,6 +90,11 @@ public:
     */
     bool LoadQmlPlugin(QUrl qml_path,bool Show=true);
 
+    /*
+     *获取SessionManager指针
+    */
+    SessionManager * GetSessionManager();
+
 private slots:
 
     void sessionManager_statisticChanged(uint64_t bytesRead,uint64_t bytesWrite);
