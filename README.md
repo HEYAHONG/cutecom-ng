@@ -38,6 +38,20 @@ make
 
 编译完成后，可在bin目录中找到编译完成的二进制文件。
 
+# 运行
+
+由于使用了qml模块，因此需要保证下列模块已安装：
+
+- QtQuick
+- QtQuick.Controls 
+- QtQuick.Dialogs
+
+对于ubuntu可采用以下命令安装:
+
+```bash
+sudo apt-get install qml-module-qtquick-controls qml-module-qtquick-dialogs
+```
+
 
 
 # *<u>**以下是原有说明**</u>*
