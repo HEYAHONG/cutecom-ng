@@ -738,6 +738,7 @@ bool MainWindow::LoadQmlPlugin(QUrl qml_path,bool Show)
                         qml_plugin_menu->removeAction(act);
                         {
                             //卸载之前的插件
+
                             for(auto it=qml_list.begin();it!=qml_list.end();it++)
                             {
                                 if((it->data()->GetPluginName()==qmlloader->GetPluginName())&& (qmlloader!=it->data()))
