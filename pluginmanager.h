@@ -29,7 +29,11 @@ private:
     MainWindow *mainwindow;
     QStandardItemModel *model;
 
+    QModelIndex selectindex;
+
     void UpdateQmlList();
+public slots:
+    void tableclicked(const QModelIndex &index);
 };
 
 #endif // PLUGINMANAGER_H

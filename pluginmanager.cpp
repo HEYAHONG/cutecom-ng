@@ -15,7 +15,7 @@ PluginManager::PluginManager(QWidget *parent) :
         //设置表格
         model=new QStandardItemModel(this);
         ui->tableView->setModel(model);
-
+        connect(ui->tableView,&QTableView::clicked,this,&PluginManager::tableclicked);
     }
     setWindowTitle(tr("pluginmanager"));
     {
@@ -75,8 +75,28 @@ void PluginManager::on_pushButton_LoadQml_clicked()
 
 void PluginManager::on_pushButton_UnloadQml_clicked()
 {
-    //TODO : 卸载插件
+    if(selectindex.isValid())
+    {
+        //获取url所在单元格
+        auto qurlindex=model->index(selectindex.row(),2);
+        if(qurlindex.isValid())
+        {
+            QString qml_path=qurlindex.data().toString();
+            if(mainwindow!=NULL)
+            {
+                mainwindow->UnloadQmlPlugin(qml_path);
+            }
+        }
+    }
+
+    //清除已选单元格
+    selectindex=QModelIndex();
 
     UpdateQmlList();
 }
 
+void PluginManager::tableclicked(const QModelIndex &index)
+{
+    if(index.isValid())
+        selectindex=index;
+}

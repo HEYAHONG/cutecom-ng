@@ -733,6 +733,17 @@ bool MainWindow::LoadQmlPlugin(QUrl qml_path,bool Show)
                         //删除重复名字的子菜单
                         qDebug()<< QString("repeated pulgin");
                         qml_plugin_menu->removeAction(act);
+                        {
+                            //卸载之前的插件
+                            for(auto it=qml_list.begin();it!=qml_list.end();it++)
+                            {
+                                if((it->data()->GetPluginName()==qmlloader->GetPluginName())&& (qmlloader!=it->data()))
+                                {
+                                    qml_list.erase(it);
+                                    break;
+                                }
+                            }
+                        }
                     }
                     auto cb=[=]()
                     {
@@ -766,6 +777,38 @@ bool MainWindow::LoadQmlPlugin(QUrl qml_path,bool Show)
     {
         //删除加载的qml窗口
         qml_list.erase(qml_list.find(qml_path));
+    }
+    return ret;
+}
+
+bool MainWindow::UnloadQmlPlugin(QUrl qml_path)
+{
+    bool ret=false;
+    auto it=qml_list.find(qml_path);
+    if(it!=qml_list.end())
+    {
+        QQmlLoader *qmlloader=it->data();
+        QAction *act=NULL;
+        auto submenulist=qml_plugin_menu->actions();
+        for(auto it = submenulist.begin();it!=submenulist.end();it++)
+        {
+            act=*it;
+            if(act->iconText()==qmlloader->GetPluginName())
+            {
+                break;
+            }
+            else
+            {
+                act=NULL;
+            }
+        }
+        if(act!=NULL)
+        {
+            //删除子菜单
+            qml_plugin_menu->removeAction(act);
+        }
+        qml_list.erase(it);
+        ret=true;
     }
     return ret;
 }

@@ -94,6 +94,12 @@ public:
     bool LoadQmlPlugin(QUrl qml_path,bool Show=true);
 
     /*
+     * 卸载QML插件
+     *
+    */
+    bool UnloadQmlPlugin(QUrl qml_path);
+
+    /*
      *获取SessionManager指针
     */
     SessionManager * GetSessionManager();
