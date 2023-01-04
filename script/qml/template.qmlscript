@@ -5,8 +5,55 @@ import QtQuick.Dialogs 1.1
 
 
 Item {
-    width: 320
-    height: 240
+    width: 800
+    height: 600
+    id:m_dialog
+
+
+
+    MessageDialog {
+            id: m_messageDialog
+            visible: false
+            modality: Qt.WindowModal
+    }
+
+    TextArea {
+        width:parent.width
+        height: parent.height-100
+        id:m_output
+        focus: false
+        readOnly: true
+    }
+    TextEdit {
+        x:0
+        y:parent.height-100
+        width:parent.width
+        height: 60
+        id:m_input
+        focus: true
+        readOnly: false
+
+    }
+    Button {
+        x:0
+        y:parent.height-40
+        width:parent.width
+        height: 40
+        text: "发送"
+        onClicked: {
+            /*
+             × 串口发送
+            */
+            if(!cutecomng.SendSerialData(m_input.text))
+            {
+                m_messageDialog.title="错误"
+                m_messageDialog.text="发送失败。必须在串口打开时才能发送数据"
+                m_messageDialog.open()
+            }
+        }
+    }
+
+
     /*
      *属性名称：pluginname
      *属性说明: 插件名称。必须存在，否则将不判定为插件。
@@ -20,8 +67,10 @@ Item {
 
     function timercallback()
     {
+        /*
+        *设置的定时器回调，当定时器超时由C++调用
+        */
         console.log("timer timeout");
-
         if(cutecomng.IsSerialOpen())
         {
             console.log("serial open");
@@ -30,7 +79,24 @@ Item {
 
     function serialdatacallback(data)
     {
+        /*
+        *设置的串口回调，当串口有数据时由C++调用
+        */
         console.log(data);
+        {
+            //接收数据放入textarea
+
+            var maxlength=1000000;//最大长度
+            m_output.text+=data;
+            m_output.cursorPosition=m_output.length-1;
+            if(m_output.length>maxlength)
+            {
+                //数据超过一定数量
+                m_output.text=m_output.text.substring(m_output.length-maxlength);
+                m_output.cursorPosition=m_output.length-1;
+            }
+        }
+
     }
 
     /*

@@ -151,6 +151,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->bottomOutput->hide();
     ui->bottomOutput->document()->setMaximumBlockCount(MAX_OUTPUT_LINES);
 
+    //主输出设置最大block数量（设置一个较大的值防止内存不足）
+    ui->mainOutput->setMaximumBlockCount(1000000);
+
     // populate file transfer protocol combobox
     ui->protocolCombo->addItem("XModem", SessionManager::XMODEM);
     ui->protocolCombo->addItem("YModem", SessionManager::YMODEM);
