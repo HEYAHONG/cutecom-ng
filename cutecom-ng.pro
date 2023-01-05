@@ -19,6 +19,7 @@ RCC_DIR = .generated/
 UI_DIR = .generated/
 
 SOURCES += main.cpp\
+    hexlistitem.cpp \
     libs/qhexedit2/src/chunks.cpp \
     libs/qhexedit2/src/commands.cpp \
     libs/qhexedit2/src/qhexedit.cpp \
@@ -39,6 +40,7 @@ SOURCES += main.cpp\
 
 HEADERS  += mainwindow.h \
     connectdialog.h \
+    hexlistitem.h \
     libs/qhexedit2/src/chunks.h \
     libs/qhexedit2/src/commands.h \
     libs/qhexedit2/src/qhexedit.h \
@@ -57,6 +59,7 @@ HEADERS  += mainwindow.h \
 
 FORMS    += mainwindow.ui \
     connectdialog.ui \
+    hexlistitem.ui \
     pluginmanager.ui \
     searchwidget.ui
 

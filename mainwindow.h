@@ -22,6 +22,8 @@
 #include <QLabel>
 #include <QMap>
 #include <QSharedPointer>
+#include <QVBoxLayout>
+#include <QList>
 
 namespace Ui {
 class MainWindow;
@@ -75,6 +77,10 @@ private:
     //状态栏
     QLabel *rightstatus;
     QLabel *rightstatus_2;
+
+    //HEX输出列表
+    QVBoxLayout *HexList;
+    QList<QWidget *> HexWidgetList;
 
     //qml脚本
     QMap<QUrl,QSharedPointer<QQmlLoader>> qml_list;

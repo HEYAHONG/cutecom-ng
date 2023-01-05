@@ -147,13 +147,32 @@
         <bool>true</bool>
        </property>
       </widget>
-      <widget class="QHexEdit" name="hexOutput" native="true">
+      <widget class="QScrollArea" name="hexOutput">
        <property name="minimumSize">
         <size>
          <width>0</width>
-         <height>0</height>
+         <height>150</height>
         </size>
        </property>
+       <property name="widgetResizable">
+        <bool>true</bool>
+       </property>
+       <widget class="QWidget" name="hexOutputList">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>930</width>
+          <height>148</height>
+         </rect>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+       </widget>
       </widget>
      </widget>
     </item>
@@ -468,12 +487,6 @@
    <class>HistoryComboBox</class>
    <extends>QComboBox</extends>
    <header>historycombobox.h</header>
-  </customwidget>
-  <customwidget>
-   <class>QHexEdit</class>
-   <extends>QWidget</extends>
-   <header>qhexedit.h</header>
-   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources>

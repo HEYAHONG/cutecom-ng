@@ -30,6 +30,7 @@
 #include "searchhighlighter.h"
 #include "searchwidget.h"
 #include "pluginmanager.h"
+#include "hexlistitem.h"
 
 /// maximum count of document blocks for the bootom output
 const int MAX_OUTPUT_LINES = 100;
@@ -46,6 +47,11 @@ MainWindow::MainWindow(QWidget *parent) :
     qml_plugin_menu(NULL)
 {
     ui->setupUi(this);
+
+    //HexList的layout
+    HexList=new QVBoxLayout(ui->hexOutputList);
+    //隐藏hex输出
+    ui->hexOutput->setVisible(false);
 
     // create session and output managers
     output_mgr = new OutputManager(this);
@@ -85,11 +91,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     setFocusPolicy(Qt::StrongFocus);
 
-    //设置hexoutput
-    ui->hexOutput->setDynamicBytesPerLine(true);
-    ui->hexOutput->setReadOnly(true);
-    ui->hexOutput->setHexCaps(true);
-    ui->hexOutput->setVisible(false);
 
     // show connection dialog
     connect(ui->connectButton, &QAbstractButton::clicked, connect_dlg, &ConnectDialog::show);
@@ -230,7 +231,21 @@ void MainWindow::handleSessionOpened()
         }
 
         //清空hex输出
-        ui->hexOutput->setData(QByteArray());
+
+        {
+            auto list=HexWidgetList;;
+            for(auto it=list.begin();it!=list.end();it++)
+            {
+                QWidget *widget=dynamic_cast<QWidget *>(*it);
+                if(widget!=NULL)
+                {
+                    HexList->removeWidget(widget);
+                    widget->deleteLater();
+                }
+            }
+            HexWidgetList.clear();
+        }
+
     }
 }
 
@@ -458,7 +473,10 @@ void MainWindow::handleDataReceived(const QByteArray &data)
     //hex输出
     if(ui->actionhexoutput->isChecked())
     {
-        ui->hexOutput->insert(ui->hexOutput->data().length(),data);
+        HexListItem *item=new HexListItem(ui->hexOutputList);
+        item->SetData(data);
+        HexList->addWidget(item);
+        HexWidgetList.append(item);
     }
 }
 
@@ -681,13 +699,42 @@ void MainWindow::on_actionhexoutput_triggered(bool checked)
 {
     ui->hexOutput->setVisible(checked);
     if(!checked)
-        ui->hexOutput->setData(QByteArray());
+    {
+        //清空内容
+        {
+            auto list=HexWidgetList;
+            for(auto it=list.begin();it!=list.end();it++)
+            {
+                QWidget *widget=dynamic_cast<QWidget *>(*it);
+                if(widget!=NULL)
+                {
+                    HexList->removeWidget(widget);
+                    widget->deleteLater();
+                }
+            }
+            HexWidgetList.clear();
+        }
+    }
+
 }
 
 
 void MainWindow::on_clearButton_clicked()
 {
-    ui->hexOutput->setData(QByteArray());
+    //清空内容
+    {
+        auto list=HexWidgetList;
+        for(auto it=list.begin();it!=list.end();it++)
+        {
+            QWidget *widget=dynamic_cast<QWidget *>(*it);
+            if(widget!=NULL)
+            {
+                HexList->removeWidget(widget);
+                widget->deleteLater();
+            }
+        }
+        HexWidgetList.clear();
+    }
 }
 
 
