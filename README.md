@@ -16,6 +16,8 @@
 
 ```bash
 sudo apt-get install qtcreator libqt5serialport5-dev qtdeclarative5-dev
+#如需使用Qt6,可使用以下命令替换上面的命令
+sudo apt-get install qtcreator libqt6serialport6-dev qt6-declarative-dev
 ```
 
 ## 使用qtcreator编译
@@ -46,10 +48,12 @@ make
 - QtQuick.Controls 
 - QtQuick.Dialogs
 
-对于ubuntu可采用以下命令安装:
+对于ubuntu可采用以下命令安装Qml模块:
 
 ```bash
 sudo apt-get install qml-module-qtquick-controls qml-module-qtquick-dialogs
+#如需使用Qt6,可使用以下命令替换上面的命令
+sudo apt-get install qml6-module-qtquick-controls qml6-module-qtquick-dialogs
 ```
 
 
