@@ -103,6 +103,6 @@ CONFIG(debug, debug|release){
 
 
 
-//包含QVTerminal
+#包含QVTerminal
 
 include ($$PWD/libs/QVTerminal/src/qvterminal.pri)
