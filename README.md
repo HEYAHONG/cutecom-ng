@@ -8,6 +8,14 @@
 
 ![cutecom-ng-screenshot-1](doc/cutecom-ng-screenshot-2.png)
 
+## 插件
+
+在使用串口工具时，经常需要对接收的串口数据进行处理，而这部分处理过程可能是多变的（如定时发送序列化的数据，使用串口数据进行绘图等）。
+
+Qt的Qml技术即可满足此需求，数据处理过程可以以简单的方式修改且无需再次编译，也能提供丰富的GUI支持。
+
+模板（插件加载时不关心后缀名）见：[script/qml/](script/qml/)
+
 # 编译
 
 安装好Qt5、SerialPort扩展及QtDeclarative。安装好qtcreator。
