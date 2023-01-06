@@ -41,3 +41,10 @@ int QVTLine::size() const
 {
     return _chars.size();
 }
+void QVTLine::remove(int pos)
+{
+    if(pos<size() && pos>=0)
+    {
+        _chars.erase(_chars.begin()+pos);
+    }
+}

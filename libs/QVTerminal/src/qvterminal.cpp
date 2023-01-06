@@ -114,24 +114,8 @@ void QVTerminal::appendData(const QByteArray &data)
                     int x=_cursorPos.x();
                     if(x>0)
                     {
-                        if(_last_char_is_wild)
-                        {
-                            //回退一个字符
-                            setCursorPos(_cursorPos.x()-1,_cursorPos.y());
-                            //使用空格覆盖
-                            appendString("  ");
-                            //再次回退一个字符
-                            setCursorPos(_cursorPos.x()-1,_cursorPos.y());
-                        }
-                        else
-                        {
-                            //回退一个字符
-                            setCursorPos(_cursorPos.x()-1,_cursorPos.y());
-                            //使用空格覆盖
-                            appendString(" ");
-                            //再次回退一个字符
-                            setCursorPos(_cursorPos.x()-1,_cursorPos.y());
-                        }
+                        _layout->lineAt(_cursorPos.y()).remove(_cursorPos.x()-1);
+                        setCursorPos(_cursorPos.x()-1,_cursorPos.y());
                     }
                 }
                 else if (c.isPrint())

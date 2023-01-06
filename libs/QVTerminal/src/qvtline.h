@@ -13,6 +13,7 @@ public:
     void replace(const QVTChar &c, int pos);
     const QList<QVTChar> &chars() const;
     int size() const;
+    void remove(int pos);
 
 protected:
     QList<QVTChar> _chars;
