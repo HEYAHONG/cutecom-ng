@@ -81,6 +81,9 @@ private:
     bool _echo;
     bool _crlf;
 
+    //上一个字符是不是宽字符
+    bool _last_char_is_wild;
+
     // QWidget interface
 protected:
     void keyPressEvent(QKeyEvent *event) override;

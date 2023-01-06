@@ -114,12 +114,24 @@ void QVTerminal::appendData(const QByteArray &data)
                     int x=_cursorPos.x();
                     if(x>0)
                     {
-                        //回退一个字符
-                        setCursorPos(_cursorPos.x()-1,_cursorPos.y());
-                        //使用空格覆盖
-                        appendString(" ");
-                        //再次回退一个字符
-                        setCursorPos(_cursorPos.x()-1,_cursorPos.y());
+                        if(_last_char_is_wild)
+                        {
+                            //回退一个字符
+                            setCursorPos(_cursorPos.x()-1,_cursorPos.y());
+                            //使用空格覆盖
+                            appendString("  ");
+                            //再次回退一个字符
+                            setCursorPos(_cursorPos.x()-1,_cursorPos.y());
+                        }
+                        else
+                        {
+                            //回退一个字符
+                            setCursorPos(_cursorPos.x()-1,_cursorPos.y());
+                            //使用空格覆盖
+                            appendString(" ");
+                            //再次回退一个字符
+                            setCursorPos(_cursorPos.x()-1,_cursorPos.y());
+                        }
                     }
                 }
                 else if (c.isPrint())
@@ -286,6 +298,16 @@ void QVTerminal::appendString(const QString &str)
         QVTChar termChar(c, _curentFormat);
         _layout->lineAt(_cursorPos.y()).replace(termChar, _cursorPos.x());
         setCursorPos(_cursorPos.x() + 1, _cursorPos.y());
+        if(c < 0x80)
+        {
+            //ASCII字符
+            _last_char_is_wild=false;
+        }
+        else
+        {
+            _last_char_is_wild=true;
+        }
+
     }
 }
 
@@ -422,6 +444,22 @@ void QVTerminal::paintEvent(QPaintEvent *paintEvent)
             // p.setBrush(QBrush());
             // p.drawRect(QRect(pos, QSize(_cw, -_ch)));
 
+            //调整字符宽度与高度
+            QFontMetrics fm(_format.font());
+            if(vtChar.c()<0x80)
+            {
+                //ASCII字符
+                _cw = fm.boundingRect("M").width();
+                _ch = fm.height();
+            }
+            else
+            {
+                _cw = fm.boundingRect(vtChar.c()).width();
+                _ch = fm.height();
+            }
+
+
+
             // draw foreground
             p.setPen(vtChar.format().foreground());
             p.drawText(QRect(pos, QSize(_cw, -_ch)).normalized(), Qt::AlignCenter, QString(vtChar.c()));
@@ -430,9 +468,14 @@ void QVTerminal::paintEvent(QPaintEvent *paintEvent)
         }
     }
 
+    //调整光标宽度与高度
+    QFontMetrics fm(_format.font());
+    _cw = fm.boundingRect('M').width();
+    _ch = fm.height();
+
     if (_cvisible)
     {
-        p.fillRect(QRect(_cursorPos.x() * _cw, _cursorPos.y() * _ch, _cw, _ch), QColor(187, 187, 187, 187));
+        p.fillRect(QRect(pos.x(), pos.y()-_ch, _cw, _ch), QColor(187, 187, 187, 187));
     }
 }
 
