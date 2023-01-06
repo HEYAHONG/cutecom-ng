@@ -282,7 +282,7 @@ void QVTerminal::appendString(const QString &str)
         QVTChar termChar(c, _curentFormat);
         _layout->lineAt(_cursorPos.y()).replace(termChar, _cursorPos.x());
         setCursorPos(_cursorPos.x() + 1, _cursorPos.y());
-        if(c < 0x80)
+        if(c < QChar(0x80))
         {
             //ASCII字符
             _last_char_is_wild=false;
@@ -430,7 +430,7 @@ void QVTerminal::paintEvent(QPaintEvent *paintEvent)
 
             //调整字符宽度与高度
             QFontMetrics fm(_format.font());
-            if(vtChar.c()<0x80)
+            if(vtChar.c() < QChar(0x80))
             {
                 //ASCII字符
                 _cw = fm.boundingRect("M").width();
