@@ -71,8 +71,7 @@ TRANSLATIONS+= \
                 en_US.ts
 
 #解决MSVC UTF8编码问题
-msvc:QMAKE_CXXFLAGS += -execution-charset:utf-8
-msvc:QMAKE_CXXFLAGS += -source-charset:utf-8
+msvc:QMAKE_CXXFLAGS += -utf-8
 msvc:QMAKE_CXXFLAGS_WARN_ON += -wd4819
 
 CONFIG += debug_and_release
