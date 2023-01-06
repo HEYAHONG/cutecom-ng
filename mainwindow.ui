@@ -174,6 +174,14 @@
         </property>
        </widget>
       </widget>
+      <widget class="QVTerminal" name="VT100Output" native="true">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+      </widget>
      </widget>
     </item>
     <item>
@@ -381,6 +389,8 @@
      <string>settings</string>
     </property>
     <addaction name="actiondirentinput"/>
+    <addaction name="actionmain_output"/>
+    <addaction name="actionvt100_output"/>
     <addaction name="actionhexoutput"/>
    </widget>
    <widget class="QMenu" name="menuplugin">
@@ -480,6 +490,25 @@
     <string>pluginmanager</string>
    </property>
   </action>
+  <action name="actionmain_output">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>main output</string>
+   </property>
+  </action>
+  <action name="actionvt100_output">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>vt100 output</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
@@ -487,6 +516,12 @@
    <class>HistoryComboBox</class>
    <extends>QComboBox</extends>
    <header>historycombobox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QVTerminal</class>
+   <extends>QWidget</extends>
+   <header location="global">qvterminal.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources>

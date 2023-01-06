@@ -134,6 +134,10 @@ private slots:
 
     void on_actionpluginmanager_triggered();
 
+    void on_actionmain_output_triggered();
+
+    void on_actionvt100_output_triggered(bool checked);
+
 private:
 
     /**

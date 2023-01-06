@@ -53,6 +53,10 @@ MainWindow::MainWindow(QWidget *parent) :
     //隐藏hex输出
     ui->hexOutput->setVisible(false);
 
+    //设置VT100输出
+    ui->VT100Output->setVisible(false);
+    ui->VT100Output->setEcho(false);
+
     // create session and output managers
     output_mgr = new OutputManager(this);
     session_mgr = new SessionManager(this);
@@ -470,6 +474,18 @@ void MainWindow::handleDataReceived(const QByteArray &data)
 {
     (*output_mgr) << data;
 
+    //主输出
+    if(!ui->actionmain_output->isChecked())
+    {
+        ui->mainOutput->clear();
+    }
+
+    //VT100 输出
+    if(ui->actionvt100_output->isChecked())
+    {
+        ui->VT100Output->appendData(data);
+    }
+
     //hex输出
     if(ui->actionhexoutput->isChecked())
     {
@@ -478,6 +494,7 @@ void MainWindow::handleDataReceived(const QByteArray &data)
         HexList->addWidget(item);
         HexWidgetList.append(item);
     }
+
 }
 
 void MainWindow::toggleOutputSplitter()
@@ -874,5 +891,20 @@ void MainWindow::on_actionpluginmanager_triggered()
     PluginManager dlg(this);
     dlg.setModal(true);
     dlg.exec();
+}
+
+
+void MainWindow::on_actionmain_output_triggered()
+{
+    //修改主输出可见性
+    ui->mainOutput->setVisible(ui->actionmain_output->isChecked());
+    ui->searchButton->setEnabled(ui->actionmain_output->isChecked());
+}
+
+
+void MainWindow::on_actionvt100_output_triggered(bool checked)
+{
+    //修改VT100的可见性
+    ui->VT100Output->setVisible(checked);
 }
 
