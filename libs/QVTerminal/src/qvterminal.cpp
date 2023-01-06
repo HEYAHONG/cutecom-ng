@@ -104,6 +104,24 @@ void QVTerminal::appendData(const QByteArray &data)
 
                     setCursorPos(0, _cursorPos.y() + 1);
                 }
+                else if (c.toLatin1()=='\t')
+                {
+                    //Tab键(使用1tab=4space)
+                    text.append("    ");
+                }
+                else if (c.toLatin1()=='\b')
+                {
+                    int x=_cursorPos.x();
+                    if(x>0)
+                    {
+                        //回退一个字符
+                        setCursorPos(_cursorPos.x()-1,_cursorPos.y());
+                        //使用空格覆盖
+                        appendString(" ");
+                        //再次回退一个字符
+                        setCursorPos(_cursorPos.x()-1,_cursorPos.y());
+                    }
+                }
                 else if (c.isPrint())
                 {
                     text.append(c);
