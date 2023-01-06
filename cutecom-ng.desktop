@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=CuteCom-ng
+GenericName=Serial Terminal(CuteCom-ng)
+Comment=A graphical serial terminal
+Exec=cutecom-ng
+Icon=cutecomng
+Type=Application
+Categories=Qt;System;X11;
+ 

@@ -65,3 +65,36 @@ INSTALL(TARGETS ${PROJECT_NAME}
        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
 )
 
+#软件包相关
+if(CMAKE_SYSTEM_NAME MATCHES "Linux")
+	#安装桌面快捷方式
+	install(FILES cutecom-ng.desktop DESTINATION ${CMAKE_INSTALL_DATADIR}/applications)
+	#安装桌面快捷方式图标
+	install(FILES cutecomng.png DESTINATION ${CMAKE_INSTALL_DATADIR}/icons/hicolor/32x32/apps)
+	if(EXISTS "/etc/issue")
+		file(READ "/etc/issue" ETC_ISSUE)
+		if(ETC_ISSUE MATCHES "Debian|Ubuntu")
+
+#打包deb软件包
+message(STATUS "this is a debian(ubuntu) system")
+set(CPACK_PACKAGE_NAME  "${PROJECT_NAME}")
+set(CPACK_PACKAGE_VERSION "0.5.0.0")
+set(CPACK_PACKAGE_VENDOR "HEYAHONG")
+set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "cutecom-ng modified by HEYAHONG")
+set(CPACK_PACKAGE_DESCRIPTION "cutecom-ng modified by HEYAHONG")
+set(CPACK_PACKAGE_CONTACT    "2229388563@qq.com")
+set(CPACK_DEBIAN_PACKAGE_MAINTAINER    "HEYAHONG")
+if(NOT USE_QT6)
+	set(CPACK_DEBIAN_PACKAGE_DEPENDS "libqt5widgets5 (>= 5.15.3-1),libqt5serialport5 (>= 5.15.3-1),libqt5quickwidgets5 (>= 5.15.3-1),libqt5quick5 (>= 5.15.3-1),libqt5qml5 (>= 5.15.3-1),qml-module-qtquick-dialogs (>= 5.15.3-1),qml-module-qtquick-controls (>= 5.15.3-1)")
+else()
+	set(CPACK_DEBIAN_PACKAGE_DEPENDS "libqt6widgets6 (>= 6.2.4-1),libqt6serialport6 (>= 6.2.4-1),libqt6quickwidgets6 (>= 6.2.4-1),libqt6quick6 (>= 6.2.4-1),libqt6qml6 (>= 6.2.4-1),qml6-module-qtquick-dialogs (>= 6.2.4-1),qml6-module-qtquick-controls (>= 6.2.4-1)")
+endif()
+set(CPACK_DEBIAN_PACKAGE_SECTION "Qt;System;X11")
+set(CPACK_DEBIAN_PACKAGE_PRIORITY "Optional")
+set(CPACK_GENERATOR "DEB")
+include(CPack)
+
+		endif()
+	endif()
+endif()
+
