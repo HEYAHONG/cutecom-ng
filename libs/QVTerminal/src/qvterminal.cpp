@@ -314,6 +314,12 @@ QPoint QVTerminal::cursorPos() const
     return _cursorPos;
 }
 
+void QVTerminal::clear()
+{
+    setCursorPos(0,0);
+    _layout->clear();
+}
+
 bool QVTerminal::crlf() const
 {
     return _crlf;

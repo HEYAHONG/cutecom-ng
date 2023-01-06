@@ -738,7 +738,7 @@ void MainWindow::on_actionhexoutput_triggered(bool checked)
 
 void MainWindow::on_clearButton_clicked()
 {
-    //清空内容
+    //清空hex内容
     {
         auto list=HexWidgetList;
         for(auto it=list.begin();it!=list.end();it++)
@@ -752,6 +752,9 @@ void MainWindow::on_clearButton_clicked()
         }
         HexWidgetList.clear();
     }
+
+    //清空VT100内容
+    ui->VT100Output->clear();
 }
 
 

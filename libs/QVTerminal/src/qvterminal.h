@@ -33,6 +33,8 @@ public:
 
     QPoint cursorPos() const;
 
+    void clear();
+
 signals:
     void cursorMoved(QPoint cursorPos);
 
