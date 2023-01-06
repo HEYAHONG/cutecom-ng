@@ -70,9 +70,14 @@ TRANSLATIONS+= \
                 zh_CN.ts \
                 en_US.ts
 
+#解决MSVC UTF8编码问题
+msvc:QMAKE_CXXFLAGS += -execution-charset:utf-8
+msvc:QMAKE_CXXFLAGS += -source-charset:utf-8
+msvc:QMAKE_CXXFLAGS_WARN_ON += -wd4819
+
 CONFIG += debug_and_release
 CONFIG(debug, debug|release){
-    //处理debug
+    #处理debug
     win32{
         win32-msvc*{
             RC_FILE += win32/window_resources_msvc.rc
@@ -84,7 +89,7 @@ CONFIG(debug, debug|release){
     unix{
     }
 }else{
-    //处理release
+    #处理release
     win32{
         win32-msvc*{
             RC_FILE += win32/window_resources_msvc.rc
@@ -95,6 +100,9 @@ CONFIG(debug, debug|release){
     unix{
     }
 }
+
+
+
 
 //包含QVTerminal
 
