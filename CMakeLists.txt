@@ -98,3 +98,38 @@ include(CPack)
 	endif()
 endif()
 
+if(CMAKE_SYSTEM_NAME MATCHES "Windows")
+
+#打包NSIS安装包
+message(STATUS "this is a windows system")
+set(CPACK_PACKAGE_NAME  "${PROJECT_NAME}")
+set(CPACK_PACKAGE_VERSION "1.0.0.1")
+set(CPACK_PACKAGE_VENDOR "HEYAHONG")
+set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "cutecom-ng modified by HEYAHONG")
+set(CPACK_PACKAGE_DESCRIPTION "cutecom-ng modified by HEYAHONG")
+set(CPACK_PACKAGE_CONTACT    "2229388563@qq.com")
+#设置安装程序图标
+set(CPACK_PACKAGE_ICON_PATH_STRING "${CMAKE_CURRENT_SOURCE_DIR}/win32/window_resources.ico")
+string(REPLACE "/" "\\\\" CPACK_PACKAGE_ICON ${CPACK_PACKAGE_ICON_PATH_STRING})
+#设置需要创建快捷方式的程序
+set(CPACK_PACKAGE_EXECUTABLES ${PROJECT_NAME};${PROJECT_NAME} )
+#设置LICENSE
+set(CPACK_RESOURCE_FILE_LICENSE ${CMAKE_CURRENT_SOURCE_DIR}/win32/nsis/LICENSE.txt)
+#设置Welcome
+set(CPACK_RESOURCE_FILE_WELCOME ${CMAKE_CURRENT_SOURCE_DIR}/win32/nsis/WELCOME.txt)
+#设置readme
+set(CPACK_RESOURCE_FILE_README ${CMAKE_CURRENT_SOURCE_DIR}/win32/nsis/README.txt)
+set(CPACK_GENERATOR "NSIS")
+include(CPack)
+
+#执行安装脚本(用于使用windeployqt添加Qt依赖)
+if(USE_QT6)
+install(FILES  win32/dummyqml/qt6/dummy.qml DESTINATION ${CMAKE_INSTALL_BINDIR})
+install(SCRIPT win32/CMakeInstall_Qt6.txt)
+else()
+install(FILES  win32/dummyqml/qt5/dummy.qml DESTINATION ${CMAKE_INSTALL_BINDIR})
+install(SCRIPT win32/CMakeInstall.txt)
+endif()
+
+
+endif()

@@ -1,0 +1,8 @@
+#使用windeployqt添加依赖
+find_program(WINDEPLOYQT NAMES windeployqt-qt6 windeployqt)
+if(NOT WINDEPLOYQT-NOTFOUND)
+        message(STATUS "windeployqt(qt6) is found.qt executable program path is ${CMAKE_INSTALL_PREFIX}/bin")
+        execute_process(COMMAND ${WINDEPLOYQT}  --force --compiler-runtime  --qmldir ${CMAKE_INSTALL_PREFIX}/bin  ${CMAKE_INSTALL_PREFIX}/bin)
+else()
+        message(STATUS "windeployqt(qt6) is not found.package maybe invalid.")
+endif()
