@@ -44,7 +44,11 @@ libs/QVTerminal/src/vt
 )
 
 #添加可执行文件
+if(WIN32)
+add_executable(${PROJECT_NAME} WIN32  ${MAIN_SRCS})
+else()
 add_executable(${PROJECT_NAME} ${MAIN_SRCS})
+endif()
 
 option(USE_QT6 "Use Qt6" OFF)
 if(USE_QT6)
