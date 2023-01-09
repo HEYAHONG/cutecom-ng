@@ -22,6 +22,25 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     a.setStyle(QStyleFactory::create("Fusion"));
     QTranslator translator;
+#ifdef WIN32
+    //Qt自身的翻译
+    QTranslator qt_translator;
+    QString     qt_translator_base_dir;
+    {
+        QDir translator_dir(a.applicationDirPath()+"/../translations/");
+        if(translator_dir.exists())
+        {
+            qt_translator_base_dir=translator_dir.path();
+        }
+    }
+    {
+        QDir translator_dir(a.applicationDirPath()+"/translations/");
+        if(translator_dir.exists())
+        {
+            qt_translator_base_dir=translator_dir.path();
+        }
+    }
+#endif
     {
         //加载翻译
         QLocale loc;
@@ -31,15 +50,30 @@ int main(int argc, char *argv[])
         case loc.China:
             {
                 translator.load(":/zh_CN.qm");
+#ifdef WIN32
+                if(!qt_translator_base_dir.isEmpty())
+                {
+                    qt_translator.load(qt_translator_base_dir+"/qt_zh_CN.qm");
+                }
+#endif
             }
             break;
         default:
             {
                 translator.load(":/en_US.qm");
+#ifdef WIN32
+                if(!qt_translator_base_dir.isEmpty())
+                {
+                    qt_translator.load(qt_translator_base_dir+"/qt_en.qm");
+                }
+#endif
             }
             break;
         }
         a.installTranslator(&translator);
+#ifdef WIN32
+        a.installTranslator(&qt_translator);
+#endif
     }
     {
         //切换工作目录（将当前工作目录切换到用户配置所在目录）
