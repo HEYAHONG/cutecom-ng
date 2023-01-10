@@ -14,6 +14,7 @@
 
 #include "filetransfer.h"
 #include "qhexedit.h"
+#include "Version.h"
 #include "qqmlloader.h"
 #include <QMainWindow>
 #include <QTranslator>
@@ -137,6 +138,8 @@ private slots:
     void on_actionmain_output_triggered();
 
     void on_actionvt100_output_triggered(bool checked);
+
+    void on_actionversion_triggered();
 
 private:
 

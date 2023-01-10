@@ -376,6 +376,7 @@
      <string>help</string>
     </property>
     <addaction name="actionAbout_Qt"/>
+    <addaction name="actionversion"/>
    </widget>
    <widget class="QMenu" name="menulanguage">
     <property name="title">
@@ -507,6 +508,11 @@
    </property>
    <property name="text">
     <string>vt100 output</string>
+   </property>
+  </action>
+  <action name="actionversion">
+   <property name="text">
+    <string>version</string>
    </property>
   </action>
  </widget>

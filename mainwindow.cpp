@@ -911,3 +911,9 @@ void MainWindow::on_actionvt100_output_triggered(bool checked)
     ui->VT100Output->setVisible(checked);
 }
 
+
+void MainWindow::on_actionversion_triggered()
+{
+    QMessageBox::information(this,tr("Version"),PROJECT_VERSION_STR);
+}
+

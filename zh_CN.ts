@@ -151,103 +151,108 @@
         <translation>帮助</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="382"/>
+        <location filename="mainwindow.ui" line="383"/>
         <source>language</source>
         <translation>语言</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="389"/>
+        <location filename="mainwindow.ui" line="390"/>
         <source>settings</source>
         <translation>设置</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="398"/>
+        <location filename="mainwindow.ui" line="399"/>
         <source>plugin</source>
         <translation>插件</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="412"/>
+        <location filename="mainwindow.ui" line="413"/>
         <source>aboutQt</source>
         <translation>关于Qt</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="415"/>
+        <location filename="mainwindow.ui" line="416"/>
         <source>about Qt</source>
         <translation>关于Qt</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="424"/>
-        <location filename="mainwindow.ui" line="427"/>
+        <location filename="mainwindow.ui" line="425"/>
+        <location filename="mainwindow.ui" line="428"/>
         <source>exit</source>
         <translation>退出</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="430"/>
+        <location filename="mainwindow.ui" line="431"/>
         <source>Alt+E</source>
         <translation>Alt+E</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="435"/>
+        <location filename="mainwindow.ui" line="436"/>
         <source>English</source>
         <translation>英语</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="438"/>
+        <location filename="mainwindow.ui" line="439"/>
         <source>change to english</source>
         <translation>切换为英文</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="443"/>
+        <location filename="mainwindow.ui" line="444"/>
         <source>Chinese</source>
         <translation>中文</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="446"/>
+        <location filename="mainwindow.ui" line="447"/>
         <source>change to chinese</source>
         <translation>切换为中文</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="457"/>
+        <location filename="mainwindow.ui" line="458"/>
         <source>dirent input</source>
         <translation>直接输入</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="474"/>
+        <location filename="mainwindow.ui" line="475"/>
         <source>hex output</source>
         <translation>HEX输出</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="482"/>
+        <location filename="mainwindow.ui" line="483"/>
         <source>load qml script</source>
         <translation>加载QML脚本</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="485"/>
+        <location filename="mainwindow.ui" line="486"/>
         <source>Ctrl+L</source>
         <translation>Ctrl+L</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="490"/>
+        <location filename="mainwindow.ui" line="491"/>
         <source>pluginmanager</source>
         <translation>插件管理器</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="501"/>
+        <location filename="mainwindow.ui" line="502"/>
         <source>main output</source>
         <translation>主输出</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="509"/>
+        <location filename="mainwindow.ui" line="510"/>
         <source>vt100 output</source>
         <translation>VT100输出</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="515"/>
+        <source>version</source>
+        <translation>版本</translation>
     </message>
     <message>
         <source>direntinput</source>
         <translation type="vanished">直接输入</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="460"/>
-        <location filename="mainwindow.ui" line="463"/>
+        <location filename="mainwindow.ui" line="461"/>
+        <location filename="mainwindow.ui" line="464"/>
         <source>write to serial when key press</source>
         <translation>当按键按下时写入串口</translation>
     </message>
@@ -256,7 +261,7 @@
         <translation type="vanished">HEX输出</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="477"/>
+        <location filename="mainwindow.ui" line="478"/>
         <source>Hex Ouput</source>
         <translation>HEX 输出</translation>
     </message>
@@ -299,9 +304,14 @@
         <translation>输入不是HEX字符串</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="760"/>
+        <location filename="mainwindow.cpp" line="763"/>
         <source>qml path</source>
         <translation>QML 路径</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="917"/>
+        <source>Version</source>
+        <translation>版本</translation>
     </message>
 </context>
 <context>
