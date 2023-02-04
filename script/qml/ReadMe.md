@@ -7,6 +7,17 @@
 - 由于是通过QQuickWidget加载的QML脚本，推荐使用Item作为根，不能使用ApplicationWindow作为根。
 - 符合插件格式,即根对象需要定义相关属性。
 
+## 示例
+
+见本目录下的qmlscript文件。
+
+|                      文件名                      |                  说明                   |
+| :----------------------------------------------: | :-------------------------------------: |
+|     [template.qmlscript](template.qmlscript)     | 模板插件。适用于Qt5。内置于cutecom-ng。 |
+| [template-qt6.qmlscript](template-qt6.qmlscript) | 模板插件。适用于Q6。内置于cutecom-ng。  |
+
+
+
 ## 插件格式
 
 QML脚本中根对象的要求如下:
