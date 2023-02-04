@@ -14,9 +14,9 @@ math(EXPR  PROJECT_BUILD_VERSION_STR "${PROJECT_BUILD_TIME_SECOND}/60/60/24"  OU
 #程序版本
 set(PROJECT_VERSION_STR "${PROJECT_MAJOR_VERSION_STR}.${PROJECT_MINOR_VERSION_STR}.${PROJECT_REVISION_VERSION_STR}.${PROJECT_BUILD_VERSION_STR}")
 message(STATUS "Version:${PROJECT_VERSION_STR}")
-configure_file(Version.h.in ${CMAKE_CURRENT_SOURCE_DIR}/Version.h)
+configure_file(Version.h.in ${CMAKE_CURRENT_SOURCE_DIR}/Version.h NEWLINE_STYLE WIN32)
 if(WIN32)
-configure_file(Version.h.in ${CMAKE_CURRENT_SOURCE_DIR}/win32/Version.h)
+configure_file(Version.h.in ${CMAKE_CURRENT_SOURCE_DIR}/win32/Version.h NEWLINE_STYLE WIN32)
 endif()
 
 Project(${PROJECT_NAME} C CXX ASM)
@@ -171,13 +171,9 @@ set(CPACK_GENERATOR "NSIS")
 include(CPack)
 
 #执行安装脚本(用于使用windeployqt添加Qt依赖)
-if(USE_QT6)
 install(FILES  win32/dummyqml/qt6/dummy.qml DESTINATION ${CMAKE_INSTALL_BINDIR})
-install(SCRIPT win32/CMakeInstall_Qt6.txt)
-else()
-install(FILES  win32/dummyqml/qt5/dummy.qml DESTINATION ${CMAKE_INSTALL_BINDIR})
-install(SCRIPT win32/CMakeInstall.txt)
-endif()
+configure_file(win32/windeployqt.cmake.in  ${CMAKE_BINARY_DIR}/windeployqt.cmake @ONLY)
+install(SCRIPT ${CMAKE_BINARY_DIR}/windeployqt.cmake)
 
 
 endif()
