@@ -71,8 +71,8 @@ endif()
 
 option(USE_QT6 "Use Qt6" OFF)
 option(USE_QT5 "Use Qt5(if USE_QT6 is set,this option will be invalid)" OFF)
-find_package(Qt6 COMPONENTS Core Gui Widgets SerialPort Qml Quick QuickWidgets)
-find_package(Qt5 COMPONENTS Core Gui Widgets SerialPort Qml Quick QuickWidgets)
+find_package(Qt6 QUIET COMPONENTS Core Gui Widgets SerialPort Qml Quick QuickWidgets)
+find_package(Qt5 QUIET COMPONENTS Core Gui Widgets SerialPort Qml Quick QuickWidgets)
 if(USE_QT6)
 	#依赖Qt6库
 	if(NOT Qt6_FOUND)
