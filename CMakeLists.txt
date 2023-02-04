@@ -171,7 +171,7 @@ set(CPACK_GENERATOR "NSIS")
 include(CPack)
 
 #执行安装脚本(用于使用windeployqt添加Qt依赖)
-install(FILES  win32/dummyqml/qt6/dummy.qml DESTINATION ${CMAKE_INSTALL_BINDIR})
+set(DUMMYQMLDIR  ${CMAKE_CURRENT_SOURCE_DIR}/win32/dummyqml/qt${USE_QT_VERSION}/)
 configure_file(win32/windeployqt.cmake.in  ${CMAKE_BINARY_DIR}/windeployqt.cmake @ONLY)
 install(SCRIPT ${CMAKE_BINARY_DIR}/windeployqt.cmake)
 
