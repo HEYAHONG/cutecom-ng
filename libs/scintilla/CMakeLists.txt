@@ -59,7 +59,7 @@ lexilla/src/../lexers/*.h
 
 )
 
-add_definitions("-DSCINTILLA_QT=1 -DMAKING_LIBRARY=1   -D_CRT_SECURE_NO_DEPRECATE=1")
+add_definitions("-DSCINTILLA_QT=1 -DEXPORT_IMPORT_API=   -D_CRT_SECURE_NO_DEPRECATE=1")
 if(CMAKE_BUILD_TYPE STREQUAL "Release")
 add_definitions("-DNDEBUG=1")
 endif()

@@ -46,6 +46,7 @@ HEADERS  += mainwindow.h \
     libs/qhexedit2/src/qhexedit.h \
     pluginmanager.h \
     qqmlloader.h \
+    qscintillaedit.h \
     searchwidget.h \
     sessionmanager.h \
     outputmanager.h \

@@ -67,7 +67,7 @@ HEADERS  += \
 
 INCLUDEPATH +=  $$PWD/lexilla/src/../include  $$PWD/lexilla/src/../lexlib  $$PWD/lexilla/src/../../scintilla/include  $$PWD/lexilla/src/
 
-DEFINES += SCINTILLA_QT=1  MAKING_LIBRARY=1 _CRT_SECURE_NO_DEPRECATE=1
+DEFINES += SCINTILLA_QT=1  EXPORT_IMPORT_API= _CRT_SECURE_NO_DEPRECATE=1
 CONFIG(release, debug|release) {
     DEFINES += NDEBUG=1
 }
