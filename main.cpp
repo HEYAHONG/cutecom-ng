@@ -89,6 +89,7 @@ int main(int argc, char *argv[])
         QDir::setCurrent(configpath);
 
         qDebug()<<(QString("currentdir(configdir):")+QDir::currentPath());
+        qDebug()<<(QString("tmpdir:")+QDir::tempPath());
 
     }
     MainWindow w;

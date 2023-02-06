@@ -106,3 +106,6 @@ CONFIG(debug, debug|release){
 #包含QVTerminal
 
 include ($$PWD/libs/QVTerminal/src/qvterminal.pri)
+
+#包含scintilla
+include ($$PWD/libs/scintilla/scintilla.pri)

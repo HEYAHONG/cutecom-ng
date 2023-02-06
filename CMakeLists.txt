@@ -62,12 +62,14 @@ libs/QVTerminal/src
 libs/QVTerminal/src/vt
 )
 
+
 #添加可执行文件
 if(WIN32)
 add_executable(${PROJECT_NAME} WIN32  ${MAIN_SRCS})
 else()
 add_executable(${PROJECT_NAME} ${MAIN_SRCS})
 endif()
+
 
 option(USE_QT6 "Use Qt6" OFF)
 option(USE_QT5 "Use Qt5(if USE_QT6 is set,this option will be invalid)" OFF)
@@ -98,6 +100,10 @@ else()
 	message(FATAL_ERROR "Qt is not found")
 	endif()
 endif()
+
+#添加scintilla
+add_subdirectory(libs/scintilla EXCLUDE_FROM_ALL)
+target_link_libraries(${PROJECT_NAME} scintilla)
 
 #安装
 include(GNUInstallDirs)
