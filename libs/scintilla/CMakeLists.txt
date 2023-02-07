@@ -73,6 +73,7 @@ lexilla/src/../include
 lexilla/src/../lexlib
 lexilla/src/../../scintilla/include
 lexilla/src/
+icons/
 )
 
 option(USE_QT6 "Use Qt6" OFF)
