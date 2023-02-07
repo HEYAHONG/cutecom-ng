@@ -18,6 +18,7 @@ namespace Ui {
 class ConnectDialog;
 }
 
+class MainWindow;
 
 /**
  * \brief The ConnectDialog class
@@ -41,8 +42,11 @@ public:
 
     void accept();
 
+    void loadconfig();
+
 private:
     Ui::ConnectDialog *ui;
+    MainWindow *mainwindow;
 
     /**
      * \brief fill connection settings combo boxes

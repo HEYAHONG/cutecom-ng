@@ -10,6 +10,7 @@
  */
 
 #include "connectdialog.h"
+#include "mainwindow.h"
 #include "ui_connectdialog.h"
 
 #include <QList>
@@ -17,9 +18,11 @@
 #include <QtSerialPort>
 #include <QSerialPortInfo>
 
+
 ConnectDialog::ConnectDialog(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::ConnectDialog)
+    ui(new Ui::ConnectDialog),
+    mainwindow(dynamic_cast<MainWindow *>(parent))
 {
     ui->setupUi(this);
 
@@ -44,6 +47,7 @@ ConnectDialog::ConnectDialog(QWidget *parent) :
     default_cfg[QStringLiteral("dump_enabled")] = QString::number(0);
     default_cfg[QStringLiteral("dump_file")] = QStringLiteral("cutecom-ng.dump");
     default_cfg[QStringLiteral("dump_format")] = QString::number(Raw);
+
 
     preselectPortConfig(default_cfg);
 
@@ -140,6 +144,65 @@ void ConnectDialog::preselectPortConfig(const QHash<QString, QString>& settings)
     ui->dumpTextFmt->setChecked(settings["dump_format"] == QString::number(Ascii));
 }
 
+void ConnectDialog::loadconfig()
+{
+    // for device take 1st device listed (if any)
+    QString default_device;
+    if (ui->deviceList->count() > 0)
+        default_device = ui->deviceList->itemText(0);
+
+    // define a default configuration
+    QHash<QString, QString> default_cfg;
+    default_cfg[QStringLiteral("device")] = default_device;
+    default_cfg[QStringLiteral("baud_rate")] = QString::number(QSerialPort::Baud115200);
+    default_cfg[QStringLiteral("data_bits")] = QString::number(QSerialPort::Data8);
+    default_cfg[QStringLiteral("stop_bits")] = QStringLiteral("1");
+    default_cfg[QStringLiteral("parity")] = QStringLiteral("None");
+    default_cfg[QStringLiteral("flow_control")] = QStringLiteral("None");
+
+    // define the default values for output dump
+    default_cfg[QStringLiteral("dump_enabled")] = QString::number(0);
+    default_cfg[QStringLiteral("dump_file")] = QStringLiteral("cutecom-ng.dump");
+    default_cfg[QStringLiteral("dump_format")] = QString::number(Raw);
+
+    {
+        //加载默认配置
+        if(mainwindow!=NULL)
+        {
+            QDomDocument &doc=mainwindow->GetConfigDoc();
+            QDomElement docroot=mainwindow->GetConfigRootNode();
+            docroot.toDocument();
+            if(docroot.firstChildElement("connectdialog").isNull())
+            {
+                docroot.appendChild(doc.createElement("connectdialog"));
+            }
+            QDomElement root=docroot.firstChildElement("connectdialog");
+            if(!root.isNull())
+            {
+                QDomElement defaultconfig=root.firstChildElement("default");
+                if(!defaultconfig.isNull())
+                {
+                    QDomNamedNodeMap attrs=defaultconfig.attributes();
+                    for(int i=0;i<attrs.size();i++)
+                    {
+                        QDomNode attr=attrs.item(i);
+                        if(attr.nodeName()=="device")
+                        {
+                            //设备名称设置不加载
+                            continue;
+                        }
+                        default_cfg[attr.nodeName()]=attr.nodeValue();
+                    }
+                }
+            }
+        }
+
+    }
+
+
+    preselectPortConfig(default_cfg);
+}
+
 void ConnectDialog::accept()
 {
     // create a serial port config object from current selection
@@ -158,6 +221,34 @@ void ConnectDialog::accept()
     cfg[QStringLiteral("dump_format")] = QString::number(ui->dumpRawFmt->isChecked() ? Raw : Ascii);
 
     hide();
+
+    {
+        //保存默认配置
+        if(mainwindow!=NULL)
+        {
+            QDomDocument &doc=mainwindow->GetConfigDoc();
+            QDomElement docroot=mainwindow->GetConfigRootNode();
+            docroot.toDocument();
+            if(docroot.firstChildElement("connectdialog").isNull())
+            {
+                docroot.appendChild(doc.createElement("connectdialog"));
+            }
+            QDomElement root=docroot.firstChildElement("connectdialog");
+            if(!root.isNull())
+            {
+                QDomElement defaultconfig=root.firstChildElement("default");
+                if(defaultconfig.isNull())
+                {
+                    defaultconfig=doc.createElement("default");
+                }
+                for(auto it=cfg.begin();it!=cfg.end();it++)
+                {
+                    defaultconfig.setAttribute(it.key(),it.value());
+                }
+                root.appendChild(defaultconfig);
+            }
+        }
+    }
 
     emit openDeviceClicked(cfg);
 }

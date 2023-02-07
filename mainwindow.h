@@ -132,6 +132,11 @@ public:
     QString GetConfigPath();
 
     /*
+     *获取配置
+    */
+    QDomDocument& GetConfigDoc();
+
+    /*
      *获取配置根节点
     */
     QDomElement GetConfigRootNode();

@@ -210,6 +210,12 @@ void MainWindow::load_configdoc()
         QDomElement root=configdoc.createElement("cutecom-ng");
         configdoc.appendChild(root);
     }
+
+    //加载connectdialog的设置
+    if(connect_dlg!=NULL)
+    {
+        connect_dlg->loadconfig();
+    }
 }
 void MainWindow::save_configdoc()
 {
@@ -937,6 +943,11 @@ void MainWindow::SetConfigPath(QString _path)
 QString MainWindow::GetConfigPath()
 {
     return configpath;
+}
+
+QDomDocument& MainWindow::GetConfigDoc()
+{
+    return configdoc;
 }
 
 QDomElement MainWindow::GetConfigRootNode()
