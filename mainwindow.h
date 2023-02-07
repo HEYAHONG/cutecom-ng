@@ -25,6 +25,7 @@
 #include <QSharedPointer>
 #include <QVBoxLayout>
 #include <QList>
+#include <QDomDocument>
 
 namespace Ui {
 class MainWindow;
@@ -87,6 +88,15 @@ private:
     QMap<QUrl,QSharedPointer<QQmlLoader>> qml_list;
     QMenu *qml_plugin_menu;
 
+    //配置路径
+    QString configpath;
+
+    //配置文件（使用Dom管理配置）
+    QDomDocument configdoc;
+
+    //加载配置文件与保存配置文件
+    void load_configdoc();
+    void save_configdoc();
 
 public:
     explicit MainWindow(QWidget *parent = 0);
@@ -110,6 +120,21 @@ public:
      *获取SessionManager指针
     */
     SessionManager * GetSessionManager();
+
+    /*
+     *设置配置路径目录（通常在main中调用）
+    */
+    void SetConfigPath(QString _path);
+
+    /*
+     *获取配置路径目录
+    */
+    QString GetConfigPath();
+
+    /*
+     *获取配置根节点
+    */
+    QDomElement GetConfigRootNode();
 
 private slots:
 

@@ -186,8 +186,45 @@ MainWindow::MainWindow(QWidget *parent) :
     installEventFilter(this);
 }
 
+void MainWindow::load_configdoc()
+{
+    {
+        QFile file(GetConfigPath()+"config.xml");
+        file.open(QFile::ReadOnly);
+        if(file.isOpen())
+        {
+            if(!configdoc.setContent(file.readAll()))
+            {
+                qDebug()<<QString("load config.xml failed!");
+            }
+            file.close();
+        }
+    }
+
+    //创建根节点,标签名为cutecom-ng
+    QDomElement root=GetConfigRootNode();
+    if(root.isNull())
+    {
+        QDomProcessingInstruction xmlInstruction  = configdoc.createProcessingInstruction("xml"," version = \"1.0\" encoding =\"UTF-8\" standalone=\"yes\" ");
+        configdoc.appendChild(xmlInstruction);
+        QDomElement root=configdoc.createElement("cutecom-ng");
+        configdoc.appendChild(root);
+    }
+}
+void MainWindow::save_configdoc()
+{
+    QFile file(GetConfigPath()+"config.xml");
+    file.open(QFile::WriteOnly);
+    if(file.isOpen())
+    {
+        file.write(configdoc.toByteArray());
+        file.close();
+    }
+}
+
 MainWindow::~MainWindow()
 {
+    save_configdoc();
     if(session_mgr->isSessionOpen())
         session_mgr->closeSession();
     delete ui;
@@ -887,6 +924,24 @@ bool MainWindow::UnloadQmlPlugin(QUrl qml_path)
 SessionManager * MainWindow::GetSessionManager()
 {
     return session_mgr;
+}
+
+void MainWindow::SetConfigPath(QString _path)
+{
+    configpath=_path;
+
+    //加载配置目录下的xml文件
+    load_configdoc();
+}
+
+QString MainWindow::GetConfigPath()
+{
+    return configpath;
+}
+
+QDomElement MainWindow::GetConfigRootNode()
+{
+    return configdoc.firstChildElement("cutecom-ng");
 }
 
 void MainWindow::on_actionpluginmanager_triggered()

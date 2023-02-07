@@ -74,16 +74,20 @@ int main(int argc, char *argv[])
 #ifdef WIN32
         a.installTranslator(&qt_translator);
 #endif
-    }
+    }    
+    MainWindow w;
+    //设置翻译指针
+    w.translator=&translator;
+    //设置配置目录
     {
         //切换工作目录（将当前工作目录切换到用户配置所在目录）
         QString configpath=QDir::homePath();
 #ifdef WIN32
         //Windows下配置文件目录为 用户目录/AppData/Roaming/程序名
-        configpath+="/AppData/Roaming/cutecom-ng";
+        configpath+="/AppData/Roaming/cutecom-ng/";
 #else
         //非Windows下配置文件目录为 用户目录/.config/程序名
-        configpath+="/.config/cutecom-ng";
+        configpath+="/.config/cutecom-ng/";
 #endif
         QDir(QDir::homePath()).mkpath(configpath);
         QDir::setCurrent(configpath);
@@ -91,10 +95,9 @@ int main(int argc, char *argv[])
         qDebug()<<(QString("currentdir(configdir):")+QDir::currentPath());
         qDebug()<<(QString("tmpdir:")+QDir::tempPath());
 
+        w.SetConfigPath(configpath);
     }
-    MainWindow w;
-    //设置翻译指针
-    w.translator=&translator;
+
     w.show();
 
     return a.exec();

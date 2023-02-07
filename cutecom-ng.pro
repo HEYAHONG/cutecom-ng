@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui serialport qml quick quickwidgets
+QT       += core gui serialport qml quick quickwidgets xml
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
