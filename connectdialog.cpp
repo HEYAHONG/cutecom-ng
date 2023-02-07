@@ -191,6 +191,43 @@ void ConnectDialog::loadconfig()
                             //设备名称设置不加载
                             continue;
                         }
+                        if(attr.nodeName()=="parity")
+                        {
+                            QString parity=attr.nodeValue();
+                            bool isok=false;
+                            int i=parity.toInt(&isok);
+                            if(isok)
+                            {
+                               //符合QSerialPort::Parity定义
+                               if(i==0)
+                               {
+                                   default_cfg[attr.nodeName()]=ui->parityList->itemText(0);
+                               } else
+                               {
+                                   default_cfg[attr.nodeName()]=ui->parityList->itemText(i-1);
+                               }
+                            }
+                            else
+                            {
+                               default_cfg[attr.nodeName()]=attr.nodeValue();
+                            }
+                            continue;
+                        }
+                        if(attr.nodeName()=="flow_control")
+                        {
+                            QString flow_control=attr.nodeValue();
+                            bool isok=false;
+                            int i=flow_control.toInt(&isok);
+                            if(isok)
+                            {
+                               default_cfg[attr.nodeName()]=ui->flowControlList->itemText(i);
+                            }
+                            else
+                            {
+                               default_cfg[attr.nodeName()]=attr.nodeValue();
+                            }
+                            continue;
+                        }
                         default_cfg[attr.nodeName()]=attr.nodeValue();
                     }
                 }
