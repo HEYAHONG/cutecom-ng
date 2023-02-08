@@ -254,6 +254,36 @@ void MainWindow::load_configdoc()
 
     }
 
+    {
+        //插件
+        QDomDocument &doc=GetConfigDoc();
+        QDomElement docroot=GetConfigRootNode();
+        if(docroot.firstChildElement("plugins").isNull())
+        {
+            docroot.appendChild(doc.createElement("plugins"));
+        }
+        QDomElement plugins=docroot.firstChildElement("plugins");
+        {
+            auto pluginslist=plugins.childNodes();
+            for(int i=0;i<pluginslist.size();i++)
+            {
+                if(pluginslist.at(i).isElement() && (QString("plugin")==pluginslist.at(i).toElement().tagName()))
+                {
+                    QDomElement plugin=pluginslist.at(i).toElement();
+                    QUrl qmlpath;
+                    if(plugin.hasAttribute("url"))
+                    {
+                        qmlpath=plugin.attribute("url");
+                    }
+                    if(!qmlpath.fileName().isEmpty() && qmlpath.isLocalFile() && QFile::exists(qmlpath.path()))
+                    {
+                        LoadQmlPlugin(qmlpath,false);
+                    }
+                }
+            }
+        }
+    }
+
 
     //加载connectdialog的设置
     if(connect_dlg!=NULL)
@@ -287,6 +317,39 @@ void MainWindow::save_configdoc()
                 menusettings.setAttribute("vt100output",ui->actionvt100_output->isChecked());
 
             }
+
+
+        }
+
+    }
+
+    {
+        //插件
+        QDomDocument &doc=GetConfigDoc();
+        QDomElement docroot=GetConfigRootNode();
+        {
+            //删除之前的列表
+            QDomElement plugins=docroot.firstChildElement("plugins");
+            if(!plugins.isNull())
+            {
+                docroot.removeChild(plugins);
+            }
+        }
+        if(docroot.firstChildElement("plugins").isNull())
+        {
+            docroot.appendChild(doc.createElement("plugins"));
+        }
+        QDomElement plugins=docroot.firstChildElement("plugins");
+        QMap<QUrl,QSharedPointer<QQmlLoader>>  qml_plugins=qml_list;
+        for(auto it=qml_plugins.begin();it!=qml_plugins.end();it++)
+        {
+            QUrl url=it.key();
+            auto && qmlloader=*it.value().data();
+            QDomElement plugin=doc.createElement("plugin");
+            plugins.appendChild(plugin);
+            plugin.setAttribute("url",url.toString());
+            plugin.setAttribute("show",!qmlloader.isHidden());
+
         }
 
     }
