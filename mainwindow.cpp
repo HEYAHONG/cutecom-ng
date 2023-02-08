@@ -224,11 +224,11 @@ void MainWindow::load_configdoc()
         {
             {
                 //设置菜单
-                if(docroot.firstChildElement("menusettings").isNull())
+                if(root.firstChildElement("menusettings").isNull())
                 {
-                    docroot.appendChild(doc.createElement("menusettings"));
+                    root.appendChild(doc.createElement("menusettings"));
                 }
-                QDomElement menusettings=docroot.firstChildElement("menusettings");
+                QDomElement menusettings=root.firstChildElement("menusettings");
                 if(menusettings.hasAttribute("direntinput"))
                 {
                     ui->actiondirentinput->setChecked(menusettings.attribute("direntinput").toInt()!=0);
@@ -276,11 +276,11 @@ void MainWindow::save_configdoc()
         {
             {
                 //设置菜单
-                if(docroot.firstChildElement("menusettings").isNull())
+                if(root.firstChildElement("menusettings").isNull())
                 {
-                    docroot.appendChild(doc.createElement("menusettings"));
+                    root.appendChild(doc.createElement("menusettings"));
                 }
-                QDomElement menusettings=docroot.firstChildElement("menusettings");
+                QDomElement menusettings=root.firstChildElement("menusettings");
                 menusettings.setAttribute("direntinput",ui->actiondirentinput->isChecked());
                 menusettings.setAttribute("hexoutput",ui->actionhexoutput->isChecked());
                 menusettings.setAttribute("mainoutput",ui->actionmain_output->isChecked());
