@@ -275,7 +275,7 @@ void MainWindow::load_configdoc()
                     {
                         qmlpath=plugin.attribute("url");
                     }
-                    if(!qmlpath.fileName().isEmpty() && qmlpath.isLocalFile() && QFile::exists(qmlpath.path()))
+                    if(!qmlpath.fileName().isEmpty() && qmlpath.isLocalFile() && QFile::exists(qmlpath.toLocalFile()))
                     {
                         LoadQmlPlugin(qmlpath,false);
                     }
