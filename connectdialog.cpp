@@ -171,7 +171,6 @@ void ConnectDialog::loadconfig()
         {
             QDomDocument &doc=mainwindow->GetConfigDoc();
             QDomElement docroot=mainwindow->GetConfigRootNode();
-            docroot.toDocument();
             if(docroot.firstChildElement("connectdialog").isNull())
             {
                 docroot.appendChild(doc.createElement("connectdialog"));
@@ -188,7 +187,12 @@ void ConnectDialog::loadconfig()
                         QDomNode attr=attrs.item(i);
                         if(attr.nodeName()=="device")
                         {
-                            //设备名称设置不加载
+                            //存在的设备名称设置才加载
+                            QSerialPortInfo info(attr.nodeValue());
+                            if(!info.isNull())
+                            {
+                               default_cfg[attr.nodeName()]=attr.nodeValue();
+                            }
                             continue;
                         }
                         if(attr.nodeName()=="parity")
@@ -265,7 +269,6 @@ void ConnectDialog::accept()
         {
             QDomDocument &doc=mainwindow->GetConfigDoc();
             QDomElement docroot=mainwindow->GetConfigRootNode();
-            docroot.toDocument();
             if(docroot.firstChildElement("connectdialog").isNull())
             {
                 docroot.appendChild(doc.createElement("connectdialog"));

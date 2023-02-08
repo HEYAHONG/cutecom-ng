@@ -211,6 +211,50 @@ void MainWindow::load_configdoc()
         configdoc.appendChild(root);
     }
 
+    {
+        //加载mainwindow参数
+        QDomDocument &doc=GetConfigDoc();
+        QDomElement docroot=GetConfigRootNode();
+        if(docroot.firstChildElement("mainwindow").isNull())
+        {
+            docroot.appendChild(doc.createElement("mainwindow"));
+        }
+        QDomElement root=docroot.firstChildElement("mainwindow");
+        if(!root.isNull())
+        {
+            {
+                //设置菜单
+                if(docroot.firstChildElement("menusettings").isNull())
+                {
+                    docroot.appendChild(doc.createElement("menusettings"));
+                }
+                QDomElement menusettings=docroot.firstChildElement("menusettings");
+                if(menusettings.hasAttribute("direntinput"))
+                {
+                    ui->actiondirentinput->setChecked(menusettings.attribute("direntinput").toInt()!=0);
+                }
+                if(menusettings.hasAttribute("hexoutput"))
+                {
+                    ui->actionhexoutput->setChecked(menusettings.attribute("hexoutput").toInt()!=0);
+                    on_actionhexoutput_triggered(ui->actionhexoutput->isChecked());
+                }
+                if(menusettings.hasAttribute("mainoutput"))
+                {
+                    ui->actionmain_output->setChecked(menusettings.attribute("mainoutput").toInt()!=0);
+                    on_actionmain_output_triggered();
+                }
+                if(menusettings.hasAttribute("vt100output"))
+                {
+                    ui->actionvt100_output->setChecked(menusettings.attribute("vt100output").toInt()!=0);
+                    on_actionvt100_output_triggered(ui->actionvt100_output->isChecked());
+                }
+
+            }
+        }
+
+    }
+
+
     //加载connectdialog的设置
     if(connect_dlg!=NULL)
     {
@@ -219,6 +263,34 @@ void MainWindow::load_configdoc()
 }
 void MainWindow::save_configdoc()
 {
+    {
+        //保存mainwindow参数
+        QDomDocument &doc=GetConfigDoc();
+        QDomElement docroot=GetConfigRootNode();
+        if(docroot.firstChildElement("mainwindow").isNull())
+        {
+            docroot.appendChild(doc.createElement("mainwindow"));
+        }
+        QDomElement root=docroot.firstChildElement("mainwindow");
+        if(!root.isNull())
+        {
+            {
+                //设置菜单
+                if(docroot.firstChildElement("menusettings").isNull())
+                {
+                    docroot.appendChild(doc.createElement("menusettings"));
+                }
+                QDomElement menusettings=docroot.firstChildElement("menusettings");
+                menusettings.setAttribute("direntinput",ui->actiondirentinput->isChecked());
+                menusettings.setAttribute("hexoutput",ui->actionhexoutput->isChecked());
+                menusettings.setAttribute("mainoutput",ui->actionmain_output->isChecked());
+                menusettings.setAttribute("vt100output",ui->actionvt100_output->isChecked());
+
+            }
+        }
+
+    }
+
     QFile file(GetConfigPath()+"config.xml");
     file.open(QFile::WriteOnly);
     if(file.isOpen())
