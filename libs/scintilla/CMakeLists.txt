@@ -75,6 +75,13 @@ lexilla/src/../../scintilla/include
 lexilla/src/
 icons/
 )
+target_compile_definitions(scintilla
+PUBLIC -DSCINTILLA_QT=1 -DEXPORT_IMPORT_API=   -D_CRT_SECURE_NO_DEPRECATE=1)
+if(CMAKE_BUILD_TYPE STREQUAL "Release")
+target_compile_definitions(scintilla
+PUBLIC -DNDEBUG=1)
+endif()
+
 
 option(USE_QT6 "Use Qt6" OFF)
 option(USE_QT5 "Use Qt5(if USE_QT6 is set,this option will be invalid)" OFF)
