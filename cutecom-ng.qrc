@@ -8,5 +8,6 @@
         <file>zh_CN.qm</file>
         <file>script/qml/template-qt6.qmlscript</file>
         <file>script/qml/template.qmlscript</file>
+        <file>LICENSE</file>
     </qresource>
 </RCC>

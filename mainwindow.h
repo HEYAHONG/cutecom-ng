@@ -169,7 +169,7 @@ private slots:
 
     void on_actionvt100_output_triggered(bool checked);
 
-    void on_actionversion_triggered();
+    void on_actionabout_triggered();
 
 private:
 

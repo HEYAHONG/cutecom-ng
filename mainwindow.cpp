@@ -25,6 +25,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "connectdialog.h"
+#include "aboutdialog.h"
 #include "sessionmanager.h"
 #include "outputmanager.h"
 #include "searchhighlighter.h"
@@ -1113,8 +1114,11 @@ void MainWindow::on_actionvt100_output_triggered(bool checked)
 }
 
 
-void MainWindow::on_actionversion_triggered()
+
+void MainWindow::on_actionabout_triggered()
 {
-    QMessageBox::information(this,tr("Version"),PROJECT_VERSION_STR);
+   AboutDialog dlg(this);
+   dlg.setModal(true);
+   dlg.exec();
 }
 

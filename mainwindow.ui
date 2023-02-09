@@ -162,8 +162,8 @@
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>930</width>
-          <height>148</height>
+          <width>934</width>
+          <height>146</height>
          </rect>
         </property>
         <property name="sizePolicy">
@@ -360,7 +360,7 @@
      <x>0</x>
      <y>0</y>
      <width>950</width>
-     <height>22</height>
+     <height>32</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
@@ -376,7 +376,7 @@
      <string>help</string>
     </property>
     <addaction name="actionAbout_Qt"/>
-    <addaction name="actionversion"/>
+    <addaction name="actionabout"/>
    </widget>
    <widget class="QMenu" name="menulanguage">
     <property name="title">
@@ -510,9 +510,9 @@
     <string>vt100 output</string>
    </property>
   </action>
-  <action name="actionversion">
+  <action name="actionabout">
    <property name="text">
-    <string>version</string>
+    <string>about</string>
    </property>
   </action>
  </widget>
