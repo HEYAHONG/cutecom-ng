@@ -187,10 +187,15 @@ MainWindow::MainWindow(QWidget *parent) :
     installEventFilter(this);
 }
 
-void MainWindow::load_configdoc()
+void MainWindow::load_configdoc(QString filename)
 {
+    if(filename.isEmpty())
     {
-        QFile file(GetConfigPath()+"config.xml");
+        return;
+    }
+
+    {
+        QFile file(GetConfigPath()+filename);
         file.open(QFile::ReadOnly);
         if(file.isOpen())
         {
@@ -292,7 +297,7 @@ void MainWindow::load_configdoc()
         connect_dlg->loadconfig();
     }
 }
-void MainWindow::save_configdoc()
+void MainWindow::save_configdoc(QString filename)
 {
     {
         //保存mainwindow参数
@@ -355,7 +360,11 @@ void MainWindow::save_configdoc()
 
     }
 
-    QFile file(GetConfigPath()+"config.xml");
+    if(filename.isEmpty())
+    {
+        return;
+    }
+    QFile file(GetConfigPath()+filename);
     file.open(QFile::WriteOnly);
     if(file.isOpen())
     {

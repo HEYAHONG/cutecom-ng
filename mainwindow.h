@@ -95,8 +95,8 @@ private:
     QDomDocument configdoc;
 
     //加载配置文件与保存配置文件
-    void load_configdoc();
-    void save_configdoc();
+    void load_configdoc(QString filename="config.xml");
+    void save_configdoc(QString filename="config.xml");
 
 public:
     explicit MainWindow(QWidget *parent = 0);
