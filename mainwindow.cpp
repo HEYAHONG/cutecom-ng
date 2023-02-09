@@ -1126,6 +1126,9 @@ void MainWindow::on_actionvt100_output_triggered(bool checked)
 
 void MainWindow::on_actionabout_triggered()
 {
+    //更新dom设置
+   save_configdoc(QString());
+
    AboutDialog dlg(this);
    dlg.setModal(true);
    dlg.exec();

@@ -73,6 +73,11 @@
        <string>license</string>
       </attribute>
      </widget>
+     <widget class="QScintillaEdit" name="configdoc">
+      <attribute name="title">
+       <string>config</string>
+      </attribute>
+     </widget>
     </widget>
    </item>
   </layout>
