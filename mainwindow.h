@@ -39,6 +39,8 @@ class QToolButton;
 class QProgressDialog;
 class PluginManager;
 
+#define DEFAULT_CONFIG_FILENAME "Qt" QT_VERSION_STR ".config.xml"
+
 /**
  * \brief main cutecom-ng window
  */
@@ -95,8 +97,8 @@ private:
     QDomDocument configdoc;
 
     //加载配置文件与保存配置文件
-    void load_configdoc(QString filename="config.xml");
-    void save_configdoc(QString filename="config.xml");
+    void load_configdoc(QString filename=DEFAULT_CONFIG_FILENAME);
+    void save_configdoc(QString filename=DEFAULT_CONFIG_FILENAME);
 
 public:
     explicit MainWindow(QWidget *parent = 0);
