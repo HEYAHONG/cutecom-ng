@@ -71,19 +71,19 @@ AboutDialog::AboutDialog(QWidget *parent) :
         ui->configdoc->markerDefine(SC_MARKNUM_FOLDEROPENMID,SC_MARK_EMPTY);
         ui->configdoc->markerDefine(SC_MARKNUM_FOLDERSUB,SC_MARK_EMPTY);
         ui->configdoc->markerDefine(SC_MARKNUM_FOLDERTAIL,SC_MARK_EMPTY);
-        //设置xml的style
-        ui->configdoc->styleSetFore(0,0);
-        ui->configdoc->styleSetFore(1,0x000080);
-        ui->configdoc->styleSetFore(2,0x000080);
-        ui->configdoc->styleSetFore(3,0x008080);
-        ui->configdoc->styleSetFore(4,0x008080);
-        ui->configdoc->styleSetFore(5,0x800000);
-        ui->configdoc->styleSetFore(6,0x800000);
-        ui->configdoc->styleSetFore(7,0x800000);
-        ui->configdoc->styleSetFore(8,0x800080);
-        ui->configdoc->styleSetFore(9,0x000080);
-        ui->configdoc->styleSetFore(10,0x80080);
-        ui->configdoc->styleSetFore(11,0x00080);
+        //设置xml的style(XML对应的lexer为html)
+        ui->configdoc->styleSetFore(SCE_H_DEFAULT,0);
+        ui->configdoc->styleSetFore(SCE_H_TAG,0x000080);
+        ui->configdoc->styleSetFore(SCE_H_TAGUNKNOWN,0x000080);
+        ui->configdoc->styleSetFore(SCE_H_ATTRIBUTE,0x008080);
+        ui->configdoc->styleSetFore(SCE_H_ATTRIBUTEUNKNOWN,0x008080);
+        ui->configdoc->styleSetFore(SCE_H_NUMBER,0x800000);
+        ui->configdoc->styleSetFore(SCE_H_DOUBLESTRING,0x800000);
+        ui->configdoc->styleSetFore(SCE_H_SINGLESTRING,0x800000);
+        ui->configdoc->styleSetFore(SCE_H_OTHER,0x800080);
+        ui->configdoc->styleSetFore(SCE_H_COMMENT,0x000080);
+        ui->configdoc->styleSetFore(SCE_H_ENTITY,0x80080);
+        ui->configdoc->styleSetFore(SCE_H_TAGEND,0x00080);
 
 
 
