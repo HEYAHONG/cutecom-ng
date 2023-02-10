@@ -59,6 +59,20 @@
 #include "AutoComplete.h"
 #include "ScintillaBase.h"
 
+#ifdef SCINTILLA_QT
+#include <QWidget>
+#define QSTRINGTOSTR(x) ((x).toStdString().c_str())
+#else
+namespace QObject
+{
+const char *tr(const char *str)
+{
+    return str;
+}
+}
+#define QSTRINGTOSTR(x) x
+#endif
+
 using namespace Scintilla;
 using namespace Scintilla::Internal;
 
@@ -532,15 +546,15 @@ void ScintillaBase::ContextMenu(Point pt) {
 	if (displayPopupMenu != PopUp::Never) {
 		const bool writable = !WndProc(Message::GetReadOnly, 0, 0);
 		popup.CreatePopUp();
-		AddToPopUp("Undo", idcmdUndo, writable && pdoc->CanUndo());
-		AddToPopUp("Redo", idcmdRedo, writable && pdoc->CanRedo());
-		AddToPopUp("");
-		AddToPopUp("Cut", idcmdCut, writable && !sel.Empty());
-		AddToPopUp("Copy", idcmdCopy, !sel.Empty());
-		AddToPopUp("Paste", idcmdPaste, writable && WndProc(Message::CanPaste, 0, 0));
-		AddToPopUp("Delete", idcmdDelete, writable && !sel.Empty());
-		AddToPopUp("");
-		AddToPopUp("Select All", idcmdSelectAll);
+        AddToPopUp(QSTRINGTOSTR(QObject::tr("Undo")), idcmdUndo, writable && pdoc->CanUndo());
+        AddToPopUp(QSTRINGTOSTR(QObject::tr("Redo")), idcmdRedo, writable && pdoc->CanRedo());
+        AddToPopUp(QSTRINGTOSTR(QObject::tr("")));
+        AddToPopUp(QSTRINGTOSTR(QObject::tr("Cut")), idcmdCut, writable && !sel.Empty());
+        AddToPopUp(QSTRINGTOSTR(QObject::tr("Copy")), idcmdCopy, !sel.Empty());
+        AddToPopUp(QSTRINGTOSTR(QObject::tr("Paste")),idcmdPaste, writable && WndProc(Message::CanPaste, 0, 0));
+        AddToPopUp(QSTRINGTOSTR(QObject::tr("Delete")), idcmdDelete, writable && !sel.Empty());
+        AddToPopUp(QSTRINGTOSTR(QObject::tr("")));
+        AddToPopUp(QSTRINGTOSTR(QObject::tr("Select All")), idcmdSelectAll);
 		popup.Show(pt, wMain);
 	}
 }
