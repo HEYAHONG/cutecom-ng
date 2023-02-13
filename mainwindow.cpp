@@ -514,7 +514,7 @@ void MainWindow::handleFileTransferProgressed(int percent)
     if (progress_dialog)
     {
         progress_dialog->setValue(percent);
-        progress_dialog->setLabelText(QStringLiteral("Transferring file"));
+        progress_dialog->setLabelText(QString(tr("Transferring file")));
     }
 }
 
@@ -525,7 +525,7 @@ void MainWindow::handleFileTransferEnded(FileTransfer::TransferError error)
         case FileTransfer::LocalCancelledError:
             break;
         case FileTransfer::NoError:
-            QMessageBox::information(this, tr("Cutecom-ng"), QStringLiteral("File transferred successfully"));
+            QMessageBox::information(this, tr("Cutecom-ng"), QString(tr("File transferred successfully")));
             break;
         default:
             progress_dialog->setLabelText(FileTransfer::errorString(error));

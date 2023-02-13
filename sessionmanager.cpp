@@ -12,6 +12,7 @@
 #include "sessionmanager.h"
 #include "outputmanager.h"
 #include "xmodemtransfer.h"
+#include "nulltransfer.h"
 
 #include <QCoreApplication>
 #include <QSerialPortInfo>
@@ -215,10 +216,9 @@ void SessionManager::transferFile(const QString &filename, Protocol type)
         break;
         case YMODEM:
         case ZMODEM:
-            Q_ASSERT_X(false, "SessionManager::transferFile", "not implemented");
-        break;
         default:
-            return;
+            QMessageBox::warning(0,QString(tr("warning")),QString(tr("not implemented")));
+            file_transfer = new NullTransfer(0,serial,filename);
     }
 
     connect(file_transfer, &FileTransfer::transferEnded,

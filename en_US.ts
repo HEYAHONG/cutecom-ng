@@ -99,6 +99,49 @@
     </message>
 </context>
 <context>
+    <name>FileTransfer</name>
+    <message>
+        <location filename="filetransfer.cpp" line="78"/>
+        <source>Success</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="filetransfer.cpp" line="80"/>
+        <source>Synchronization error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="filetransfer.cpp" line="82"/>
+        <source>Transmission error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="filetransfer.cpp" line="84"/>
+        <source>Transfer timeout</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="filetransfer.cpp" line="86"/>
+        <source>Transfer cancelled by remote</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="filetransfer.cpp" line="89"/>
+        <source>Transfer cancelled</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="filetransfer.cpp" line="91"/>
+        <source>Can&apos;t open input file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="filetransfer.cpp" line="94"/>
+        <source>Unknown Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>HexListItem</name>
     <message>
         <location filename="hexlistitem.ui" line="20"/>
@@ -284,45 +327,55 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="86"/>
-        <location filename="mainwindow.cpp" line="878"/>
+        <location filename="mainwindow.cpp" line="90"/>
+        <location filename="mainwindow.cpp" line="882"/>
         <source>qml plugin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="417"/>
         <location filename="mainwindow.cpp" line="421"/>
+        <location filename="mainwindow.cpp" line="425"/>
         <source>Opened</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="460"/>
+        <location filename="mainwindow.cpp" line="464"/>
         <source>Closed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="524"/>
+        <location filename="mainwindow.cpp" line="517"/>
+        <source>Transferring file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="528"/>
         <source>Cutecom-ng</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="563"/>
-        <location filename="mainwindow.cpp" line="589"/>
+        <location filename="mainwindow.cpp" line="528"/>
+        <source>File transferred successfully</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="567"/>
+        <location filename="mainwindow.cpp" line="593"/>
         <source>Warning</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="563"/>
+        <location filename="mainwindow.cpp" line="567"/>
         <source>Input is empty</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="589"/>
+        <location filename="mainwindow.cpp" line="593"/>
         <source>Input is not hex string</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="951"/>
+        <location filename="mainwindow.cpp" line="964"/>
         <source>qml path</source>
         <translation type="unfinished"></translation>
     </message>
@@ -445,9 +498,19 @@
 <context>
     <name>SessionManager</name>
     <message>
-        <location filename="sessionmanager.cpp" line="61"/>
-        <location filename="sessionmanager.cpp" line="70"/>
+        <location filename="sessionmanager.cpp" line="62"/>
+        <location filename="sessionmanager.cpp" line="71"/>
         <source>Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="sessionmanager.cpp" line="220"/>
+        <source>warning</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="sessionmanager.cpp" line="220"/>
+        <source>not implemented</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

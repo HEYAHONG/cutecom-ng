@@ -75,22 +75,22 @@ QString FileTransfer::errorString(TransferError error)
     switch(error)
     {
         case NoError :
-            return QStringLiteral("Success");
+            return QString(tr("Success"));
         case NoSyncError:
-            return QStringLiteral("Synchronization error");
+            return QString(tr("Synchronization error"));
         case TransmissionError:
-            return QStringLiteral("Transmission error");
+            return QString(tr("Transmission error"));
         case TimeoutError:
-            return QStringLiteral("Transfer timeout");
+            return QString(tr("Transfer timeout"));
         case RemoteCancelledError:
-            return QStringLiteral("Transfer cancelled by remote");
+            return QString(tr("Transfer cancelled by remote"));
         case LocalCancelledError:
             // should not be treated as an error
-            return QStringLiteral("Transfer cancelled");
+            return QString(tr("Transfer cancelled"));
         case InputFileError:
-            return QStringLiteral("Can't open input file");
+            return QString(tr("Can't open input file"));
         case UnknownError:
         default:
-            return QStringLiteral("Unknown Error");
+            return QString(tr("Unknown Error"));
     }
 }

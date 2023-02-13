@@ -99,6 +99,49 @@
     </message>
 </context>
 <context>
+    <name>FileTransfer</name>
+    <message>
+        <location filename="filetransfer.cpp" line="78"/>
+        <source>Success</source>
+        <translation>成功</translation>
+    </message>
+    <message>
+        <location filename="filetransfer.cpp" line="80"/>
+        <source>Synchronization error</source>
+        <translation>同步错误</translation>
+    </message>
+    <message>
+        <location filename="filetransfer.cpp" line="82"/>
+        <source>Transmission error</source>
+        <translation>发送错误</translation>
+    </message>
+    <message>
+        <location filename="filetransfer.cpp" line="84"/>
+        <source>Transfer timeout</source>
+        <translation>传输超时</translation>
+    </message>
+    <message>
+        <location filename="filetransfer.cpp" line="86"/>
+        <source>Transfer cancelled by remote</source>
+        <translation>传输被远端取消</translation>
+    </message>
+    <message>
+        <location filename="filetransfer.cpp" line="89"/>
+        <source>Transfer cancelled</source>
+        <translation>传输取消</translation>
+    </message>
+    <message>
+        <location filename="filetransfer.cpp" line="91"/>
+        <source>Can&apos;t open input file</source>
+        <translation>不能打开输入文件</translation>
+    </message>
+    <message>
+        <location filename="filetransfer.cpp" line="94"/>
+        <source>Unknown Error</source>
+        <translation>未知错误</translation>
+    </message>
+</context>
+<context>
     <name>HexListItem</name>
     <message>
         <location filename="hexlistitem.ui" line="20"/>
@@ -294,45 +337,55 @@
         <translation>HEX 输出</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="86"/>
-        <location filename="mainwindow.cpp" line="878"/>
+        <location filename="mainwindow.cpp" line="90"/>
+        <location filename="mainwindow.cpp" line="882"/>
         <source>qml plugin</source>
         <translation>QML插件</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="417"/>
         <location filename="mainwindow.cpp" line="421"/>
+        <location filename="mainwindow.cpp" line="425"/>
         <source>Opened</source>
         <translation>已打开</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="460"/>
+        <location filename="mainwindow.cpp" line="464"/>
         <source>Closed</source>
         <translation>已关闭</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="524"/>
+        <location filename="mainwindow.cpp" line="517"/>
+        <source>Transferring file</source>
+        <translation>传输文件</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="528"/>
         <source>Cutecom-ng</source>
         <translation>Cutecom-ng</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="563"/>
-        <location filename="mainwindow.cpp" line="589"/>
+        <location filename="mainwindow.cpp" line="528"/>
+        <source>File transferred successfully</source>
+        <translation>文件传输成功</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="567"/>
+        <location filename="mainwindow.cpp" line="593"/>
         <source>Warning</source>
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="563"/>
+        <location filename="mainwindow.cpp" line="567"/>
         <source>Input is empty</source>
         <translation>输入为空</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="589"/>
+        <location filename="mainwindow.cpp" line="593"/>
         <source>Input is not hex string</source>
         <translation>输入不是HEX字符串</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="951"/>
+        <location filename="mainwindow.cpp" line="964"/>
         <source>qml path</source>
         <translation>QML 路径</translation>
     </message>
@@ -459,10 +512,20 @@
 <context>
     <name>SessionManager</name>
     <message>
-        <location filename="sessionmanager.cpp" line="61"/>
-        <location filename="sessionmanager.cpp" line="70"/>
+        <location filename="sessionmanager.cpp" line="62"/>
+        <location filename="sessionmanager.cpp" line="71"/>
         <source>Error</source>
         <translation>错误</translation>
+    </message>
+    <message>
+        <location filename="sessionmanager.cpp" line="220"/>
+        <source>warning</source>
+        <translation>警告</translation>
+    </message>
+    <message>
+        <location filename="sessionmanager.cpp" line="220"/>
+        <source>not implemented</source>
+        <translation>尚未实现</translation>
     </message>
 </context>
 <context>

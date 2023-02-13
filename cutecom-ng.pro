@@ -26,6 +26,7 @@ SOURCES += main.cpp\
     libs/qhexedit2/src/qhexedit.cpp \
         mainwindow.cpp \
     connectdialog.cpp \
+    nulltransfer.cpp \
     pluginmanager.cpp \
     qqmlloader.cpp \
     searchwidget.cpp \
@@ -46,6 +47,7 @@ HEADERS  += mainwindow.h \
     libs/qhexedit2/src/chunks.h \
     libs/qhexedit2/src/commands.h \
     libs/qhexedit2/src/qhexedit.h \
+    nulltransfer.h \
     pluginmanager.h \
     qqmlloader.h \
     qscintillaedit.h \
