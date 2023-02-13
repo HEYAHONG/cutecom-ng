@@ -65,7 +65,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect_dlg = new ConnectDialog(this);
 
     //连接VT100
-    connect(ui->VT100Output,&QVTerminal::OnDeviceWrite,[=](const QByteArray &data){session_mgr->sendToSerial(data);});
+    connect(ui->VT100Output,&QVTerminal::OnDeviceWrite,[=](const QByteArray &data){if(session_mgr->isSessionOpen()) session_mgr->sendToSerial(data);});
 
     {
         //设置图标
