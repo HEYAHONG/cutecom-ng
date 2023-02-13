@@ -485,7 +485,7 @@ void MainWindow::handleFileTransfer()
     progress_dialog->setRange(0, 100);
     progress_dialog->setWindowModality(Qt::ApplicationModal);
     progress_dialog->setLabelText(
-                QStringLiteral("Initiating connection with receiver"));
+                QString(tr("Initiating connection with receiver")));
 
     // update progress dialog
     connect(session_mgr, &SessionManager::fileTransferProgressed,

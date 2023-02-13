@@ -354,6 +354,11 @@
         <translation>已关闭</translation>
     </message>
     <message>
+        <location filename="mainwindow.cpp" line="488"/>
+        <source>Initiating connection with receiver</source>
+        <translation>初始化连接</translation>
+    </message>
+    <message>
         <location filename="mainwindow.cpp" line="517"/>
         <source>Transferring file</source>
         <translation>传输文件</translation>

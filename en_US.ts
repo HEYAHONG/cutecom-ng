@@ -344,6 +344,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="mainwindow.cpp" line="488"/>
+        <source>Initiating connection with receiver</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="mainwindow.cpp" line="517"/>
         <source>Transferring file</source>
         <translation type="unfinished"></translation>
