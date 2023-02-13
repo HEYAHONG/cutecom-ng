@@ -38,6 +38,8 @@ public:
 signals:
     void cursorMoved(QPoint cursorPos);
 
+    void OnDeviceWrite(const QByteArray & data);
+
 public slots:
     void writeData(const QByteArray &data);
 

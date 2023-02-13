@@ -46,8 +46,8 @@ QVTerminal::QVTerminal(QWidget *parent)
 
     _layout = new QVTLayout();
 
-    _pasteAction = new QAction("Paste");
-    _pasteAction->setShortcut(QKeySequence("Ctrl+V"));
+    _pasteAction = new QAction(tr("Paste"));
+    _pasteAction->setShortcut(QKeySequence(tr("Ctrl+V")));
     connect(_pasteAction, &QAction::triggered, this, &QVTerminal::paste);
     addAction(_pasteAction);
 
@@ -338,6 +338,9 @@ void QVTerminal::setCrlf(bool crlf)
 
 void QVTerminal::writeData(const QByteArray &data)
 {
+    {
+        emit OnDeviceWrite(data);
+    }
     if (_device && _device->isWritable())
     {
         _device->write(data);

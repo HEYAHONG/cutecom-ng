@@ -58,10 +58,14 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->VT100Output->setVisible(false);
     ui->VT100Output->setEcho(false);
 
+
     // create session and output managers
     output_mgr = new OutputManager(this);
     session_mgr = new SessionManager(this);
     connect_dlg = new ConnectDialog(this);
+
+    //连接VT100
+    connect(ui->VT100Output,&QVTerminal::OnDeviceWrite,[=](const QByteArray &data){session_mgr->sendToSerial(data);});
 
     {
         //设置图标
