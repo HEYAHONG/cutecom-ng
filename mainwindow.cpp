@@ -888,18 +888,27 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
     //按键按下
     if(ui->actiondirentinput->isChecked())
     {
-        QString input=event->text();
-        if(!input.isEmpty())
+        if(ui->actionvt100_output->isChecked())
         {
-            if(session_mgr!=NULL)
+            //焦点移动到QVT，启用VT100自己的输入
+            ui->VT100Output->setFocus();
+        }
+        else
+        {
+            QString input=event->text();
+            if(!input.isEmpty())
             {
-                if(session_mgr->isSessionOpen())
+                if(session_mgr!=NULL)
                 {
-                    setFocus();
-                    session_mgr->sendToSerial(input.toUtf8());
+                    if(session_mgr->isSessionOpen())
+                    {
+                        setFocus();
+                        session_mgr->sendToSerial(input.toUtf8());
+                    }
                 }
             }
         }
+
     }
     QMainWindow::keyPressEvent(event);
 }
