@@ -33,7 +33,7 @@ QML脚本中根对象的要求如下:
 
 # QML插件中可使用的API
 
-**注意:本节仅说明由cutecom-ng扩展的部分，QML本身的API均可正常使用**
+**注意:本节仅说明由cutecom-ng扩展的部分，QML本身的API均可正常使用。QML可直接调用Qt C++类的槽函数与访问Qt C++类中定义的属性。**
 
 QML中可使用JS可通过访问全局属性对象实现与cutecom-ng的交互。支持的全局属性对象如下:
 
@@ -42,6 +42,8 @@ QML中可使用JS可通过访问全局属性对象实现与cutecom-ng的交互�
 ## 全局属性对象
 
 ### cutecomng
+
+**注意:cutecomng对象的基类为QDialog,故可通过cutecomng访问QDialog及其基类定义的槽函数（如调用show()使插件窗口显示出来）**
 
 cutecomng对象成员如下：
 
