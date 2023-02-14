@@ -5,6 +5,7 @@
 #include "QMessageBox"
 #include "QQuickItem"
 #include "QQmlContext"
+#include "mainwindow.h"
 
 QQmlLoader::QQmlLoader(QWidget *parent):QDialog(parent),QmlTimer(this),serialsession(NULL)
 {
@@ -119,6 +120,17 @@ void QQmlLoader::SetupQmlContext(QQmlContext *root)
      *将本类对象传入qml上下文，名称为cutecomng
     */
     root->setContextProperty("cutecomng",this);
+
+    /*
+     *将主窗口对象传入qml上下文,名称为mainwindow
+    */
+    {
+        MainWindow *mainwindow=dynamic_cast<MainWindow *>(parent());
+        if(mainwindow!=NULL)
+        {
+            root->setContextProperty("mainwindow",mainwindow);
+        }
+    }
 
 }
 
