@@ -43,7 +43,7 @@ QML中可使用JS可通过访问全局属性对象实现与cutecom-ng的交互�
 
 ### cutecomng
 
-**注意:cutecomng对象的基类为QDialog,故可通过cutecomng访问QDialog及其基类定义的槽函数（如调用show()使插件窗口显示出来）**
+**注意:cutecomng对象的基类为QDialog,故可通过cutecomng访问QDialog及其基类定义的槽函数（如调用show()使插件窗口显示出来）。但不要调用不是设计给QML使用的槽函数（如某些已经连接信号且明显不会做其它用途的槽函数）。**
 
 cutecomng对象成员如下：
 
@@ -84,3 +84,7 @@ cutecomng对象成员如下：
 #### SendSerialData
 
 返回值为是否发送成功,参数一待发送的数据。
+
+### mainwindow
+
+mainwindow对象为主窗口对象，用于访问主窗口的某些属性及调用某些槽函数（如hide()与show()）。但不要调用不是设计给QML使用的槽函数（如某些已经连接信号且明显不会做其它用途的槽函数）。
