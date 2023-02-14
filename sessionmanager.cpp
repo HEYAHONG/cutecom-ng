@@ -308,6 +308,11 @@ QSerialPortInfo SessionManager::getInfo()
     return QSerialPortInfo(*serial);
 }
 
+QSerialPort & SessionManager::getSerialPort()
+{
+    return *serial;
+}
+
 void SessionManager::addbytesRead(int size)
 {
     bytesRead+=size;

@@ -16,6 +16,7 @@
 #include "qhexedit.h"
 #include "Version.h"
 #include "qqmlloader.h"
+#include "serialportstatus.h"
 #include <QMainWindow>
 #include <QTranslator>
 #include <QDebug>
@@ -79,8 +80,7 @@ private:
     friend int main(int argc, char *argv[]);
 
     //状态栏
-    QLabel *rightstatus;
-    QLabel *rightstatus_2;
+    SerialPortStatus * serialportstatus;
 
     //HEX输出列表
     QVBoxLayout *HexList;

@@ -120,6 +120,11 @@ public:
      */
     QSerialPortInfo getInfo();
 
+    /**
+     * \brief get SerialPort
+     */
+    QSerialPort & getSerialPort();
+
 private:
 
     uint64_t bytesWrite;

@@ -30,6 +30,7 @@ SOURCES += main.cpp\
     pluginmanager.cpp \
     qqmlloader.cpp \
     searchwidget.cpp \
+    serialportstatus.cpp \
     sessionmanager.cpp \
     outputmanager.cpp \
     historycombobox.cpp \
@@ -52,6 +53,7 @@ HEADERS  += mainwindow.h \
     qqmlloader.h \
     qscintillaedit.h \
     searchwidget.h \
+    serialportstatus.h \
     sessionmanager.h \
     outputmanager.h \
     historycombobox.h \
@@ -67,7 +69,8 @@ FORMS    += mainwindow.ui \
     connectdialog.ui \
     hexlistitem.ui \
     pluginmanager.ui \
-    searchwidget.ui
+    searchwidget.ui \
+    serialportstatus.ui
 
 RESOURCES += \
     cutecom-ng.qrc

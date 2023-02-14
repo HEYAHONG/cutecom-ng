@@ -43,8 +43,7 @@ MainWindow::MainWindow(QWidget *parent) :
     search_input(0),
     progress_dialog(0),
     translator(NULL),
-    rightstatus(NULL),
-    rightstatus_2(NULL),
+    serialportstatus(NULL),
     qml_plugin_menu(NULL)
 {
     ui->setupUi(this);
@@ -79,10 +78,8 @@ MainWindow::MainWindow(QWidget *parent) :
         QStatusBar *qstBar = this->statusBar();
         if(qstBar!=NULL)
         {
-            rightstatus=new QLabel(this);
-            qstBar->addPermanentWidget(rightstatus);
-            rightstatus_2=new QLabel(this);
-            qstBar->addPermanentWidget(rightstatus_2);
+            serialportstatus=new SerialPortStatus(this);
+            qstBar->addPermanentWidget(serialportstatus);
         }
     }
 
@@ -419,11 +416,75 @@ void MainWindow::handleSessionOpened()
         //打印串口信息
         QSerialPortInfo info=session_mgr->getInfo();
         qDebug()<<info.portName()+" ("+info.description()+") "+tr("Opened");
-        if(rightstatus!=NULL)
+        if(serialportstatus!=NULL)
         {
             QString statusstr;
-            statusstr+= info.portName()+" ("+info.description()+") "+tr("Opened");
-            rightstatus->setText(statusstr);
+            if(info.description().isEmpty())
+            {
+                statusstr+= info.portName()+" "+tr("Opened");
+            }
+            else
+            {
+                statusstr+= info.portName()+" ("+info.description()+") "+tr("Opened");
+            }
+            serialportstatus->SetOpenStatus(statusstr);
+            serialportstatus->SetSpeedStatus(session_mgr->getSerialPort().baudRate());
+            {
+                QString config;
+                config+=std::to_string(static_cast<int>(session_mgr->getSerialPort().dataBits())).c_str();
+                switch (session_mgr->getSerialPort().parity()) {
+                case QSerialPort::Parity::EvenParity:
+                    config+="E";
+                    break;
+                case QSerialPort::Parity::MarkParity:
+                    config+="M";
+                    break;
+                case QSerialPort::Parity::NoParity:
+                    config+="N";
+                    break;
+                case QSerialPort::Parity::OddParity:
+                    config+="S";
+                    break;
+                case QSerialPort::Parity::UnknownParity:
+                default:
+                    config+="U";
+                    break;
+                }
+                switch(session_mgr->getSerialPort().stopBits())
+                {
+                case QSerialPort::StopBits::OneStop:
+                    config+="1";
+                    break;
+                case QSerialPort::StopBits::OneAndHalfStop:
+                    config+="1.5";
+                    break;
+                case QSerialPort::StopBits::TwoStop:
+                    config+="2";
+                    break;
+                default:
+                    break;
+                }
+                serialportstatus->SetBitsConfig(config);
+            }
+            {
+                QString flowcontrol;
+                switch(session_mgr->getSerialPort().flowControl())
+                {
+                case QSerialPort::FlowControl::NoFlowControl:
+                    flowcontrol="None";
+                    break;
+                case QSerialPort::FlowControl::HardwareControl:
+                    flowcontrol="Hard";
+                    break;
+                case QSerialPort::FlowControl::SoftwareControl:
+                    flowcontrol="Soft";
+                    break;
+                default:
+                    break;
+                }
+                serialportstatus->SetFlowControl(flowcontrol);
+            }
+
         }
 
         //清空hex输出
@@ -458,11 +519,11 @@ void MainWindow::handleSessionClosed()
     ui->RTScheckBox->setEnabled(false);
     ui->DTRcheckBox->setEnabled(false);
 
-    if(rightstatus!=NULL)
+    if(serialportstatus!=NULL)
     {
         QString statusstr;
         statusstr+=tr("Closed");
-        rightstatus->setText(statusstr);
+        serialportstatus->SetOpenStatus(statusstr);
     }
 
 }
@@ -809,17 +870,17 @@ void MainWindow::handleEOLCharChanged(int index)
             break;
         default:
             Q_ASSERT_X(false, "MainWindow::handleEOLCharChanged",
-                       "unknown EOL char value: " + ui->eolCombo->currentData().toInt());
+                       "unknown EOL char value: " + (char)ui->eolCombo->currentData().toInt());
             break;
     }
 }
 
 void MainWindow::sessionManager_statisticChanged(uint64_t bytesRead,uint64_t bytesWrite)
 {
-    QString statistic=QString::fromStdString(std::string("R:")+std::to_string(bytesRead)+",S:"+std::to_string(bytesWrite));
-    if(rightstatus_2!=NULL)
+    if(serialportstatus!=NULL)
     {
-        rightstatus_2->setText(statistic);
+        serialportstatus->SetSendLength(bytesWrite);
+        serialportstatus->SetReceiveLength(bytesRead);
     }
 }
 
