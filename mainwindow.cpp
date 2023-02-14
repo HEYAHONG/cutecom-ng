@@ -445,7 +445,6 @@ void MainWindow::handleSessionOpened()
                 case QSerialPort::Parity::OddParity:
                     config+="S";
                     break;
-                case QSerialPort::Parity::UnknownParity:
                 default:
                     config+="U";
                     break;
