@@ -48,6 +48,32 @@ make
 
 编译完成后，可在bin目录中找到编译完成的二进制文件。
 
+## 使用CMake编译
+
+注意：本工程使用CMake编译时不推荐直接在源代码目录编译,建议另外创建目录用于构建。所有打包的安装包均使用CMake生成。
+
+使用以下命令生成工程文件：
+
+```bash
+#Windows下使用以下命令
+cmake -G "Ninja" [源代码目录]
+#Linux下使用以下命令
+cmake  [源代码目录]
+```
+
+使用以下命令开始编译：
+
+```bash
+#直接编译
+ninja #Windows
+make  #Linux
+#打包安装包
+ninja package #Windows
+make package #ubuntu
+```
+
+
+
 # 运行
 
 由于使用了qml模块，因此需要保证下列模块已安装：

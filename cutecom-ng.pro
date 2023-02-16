@@ -121,7 +121,7 @@ include ($$PWD/libs/QVTerminal/src/qvterminal.pri)
 win32{
     COMPONENTS_PRI_DIRS = $$system(cmd.exe /c dir /A:D /B $$PWD/components/)
     for(component_dir,COMPONENTS_PRI_DIRS): {
-        component_pri_file = $$files($$PWD/components/$${component_dir}/*.pri)
+        component_pri_file = $$files($$PWD/components/$${component_dir}/*.pri,false)
         include ($${component_pri_file})
     }
 
@@ -130,7 +130,7 @@ win32{
 unix{
     COMPONENTS_PRI_DIRS = $$files($$PWD/components/*,false)
     for(component_dir,COMPONENTS_PRI_DIRS): {
-        component_pri_file = $$files($${component_dir}/*.pri)
+        component_pri_file = $$files($${component_dir}/*.pri,false)
         include ($${component_pri_file})
     }
 }
