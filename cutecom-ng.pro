@@ -116,5 +116,10 @@ CONFIG(debug, debug|release){
 
 include ($$PWD/libs/QVTerminal/src/qvterminal.pri)
 
-#包含scintilla
-include ($$PWD/libs/scintilla/scintilla.pri)
+
+#包含components中的库
+COMPONENTS_PRI_DIRS = $$files($$PWD/components/*,false)
+for(component_dir,COMPONENTS_PRI_DIRS): {
+    component_pri_file = $$files($${component_dir}/*.pri)
+    include ($${component_pri_file})
+}

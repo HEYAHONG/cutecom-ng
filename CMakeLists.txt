@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.8)
+cmake_minimum_required(VERSION 3.13)
 
 #程序名称
 Set(PROJECT_NAME cutecom-ng)
@@ -101,9 +101,10 @@ else()
 	endif()
 endif()
 
-#添加scintilla
-add_subdirectory(libs/scintilla EXCLUDE_FROM_ALL)
-target_link_libraries(${PROJECT_NAME} scintilla)
+
+#添加组件(components)
+include(cmake/components.cmake)
+components_init(${PROJECT_NAME} ${CMAKE_CURRENT_SOURCE_DIR})
 
 #安装
 include(GNUInstallDirs)
