@@ -143,4 +143,4 @@ People and projects deserving credits are listed in [CREDITS](./CREDITS)
 
 ## License
 
-Cutecom-ng is released under the GPL3, see [LICENSE](./LICENSE)
+Cutecom-ng is released under the GPL3, see [LICENSE](../LICENSE)

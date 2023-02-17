@@ -1,6 +1,6 @@
 # 说明
 
-本工程为个人修改版。基于[cutecom-ng](ReadMeOld.md),添加一些个人常用的功能
+本工程为个人修改版。基于[cutecom-ng](doc/ReadMeOld.md),添加一些个人常用的功能
 
 ## 截图
 
