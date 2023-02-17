@@ -21,10 +21,7 @@ UI_DIR = .generated/
 SOURCES += main.cpp\
     aboutdialog.cpp \
     hexlistitem.cpp \
-    libs/qhexedit2/src/chunks.cpp \
-    libs/qhexedit2/src/commands.cpp \
-    libs/qhexedit2/src/qhexedit.cpp \
-        mainwindow.cpp \
+    mainwindow.cpp \
     connectdialog.cpp \
     nulltransfer.cpp \
     pluginmanager.cpp \
@@ -45,9 +42,6 @@ HEADERS  += mainwindow.h \
     aboutdialog.h \
     connectdialog.h \
     hexlistitem.h \
-    libs/qhexedit2/src/chunks.h \
-    libs/qhexedit2/src/commands.h \
-    libs/qhexedit2/src/qhexedit.h \
     nulltransfer.h \
     pluginmanager.h \
     qqmlloader.h \
@@ -109,12 +103,6 @@ CONFIG(debug, debug|release){
     }
 }
 
-
-
-
-#包含QVTerminal
-
-include ($$PWD/libs/QVTerminal/src/qvterminal.pri)
 
 
 #包含components中的库

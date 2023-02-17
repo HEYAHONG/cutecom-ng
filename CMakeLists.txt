@@ -54,14 +54,6 @@ include_directories(
 libs/qhexedit2/src
 )
 
-#添加QVTerminal的源代码
-file(GLOB QVTERMINAL_CXX_C_FILES libs/QVTerminal/src/*.cpp libs/QVTerminal/src/*.h  libs/QVTerminal/src/vt/*.cpp libs/QVTerminal/src/vt/*.h )
-list(APPEND  MAIN_SRCS ${QVTERMINAL_CXX_C_FILES} )
-include_directories(
-libs/QVTerminal/src
-libs/QVTerminal/src/vt
-)
-
 
 #添加可执行文件
 if(WIN32)
