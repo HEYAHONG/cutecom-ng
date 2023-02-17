@@ -34,9 +34,8 @@ SOURCES += main.cpp\
     history.cpp \
     searchhighlighter.cpp \
     xmodemtransfer.cpp \
-    filetransfer.cpp \
-    libs/crc16.cpp \
-    libs/xmodem.cpp
+    filetransfer.cpp
+
 
 HEADERS  += mainwindow.h \
     aboutdialog.h \
@@ -54,9 +53,7 @@ HEADERS  += mainwindow.h \
     history.h \
     searchhighlighter.h \
     xmodemtransfer.h \
-    filetransfer.h \
-    libs/crc16.h \
-    libs/xmodem.h
+    filetransfer.h
 
 FORMS    += mainwindow.ui \
     aboutdialog.ui \
