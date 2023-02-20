@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.12)
+cmake_minimum_required(VERSION 3.14)
 
 project(ModbusSlaveWin32 C CXX ASM)
 
@@ -14,19 +14,24 @@ add_subdirectory(../../ lib)
 target_link_libraries(ModbusSlaveWin32 SMRP)
 
 #添加argtable3库
-file(GLOB  ARGTABLE3_C_FILES 3rdparty/argtable3/src/*.c)
+file(GLOB  ARGTABLE3_C_FILES ../3rdparty/argtable3/src/*.c)
 target_sources(ModbusSlaveWin32 PUBLIC ${ARGTABLE3_C_FILES})
-target_include_directories(ModbusSlaveWin32 PRIVATE 3rdparty/argtable3/src)
+target_include_directories(ModbusSlaveWin32 PRIVATE ../3rdparty/argtable3/src)
 
 #添加线程库
 FIND_PACKAGE(Threads REQUIRED)
 TARGET_LINK_LIBRARIES(ModbusSlaveWin32  ${CMAKE_THREAD_LIBS_INIT})
 
+#支持MSYS直接编译
+if(MSYS)
+set(WIN32 ON)
+endif()
+
 #添加串口库
 if(WIN32)
-file(GLOB  SERIALPORT_C_FILES 3rdparty/SPinGW/serialport.c)
+file(GLOB  SERIALPORT_C_FILES ../3rdparty/SPinGW/serialport.c)
 target_sources(ModbusSlaveWin32 PUBLIC ${SERIALPORT_C_FILES})
-target_include_directories(ModbusSlaveWin32 PRIVATE 3rdparty/SPinGW/)
+target_include_directories(ModbusSlaveWin32 PRIVATE ../3rdparty/SPinGW/)
 else()
 message(FATAL_ERROR "只支持Windows")
 endif()
