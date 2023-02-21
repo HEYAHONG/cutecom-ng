@@ -1,3 +1,4 @@
+#include <QVector>
 #include "modbussessionmanager.h"
 #include <QThread>
 #include <QApplication>
