@@ -12,6 +12,7 @@ TARGET = cutecom-ng
 TEMPLATE = app
 DESTDIR = bin
 INCLUDEPATH += libs libs/qhexedit2/src/
+CONFIG += c++1z
 
 OBJECTS_DIR = .generated/
 MOC_DIR = .generated/
@@ -23,6 +24,9 @@ SOURCES += main.cpp\
     hexlistitem.cpp \
     mainwindow.cpp \
     connectdialog.cpp \
+    modbusrtudialog.cpp \
+    modbusrtuwritedatadialog.cpp \
+    modbussessionmanager.cpp \
     nulltransfer.cpp \
     pluginmanager.cpp \
     qqmlloader.cpp \
@@ -41,6 +45,9 @@ HEADERS  += mainwindow.h \
     aboutdialog.h \
     connectdialog.h \
     hexlistitem.h \
+    modbusrtudialog.h \
+    modbusrtuwritedatadialog.h \
+    modbussessionmanager.h \
     nulltransfer.h \
     pluginmanager.h \
     qqmlloader.h \
@@ -59,6 +66,8 @@ FORMS    += mainwindow.ui \
     aboutdialog.ui \
     connectdialog.ui \
     hexlistitem.ui \
+    modbusrtudialog.ui \
+    modbusrtuwritedatadialog.ui \
     pluginmanager.ui \
     searchwidget.ui \
     serialportstatus.ui

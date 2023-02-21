@@ -32,6 +32,7 @@
 #include "searchwidget.h"
 #include "pluginmanager.h"
 #include "hexlistitem.h"
+#include "modbusrtudialog.h"
 
 /// maximum count of document blocks for the bootom output
 const int MAX_OUTPUT_LINES = 100;
@@ -62,6 +63,7 @@ MainWindow::MainWindow(QWidget *parent) :
     output_mgr = new OutputManager(this);
     session_mgr = new SessionManager(this);
     connect_dlg = new ConnectDialog(this);
+    modbusrtu_dlg= new ModbusRTUDialog(this);
 
     //连接VT100
     connect(ui->VT100Output,&QVTerminal::OnDeviceWrite,[=](const QByteArray &data){if(session_mgr->isSessionOpen()) session_mgr->sendToSerial(data);});
@@ -394,9 +396,10 @@ void MainWindow::handleSessionOpened()
     ui->connectButton->setDisabled(true);
     ui->disconnectButton->setEnabled(true);
 
-    // enable file transfer and input line
+    // enable file transfer input line modbus
     ui->fileTransferButton->setEnabled(true);
     ui->inputBox->setEnabled(true);
+    ui->modbusButton->setEnabled(true);
 
     //启用RTS与DTR勾选框
     ui->RTScheckBox->setEnabled(true);
@@ -510,9 +513,10 @@ void MainWindow::handleSessionClosed()
     ui->connectButton->setEnabled(true);
     ui->disconnectButton->setDisabled(true);
 
-    // disable file transfer and input line
+    // disable file transfer  input line modbus
     ui->fileTransferButton->setDisabled(true);
     ui->inputBox->setDisabled(true);
+    ui->modbusButton->setDisabled(true);
 
     //关闭RTS与DTR勾选框
     ui->RTScheckBox->setEnabled(false);
@@ -523,6 +527,11 @@ void MainWindow::handleSessionClosed()
         QString statusstr;
         statusstr+=tr("Closed");
         serialportstatus->SetOpenStatus(statusstr);
+    }
+
+    if(modbusrtu_dlg!=NULL)
+    {
+        modbusrtu_dlg->hide();
     }
 
 }
@@ -1205,5 +1214,14 @@ void MainWindow::on_actionabout_triggered()
    AboutDialog dlg(this);
    dlg.setModal(true);
    dlg.exec();
+}
+
+
+void MainWindow::on_modbusButton_clicked()
+{
+    if(modbusrtu_dlg!=NULL)
+    {
+        modbusrtu_dlg->show();
+    }
 }
 

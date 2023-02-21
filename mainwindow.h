@@ -17,6 +17,7 @@
 #include "Version.h"
 #include "qqmlloader.h"
 #include "serialportstatus.h"
+#include "modbusrtudialog.h"
 #include <QMainWindow>
 #include <QTranslator>
 #include <QDebug>
@@ -68,6 +69,7 @@ private:
     SessionManager      *session_mgr;
     OutputManager       *output_mgr;
     ConnectDialog       *connect_dlg;
+    ModbusRTUDialog     *modbusrtu_dlg;
     QWidget             *search_widget;
     QLineEdit           *search_input;
     QToolButton         *search_prev_button;
@@ -172,6 +174,8 @@ private slots:
     void on_actionvt100_output_triggered(bool checked);
 
     void on_actionabout_triggered();
+
+    void on_modbusButton_clicked();
 
 private:
 
