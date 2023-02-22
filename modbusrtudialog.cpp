@@ -73,6 +73,223 @@ ModbusRTUDialog::ModbusRTUDialog(MainWindow *parent) :
 
 }
 
+void ModbusRTUDialog::retranslateUi()
+{
+    saveconfig();
+    ui->retranslateUi(this);
+    loadconfig();
+}
+
+void ModbusRTUDialog::loadconfig()
+{
+    MainWindow *mainwindow=dynamic_cast<MainWindow *>(parent());
+    if(mainwindow!=NULL)
+    {
+        QDomElement docroot=mainwindow->GetConfigRootNode();
+        if(docroot.firstChildElement("modbusrtudialog").isNull())
+        {
+            return;
+        }
+        QDomElement root=docroot.firstChildElement("modbusrtudialog");
+        if(!root.isNull())
+        {
+            {
+                QString value=root.attribute("SlaveAddr");
+                if(!value.isEmpty())
+                {
+                    ui->SalveAddr->setCurrentText(value);
+                }
+            }
+
+            {
+                QString value=root.attribute("AddressFormat");
+                if(!value.isEmpty())
+                {
+                    ui->AddressFormat->setCurrentText(value);
+                }
+            }
+
+            {
+                QString value=root.attribute("ValueFormat");
+                if(!value.isEmpty())
+                {
+                    ui->ValueFormat->setCurrentText(value);
+                }
+            }
+
+            {
+                QDomElement Coils=root.firstChildElement("Coils");
+                if(!Coils.isNull())
+                {
+                    {
+                        QString value=Coils.attribute("StartAddr");
+                        if(!value.isEmpty())
+                        {
+                            ui->CoilsStartAddr->setText(value);
+                        }
+                    }
+
+                    {
+                        QString value=Coils.attribute("Length");
+                        if(!value.isEmpty())
+                        {
+                            ui->CoilsLength->setText(value);
+                        }
+                    }
+                }
+            }
+
+            {
+                QDomElement DiscreteInputs=root.firstChildElement("DiscreteInputs");
+                if(!DiscreteInputs.isNull())
+                {
+                    {
+                        QString value=DiscreteInputs.attribute("StartAddr");
+                        if(!value.isEmpty())
+                        {
+                            ui->DiscreteInputsStartAddr->setText(value);
+                        }
+                    }
+
+                    {
+                        QString value=DiscreteInputs.attribute("Length");
+                        if(!value.isEmpty())
+                        {
+                            ui->DiscreteInputsLength->setText(value);
+                        }
+                    }
+                }
+            }
+
+            {
+                QDomElement HoldingRegister=root.firstChildElement("HoldingRegister");
+                if(!HoldingRegister.isNull())
+                {
+                    {
+                        QString value=HoldingRegister.attribute("StartAddr");
+                        if(!value.isEmpty())
+                        {
+                            ui->HoldingRegisterStartAddr->setText(value);
+                        }
+                    }
+
+                    {
+                        QString value=HoldingRegister.attribute("Length");
+                        if(!value.isEmpty())
+                        {
+                            ui->HoldingRegisterLength->setText(value);
+                        }
+                    }
+                }
+            }
+
+            {
+                QDomElement InputRegister=root.firstChildElement("InputRegister");
+                if(!InputRegister.isNull())
+                {
+                    {
+                        QString value=InputRegister.attribute("StartAddr");
+                        if(!value.isEmpty())
+                        {
+                            ui->InputRegisterStartAddr->setText(value);
+                        }
+                    }
+
+                    {
+                        QString value=InputRegister.attribute("Length");
+                        if(!value.isEmpty())
+                        {
+                            ui->InputRegisterLength->setText(value);
+                        }
+                    }
+                }
+            }
+
+            {
+                QDomElement DataSend=root.firstChildElement("DataSend");
+                if(!DataSend.isNull())
+                {
+                    {
+                        QString value=DataSend.attribute("MaxLine");
+                        if(!value.isEmpty())
+                        {
+                            ui->DataSendMaxLine->setText(value);
+                        }
+                    }
+
+                }
+            }
+
+        }
+
+    }
+}
+void ModbusRTUDialog::saveconfig()
+{
+    MainWindow *mainwindow=dynamic_cast<MainWindow *>(parent());
+    if(mainwindow!=NULL)
+    {
+        QDomDocument &doc=mainwindow->GetConfigDoc();
+        QDomElement docroot=mainwindow->GetConfigRootNode();
+        if(docroot.firstChildElement("modbusrtudialog").isNull())
+        {
+            docroot.appendChild(doc.createElement("modbusrtudialog"));
+        }
+        QDomElement root=docroot.firstChildElement("modbusrtudialog");
+        if(!root.isNull())
+        {
+            root.setAttribute("SlaveAddr",ui->SalveAddr->currentText());
+            root.setAttribute("AddressFormat",ui->AddressFormat->currentText());
+            root.setAttribute("ValueFormat",ui->ValueFormat->currentText());
+            {
+                if(root.firstChildElement("Coils").isNull())
+                {
+                    root.appendChild(doc.createElement("Coils"));
+                }
+                QDomElement Coils=root.firstChildElement("Coils");
+                Coils.setAttribute("StartAddr",ui->CoilsStartAddr->text());
+                Coils.setAttribute("Length",ui->CoilsLength->text());
+            }
+            {
+                if(root.firstChildElement("DiscreteInputs").isNull())
+                {
+                    root.appendChild(doc.createElement("DiscreteInputs"));
+                }
+                QDomElement DiscreteInputs=root.firstChildElement("DiscreteInputs");
+                DiscreteInputs.setAttribute("StartAddr",ui->DiscreteInputsStartAddr->text());
+                DiscreteInputs.setAttribute("Length",ui->DiscreteInputsLength->text());
+            }
+            {
+                if(root.firstChildElement("HoldingRegister").isNull())
+                {
+                    root.appendChild(doc.createElement("HoldingRegister"));
+                }
+                QDomElement HoldingRegister=root.firstChildElement("HoldingRegister");
+                HoldingRegister.setAttribute("StartAddr",ui->HoldingRegisterStartAddr->text());
+                HoldingRegister.setAttribute("Length",ui->HoldingRegisterLength->text());
+            }
+            {
+                if(root.firstChildElement("InputRegister").isNull())
+                {
+                    root.appendChild(doc.createElement("InputRegister"));
+                }
+                QDomElement InputRegister=root.firstChildElement("InputRegister");
+                InputRegister.setAttribute("StartAddr",ui->InputRegisterStartAddr->text());
+                InputRegister.setAttribute("Length",ui->InputRegisterLength->text());
+            }
+            {
+                if(root.firstChildElement("DataSend").isNull())
+                {
+                    root.appendChild(doc.createElement("DataSend"));
+                }
+                QDomElement DataSend=root.firstChildElement("DataSend");
+                DataSend.setAttribute("MaxLine",ui->DataSendMaxLine->text());
+            }
+        }
+
+    }
+}
+
 ModbusRTUDialog::~ModbusRTUDialog()
 {
     delete ui;
@@ -699,7 +916,6 @@ void ModbusRTUDialog::on_InputRegisterLength_textChanged(const QString &arg1)
 
 void ModbusRTUDialog::paintEvent(QPaintEvent *event)
 {
-    //ui->retranslateUi(this);
     QDialog::paintEvent(event);
 }
 

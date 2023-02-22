@@ -20,6 +20,14 @@ public:
     explicit ModbusRTUDialog(MainWindow *parent = nullptr);
     ~ModbusRTUDialog();
 
+    void retranslateUi();
+
+    /*
+     *配置文件相关
+    */
+    void loadconfig();
+    void saveconfig();
+
 private:
     Ui::ModbusRTUDialog *ui;
     ModbusSessionManager *session;
@@ -37,6 +45,7 @@ private:
     void ReadHoldingRegisters();
     void WriteHoldingRegisters();
     void ReadInputRegisters();
+
 
 
 public slots:

@@ -299,6 +299,12 @@ void MainWindow::load_configdoc(QString filename)
     {
         connect_dlg->loadconfig();
     }
+
+    //加载modbusrtudialog的设置
+    if(modbusrtu_dlg!=NULL)
+    {
+        modbusrtu_dlg->loadconfig();
+    }
 }
 void MainWindow::save_configdoc(QString filename)
 {
@@ -361,6 +367,12 @@ void MainWindow::save_configdoc(QString filename)
 
         }
 
+    }
+
+    //保存modbusrtudialog的设置
+    if(modbusrtu_dlg!=NULL)
+    {
+        modbusrtu_dlg->saveconfig();
     }
 
     if(filename.isEmpty())
@@ -912,6 +924,10 @@ void MainWindow::on_actionEnglish_triggered()
     }
     translator->load(":/en_US.qm");
     ui->retranslateUi(this);
+    if(modbusrtu_dlg!=NULL)
+    {
+        modbusrtu_dlg->retranslateUi();
+    }
 }
 
 
@@ -923,6 +939,10 @@ void MainWindow::on_actionChinese_triggered()
     }
     translator->load(":/zh_CN.qm");
     ui->retranslateUi(this);
+    if(modbusrtu_dlg!=NULL)
+    {
+        modbusrtu_dlg->retranslateUi();
+    }
 
 }
 
