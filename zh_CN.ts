@@ -343,60 +343,60 @@
     </message>
     <message>
         <location filename="mainwindow.cpp" line="89"/>
-        <location filename="mainwindow.cpp" line="951"/>
+        <location filename="mainwindow.cpp" line="971"/>
         <source>qml plugin</source>
         <translation>QML插件</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="421"/>
-        <location filename="mainwindow.cpp" line="427"/>
-        <location filename="mainwindow.cpp" line="431"/>
+        <location filename="mainwindow.cpp" line="433"/>
+        <location filename="mainwindow.cpp" line="439"/>
+        <location filename="mainwindow.cpp" line="443"/>
         <source>Opened</source>
         <translation>已打开</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="528"/>
+        <location filename="mainwindow.cpp" line="540"/>
         <source>Closed</source>
         <translation>已关闭</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="557"/>
+        <location filename="mainwindow.cpp" line="569"/>
         <source>Initiating connection with receiver</source>
         <translation>初始化连接</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="586"/>
+        <location filename="mainwindow.cpp" line="598"/>
         <source>Transferring file</source>
         <translation>传输文件</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="597"/>
+        <location filename="mainwindow.cpp" line="609"/>
         <source>Cutecom-ng</source>
         <translation>Cutecom-ng</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="597"/>
+        <location filename="mainwindow.cpp" line="609"/>
         <source>File transferred successfully</source>
         <translation>文件传输成功</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="636"/>
-        <location filename="mainwindow.cpp" line="662"/>
+        <location filename="mainwindow.cpp" line="648"/>
+        <location filename="mainwindow.cpp" line="674"/>
         <source>Warning</source>
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="636"/>
+        <location filename="mainwindow.cpp" line="648"/>
         <source>Input is empty</source>
         <translation>输入为空</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="662"/>
+        <location filename="mainwindow.cpp" line="674"/>
         <source>Input is not hex string</source>
         <translation>输入不是HEX字符串</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1033"/>
+        <location filename="mainwindow.cpp" line="1053"/>
         <source>qml path</source>
         <translation>QML 路径</translation>
     </message>
@@ -479,52 +479,52 @@
         <translation>值格式：</translation>
     </message>
     <message>
-        <location filename="modbusrtudialog.cpp" line="90"/>
+        <location filename="modbusrtudialog.cpp" line="307"/>
         <source>Address</source>
         <translation>地址</translation>
     </message>
     <message>
-        <location filename="modbusrtudialog.cpp" line="90"/>
+        <location filename="modbusrtudialog.cpp" line="307"/>
         <source>Value</source>
         <translation>值</translation>
     </message>
     <message>
-        <location filename="modbusrtudialog.cpp" line="90"/>
+        <location filename="modbusrtudialog.cpp" line="307"/>
         <source>Time</source>
         <translation>时间</translation>
     </message>
     <message>
-        <location filename="modbusrtudialog.cpp" line="488"/>
+        <location filename="modbusrtudialog.cpp" line="715"/>
         <source>ReadCoils</source>
         <translation>读线圈</translation>
     </message>
     <message>
-        <location filename="modbusrtudialog.cpp" line="490"/>
+        <location filename="modbusrtudialog.cpp" line="717"/>
         <source>WriteCoils</source>
         <translation>写线圈</translation>
     </message>
     <message>
-        <location filename="modbusrtudialog.cpp" line="499"/>
+        <location filename="modbusrtudialog.cpp" line="726"/>
         <source>ReadDiscreteInputs</source>
         <translation>读离散输入</translation>
     </message>
     <message>
-        <location filename="modbusrtudialog.cpp" line="509"/>
+        <location filename="modbusrtudialog.cpp" line="736"/>
         <source>ReadHoldingRegisters</source>
         <translation>读保持寄存器</translation>
     </message>
     <message>
-        <location filename="modbusrtudialog.cpp" line="511"/>
+        <location filename="modbusrtudialog.cpp" line="738"/>
         <source>WriteHoldingRegisters</source>
         <translation>写保持寄存器</translation>
     </message>
     <message>
-        <location filename="modbusrtudialog.cpp" line="520"/>
+        <location filename="modbusrtudialog.cpp" line="747"/>
         <source>ReadInputRegisters</source>
         <translation>读输入寄存器</translation>
     </message>
     <message>
-        <location filename="modbusrtudialog.cpp" line="747"/>
+        <location filename="modbusrtudialog.cpp" line="973"/>
         <source>Copy</source>
         <translation>复制</translation>
     </message>
@@ -552,33 +552,38 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="modbusrtuwritedatadialog.ui" line="109"/>
+        <location filename="modbusrtuwritedatadialog.ui" line="106"/>
+        <source>read after write</source>
+        <translation>写后读</translation>
+    </message>
+    <message>
+        <location filename="modbusrtuwritedatadialog.ui" line="129"/>
         <source>Add</source>
         <translation>添加</translation>
     </message>
     <message>
-        <location filename="modbusrtuwritedatadialog.ui" line="116"/>
+        <location filename="modbusrtuwritedatadialog.ui" line="136"/>
         <source>Del</source>
         <translation>删除</translation>
     </message>
     <message>
-        <location filename="modbusrtuwritedatadialog.ui" line="136"/>
+        <location filename="modbusrtuwritedatadialog.ui" line="156"/>
         <source>Ok</source>
         <translation>确定</translation>
     </message>
     <message>
-        <location filename="modbusrtuwritedatadialog.cpp" line="108"/>
-        <location filename="modbusrtuwritedatadialog.cpp" line="132"/>
+        <location filename="modbusrtuwritedatadialog.cpp" line="113"/>
+        <location filename="modbusrtuwritedatadialog.cpp" line="137"/>
         <source>information</source>
         <translation>信息</translation>
     </message>
     <message>
-        <location filename="modbusrtuwritedatadialog.cpp" line="108"/>
+        <location filename="modbusrtuwritedatadialog.cpp" line="113"/>
         <source>Data is empty</source>
         <translation>数据为空</translation>
     </message>
     <message>
-        <location filename="modbusrtuwritedatadialog.cpp" line="132"/>
+        <location filename="modbusrtuwritedatadialog.cpp" line="137"/>
         <source>Data is invalid</source>
         <translation>数据无效</translation>
     </message>

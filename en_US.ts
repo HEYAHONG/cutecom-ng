@@ -333,60 +333,60 @@
     </message>
     <message>
         <location filename="mainwindow.cpp" line="89"/>
-        <location filename="mainwindow.cpp" line="951"/>
+        <location filename="mainwindow.cpp" line="971"/>
         <source>qml plugin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="421"/>
-        <location filename="mainwindow.cpp" line="427"/>
-        <location filename="mainwindow.cpp" line="431"/>
+        <location filename="mainwindow.cpp" line="433"/>
+        <location filename="mainwindow.cpp" line="439"/>
+        <location filename="mainwindow.cpp" line="443"/>
         <source>Opened</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="528"/>
+        <location filename="mainwindow.cpp" line="540"/>
         <source>Closed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="557"/>
+        <location filename="mainwindow.cpp" line="569"/>
         <source>Initiating connection with receiver</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="586"/>
+        <location filename="mainwindow.cpp" line="598"/>
         <source>Transferring file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="597"/>
+        <location filename="mainwindow.cpp" line="609"/>
         <source>Cutecom-ng</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="597"/>
+        <location filename="mainwindow.cpp" line="609"/>
         <source>File transferred successfully</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="636"/>
-        <location filename="mainwindow.cpp" line="662"/>
+        <location filename="mainwindow.cpp" line="648"/>
+        <location filename="mainwindow.cpp" line="674"/>
         <source>Warning</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="636"/>
+        <location filename="mainwindow.cpp" line="648"/>
         <source>Input is empty</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="662"/>
+        <location filename="mainwindow.cpp" line="674"/>
         <source>Input is not hex string</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1033"/>
+        <location filename="mainwindow.cpp" line="1053"/>
         <source>qml path</source>
         <translation type="unfinished"></translation>
     </message>
@@ -465,52 +465,52 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modbusrtudialog.cpp" line="90"/>
+        <location filename="modbusrtudialog.cpp" line="307"/>
         <source>Address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modbusrtudialog.cpp" line="90"/>
+        <location filename="modbusrtudialog.cpp" line="307"/>
         <source>Value</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modbusrtudialog.cpp" line="90"/>
+        <location filename="modbusrtudialog.cpp" line="307"/>
         <source>Time</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modbusrtudialog.cpp" line="488"/>
+        <location filename="modbusrtudialog.cpp" line="715"/>
         <source>ReadCoils</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modbusrtudialog.cpp" line="490"/>
+        <location filename="modbusrtudialog.cpp" line="717"/>
         <source>WriteCoils</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modbusrtudialog.cpp" line="499"/>
+        <location filename="modbusrtudialog.cpp" line="726"/>
         <source>ReadDiscreteInputs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modbusrtudialog.cpp" line="509"/>
+        <location filename="modbusrtudialog.cpp" line="736"/>
         <source>ReadHoldingRegisters</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modbusrtudialog.cpp" line="511"/>
+        <location filename="modbusrtudialog.cpp" line="738"/>
         <source>WriteHoldingRegisters</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modbusrtudialog.cpp" line="520"/>
+        <location filename="modbusrtudialog.cpp" line="747"/>
         <source>ReadInputRegisters</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modbusrtudialog.cpp" line="747"/>
+        <location filename="modbusrtudialog.cpp" line="973"/>
         <source>Copy</source>
         <translation type="unfinished"></translation>
     </message>
@@ -538,33 +538,38 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modbusrtuwritedatadialog.ui" line="109"/>
+        <location filename="modbusrtuwritedatadialog.ui" line="106"/>
+        <source>read after write</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="modbusrtuwritedatadialog.ui" line="129"/>
         <source>Add</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modbusrtuwritedatadialog.ui" line="116"/>
+        <location filename="modbusrtuwritedatadialog.ui" line="136"/>
         <source>Del</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modbusrtuwritedatadialog.ui" line="136"/>
+        <location filename="modbusrtuwritedatadialog.ui" line="156"/>
         <source>Ok</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modbusrtuwritedatadialog.cpp" line="108"/>
-        <location filename="modbusrtuwritedatadialog.cpp" line="132"/>
+        <location filename="modbusrtuwritedatadialog.cpp" line="113"/>
+        <location filename="modbusrtuwritedatadialog.cpp" line="137"/>
         <source>information</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modbusrtuwritedatadialog.cpp" line="108"/>
+        <location filename="modbusrtuwritedatadialog.cpp" line="113"/>
         <source>Data is empty</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modbusrtuwritedatadialog.cpp" line="132"/>
+        <location filename="modbusrtuwritedatadialog.cpp" line="137"/>
         <source>Data is invalid</source>
         <translation type="unfinished"></translation>
     </message>

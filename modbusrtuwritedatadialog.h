@@ -17,6 +17,7 @@ public:
     explicit ModbusRTUWriteDataDialog(QWidget *parent = nullptr);
     ~ModbusRTUWriteDataDialog();
 
+    bool IsReadAfterWrite();
     int GetStartAddr();
     QVector<uint16_t> GetData();
 

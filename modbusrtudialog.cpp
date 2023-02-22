@@ -563,6 +563,11 @@ ModbusRTUDialog::~ModbusRTUDialog()
         {
             session->RequestModbusWrite(slaveaddr,ModbusSessionManager::WriteCoils,dlg.GetStartAddr(),dlg.GetData());
         }
+        QThread::msleep(5);
+        if(dlg.IsReadAfterWrite())
+        {
+            ReadCoils();
+        }
     }
  }
  void ModbusRTUDialog::ReadDiscreteInputs()
@@ -604,6 +609,11 @@ ModbusRTUDialog::~ModbusRTUDialog()
         if(session!=NULL)
         {
             session->RequestModbusWrite(slaveaddr,ModbusSessionManager::WriteHoldingRegisters,dlg.GetStartAddr(),dlg.GetData());
+        }
+        QThread::msleep(5);
+        if(dlg.IsReadAfterWrite())
+        {
+            ReadHoldingRegisters();
         }
     }
 

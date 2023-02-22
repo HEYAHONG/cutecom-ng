@@ -32,6 +32,11 @@ int ModbusRTUWriteDataDialog::GetStartAddr()
     return val;
 }
 
+bool ModbusRTUWriteDataDialog::IsReadAfterWrite()
+{
+    return ui->ReadAfterWrite->isChecked();
+}
+
 void ModbusRTUWriteDataDialog::on_lineEdit_textChanged(const QString &arg1)
 {
     bool isok=false;
