@@ -220,11 +220,10 @@ modbus_master_context_t ModbusSessionManager::GetModbusContext(uint8_t slaveaddr
 
     ctx.request_reply=[](uint8_t *data,size_t length) -> size_t
     {
-        size_t count=0;
-        while(count < 3000)
+        QTime StartTime=QTime::currentTime();
+        while(StartTime.msecsTo(QTime::currentTime()) < 3000)
         {
             QThread::msleep(1);
-            count++;
             std::string datareply=current_session->GetModbusReply();
             if(!datareply.empty())
             {
@@ -248,6 +247,9 @@ void ModbusSessionManager::OnRequestModbusReadImp(uint8_t slaveaddr,ModbusSessio
         //地址越界
         return;
     }
+
+    emit Busy();
+
     bool datachanged=false;
     modbus_master_context_t ctx=GetModbusContext(slaveaddr);
     switch(op)
@@ -387,6 +389,8 @@ void ModbusSessionManager::OnRequestModbusReadImp(uint8_t slaveaddr,ModbusSessio
     {
         emit DataChanged();
     }
+
+    emit Idle();
 }
 
 void ModbusSessionManager::OnRequestModbusWriteImp(uint8_t slaveaddr,ModbusSessionManager::ModbusWriteOperation op,ModbusSessionManager::ModbusAddress addr,QVector<uint16_t> data)
@@ -397,6 +401,9 @@ void ModbusSessionManager::OnRequestModbusWriteImp(uint8_t slaveaddr,ModbusSessi
         //地址越界
         return;
     }
+
+    emit Busy();
+
     modbus_master_context_t ctx=GetModbusContext(slaveaddr);
     switch(op)
     {
@@ -467,6 +474,8 @@ void ModbusSessionManager::OnRequestModbusWriteImp(uint8_t slaveaddr,ModbusSessi
     }
     break;
     }
+
+    emit Idle();
 }
 
 

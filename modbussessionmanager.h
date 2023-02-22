@@ -79,6 +79,15 @@ signals:
     */
     void OnRequestModbusWrite(uint8_t slaveaddr,ModbusSessionManager::ModbusWriteOperation op,ModbusSessionManager::ModbusAddress addr,QVector<uint16_t> data);
 
+    /*
+     * 忙
+    */
+    void Busy();
+    /*
+     * 空闲
+    */
+    void Idle();
+
 public slots:
     /*
      *关闭会话（不可直接使用delete删除ModbusSessionManager，必须通过connect转入ModbusSessionManager关闭会话）
