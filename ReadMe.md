@@ -25,7 +25,7 @@ Qt的Qml技术即可满足此需求，数据处理过程可以以简单的方式
 ```bash
 sudo apt-get install qtcreator libqt5serialport5-dev qtdeclarative5-dev
 #如需使用Qt6,可使用以下命令替换上面的命令
-sudo apt-get install qtcreator libqt6serialport6-dev qt6-declarative-dev
+sudo apt-get install qtcreator libqt6serialport6-dev qt6-declarative-dev libqt6core5compat6-dev
 ```
 
 ## 使用qtcreator编译
