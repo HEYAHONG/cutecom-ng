@@ -1,0 +1,45 @@
+/***************************************************************
+ * Name:      h3rdparty_zlib.c
+ * Purpose:   引入第三方源代码文件
+ * Author:    HYH (hyhsystem.cn)
+ * Created:   2025-06-03
+ * Copyright: HYH (hyhsystem.cn)
+ * License:   MIT
+ **************************************************************/
+
+#define H3RDPARTY_ZLIB_IMPLEMENTATION  1
+
+#include "hdefaults.h"
+#include "h3rdparty.h"
+
+#include "h3rdparty/patch/heap.c"
+
+
+#if !defined(HDEFAULTS_LIBC_MSVC) && !defined(HDEFAULTS_LIBC_MINGW)
+
+#include "h3rdparty/patch/posix_file.c" 
+
+#else
+
+#undef O_NONBLOCK
+#undef O_CLOEXEC
+
+#endif
+
+#ifndef EAGAIN
+#define EAGAIN HEAGAIN
+#endif
+
+#ifndef EWOULDBLOCK
+#define EWOULDBLOCK HEAGAIN
+#endif
+
+#include "stdarg.h"
+
+#ifndef  H3RDPARTY_USING_SYSTEM_ZLIB
+
+#include "3rdparty/zlib/inflate.c"
+
+#endif // H3RDPARTY_USING_SYSTEM_ZLIB
+
+

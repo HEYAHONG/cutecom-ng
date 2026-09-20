@@ -1,0 +1,9 @@
+*.asm
+*.bin
+*.ihx
+*.l*
+*.me*
+*.ma*
+*.r*
+*.s*
+build

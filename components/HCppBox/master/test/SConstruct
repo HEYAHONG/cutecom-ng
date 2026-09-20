@@ -1,0 +1,65 @@
+import os
+import sys
+
+#采用默认环境，由于未设置相关C/C++参数，均采用编译器默认参数,因此请使用最新版编译器
+env = Environment()
+
+#启用HBox_CPP
+os.environ["Enable_HBox_CPP"]="1"
+#启用HCPPBox
+os.environ["Enable_HCPPBox"]="1"
+
+#设置资源目录
+os.environ['HRC_FS_ROOT_DIR']=os.getcwd()+"/fs"
+
+#工具信息
+print("Tools={}".format(env["TOOLS"]))
+
+#msvc设置
+if "msvc" in env["TOOLS"]:
+    env.AppendUnique(CFLAGS='/utf-8')
+    env.AppendUnique(CFLAGS='/std:clatest')
+    env.AppendUnique(CXXFLAGS='/std:c++latest')
+    env.AppendUnique(CXXFLAGS='/utf-8')
+    env.AppendUnique(LIBS=['kernel32.lib','user32.lib','gdi32.lib','winspool.lib','shell32.lib','ole32.lib','oleaut32.lib','uuid.lib','comdlg32.lib','advapi32.lib'])
+
+#gcc设置
+if "gcc" in env["TOOLS"]:
+    env.AppendUnique(CFLAGS='-std=gnu2x')
+    env.AppendUnique(CXXFLAGS='-std=gnu++2b')
+    #pkg-config
+    pkg_config_path=env.WhereIs("pkg-config")
+    if pkg_config_path and len(pkg_config_path) > 0:
+        print("pkg-config={}".format(pkg_config_path))
+        #判断readline是否存在
+        if not env.Execute("pkg-config --exist readline"):
+            print("readline found")
+            env.MergeFlags(['!pkg-config readline  --cflags --libs', '-DHAVE_READLINE=1'])
+        #判断sdl是否存在
+        if not env.Execute("pkg-config --exist sdl"):
+            print("sdl found")
+            env.MergeFlags(['!pkg-config sdl  --cflags --libs', '-DHAVE_SDL=1'])
+    if sys.platform.startswith("win32") or  sys.platform.startswith("cygwin"):
+        env.AppendUnique(LIBS=['kernel32','user32','gdi32','winspool','shell32','ole32','oleaut32','uuid','comdlg32','advapi32'])
+    if not sys.platform.startswith("win32"):
+         env.AppendUnique(LIBS=['dl'],CFLAGS=['-DHAVE_DLFCN_H=1','-DHAVE_SYS_MMAN_H=1'])
+         if sys.platform.startswith("freebsd"):
+            env.AppendUnique(LIBS=['stdthreads','pthread'])
+            
+
+cwd = str(Dir('#'))
+objs = []
+
+from building import *
+
+list = os.listdir(cwd)
+for d in list:
+    path = os.path.join(cwd, d)
+    if os.path.isfile(os.path.join(path, 'SConscript')):
+       target_env=env.Clone()
+       SetEnv(target_env)
+       target_env["OBJPREFIX"]="build/"+d+"/"
+       target_env["SHOBJPREFIX"]="build/"+d+"/"
+       objs = SConscript(os.path.join(path, 'SConscript'))
+       target_env.Program(target="build/"+d,source=objs)
+

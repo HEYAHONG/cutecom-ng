@@ -1,0 +1,329 @@
+#include "hbox.h"
+HDEFAULTS_ZI_ATTRIBUTE
+static const hruntime_symbol_t hruntime_hbox_h3rdparty_symbol[]=
+{
+//h3rdparty/h3rdparty_argtable3_arg_cmd.c
+//h3rdparty/h3rdparty_argtable3_arg_date.c
+//h3rdparty/h3rdparty_argtable3_arg_dbl.c
+//h3rdparty/h3rdparty_argtable3_arg_dstr.c
+//h3rdparty/h3rdparty_argtable3_arg_end.c
+//h3rdparty/h3rdparty_argtable3_arg_file.c
+//h3rdparty/h3rdparty_argtable3_arg_getopt_long.c
+//h3rdparty/h3rdparty_argtable3_arg_hashtable.c
+//h3rdparty/h3rdparty_argtable3_arg_int.c
+//h3rdparty/h3rdparty_argtable3_arg_lit.c
+//h3rdparty/h3rdparty_argtable3_arg_rem.c
+//h3rdparty/h3rdparty_argtable3_arg_rex.c
+//h3rdparty/h3rdparty_argtable3_arg_str.c
+//h3rdparty/h3rdparty_argtable3_argtable3.c
+//h3rdparty/h3rdparty_argtable3_arg_utils.c
+//h3rdparty/h3rdparty_cjson.c
+//h3rdparty/h3rdparty_cjson_port.c
+    {hdefaults_str(hcjson_version),(uintptr_t)&hcjson_version},
+    {hdefaults_str(hcjson_init_hooks),(uintptr_t)&hcjson_init_hooks},
+    {hdefaults_str(hcjson_parse),(uintptr_t)&hcjson_parse},
+    {hdefaults_str(hcjson_parse_with_length),(uintptr_t)&hcjson_parse_with_length},
+    {hdefaults_str(hcjson_parse_with_opts),(uintptr_t)&hcjson_parse_with_opts},
+    {hdefaults_str(hcjson_parse_with_length_opts),(uintptr_t)&hcjson_parse_with_length_opts},
+    {hdefaults_str(hcjson_print),(uintptr_t)&hcjson_print},
+    {hdefaults_str(hcjson_print_unformatted),(uintptr_t)&hcjson_print_unformatted},
+    {hdefaults_str(hcjson_print_buffered),(uintptr_t)&hcjson_print_buffered},
+    {hdefaults_str(hcjson_print_preallocated),(uintptr_t)&hcjson_print_preallocated},
+    {hdefaults_str(hcjson_delete),(uintptr_t)&hcjson_delete},
+    {hdefaults_str(hcjson_get_array_size),(uintptr_t)&hcjson_get_array_size},
+    {hdefaults_str(hcjson_get_array_item),(uintptr_t)&hcjson_get_array_item},
+    {hdefaults_str(hcjson_get_object_item),(uintptr_t)&hcjson_get_object_item},
+    {hdefaults_str(hcjson_get_object_item_casesensitive),(uintptr_t)&hcjson_get_object_item_casesensitive},
+    {hdefaults_str(hcjson_has_object_item),(uintptr_t)&hcjson_has_object_item},
+    {hdefaults_str(hcjson_get_error_ptr),(uintptr_t)&hcjson_get_error_ptr},
+    {hdefaults_str(hcjson_get_string_value),(uintptr_t)&hcjson_get_string_value},
+    {hdefaults_str(hcjson_get_number_value),(uintptr_t)&hcjson_get_number_value},
+    {hdefaults_str(hcjson_is_invalid),(uintptr_t)&hcjson_is_invalid},
+    {hdefaults_str(hcjson_is_false),(uintptr_t)&hcjson_is_false},
+    {hdefaults_str(hcjson_is_true),(uintptr_t)&hcjson_is_true},
+    {hdefaults_str(hcjson_is_bool),(uintptr_t)&hcjson_is_bool},
+    {hdefaults_str(hcjson_is_null),(uintptr_t)&hcjson_is_null},
+    {hdefaults_str(hcjson_is_number),(uintptr_t)&hcjson_is_number},
+    {hdefaults_str(hcjson_is_string),(uintptr_t)&hcjson_is_string},
+    {hdefaults_str(hcjson_is_array),(uintptr_t)&hcjson_is_array},
+    {hdefaults_str(hcjson_is_object),(uintptr_t)&hcjson_is_object},
+    {hdefaults_str(hcjson_is_raw),(uintptr_t)&hcjson_is_raw},
+    {hdefaults_str(hcjson_create_null),(uintptr_t)&hcjson_create_null},
+    {hdefaults_str(hcjson_create_true),(uintptr_t)&hcjson_create_true},
+    {hdefaults_str(hcjson_create_false),(uintptr_t)&hcjson_create_false},
+    {hdefaults_str(hcjson_create_bool),(uintptr_t)&hcjson_create_bool},
+    {hdefaults_str(hcjson_create_number),(uintptr_t)&hcjson_create_number},
+    {hdefaults_str(hcjson_create_string),(uintptr_t)&hcjson_create_string},
+    {hdefaults_str(hcjson_create_raw),(uintptr_t)&hcjson_create_raw},
+    {hdefaults_str(hcjson_create_array),(uintptr_t)&hcjson_create_array},
+    {hdefaults_str(hcjson_create_object),(uintptr_t)&hcjson_create_object},
+    {hdefaults_str(hcjson_create_string_reference),(uintptr_t)&hcjson_create_string_reference},
+    {hdefaults_str(hcjson_create_object_reference),(uintptr_t)&hcjson_create_object_reference},
+    {hdefaults_str(hcjson_create_array_reference),(uintptr_t)&hcjson_create_array_reference},
+    {hdefaults_str(hcjson_create_int_array),(uintptr_t)&hcjson_create_int_array},
+    {hdefaults_str(hcjson_create_float_array),(uintptr_t)&hcjson_create_float_array},
+    {hdefaults_str(hcjson_create_double_array),(uintptr_t)&hcjson_create_double_array},
+    {hdefaults_str(hcjson_create_string_array),(uintptr_t)&hcjson_create_string_array},
+    {hdefaults_str(hcjson_add_item_to_array),(uintptr_t)&hcjson_add_item_to_array},
+    {hdefaults_str(hcjson_add_item_to_object),(uintptr_t)&hcjson_add_item_to_object},
+    {hdefaults_str(hcjson_add_item_to_object_CS),(uintptr_t)&hcjson_add_item_to_object_CS},
+    {hdefaults_str(hcjson_add_item_reference_to_array),(uintptr_t)&hcjson_add_item_reference_to_array},
+    {hdefaults_str(hcjson_add_item_reference_to_object),(uintptr_t)&hcjson_add_item_reference_to_object},
+    {hdefaults_str(hcjson_detach_item_via_pointer),(uintptr_t)&hcjson_detach_item_via_pointer},
+    {hdefaults_str(hcjson_detach_item_from_array),(uintptr_t)&hcjson_detach_item_from_array},
+    {hdefaults_str(hcjson_delete_item_from_array),(uintptr_t)&hcjson_delete_item_from_array},
+    {hdefaults_str(hcjson_detach_item_from_object),(uintptr_t)&hcjson_detach_item_from_object},
+    {hdefaults_str(hcjson_detach_item_from_object_casesensitive),(uintptr_t)&hcjson_detach_item_from_object_casesensitive},
+    {hdefaults_str(hcjson_delete_item_from_object),(uintptr_t)&hcjson_delete_item_from_object},
+    {hdefaults_str(hcjson_delete_item_from_object_casesensitive),(uintptr_t)&hcjson_delete_item_from_object_casesensitive},
+    {hdefaults_str(hcjson_insert_item_in_array),(uintptr_t)&hcjson_insert_item_in_array},
+    {hdefaults_str(hcjson_replace_item_via_pointer),(uintptr_t)&hcjson_replace_item_via_pointer},
+    {hdefaults_str(hcjson_replace_item_in_array),(uintptr_t)&hcjson_replace_item_in_array},
+    {hdefaults_str(hcjson_replace_item_in_object),(uintptr_t)&hcjson_replace_item_in_object},
+    {hdefaults_str(hcjson_replace_item_in_object_casesensitive),(uintptr_t)&hcjson_replace_item_in_object_casesensitive},
+    {hdefaults_str(hcjson_duplicate),(uintptr_t)&hcjson_duplicate},
+    {hdefaults_str(hcjson_compare),(uintptr_t)&hcjson_compare},
+    {hdefaults_str(hcjson_minify),(uintptr_t)&hcjson_minify},
+    {hdefaults_str(hcjson_add_null_to_object),(uintptr_t)&hcjson_add_null_to_object},
+    {hdefaults_str(hcjson_add_true_to_object),(uintptr_t)&hcjson_add_true_to_object},
+    {hdefaults_str(hcjson_add_false_to_object),(uintptr_t)&hcjson_add_false_to_object},
+    {hdefaults_str(hcjson_add_bool_to_object),(uintptr_t)&hcjson_add_bool_to_object},
+    {hdefaults_str(hcjson_add_number_to_object),(uintptr_t)&hcjson_add_number_to_object},
+    {hdefaults_str(hcjson_add_string_to_object),(uintptr_t)&hcjson_add_string_to_object},
+    {hdefaults_str(hcjson_add_raw_to_object),(uintptr_t)&hcjson_add_raw_to_object},
+    {hdefaults_str(hcjson_add_object_to_object),(uintptr_t)&hcjson_add_object_to_object},
+    {hdefaults_str(hcjson_add_array_to_object),(uintptr_t)&hcjson_add_array_to_object},
+    {hdefaults_str(hcjson_set_int_value),(uintptr_t)&hcjson_set_int_value},
+    {hdefaults_str(hcjson_set_number_helper),(uintptr_t)&hcjson_set_number_helper},
+    {hdefaults_str(hcjson_set_number_value),(uintptr_t)&hcjson_set_number_value},
+    {hdefaults_str(hcjson_set_bool_value),(uintptr_t)&hcjson_set_bool_value},
+    {hdefaults_str(hcjson_set_valuestring),(uintptr_t)&hcjson_set_valuestring},
+    {hdefaults_str(hcjson_array_for_each),(uintptr_t)&hcjson_array_for_each},
+    {hdefaults_str(hcjson_malloc),(uintptr_t)&hcjson_malloc},
+    {hdefaults_str(hcjson_free),(uintptr_t)&hcjson_free},
+    {hdefaults_str(hcjson_utils_get_pointer),(uintptr_t)&hcjson_utils_get_pointer},
+    {hdefaults_str(hcjson_utils_get_pointer_casesensitive),(uintptr_t)&hcjson_utils_get_pointer_casesensitive},
+    {hdefaults_str(hcjson_utils_generate_patches),(uintptr_t)&hcjson_utils_generate_patches},
+    {hdefaults_str(hcjson_utils_generate_patches_casesensitive),(uintptr_t)&hcjson_utils_generate_patches_casesensitive},
+    {hdefaults_str(hcjson_utils_add_patch_to_array),(uintptr_t)&hcjson_utils_add_patch_to_array},
+    {hdefaults_str(hcjson_utils_apply_patches),(uintptr_t)&hcjson_utils_apply_patches},
+    {hdefaults_str(hcjson_utils_merge_patch),(uintptr_t)&hcjson_utils_merge_patch},
+    {hdefaults_str(hcjson_utils_merge_patch_casesensitive),(uintptr_t)&hcjson_utils_merge_patch_casesensitive},
+    {hdefaults_str(hcjson_utils_generate_merge_patch),(uintptr_t)&hcjson_utils_generate_merge_patch},
+    {hdefaults_str(hcjson_utils_generate_merge_patch_casesensitive),(uintptr_t)&hcjson_utils_generate_merge_patch_casesensitive},
+    {hdefaults_str(hcjson_utils_find_pointer_from_object_to),(uintptr_t)&hcjson_utils_find_pointer_from_object_to},
+    {hdefaults_str(hcjson_utils_sort_bject),(uintptr_t)&hcjson_utils_sort_bject},
+    {hdefaults_str(hcjson_utils_sort_object_casesensitive),(uintptr_t)&hcjson_utils_sort_object_casesensitive},
+//h3rdparty/h3rdparty_cjsonutils.c
+//h3rdparty/h3rdparty_common.c
+    {hdefaults_str(h3rdparty_init),(uintptr_t)&h3rdparty_init},
+    {hdefaults_str(h3rdparty_loop),(uintptr_t)&h3rdparty_loop},
+//h3rdparty/h3rdparty_freebsd_elf_header.c
+//h3rdparty/h3rdparty_freertos_kernel_croutine.c
+//h3rdparty/h3rdparty_freertos_kernel_event_groups.c
+//h3rdparty/h3rdparty_freertos_kernel_heap.c
+//h3rdparty/h3rdparty_freertos_kernel_list.c
+//h3rdparty/h3rdparty_freertos_kernel_queue.c
+//h3rdparty/h3rdparty_freertos_kernel_stream_buffer.c
+//h3rdparty/h3rdparty_freertos_kernel_tasks.c
+//h3rdparty/h3rdparty_freertos_kernel_timers.c
+//h3rdparty/h3rdparty_libfdt_fdt_addresses.c
+//h3rdparty/h3rdparty_libfdt_fdt.c
+//h3rdparty/h3rdparty_libfdt_fdt_check.c
+//h3rdparty/h3rdparty_libfdt_fdt_empty_tree.c
+//h3rdparty/h3rdparty_libfdt_fdt_overlay.c
+//h3rdparty/h3rdparty_libfdt_fdt_ro.c
+//h3rdparty/h3rdparty_libfdt_fdt_rw.c
+//h3rdparty/h3rdparty_libfdt_fdt_strerror.c
+//h3rdparty/h3rdparty_libfdt_fdt_sw.c
+//h3rdparty/h3rdparty_libfdt_fdt_wip.c
+//h3rdparty/h3rdparty_libfdt_port.c
+    {hdefaults_str(hlibfdt_check),(uintptr_t)&hlibfdt_check},
+    {hdefaults_str(hlibfdt_traverse_node),(uintptr_t)&hlibfdt_traverse_node},
+    {hdefaults_str(hlibfdt_traverse_subnode),(uintptr_t)&hlibfdt_traverse_subnode},
+    {hdefaults_str(hlibfdt_path_offset),(uintptr_t)&hlibfdt_path_offset},
+    {hdefaults_str(hlibfdt_traverse_node_property),(uintptr_t)&hlibfdt_traverse_node_property},
+    {hdefaults_str(hlibfdt_get_phandle),(uintptr_t)&hlibfdt_get_phandle},
+    {hdefaults_str(hlibfdt_node_offset_by_phandle),(uintptr_t)&hlibfdt_node_offset_by_phandle},
+    {hdefaults_str(hlibfdt_getprop),(uintptr_t)&hlibfdt_getprop},
+//h3rdparty/h3rdparty_libqrencode_bitstream.c
+//h3rdparty/h3rdparty_libqrencode_mask.c
+//h3rdparty/h3rdparty_libqrencode_mmask.c
+//h3rdparty/h3rdparty_libqrencode_mqrspec.c
+//h3rdparty/h3rdparty_libqrencode_port.c
+    {hdefaults_str(hlibqrencode_encode_string),(uintptr_t)&hlibqrencode_encode_string},
+    {hdefaults_str(hlibqrencode_encode_string_8bit),(uintptr_t)&hlibqrencode_encode_string_8bit},
+    {hdefaults_str(hlibqrencode_encode_string_MQR),(uintptr_t)&hlibqrencode_encode_string_MQR},
+    {hdefaults_str(hlibqrencode_encode_string8bit_MQR),(uintptr_t)&hlibqrencode_encode_string8bit_MQR},
+    {hdefaults_str(hlibqrencode_encode_data),(uintptr_t)&hlibqrencode_encode_data},
+    {hdefaults_str(hlibqrencode_encode_data_MQR),(uintptr_t)&hlibqrencode_encode_data_MQR},
+    {hdefaults_str(hlibqrencode_free),(uintptr_t)&hlibqrencode_free},
+//h3rdparty/h3rdparty_libqrencode_qrencode.c
+//h3rdparty/h3rdparty_libqrencode_qrinput.c
+//h3rdparty/h3rdparty_libqrencode_qrspec.c
+//h3rdparty/h3rdparty_libqrencode_rsecc.c
+//h3rdparty/h3rdparty_libqrencode_split.c
+//h3rdparty/h3rdparty_lz4_lz4.c
+//h3rdparty/h3rdparty_lz4_lz4file.c
+//h3rdparty/h3rdparty_lz4_lz4frame.c
+//h3rdparty/h3rdparty_lz4_lz4hc.c
+//h3rdparty/h3rdparty_lz4_port.c
+    {hdefaults_str(hlz4_compress),(uintptr_t)&hlz4_compress},
+    {hdefaults_str(hlz4_compress_hc),(uintptr_t)&hlz4_compress_hc},
+    {hdefaults_str(hlz4_decompress),(uintptr_t)&hlz4_decompress},
+    {hdefaults_str(hlz4f_readopen),(uintptr_t)&hlz4f_readopen},
+    {hdefaults_str(hlz4f_read),(uintptr_t)&hlz4f_read},
+    {hdefaults_str(hlz4f_readclose),(uintptr_t)&hlz4f_readclose},
+    {hdefaults_str(hlz4f_preferences_fast),(uintptr_t)&hlz4f_preferences_fast},
+    {hdefaults_str(hlz4f_preferences_best),(uintptr_t)&hlz4f_preferences_best},
+    {hdefaults_str(hlz4f_writeopen),(uintptr_t)&hlz4f_writeopen},
+    {hdefaults_str(hlz4f_write),(uintptr_t)&hlz4f_write},
+    {hdefaults_str(hlz4f_writeclose),(uintptr_t)&hlz4f_writeclose},
+//h3rdparty/h3rdparty_lz4_xxhash.c
+//h3rdparty/h3rdparty_mini-rv32ima_port.c
+    {hdefaults_str(hminirv32ima_core_init),(uintptr_t)&hminirv32ima_core_init},
+    {hdefaults_str(hminirv32ima_machine_default64mb_init),(uintptr_t)&hminirv32ima_machine_default64mb_init},
+    {hdefaults_str(hminirv32ima_machine_default64mb_reset),(uintptr_t)&hminirv32ima_machine_default64mb_reset},
+    {hdefaults_str(hminirv32ima_machine_default64mb_load_image),(uintptr_t)&hminirv32ima_machine_default64mb_load_image},
+    {hdefaults_str(hminirv32ima_machine_default64mb_load_dtb),(uintptr_t)&hminirv32ima_machine_default64mb_load_dtb},
+    {hdefaults_str(hminirv32ima_machine_default64mb_step),(uintptr_t)&hminirv32ima_machine_default64mb_step},
+    {hdefaults_str(hminirv32ima_core_step),(uintptr_t)&hminirv32ima_core_step},
+//h3rdparty/h3rdparty_mqtt_packet.c
+//h3rdparty/h3rdparty_pb_common.c
+//h3rdparty/h3rdparty_pb_decode.c
+//h3rdparty/h3rdparty_pb_encode.c
+//h3rdparty/h3rdparty_pb_port_msg_main_entry.c
+    {hdefaults_str(hnanopb_msg_main_entry_encode),(uintptr_t)&hnanopb_msg_main_entry_encode},
+    {hdefaults_str(hnanobp_msg_main_entry_decode),(uintptr_t)&hnanobp_msg_main_entry_decode},
+    {hdefaults_str(hnanopb_msg_main_entry_with_envp_encode),(uintptr_t)&hnanopb_msg_main_entry_with_envp_encode},
+    {hdefaults_str(hnanobp_msg_main_entry_with_envp_decode),(uintptr_t)&hnanobp_msg_main_entry_with_envp_decode},
+//h3rdparty/h3rdparty_printf.c
+    {hdefaults_str(hprintf_set_callback),(uintptr_t)&hprintf_set_callback},
+    {hdefaults_str(hprintf),(uintptr_t)&hprintf},
+    {hdefaults_str(hsprintf),(uintptr_t)&hsprintf},
+    {hdefaults_str(hsnprintf),(uintptr_t)&hsnprintf},
+    {hdefaults_str(hvprintf),(uintptr_t)&hvprintf},
+    {hdefaults_str(hvsnprintf),(uintptr_t)&hvsnprintf},
+    {hdefaults_str(hfctprintf),(uintptr_t)&hfctprintf},
+    {hdefaults_str(hvfctprintf),(uintptr_t)&hvfctprintf},
+//h3rdparty/h3rdparty_softfloat.c
+//h3rdparty/h3rdparty_softfp.c
+//h3rdparty/h3rdparty_tlsf_port.c
+    {hdefaults_str(htlsf_set_lock),(uintptr_t)&htlsf_set_lock},
+    {hdefaults_str(htlsf_create),(uintptr_t)&htlsf_create},
+    {hdefaults_str(htlsf_create_with_pool),(uintptr_t)&htlsf_create_with_pool},
+    {hdefaults_str(htlsf_destroy),(uintptr_t)&htlsf_destroy},
+    {hdefaults_str(htlsf_get_pool),(uintptr_t)&htlsf_get_pool},
+    {hdefaults_str(htlsf_add_pool),(uintptr_t)&htlsf_add_pool},
+    {hdefaults_str(htlsf_remove_pool),(uintptr_t)&htlsf_remove_pool},
+    {hdefaults_str(htlsf_malloc),(uintptr_t)&htlsf_malloc},
+    {hdefaults_str(htlsf_memalign),(uintptr_t)&htlsf_memalign},
+    {hdefaults_str(htlsf_realloc),(uintptr_t)&htlsf_realloc},
+    {hdefaults_str(htlsf_free),(uintptr_t)&htlsf_free},
+    {hdefaults_str(htlsf_block_size),(uintptr_t)&htlsf_block_size},
+    {hdefaults_str(htlsf_size),(uintptr_t)&htlsf_size},
+    {hdefaults_str(htlsf_align_size),(uintptr_t)&htlsf_align_size},
+    {hdefaults_str(htlsf_block_size_min),(uintptr_t)&htlsf_block_size_min},
+    {hdefaults_str(htlsf_block_size_max),(uintptr_t)&htlsf_block_size_max},
+    {hdefaults_str(htlsf_pool_overhead),(uintptr_t)&htlsf_pool_overhead},
+    {hdefaults_str(htlsf_alloc_overhead),(uintptr_t)&htlsf_alloc_overhead},
+    {hdefaults_str(htlsf_walk_pool),(uintptr_t)&htlsf_walk_pool},
+    {hdefaults_str(htlsf_check),(uintptr_t)&htlsf_check},
+    {hdefaults_str(htlsf_check_pool),(uintptr_t)&htlsf_check_pool},
+    {hdefaults_str(htlsfheap_set_default),(uintptr_t)&htlsfheap_set_default},
+    {hdefaults_str(htlsfheap_get_default),(uintptr_t)&htlsfheap_get_default},
+    {hdefaults_str(htlsfheap_malloc),(uintptr_t)&htlsfheap_malloc},
+    {hdefaults_str(htlsfheap_free),(uintptr_t)&htlsfheap_free},
+//h3rdparty/h3rdparty_tlsf_tlsf.c
+//h3rdparty/h3rdparty_uriparser_UriCommon.c
+//h3rdparty/h3rdparty_uriparser_UriCompare.c
+//h3rdparty/h3rdparty_uriparser_UriCopy.c
+//h3rdparty/h3rdparty_uriparser_UriEscape.c
+//h3rdparty/h3rdparty_uriparser_UriFile.c
+//h3rdparty/h3rdparty_uriparser_UriIp4Base.c
+//h3rdparty/h3rdparty_uriparser_UriIp4.c
+//h3rdparty/h3rdparty_uriparser_UriMemory.c
+//h3rdparty/h3rdparty_uriparser_UriNormalizeBase.c
+//h3rdparty/h3rdparty_uriparser_UriNormalize.c
+//h3rdparty/h3rdparty_uriparser_UriParseBase.c
+//h3rdparty/h3rdparty_uriparser_UriParse.c
+//h3rdparty/h3rdparty_uriparser_UriQuery.c
+//h3rdparty/h3rdparty_uriparser_UriRecompose.c
+//h3rdparty/h3rdparty_uriparser_UriResolve.c
+//h3rdparty/h3rdparty_uriparser_UriSetFragment.c
+//h3rdparty/h3rdparty_uriparser_UriSetHostAuto.c
+//h3rdparty/h3rdparty_uriparser_UriSetHostCommon.c
+//h3rdparty/h3rdparty_uriparser_UriSetHostIp4.c
+//h3rdparty/h3rdparty_uriparser_UriSetHostIp6.c
+//h3rdparty/h3rdparty_uriparser_UriSetHostIpFuture.c
+//h3rdparty/h3rdparty_uriparser_UriSetHostRegName.c
+//h3rdparty/h3rdparty_uriparser_UriSetPath.c
+//h3rdparty/h3rdparty_uriparser_UriSetPort.c
+//h3rdparty/h3rdparty_uriparser_UriSetQuery.c
+//h3rdparty/h3rdparty_uriparser_UriSetScheme.c
+//h3rdparty/h3rdparty_uriparser_UriSetUserInfo.c
+//h3rdparty/h3rdparty_uriparser_UriShorten.c
+//h3rdparty/h3rdparty_uriparser_UriVersion.c
+//h3rdparty/h3rdparty_Z80_port.c
+    {hdefaults_str(hz80cpu_size),(uintptr_t)&hz80cpu_size},
+    {hdefaults_str(hz80cpu_init),(uintptr_t)&hz80cpu_init},
+    {hdefaults_str(hz80cpu_callback_enable_get),(uintptr_t)&hz80cpu_callback_enable_get},
+    {hdefaults_str(hz80cpu_callback_enable_set),(uintptr_t)&hz80cpu_callback_enable_set},
+    {hdefaults_str(hz80cpu_callback_register),(uintptr_t)&hz80cpu_callback_register},
+    {hdefaults_str(hz80cpu_callback_deregister),(uintptr_t)&hz80cpu_callback_deregister},
+    {hdefaults_str(hz80cpu_op_power),(uintptr_t)&hz80cpu_op_power},
+    {hdefaults_str(hz80cpu_op_instant_reset),(uintptr_t)&hz80cpu_op_instant_reset},
+    {hdefaults_str(hz80cpu_op_special_reset),(uintptr_t)&hz80cpu_op_special_reset},
+    {hdefaults_str(hz80cpu_op_int),(uintptr_t)&hz80cpu_op_int},
+    {hdefaults_str(hz80cpu_op_nmi),(uintptr_t)&hz80cpu_op_nmi},
+    {hdefaults_str(hz80cpu_op_execute),(uintptr_t)&hz80cpu_op_execute},
+    {hdefaults_str(hz80cpu_op_run),(uintptr_t)&hz80cpu_op_run},
+    {hdefaults_str(hz80cpu_op_break),(uintptr_t)&hz80cpu_op_break},
+    {hdefaults_str(hz80cpu_op_r),(uintptr_t)&hz80cpu_op_r},
+    {hdefaults_str(hz80cpu_op_refresh_address),(uintptr_t)&hz80cpu_op_refresh_address},
+    {hdefaults_str(hz80cpu_op_in_cycle),(uintptr_t)&hz80cpu_op_in_cycle},
+    {hdefaults_str(hz80cpu_op_out_cycle),(uintptr_t)&hz80cpu_op_out_cycle},
+    {hdefaults_str(hz80cpu_op_wait),(uintptr_t)&hz80cpu_op_wait},
+//h3rdparty/h3rdparty_Z80_Z80.c
+//h3rdparty/h3rdparty_zlib_adler32.c
+//h3rdparty/h3rdparty_zlib_compress.c
+//h3rdparty/h3rdparty_zlib_crc32.c
+//h3rdparty/h3rdparty_zlib_deflate.c
+//h3rdparty/h3rdparty_zlib_gzclose.c
+//h3rdparty/h3rdparty_zlib_gzlib.c
+//h3rdparty/h3rdparty_zlib_gzread.c
+//h3rdparty/h3rdparty_zlib_gzwrite.c
+//h3rdparty/h3rdparty_zlib_infback.c
+//h3rdparty/h3rdparty_zlib_inffast.c
+//h3rdparty/h3rdparty_zlib_inflate.c
+//h3rdparty/h3rdparty_zlib_inftrees.c
+//h3rdparty/h3rdparty_zlib_port.c
+    {hdefaults_str(hzlib_compress),(uintptr_t)&hzlib_compress},
+    {hdefaults_str(hzlib_compress2),(uintptr_t)&hzlib_compress2},
+    {hdefaults_str(hzlib_uncompress),(uintptr_t)&hzlib_uncompress},
+    {hdefaults_str(hzlib_uncompress2),(uintptr_t)&hzlib_uncompress2},
+    {hdefaults_str(hgzdopen),(uintptr_t)&hgzdopen},
+    {hdefaults_str(hgzbuffer),(uintptr_t)&hgzbuffer},
+    {hdefaults_str(hgzsetparams),(uintptr_t)&hgzsetparams},
+    {hdefaults_str(hgzread),(uintptr_t)&hgzread},
+    {hdefaults_str(hgzfread),(uintptr_t)&hgzfread},
+    {hdefaults_str(hgzwrite),(uintptr_t)&hgzwrite},
+    {hdefaults_str(hgzfwrite),(uintptr_t)&hgzfwrite},
+    {hdefaults_str(hgzputs),(uintptr_t)&hgzputs},
+    {hdefaults_str(hgzgets),(uintptr_t)&hgzgets},
+    {hdefaults_str(hgzputc),(uintptr_t)&hgzputc},
+    {hdefaults_str(hgzgetc),(uintptr_t)&hgzgetc},
+    {hdefaults_str(hgzungetc),(uintptr_t)&hgzungetc},
+    {hdefaults_str(hgzflush),(uintptr_t)&hgzflush},
+    {hdefaults_str(hgzrewind),(uintptr_t)&hgzrewind},
+    {hdefaults_str(hgzeof),(uintptr_t)&hgzeof},
+    {hdefaults_str(hgzdirect),(uintptr_t)&hgzdirect},
+    {hdefaults_str(hgzclose),(uintptr_t)&hgzclose},
+    {hdefaults_str(hgzclose_r),(uintptr_t)&hgzclose_r},
+    {hdefaults_str(hgzclose_w),(uintptr_t)&hgzclose_w},
+    {hdefaults_str(hgzerror),(uintptr_t)&hgzerror},
+    {hdefaults_str(hgzclearerr),(uintptr_t)&hgzclearerr},
+//h3rdparty/h3rdparty_zlib_trees.c
+//h3rdparty/h3rdparty_zlib_uncompr.c
+//h3rdparty/h3rdparty_zlib_zutil.c
+};

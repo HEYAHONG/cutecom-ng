@@ -1,0 +1,18 @@
+# 说明
+
+时间相关系统调用。
+
+默认情况下，系统时间依赖系统节拍。
+
+# 外部配置的宏定义
+
+可外部配置的宏定义如下:
+
+| 宏定义                         | 说明                                                      | 备注                     |
+| ------------------------------ | --------------------------------------------------------- | ------------------------ |
+| `HSYSCALL_GETTIMEOFDAY_UPDATE` | 时间更新宏函数，第一个参数为时间指针,第二个参数为时区指针 | `gettimeofday`调用时触发 |
+| `HSYSCALL_SETTIMEOFDAY_UPDATE` | 时间更新宏函数，第一个参数为时间指针,第二个参数为时区指针 | `settimeofday`调用时触发 |
+| `HSYSCALL_CLOCK_GETRES_HOOK`   | 宏函数，参数与返回值同`hsyscall_clock_getres`             |                          |
+| `HSYSCALL_CLOCK_GETTIME_HOOK`  | 宏函数，参数与返回值同`hsyscall_clock_gettime`            |                          |
+| `HSYSCALL_CLOCK_SETTIME_HOOK`  | 宏函数，参数与返回值同`hsyscall_clock_settime`            |                          |
+
