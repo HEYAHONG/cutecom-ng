@@ -137,7 +137,7 @@ int xmodemReceive(unsigned char *dest, int destsz)
 			(xbuff[1] == packetno || xbuff[1] == (unsigned char)packetno-1) &&
 			check(crc, &xbuff[3], bufsz)) {
 			if (xbuff[1] == packetno)	{
-				register int count = destsz - len;
+                int count = destsz - len;
 				if (count > bufsz) count = bufsz;
 				if (count > 0) {
 					memcpy (&dest[len], &xbuff[3], count);
