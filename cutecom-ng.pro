@@ -24,6 +24,8 @@ SOURCES += main.cpp\
     hexlistitem.cpp \
     mainwindow.cpp \
     connectdialog.cpp \
+    dlt645dialog.cpp \
+    dlt645sessionmanager.cpp \
     modbusrtudialog.cpp \
     modbusrtuwritedatadialog.cpp \
     modbussessionmanager.cpp \
@@ -45,6 +47,8 @@ HEADERS  += mainwindow.h \
     aboutdialog.h \
     connectdialog.h \
     hexlistitem.h \
+    dlt645dialog.h \
+    dlt645sessionmanager.h \
     modbusrtudialog.h \
     modbusrtuwritedatadialog.h \
     modbussessionmanager.h \
@@ -66,6 +70,7 @@ FORMS    += mainwindow.ui \
     aboutdialog.ui \
     connectdialog.ui \
     hexlistitem.ui \
+    dlt645dialog.ui \
     modbusrtudialog.ui \
     modbusrtuwritedatadialog.ui \
     pluginmanager.ui \
