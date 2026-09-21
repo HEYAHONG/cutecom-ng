@@ -9,6 +9,13 @@
 #include "HCPPBox.h"
 #include <chrono>
 
+/*
+ * 兼容Qt5
+ */
+#if !defined(QML_ELEMENT)
+#define QML_ELEMENT
+#endif
+
 class dlt645sessionmanager : public QObject
 {
     Q_OBJECT
