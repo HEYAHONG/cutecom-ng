@@ -12,6 +12,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "HCPPBox.h"
 #include "filetransfer.h"
 #include "qhexedit.h"
 #include "Version.h"

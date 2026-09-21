@@ -1,6 +1,7 @@
 #ifndef DLT645SESSIONMANAGER_H
 #define DLT645SESSIONMANAGER_H
 
+#include "HCPPBox.h"
 #include <QObject>
 #include <QQmlEngine>
 #include <QThread>

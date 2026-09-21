@@ -1,6 +1,7 @@
 #ifndef DLT645DIALOG_H
 #define DLT645DIALOG_H
 
+#include "HCPPBox.h"
 #include <QDialog>
 #include <dlt645sessionmanager.h>
 
