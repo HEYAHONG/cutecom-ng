@@ -67,7 +67,8 @@ MainWindow::MainWindow(QWidget *parent) :
     dlt645_dlg = new dlt645dialog(this);
 
     //连接VT100
-    connect(ui->VT100Output,&QVTerminal::OnDeviceWrite,[=](const QByteArray &data) {
+    connect(ui->VT100Output,&QVTerminal::OnDeviceWrite,[=](const QByteArray &data)
+    {
         if(session_mgr->isSessionOpen()) session_mgr->sendToSerial(data);
     });
 
@@ -464,7 +465,8 @@ void MainWindow::handleSessionOpened()
             {
                 QString config;
                 config+=std::to_string(static_cast<int>(session_mgr->getSerialPort().dataBits())).c_str();
-                switch (session_mgr->getSerialPort().parity()) {
+                switch (session_mgr->getSerialPort().parity())
+                {
                 case QSerialPort::Parity::EvenParity:
                     config+="E";
                     break;

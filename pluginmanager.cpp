@@ -44,7 +44,7 @@ void PluginManager::UpdateQmlList()
             model->setHorizontalHeaderLabels(list);
         }
         ui->tableView->horizontalHeader()->setSectionResizeMode(2,QHeaderView::ResizeToContents);
-        for(auto it=mainwindow->qml_list.begin();it!=mainwindow->qml_list.end();it++)
+        for(auto it=mainwindow->qml_list.begin(); it!=mainwindow->qml_list.end(); it++)
         {
             QQmlLoader *loader=it->data();
             QList<QStandardItem *> row;

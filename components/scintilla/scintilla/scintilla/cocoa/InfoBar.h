@@ -16,30 +16,32 @@
 /**
  * Extended text cell for vertically aligned text.
  */
-@interface VerticallyCenteredTextFieldCell : NSTextFieldCell {
-	BOOL mIsEditingOrSelecting;
+@interface VerticallyCenteredTextFieldCell : NSTextFieldCell
+{
+    BOOL mIsEditingOrSelecting;
 }
 
 @end
 
-@interface InfoBar : NSView <InfoBarCommunicator> {
+@interface InfoBar : NSView <InfoBarCommunicator>
+{
 @private
-	NSImage *mBackground;
-	IBDisplay mDisplayMask;
+    NSImage *mBackground;
+    IBDisplay mDisplayMask;
 
-	float mScaleFactor;
-	NSPopUpButton *mZoomPopup;
+    float mScaleFactor;
+    NSPopUpButton *mZoomPopup;
 
-	int mCurrentCaretX;
-	int mCurrentCaretY;
-	NSTextField *mCaretPositionLabel;
-	NSTextField *mStatusTextLabel;
+    int mCurrentCaretX;
+    int mCurrentCaretY;
+    NSTextField *mCaretPositionLabel;
+    NSTextField *mStatusTextLabel;
 
-	id <InfoBarCommunicator> mCallback;
+    id <InfoBarCommunicator> mCallback;
 }
 
 - (void) notify: (NotificationType) type message: (NSString *) message location: (NSPoint) location
-	  value: (float) value;
+    value: (float) value;
 - (void) setCallback: (id <InfoBarCommunicator>) callback;
 
 - (void) createItems;

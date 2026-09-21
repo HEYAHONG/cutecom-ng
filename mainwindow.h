@@ -31,7 +31,8 @@
 #include <QList>
 #include <QDomDocument>
 
-namespace Ui {
+namespace Ui
+{
 class MainWindow;
 }
 

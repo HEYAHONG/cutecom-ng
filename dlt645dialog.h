@@ -7,7 +7,8 @@
 
 class MainWindow;
 
-namespace Ui {
+namespace Ui
+{
 class dlt645dialog;
 }
 

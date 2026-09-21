@@ -86,7 +86,7 @@ void SearchHighlighter::highlightBlock(const QString &text)
             else if (_num_occurences == _occurence_cursor)
             {
                 // record position of this occurence
-               last_cursor_pos = block_position + index;
+                last_cursor_pos = block_position + index;
                 charFormat.setBackground(CURSOR_SEARCHRESULT_BACKCOL);
 
                 emit cursorPosChanged(block_position + index);

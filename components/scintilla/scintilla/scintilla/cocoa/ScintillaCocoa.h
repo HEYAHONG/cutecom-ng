@@ -71,9 +71,10 @@ extern "C" NSString *ScintillaRecPboardType;
 /**
  * Helper class to be used as timer target (NSTimer).
  */
-@interface TimerTarget : NSObject {
-	void *mTarget;
-	NSNotificationQueue *notificationQueue;
+@interface TimerTarget : NSObject
+{
+    void *mTarget;
+    NSNotificationQueue *notificationQueue;
 }
 - (id) init: (void *) target;
 - (void) timerFired: (NSTimer *) timer;
@@ -81,182 +82,184 @@ extern "C" NSString *ScintillaRecPboardType;
 - (void) idleTriggered: (NSNotification *) notification;
 @end
 
-namespace Scintilla::Internal {
+namespace Scintilla::Internal
+{
 
 /**
  * Main scintilla class, implemented for macOS (Cocoa).
  */
-class ScintillaCocoa : public ScintillaBase {
+class ScintillaCocoa : public ScintillaBase
+{
 private:
-	__weak ScintillaView *sciView;
-	TimerTarget *timerTarget;
-	NSEvent *lastMouseEvent;
+    __weak ScintillaView *sciView;
+    TimerTarget *timerTarget;
+    NSEvent *lastMouseEvent;
 
-	__weak id<ScintillaNotificationProtocol> delegate;
+    __weak id<ScintillaNotificationProtocol> delegate;
 
-	SciNotifyFunc	notifyProc;
-	intptr_t notifyObj;
+    SciNotifyFunc   notifyProc;
+    intptr_t notifyObj;
 
-	bool capturedMouse;
-	bool isFirstResponder;
-	bool isActive;
+    bool capturedMouse;
+    bool isFirstResponder;
+    bool isActive;
 
-	bool enteredSetScrollingSize;
+    bool enteredSetScrollingSize;
 
-	bool GetPasteboardData(NSPasteboard *board, SelectionText *selectedText);
-	void SetPasteboardData(NSPasteboard *board, const SelectionText &selectedText);
-	Sci::Position TargetAsUTF8(char *text) const;
-	Sci::Position EncodedFromUTF8(const char *utf8, char *encoded) const;
+    bool GetPasteboardData(NSPasteboard *board, SelectionText *selectedText);
+    void SetPasteboardData(NSPasteboard *board, const SelectionText &selectedText);
+    Sci::Position TargetAsUTF8(char *text) const;
+    Sci::Position EncodedFromUTF8(const char *utf8, char *encoded) const;
 
-	int scrollSpeed;
-	int scrollTicks;
-	CFRunLoopObserverRef observer;
+    int scrollSpeed;
+    int scrollTicks;
+    CFRunLoopObserverRef observer;
 
-	FindHighlightLayer *layerFindIndicator;
+    FindHighlightLayer *layerFindIndicator;
 
 protected:
-	Point GetVisibleOriginInMain() const override;
-	PRectangle GetClientRectangle() const override;
-	PRectangle GetClientDrawingRectangle() override;
-	Point ConvertPoint(NSPoint point);
-	void RedrawRect(PRectangle rc) override;
-	void DiscardOverdraw() override;
-	void Redraw() override;
+    Point GetVisibleOriginInMain() const override;
+    PRectangle GetClientRectangle() const override;
+    PRectangle GetClientDrawingRectangle() override;
+    Point ConvertPoint(NSPoint point);
+    void RedrawRect(PRectangle rc) override;
+    void DiscardOverdraw() override;
+    void Redraw() override;
 
-	void Init();
-	std::unique_ptr<CaseFolder> CaseFolderForEncoding() override;
-	std::string CaseMapString(const std::string &s, CaseMapping caseMapping) override;
-	void CancelModes() override;
+    void Init();
+    std::unique_ptr<CaseFolder> CaseFolderForEncoding() override;
+    std::string CaseMapString(const std::string &s, CaseMapping caseMapping) override;
+    void CancelModes() override;
 
 public:
-	ScintillaCocoa(ScintillaView *sciView_, SCIContentView *viewContent, SCIMarginView *viewMargin);
-	// Deleted so ScintillaCocoa objects can not be copied.
-	ScintillaCocoa(const ScintillaCocoa &) = delete;
-	ScintillaCocoa &operator=(const ScintillaCocoa &) = delete;
-	~ScintillaCocoa() override;
-	void Finalise() override;
+    ScintillaCocoa(ScintillaView *sciView_, SCIContentView *viewContent, SCIMarginView *viewMargin);
+    // Deleted so ScintillaCocoa objects can not be copied.
+    ScintillaCocoa(const ScintillaCocoa &) = delete;
+    ScintillaCocoa &operator=(const ScintillaCocoa &) = delete;
+    ~ScintillaCocoa() override;
+    void Finalise() override;
 
-	void SetDelegate(id<ScintillaNotificationProtocol> delegate_);
-	void RegisterNotifyCallback(intptr_t windowid, SciNotifyFunc callback);
-	sptr_t WndProc(Scintilla::Message iMessage, uptr_t wParam, sptr_t lParam) override;
+    void SetDelegate(id<ScintillaNotificationProtocol> delegate_);
+    void RegisterNotifyCallback(intptr_t windowid, SciNotifyFunc callback);
+    sptr_t WndProc(Scintilla::Message iMessage, uptr_t wParam, sptr_t lParam) override;
 
-	NSScrollView *ScrollContainer() const;
-	SCIContentView *ContentView();
+    NSScrollView *ScrollContainer() const;
+    SCIContentView *ContentView();
 
-	bool SyncPaint(void *gc, PRectangle rc);
-	bool Draw(NSRect rect, CGContextRef gc);
-	void PaintMargin(NSRect aRect);
+    bool SyncPaint(void *gc, PRectangle rc);
+    bool Draw(NSRect rect, CGContextRef gc);
+    void PaintMargin(NSRect aRect);
 
-	sptr_t DefWndProc(Scintilla::Message iMessage, uptr_t wParam, sptr_t lParam) override;
-	void TickFor(TickReason reason) override;
-	bool FineTickerRunning(TickReason reason) override;
-	void FineTickerStart(TickReason reason, int millis, int tolerance) override;
-	void FineTickerCancel(TickReason reason) override;
-	bool SetIdle(bool on) override;
-	void SetMouseCapture(bool on) override;
-	bool HaveMouseCapture() override;
-	void WillDraw(NSRect rect);
-	void ScrollText(Sci::Line linesToMove) override;
-	void SetVerticalScrollPos() override;
-	void SetHorizontalScrollPos() override;
-	bool ModifyScrollBars(Sci::Line nMax, Sci::Line nPage) override;
-	bool SetScrollingSize();
-	void Resize();
-	void UpdateForScroll();
+    sptr_t DefWndProc(Scintilla::Message iMessage, uptr_t wParam, sptr_t lParam) override;
+    void TickFor(TickReason reason) override;
+    bool FineTickerRunning(TickReason reason) override;
+    void FineTickerStart(TickReason reason, int millis, int tolerance) override;
+    void FineTickerCancel(TickReason reason) override;
+    bool SetIdle(bool on) override;
+    void SetMouseCapture(bool on) override;
+    bool HaveMouseCapture() override;
+    void WillDraw(NSRect rect);
+    void ScrollText(Sci::Line linesToMove) override;
+    void SetVerticalScrollPos() override;
+    void SetHorizontalScrollPos() override;
+    bool ModifyScrollBars(Sci::Line nMax, Sci::Line nPage) override;
+    bool SetScrollingSize();
+    void Resize();
+    void UpdateForScroll();
 
-	// Notifications for the owner.
-	void NotifyChange() override;
-	void NotifyFocus(bool focus) override;
-	void NotifyParent(Scintilla::NotificationData scn) override;
-	void NotifyURIDropped(const char *uri);
+    // Notifications for the owner.
+    void NotifyChange() override;
+    void NotifyFocus(bool focus) override;
+    void NotifyParent(Scintilla::NotificationData scn) override;
+    void NotifyURIDropped(const char *uri);
 
-	bool HasSelection();
-	bool CanUndo();
-	bool CanRedo();
-	void CopyToClipboard(const SelectionText &selectedText) override;
-	void Copy() override;
-	bool CanPaste() override;
-	void Paste() override;
-	void Paste(bool rectangular);
-	void CTPaint(void *gc, NSRect rc);
-	void CallTipMouseDown(NSPoint pt);
-	void CreateCallTipWindow(PRectangle rc) override;
-	void AddToPopUp(const char *label, int cmd = 0, bool enabled = true) override;
-	void ClaimSelection() override;
+    bool HasSelection();
+    bool CanUndo();
+    bool CanRedo();
+    void CopyToClipboard(const SelectionText &selectedText) override;
+    void Copy() override;
+    bool CanPaste() override;
+    void Paste() override;
+    void Paste(bool rectangular);
+    void CTPaint(void *gc, NSRect rc);
+    void CallTipMouseDown(NSPoint pt);
+    void CreateCallTipWindow(PRectangle rc) override;
+    void AddToPopUp(const char *label, int cmd = 0, bool enabled = true) override;
+    void ClaimSelection() override;
 
-	NSPoint GetCaretPosition();
+    NSPoint GetCaretPosition();
 
-	std::string UTF8FromEncoded(std::string_view encoded) const override;
-	std::string EncodedFromUTF8(std::string_view utf8) const override;
+    std::string UTF8FromEncoded(std::string_view encoded) const override;
+    std::string EncodedFromUTF8(std::string_view utf8) const override;
 
-	static sptr_t DirectFunction(sptr_t ptr, unsigned int iMessage, uptr_t wParam, sptr_t lParam);
-	static sptr_t DirectStatusFunction(sptr_t ptr, unsigned int iMessage, uptr_t wParam, sptr_t lParam, int *pStatus);
+    static sptr_t DirectFunction(sptr_t ptr, unsigned int iMessage, uptr_t wParam, sptr_t lParam);
+    static sptr_t DirectStatusFunction(sptr_t ptr, unsigned int iMessage, uptr_t wParam, sptr_t lParam, int *pStatus);
 
-	NSTimer *timers[static_cast<size_t>(TickReason::platform)+1];
-	void TimerFired(NSTimer *timer);
-	void IdleTimerFired();
-	static void UpdateObserver(CFRunLoopObserverRef observer, CFRunLoopActivity activity, void *sci);
-	void ObserverAdd();
-	void ObserverRemove();
-	void IdleWork() override;
-	void QueueIdleWork(WorkItems items, Sci::Position upTo) override;
-	ptrdiff_t InsertText(NSString *input, Scintilla::CharacterSource charSource);
-	NSRange PositionsFromCharacters(NSRange rangeCharacters) const;
-	NSRange CharactersFromPositions(NSRange rangePositions) const;
-	NSString *RangeTextAsString(NSRange rangePositions) const;
-	NSInteger VisibleLineForIndex(NSInteger index);
-	NSRange RangeForVisibleLine(NSInteger lineVisible);
-	NSRect FrameForRange(NSRange rangeCharacters);
-	NSRect GetBounds() const;
-	void SelectOnlyMainSelection();
-	void ConvertSelectionVirtualSpace();
-	bool ClearAllSelections();
-	void CompositionStart();
-	void CompositionCommit();
-	void CompositionUndo();
-	void SetDocPointer(Document *document) override;
+    NSTimer *timers[static_cast<size_t>(TickReason::platform)+1];
+    void TimerFired(NSTimer *timer);
+    void IdleTimerFired();
+    static void UpdateObserver(CFRunLoopObserverRef observer, CFRunLoopActivity activity, void *sci);
+    void ObserverAdd();
+    void ObserverRemove();
+    void IdleWork() override;
+    void QueueIdleWork(WorkItems items, Sci::Position upTo) override;
+    ptrdiff_t InsertText(NSString *input, Scintilla::CharacterSource charSource);
+    NSRange PositionsFromCharacters(NSRange rangeCharacters) const;
+    NSRange CharactersFromPositions(NSRange rangePositions) const;
+    NSString *RangeTextAsString(NSRange rangePositions) const;
+    NSInteger VisibleLineForIndex(NSInteger index);
+    NSRange RangeForVisibleLine(NSInteger lineVisible);
+    NSRect FrameForRange(NSRange rangeCharacters);
+    NSRect GetBounds() const;
+    void SelectOnlyMainSelection();
+    void ConvertSelectionVirtualSpace();
+    bool ClearAllSelections();
+    void CompositionStart();
+    void CompositionCommit();
+    void CompositionUndo();
+    void SetDocPointer(Document *document) override;
 
-	bool KeyboardInput(NSEvent *event);
-	void MouseDown(NSEvent *event);
-	void RightMouseDown(NSEvent *event);
-	void MouseMove(NSEvent *event);
-	void MouseUp(NSEvent *event);
-	void MouseEntered(NSEvent *event);
-	void MouseExited(NSEvent *event);
-	void MouseWheel(NSEvent *event);
+    bool KeyboardInput(NSEvent *event);
+    void MouseDown(NSEvent *event);
+    void RightMouseDown(NSEvent *event);
+    void MouseMove(NSEvent *event);
+    void MouseUp(NSEvent *event);
+    void MouseEntered(NSEvent *event);
+    void MouseExited(NSEvent *event);
+    void MouseWheel(NSEvent *event);
 
-	// Drag and drop
-	void StartDrag() override;
-	bool GetDragData(id <NSDraggingInfo> info, NSPasteboard &pasteBoard, SelectionText *selectedText);
-	NSDragOperation DraggingEntered(id <NSDraggingInfo> info);
-	NSDragOperation DraggingUpdated(id <NSDraggingInfo> info);
-	void DraggingExited(id <NSDraggingInfo> info);
-	bool PerformDragOperation(id <NSDraggingInfo> info);
-	void DragScroll();
+    // Drag and drop
+    void StartDrag() override;
+    bool GetDragData(id <NSDraggingInfo> info, NSPasteboard &pasteBoard, SelectionText *selectedText);
+    NSDragOperation DraggingEntered(id <NSDraggingInfo> info);
+    NSDragOperation DraggingUpdated(id <NSDraggingInfo> info);
+    void DraggingExited(id <NSDraggingInfo> info);
+    bool PerformDragOperation(id <NSDraggingInfo> info);
+    void DragScroll();
 
-	// Promote some methods needed for NSResponder actions.
-	void SelectAll() override;
-	void DeleteBackward();
-	void Cut() override;
-	void Undo() override;
-	void Redo() override;
+    // Promote some methods needed for NSResponder actions.
+    void SelectAll() override;
+    void DeleteBackward();
+    void Cut() override;
+    void Undo() override;
+    void Redo() override;
 
-	bool ShouldDisplayPopupOnMargin();
-	bool ShouldDisplayPopupOnText();
-	NSMenu *CreateContextMenu(NSEvent *event);
-	void HandleCommand(NSInteger command);
+    bool ShouldDisplayPopupOnMargin();
+    bool ShouldDisplayPopupOnText();
+    NSMenu *CreateContextMenu(NSEvent *event);
+    void HandleCommand(NSInteger command);
 
-	void SetFirstResponder(bool isFirstResponder_);
-	void ActiveStateChanged(bool isActive_);
-	void SetFocusActiveState();
-	void UpdateBaseElements() override;
+    void SetFirstResponder(bool isFirstResponder_);
+    void ActiveStateChanged(bool isActive_);
+    void SetFocusActiveState();
+    void UpdateBaseElements() override;
 
-	void WindowWillMove();
+    void WindowWillMove();
 
-	// Find indicator
-	void ShowFindIndicatorForRange(NSRange charRange, BOOL retaining);
-	void MoveFindIndicatorWithBounce(BOOL bounce);
-	void HideFindIndicator();
+    // Find indicator
+    void ShowFindIndicatorForRange(NSRange charRange, BOOL retaining);
+    void MoveFindIndicatorWithBounce(BOOL bounce);
+    void HideFindIndicator();
 };
 
 

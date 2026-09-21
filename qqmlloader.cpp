@@ -67,7 +67,7 @@ QString QQmlLoader::GetPluginName()
     QVariant name=GetRootItemProperty("pluginname");
     if(!name.isNull())
     {
-            return name.toString();
+        return name.toString();
     }
 
     return QString();
@@ -93,7 +93,7 @@ void QQmlLoader::statusChanged(QQuickWidget::Status status)
     {
         QString ErrorStr;
         QList<QQmlError>  errors=quick->errors();
-        for(QList<QQmlError>::iterator it=errors.begin();it!=errors.end();it++)
+        for(QList<QQmlError>::iterator it=errors.begin(); it!=errors.end(); it++)
         {
             QQmlError error=(*it);
             if(error.isValid())
@@ -110,11 +110,11 @@ void QQmlLoader::statusChanged(QQuickWidget::Status status)
 void QQmlLoader::SetupQmlContext(QQmlContext *root)
 {
     (void)root;
-   /*
-    *设置Qml环境。
-    *主要设置一些qml脚本中需要用到的上下文环境
-    *
-    */
+    /*
+     *设置Qml环境。
+     *主要设置一些qml脚本中需要用到的上下文环境
+     *
+     */
 
     /*
      *将本类对象传入qml上下文，名称为cutecomng
@@ -160,19 +160,19 @@ void QQmlLoader::SetSerialDataCallback(QJSValue callback)
     QmlSerialDataCallback=callback;
 }
 
- bool QQmlLoader::SendSerialData(QString data)
- {
-     bool ret=false;
-     if(serialsession!=NULL)
-     {
+bool QQmlLoader::SendSerialData(QString data)
+{
+    bool ret=false;
+    if(serialsession!=NULL)
+    {
         if(serialsession->isSessionOpen())
         {
             serialsession->sendToSerial(QByteArray(data.toStdString().c_str(),data.toStdString().length()));
             ret=true;
         }
-     }
-     return ret;
- }
+    }
+    return ret;
+}
 
 void QQmlLoader::SetTimerCallback(QJSValue callback)
 {

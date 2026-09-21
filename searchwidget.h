@@ -3,7 +3,8 @@
 
 #include <QObject>
 #include <QFrame>
-namespace Ui {
+namespace Ui
+{
 class SearchWidget;
 }
 
@@ -19,7 +20,7 @@ private:
 signals:
 
 protected:
-     void paintEvent(QPaintEvent *event);
+    void paintEvent(QPaintEvent *event);
 
 };
 

@@ -9,7 +9,8 @@
 #ifndef DEBUGGING_H
 #define DEBUGGING_H
 
-namespace Scintilla::Internal {
+namespace Scintilla::Internal
+{
 
 #if defined(__clang__)
 # if __has_feature(attribute_analyzer_noreturn)
@@ -24,7 +25,8 @@ namespace Scintilla::Internal {
 /**
  * Platform namespace used to segregate debugging functions.
  */
-namespace Platform {
+namespace Platform
+{
 
 void DebugDisplay(const char *s) noexcept;
 void DebugPrintf(const char *format, ...) noexcept;

@@ -68,15 +68,15 @@ void ModbusRTUWriteDataDialog::on_AddButton_clicked()
         QStringList list=db_list->stringList();
         if(ui->listView->currentIndex().isValid())
         {
-           int row=ui->listView->currentIndex().row();
-           if(row >= 0)
-           {
-               list.insert(row,"0");
-           }
-           else
-           {
-               list.append("0");
-           }
+            int row=ui->listView->currentIndex().row();
+            if(row >= 0)
+            {
+                list.insert(row,"0");
+            }
+            else
+            {
+                list.append("0");
+            }
         }
         else
         {
@@ -94,12 +94,12 @@ void ModbusRTUWriteDataDialog::on_DelButton_clicked()
         QStringList list=db_list->stringList();
         if(ui->listView->currentIndex().isValid())
         {
-           int row=ui->listView->currentIndex().row();
-           if(row >= 0)
-           {
-               list.erase(list.begin()+row);
-               db_list->setStringList(list);
-           }
+            int row=ui->listView->currentIndex().row();
+            if(row >= 0)
+            {
+                list.erase(list.begin()+row);
+                db_list->setStringList(list);
+            }
         }
     }
 }
@@ -116,7 +116,7 @@ void ModbusRTUWriteDataDialog::on_OkButton_clicked()
 
     data.clear();
     {
-        for(auto it=list.begin();it!=list.end();it++)
+        for(auto it=list.begin(); it!=list.end(); it++)
         {
             bool isok=false;
             int val=-1;

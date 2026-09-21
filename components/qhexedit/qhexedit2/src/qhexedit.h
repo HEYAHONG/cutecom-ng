@@ -303,7 +303,7 @@ signals:
     void overwriteModeChanged(bool state);
 
 
-/*! \cond docNever */
+    /*! \cond docNever */
 public:
     ~QHexEdit();
 

@@ -78,7 +78,7 @@ QMap<ModbusSessionManager::ModbusAddress,ModbusSessionManager::ModbusValue> Modb
     QMutexLocker lock(&SessionLock);
     QMap<ModbusSessionManager::ModbusAddress,ModbusSessionManager::ModbusValue> ret;
     {
-        for(auto it=CoilsTable.begin();it!=CoilsTable.end();it++)
+        for(auto it=CoilsTable.begin(); it!=CoilsTable.end(); it++)
         {
             ret[it.key()]=it.value();
         }
@@ -90,7 +90,7 @@ QMap<ModbusSessionManager::ModbusAddress,ModbusSessionManager::ModbusValue> Modb
     QMutexLocker lock(&SessionLock);
     QMap<ModbusSessionManager::ModbusAddress,ModbusSessionManager::ModbusValue> ret;
     {
-        for(auto it=DiscreteInputsTable.begin();it!=DiscreteInputsTable.end();it++)
+        for(auto it=DiscreteInputsTable.begin(); it!=DiscreteInputsTable.end(); it++)
         {
             ret[it.key()]=it.value();
         }
@@ -102,7 +102,7 @@ QMap<ModbusSessionManager::ModbusAddress,ModbusSessionManager::ModbusValue> Modb
     QMutexLocker lock(&SessionLock);
     QMap<ModbusSessionManager::ModbusAddress,ModbusSessionManager::ModbusValue> ret;
     {
-        for(auto it=HoldingRegistersTable.begin();it!=HoldingRegistersTable.end();it++)
+        for(auto it=HoldingRegistersTable.begin(); it!=HoldingRegistersTable.end(); it++)
         {
             ret[it.key()]=it.value();
         }
@@ -114,7 +114,7 @@ QMap<ModbusSessionManager::ModbusAddress,ModbusSessionManager::ModbusValue> Modb
     QMutexLocker lock(&SessionLock);
     QMap<ModbusSessionManager::ModbusAddress,ModbusSessionManager::ModbusValue> ret;
     {
-        for(auto it=InputRegistersTable.begin();it!=InputRegistersTable.end();it++)
+        for(auto it=InputRegistersTable.begin(); it!=InputRegistersTable.end(); it++)
         {
             ret[it.key()]=it.value();
         }
@@ -156,9 +156,9 @@ std::string ModbusSessionManager::GetModbusReply()
 
 void ModbusSessionManager::ClearModbusReply()
 {
-   QMutexLocker lock(&SessionLock);
-   modbus_reply.clear();
-   modbus_reply_temp.clear();
+    QMutexLocker lock(&SessionLock);
+    modbus_reply.clear();
+    modbus_reply_temp.clear();
 }
 
 void ModbusSessionManager::SendModbusRequest(std::string frame)
@@ -179,25 +179,25 @@ void ModbusSessionManager::CloseSession()
 
 void ModbusSessionManager::SetCoils(ModbusAddress addr,uint16_t val)
 {
-    ModbusValue data={val,QTime::currentTime()};
+    ModbusValue data= {val,QTime::currentTime()};
     QMutexLocker lock(&SessionLock);
     CoilsTable[addr]=data;
 }
 void ModbusSessionManager::SetDiscreteInputs(ModbusAddress addr,uint16_t val)
 {
-    ModbusValue data={val,QTime::currentTime()};
+    ModbusValue data= {val,QTime::currentTime()};
     QMutexLocker lock(&SessionLock);
     DiscreteInputsTable[addr]=data;
 }
 void ModbusSessionManager::SetHoldingRegisters(ModbusAddress addr,uint16_t val)
 {
-    ModbusValue data={val,QTime::currentTime()};
+    ModbusValue data= {val,QTime::currentTime()};
     QMutexLocker lock(&SessionLock);
     HoldingRegistersTable[addr]=data;
 }
 void ModbusSessionManager::SetInputRegisters(ModbusAddress addr,uint16_t val)
 {
-    ModbusValue data={val,QTime::currentTime()};
+    ModbusValue data= {val,QTime::currentTime()};
     QMutexLocker lock(&SessionLock);
     InputRegistersTable[addr]=data;
 }
@@ -206,7 +206,7 @@ void ModbusSessionManager::SetInputRegisters(ModbusAddress addr,uint16_t val)
 static thread_local ModbusSessionManager *current_session=NULL;
 modbus_master_context_t ModbusSessionManager::GetModbusContext(uint8_t slaveaddr)
 {
-    modbus_master_context_t ctx={0,NULL,NULL};
+    modbus_master_context_t ctx= {0,NULL,NULL};
 
     ctx.slave_addr=slaveaddr;
 
@@ -256,15 +256,15 @@ void ModbusSessionManager::OnRequestModbusReadImp(uint8_t slaveaddr,ModbusSessio
     {
     case ReadCoils:
     {
-        uint8_t buff[MODBUS_RTU_MAX_ADU_LENGTH]={0};
-        bool    val[MODBUS_MAX_READ_BITS]={0};
+        uint8_t buff[MODBUS_RTU_MAX_ADU_LENGTH]= {0};
+        bool    val[MODBUS_MAX_READ_BITS]= {0};
         ModbusAddress startaddr=addr;
         while(length > MODBUS_MAX_READ_BITS)
         {
             if(Modbus_Master_Read_OX(&ctx,startaddr,val,MODBUS_MAX_READ_BITS,buff,sizeof(buff)))
             {
                 datachanged=true;
-                for(size_t i= 0;i < MODBUS_MAX_READ_BITS ; i++)
+                for(size_t i= 0; i < MODBUS_MAX_READ_BITS ; i++)
                 {
                     SetCoils(startaddr+i,val[i]);
                 }
@@ -278,7 +278,7 @@ void ModbusSessionManager::OnRequestModbusReadImp(uint8_t slaveaddr,ModbusSessio
             if(Modbus_Master_Read_OX(&ctx,startaddr,val,length,buff,sizeof(buff)))
             {
                 datachanged=true;
-                for(size_t i= 0;i < length ; i++)
+                for(size_t i= 0; i < length ; i++)
                 {
                     SetCoils(startaddr+i,val[i]);
                 }
@@ -289,15 +289,15 @@ void ModbusSessionManager::OnRequestModbusReadImp(uint8_t slaveaddr,ModbusSessio
     break;
     case ReadDiscreteInputs:
     {
-        uint8_t buff[MODBUS_RTU_MAX_ADU_LENGTH]={0};
-        bool    val[MODBUS_MAX_READ_BITS]={0};
+        uint8_t buff[MODBUS_RTU_MAX_ADU_LENGTH]= {0};
+        bool    val[MODBUS_MAX_READ_BITS]= {0};
         ModbusAddress startaddr=addr;
         while(length > MODBUS_MAX_READ_BITS)
         {
             if(Modbus_Master_Read_IX(&ctx,startaddr,val,MODBUS_MAX_READ_BITS,buff,sizeof(buff)))
             {
                 datachanged=true;
-                for(size_t i= 0;i < MODBUS_MAX_READ_BITS ; i++)
+                for(size_t i= 0; i < MODBUS_MAX_READ_BITS ; i++)
                 {
                     SetDiscreteInputs(startaddr+i,val[i]);
                 }
@@ -311,7 +311,7 @@ void ModbusSessionManager::OnRequestModbusReadImp(uint8_t slaveaddr,ModbusSessio
             if(Modbus_Master_Read_IX(&ctx,startaddr,val,length,buff,sizeof(buff)))
             {
                 datachanged=true;
-                for(size_t i= 0;i < length ; i++)
+                for(size_t i= 0; i < length ; i++)
                 {
                     SetDiscreteInputs(startaddr+i,val[i]);
                 }
@@ -321,15 +321,15 @@ void ModbusSessionManager::OnRequestModbusReadImp(uint8_t slaveaddr,ModbusSessio
     break;
     case ReadHoldingRegisters:
     {
-        uint8_t buff[MODBUS_RTU_MAX_ADU_LENGTH]={0};
-        uint16_t    val[MODBUS_MAX_READ_REGISTERS]={0};
+        uint8_t buff[MODBUS_RTU_MAX_ADU_LENGTH]= {0};
+        uint16_t    val[MODBUS_MAX_READ_REGISTERS]= {0};
         ModbusAddress startaddr=addr;
         while(length > MODBUS_MAX_READ_REGISTERS)
         {
             if(Modbus_Master_Read_Hold_Register(&ctx,startaddr,val,MODBUS_MAX_READ_REGISTERS,buff,sizeof(buff)))
             {
                 datachanged=true;
-                for(size_t i= 0;i < MODBUS_MAX_READ_REGISTERS ; i++)
+                for(size_t i= 0; i < MODBUS_MAX_READ_REGISTERS ; i++)
                 {
                     SetHoldingRegisters(startaddr+i,val[i]);
                 }
@@ -343,7 +343,7 @@ void ModbusSessionManager::OnRequestModbusReadImp(uint8_t slaveaddr,ModbusSessio
             if(Modbus_Master_Read_Hold_Register(&ctx,startaddr,val,length,buff,sizeof(buff)))
             {
                 datachanged=true;
-                for(size_t i= 0;i < length ; i++)
+                for(size_t i= 0; i < length ; i++)
                 {
                     SetHoldingRegisters(startaddr+i,val[i]);
                 }
@@ -353,15 +353,15 @@ void ModbusSessionManager::OnRequestModbusReadImp(uint8_t slaveaddr,ModbusSessio
     break;
     case ReadInputRegisters:
     {
-        uint8_t buff[MODBUS_RTU_MAX_ADU_LENGTH]={0};
-        uint16_t    val[MODBUS_MAX_READ_REGISTERS]={0};
+        uint8_t buff[MODBUS_RTU_MAX_ADU_LENGTH]= {0};
+        uint16_t    val[MODBUS_MAX_READ_REGISTERS]= {0};
         ModbusAddress startaddr=addr;
         while(length > MODBUS_MAX_READ_REGISTERS)
         {
             if(Modbus_Master_Read_Input_Register(&ctx,startaddr,val,MODBUS_MAX_READ_REGISTERS,buff,sizeof(buff)))
             {
                 datachanged=true;
-                for(size_t i= 0;i < MODBUS_MAX_READ_REGISTERS ; i++)
+                for(size_t i= 0; i < MODBUS_MAX_READ_REGISTERS ; i++)
                 {
                     SetInputRegisters(startaddr+i,val[i]);
                 }
@@ -375,7 +375,7 @@ void ModbusSessionManager::OnRequestModbusReadImp(uint8_t slaveaddr,ModbusSessio
             if(Modbus_Master_Read_Input_Register(&ctx,startaddr,val,length,buff,sizeof(buff)))
             {
                 datachanged=true;
-                for(size_t i= 0;i < length ; i++)
+                for(size_t i= 0; i < length ; i++)
                 {
                     SetInputRegisters(startaddr+i,val[i]);
                 }
@@ -409,12 +409,12 @@ void ModbusSessionManager::OnRequestModbusWriteImp(uint8_t slaveaddr,ModbusSessi
     {
     case WriteCoils:
     {
-        uint8_t buff[MODBUS_RTU_MAX_ADU_LENGTH]={0};
-        bool    val[MODBUS_MAX_WRITE_BITS]={0};
+        uint8_t buff[MODBUS_RTU_MAX_ADU_LENGTH]= {0};
+        bool    val[MODBUS_MAX_WRITE_BITS]= {0};
         ModbusAddress startaddr=addr;
         while(length>MODBUS_MAX_WRITE_BITS)
         {
-            for(size_t i = 0; i < MODBUS_MAX_WRITE_BITS;i++)
+            for(size_t i = 0; i < MODBUS_MAX_WRITE_BITS; i++)
             {
                 if(data[startaddr+i-addr])
                 {
@@ -432,7 +432,7 @@ void ModbusSessionManager::OnRequestModbusWriteImp(uint8_t slaveaddr,ModbusSessi
 
         if(length>0)
         {
-            for(size_t i = 0; i < length;i++)
+            for(size_t i = 0; i < length; i++)
             {
                 if(data[startaddr+i-addr])
                 {
@@ -449,12 +449,12 @@ void ModbusSessionManager::OnRequestModbusWriteImp(uint8_t slaveaddr,ModbusSessi
     break;
     case WriteHoldingRegisters:
     {
-        uint8_t buff[MODBUS_RTU_MAX_ADU_LENGTH]={0};
-        uint16_t    val[MODBUS_MAX_WRITE_REGISTERS]={0};
+        uint8_t buff[MODBUS_RTU_MAX_ADU_LENGTH]= {0};
+        uint16_t    val[MODBUS_MAX_WRITE_REGISTERS]= {0};
         ModbusAddress startaddr=addr;
         while(length>MODBUS_MAX_WRITE_REGISTERS)
         {
-            for(size_t i = 0; i < MODBUS_MAX_WRITE_REGISTERS;i++)
+            for(size_t i = 0; i < MODBUS_MAX_WRITE_REGISTERS; i++)
             {
                 val[i]=data[startaddr+i-addr];
             }
@@ -465,7 +465,7 @@ void ModbusSessionManager::OnRequestModbusWriteImp(uint8_t slaveaddr,ModbusSessi
 
         if(length>0)
         {
-            for(size_t i = 0; i < length;i++)
+            for(size_t i = 0; i < length; i++)
             {
                 val[i]=data[startaddr+i-addr];
             }

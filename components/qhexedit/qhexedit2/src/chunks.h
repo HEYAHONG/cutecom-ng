@@ -28,7 +28,7 @@ struct Chunk
 
 class Chunks: public QObject
 {
-Q_OBJECT
+    Q_OBJECT
 public:
     // Constructors and file settings
     Chunks(QObject *parent);

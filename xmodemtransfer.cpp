@@ -102,29 +102,29 @@ void XModemTransfer::performTransfer()
 
     switch (errcode)
     {
-        case -6:
-            ret = LocalCancelledError;
-            break;
-        case -5:
+    case -6:
+        ret = LocalCancelledError;
+        break;
+    case -5:
+        ret = UnknownError;
+        break;
+    case -4:
+        ret = TransmissionError;
+        break;
+    case -2:
+        ret = NoSyncError;
+        break;
+    case -1:
+        ret = RemoteCancelledError;
+        break;
+    default:
+        if (errcode >= 0)
+            // success
+            ret = NoError;
+        else
+            // shouldn't be here
             ret = UnknownError;
-            break;
-        case -4:
-            ret = TransmissionError;
-            break;
-        case -2:
-            ret = NoSyncError;
-            break;
-        case -1:
-            ret = RemoteCancelledError;
-            break;
-        default:
-            if (errcode >= 0)
-                // success
-                ret = NoError;
-            else
-                // shouldn't be here
-                ret = UnknownError;
-            break;
+        break;
     }
 
     emit transferEnded(ret);

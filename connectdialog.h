@@ -14,7 +14,8 @@
 
 #include <QDialog>
 
-namespace Ui {
+namespace Ui
+{
 class ConnectDialog;
 }
 
@@ -31,7 +32,8 @@ public:
     /**
      * \brief dump file formats
      */
-    enum DumpFormat {
+    enum DumpFormat
+    {
         Raw   = 1,
         Ascii = 2
     };
@@ -76,7 +78,7 @@ signals:
      */
     void openDeviceClicked(const QHash<QString, QString>& config);
 protected:
-     void paintEvent(QPaintEvent *event);
+    void paintEvent(QPaintEvent *event);
 };
 
 #endif // CONNECTDIALOG_H

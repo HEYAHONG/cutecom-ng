@@ -5,8 +5,9 @@
 #include <QtCore>
 #include "../src/qhexedit.h"
 
-namespace Ui {
-    class SearchDialog;
+namespace Ui
+{
+class SearchDialog;
 }
 
 class SearchDialog : public QDialog

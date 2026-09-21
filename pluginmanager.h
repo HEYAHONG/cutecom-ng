@@ -4,7 +4,8 @@
 #include <QDialog>
 #include <QStandardItemModel>
 
-namespace Ui {
+namespace Ui
+{
 class PluginManager;
 }
 

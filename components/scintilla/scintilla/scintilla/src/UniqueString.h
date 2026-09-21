@@ -11,10 +11,12 @@
 #ifndef UNIQUESTRING_H
 #define UNIQUESTRING_H
 
-namespace Scintilla::Internal {
+namespace Scintilla::Internal
+{
 
-constexpr bool IsNullOrEmpty(const char *text) noexcept {
-	return text == nullptr || *text == '\0';
+constexpr bool IsNullOrEmpty(const char *text) noexcept
+{
+    return text == nullptr || *text == '\0';
 }
 
 using UniqueString = std::unique_ptr<const char[]>;
@@ -25,13 +27,14 @@ UniqueString UniqueStringCopy(const char *text);
 
 // A set of strings that always returns the same pointer for each string.
 
-class UniqueStringSet {
+class UniqueStringSet
+{
 private:
-	std::vector<UniqueString> strings;
+    std::vector<UniqueString> strings;
 public:
-	UniqueStringSet();
-	void Clear() noexcept;
-	const char *Save(const char *text);
+    UniqueStringSet();
+    void Clear() noexcept;
+    const char *Save(const char *text);
 };
 
 }

@@ -91,21 +91,21 @@ void ConnectDialog::fillSettingsLists()
     // fill baud rates combo box
     QStringList baud_rates;
     baud_rates <<
-        QString::number(QSerialPort::Baud1200) << QString::number(QSerialPort::Baud2400);
+               QString::number(QSerialPort::Baud1200) << QString::number(QSerialPort::Baud2400);
     baud_rates <<
-        QString::number(QSerialPort::Baud4800) << QString::number(QSerialPort::Baud9600);
+               QString::number(QSerialPort::Baud4800) << QString::number(QSerialPort::Baud9600);
     baud_rates <<
-        QString::number(QSerialPort::Baud19200) << QString::number(QSerialPort::Baud38400);
+               QString::number(QSerialPort::Baud19200) << QString::number(QSerialPort::Baud38400);
     baud_rates <<
-        QString::number(QSerialPort::Baud57600) << QString::number(QSerialPort::Baud115200);
+               QString::number(QSerialPort::Baud57600) << QString::number(QSerialPort::Baud115200);
     ui->baudRateList->addItems(baud_rates);
 
     // fill data bits combo box
     QStringList data_bits;
     data_bits <<
-        QString::number(QSerialPort::Data5) << QString::number(QSerialPort::Data6);
+              QString::number(QSerialPort::Data5) << QString::number(QSerialPort::Data6);
     data_bits <<
-        QString::number(QSerialPort::Data7) << QString::number(QSerialPort::Data8);
+              QString::number(QSerialPort::Data7) << QString::number(QSerialPort::Data8);
     ui->dataBitsList->addItems(data_bits);
 
     // fill stop bits combo box
@@ -182,7 +182,7 @@ void ConnectDialog::loadconfig()
                 if(!defaultconfig.isNull())
                 {
                     QDomNamedNodeMap attrs=defaultconfig.attributes();
-                    for(int i=0;i<attrs.size();i++)
+                    for(int i=0; i<attrs.size(); i++)
                     {
                         QDomNode attr=attrs.item(i);
                         if(attr.nodeName()=="device")
@@ -191,7 +191,7 @@ void ConnectDialog::loadconfig()
                             QSerialPortInfo info(attr.nodeValue());
                             if(!info.isNull())
                             {
-                               default_cfg[attr.nodeName()]=attr.nodeValue();
+                                default_cfg[attr.nodeName()]=attr.nodeValue();
                             }
                             continue;
                         }
@@ -202,18 +202,19 @@ void ConnectDialog::loadconfig()
                             int i=parity.toInt(&isok);
                             if(isok)
                             {
-                               //符合QSerialPort::Parity定义
-                               if(i==0)
-                               {
-                                   default_cfg[attr.nodeName()]=ui->parityList->itemText(0);
-                               } else
-                               {
-                                   default_cfg[attr.nodeName()]=ui->parityList->itemText(i-1);
-                               }
+                                //符合QSerialPort::Parity定义
+                                if(i==0)
+                                {
+                                    default_cfg[attr.nodeName()]=ui->parityList->itemText(0);
+                                }
+                                else
+                                {
+                                    default_cfg[attr.nodeName()]=ui->parityList->itemText(i-1);
+                                }
                             }
                             else
                             {
-                               default_cfg[attr.nodeName()]=attr.nodeValue();
+                                default_cfg[attr.nodeName()]=attr.nodeValue();
                             }
                             continue;
                         }
@@ -224,11 +225,11 @@ void ConnectDialog::loadconfig()
                             int i=flow_control.toInt(&isok);
                             if(isok)
                             {
-                               default_cfg[attr.nodeName()]=ui->flowControlList->itemText(i);
+                                default_cfg[attr.nodeName()]=ui->flowControlList->itemText(i);
                             }
                             else
                             {
-                               default_cfg[attr.nodeName()]=attr.nodeValue();
+                                default_cfg[attr.nodeName()]=attr.nodeValue();
                             }
                             continue;
                         }
@@ -252,11 +253,11 @@ void ConnectDialog::accept()
     cfg[QStringLiteral("baud_rate")] = ui->baudRateList->currentText();
     cfg[QStringLiteral("data_bits")] = ui->dataBitsList->currentText();
     cfg[QStringLiteral("stop_bits")] = ui->stopBitsList->itemData(
-                ui->stopBitsList->currentIndex()).toString();
+                                           ui->stopBitsList->currentIndex()).toString();
     cfg[QStringLiteral("parity")] = ui->parityList->itemData(
-                ui->parityList->currentIndex()).toString();
+                                        ui->parityList->currentIndex()).toString();
     cfg[QStringLiteral("flow_control")] = ui->flowControlList->itemData(
-                ui->flowControlList->currentIndex()).toString();
+            ui->flowControlList->currentIndex()).toString();
     cfg[QStringLiteral("dump_enabled")] = ui->dumpFile->isChecked() ? "1" : "0";
     cfg[QStringLiteral("dump_file")] = ui->dumpPath->text();
     cfg[QStringLiteral("dump_format")] = QString::number(ui->dumpRawFmt->isChecked() ? Raw : Ascii);
@@ -281,7 +282,7 @@ void ConnectDialog::accept()
                 {
                     defaultconfig=doc.createElement("default");
                 }
-                for(auto it=cfg.begin();it!=cfg.end();it++)
+                for(auto it=cfg.begin(); it!=cfg.end(); it++)
                 {
                     defaultconfig.setAttribute(it.key(),it.value());
                 }

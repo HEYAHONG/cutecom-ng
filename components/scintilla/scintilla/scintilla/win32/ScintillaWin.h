@@ -8,7 +8,8 @@
 #ifndef SCINTILLAWIN_H
 #define SCINTILLAWIN_H
 
-namespace Scintilla::Internal {
+namespace Scintilla::Internal
+{
 
 class ScintillaWin;
 

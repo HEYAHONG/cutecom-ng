@@ -17,10 +17,11 @@
 #include <SciLexer.h>
 #include <Lexilla.h>
 
-@interface AppController : NSObject {
-  IBOutlet NSBox *mEditHost;
-  ScintillaView* mEditor;
-  ScintillaView* sciExtra;	// For testing Scintilla tear-down
+@interface AppController : NSObject
+{
+    IBOutlet NSBox *mEditHost;
+    ScintillaView* mEditor;
+    ScintillaView* sciExtra;  // For testing Scintilla tear-down
 }
 
 - (void) awakeFromNib;

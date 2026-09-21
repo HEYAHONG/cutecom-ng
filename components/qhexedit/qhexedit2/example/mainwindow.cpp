@@ -55,8 +55,8 @@ void MainWindow::dropEvent(QDropEvent *event)
 /*****************************************************************************/
 void MainWindow::about()
 {
-   QMessageBox::about(this, tr("About QHexEdit"),
-            tr("The QHexEdit example is a short Demo of the QHexEdit Widget."));
+    QMessageBox::about(this, tr("About QHexEdit"),
+                       tr("The QHexEdit example is a short Demo of the QHexEdit Widget."));
 }
 
 void MainWindow::dataChanged()
@@ -67,7 +67,8 @@ void MainWindow::dataChanged()
 void MainWindow::open()
 {
     QString fileName = QFileDialog::getOpenFileName(this);
-    if (!fileName.isEmpty()) {
+    if (!fileName.isEmpty())
+    {
         loadFile(fileName);
     }
 }
@@ -85,9 +86,12 @@ void MainWindow::findNext()
 
 bool MainWindow::save()
 {
-    if (isUntitled) {
+    if (isUntitled)
+    {
         return saveAs();
-    } else {
+    }
+    else
+    {
         return saveFile(curFile);
     }
 }
@@ -95,7 +99,7 @@ bool MainWindow::save()
 bool MainWindow::saveAs()
 {
     QString fileName = QFileDialog::getSaveFileName(this, tr("Save As"),
-                                                    curFile);
+                       curFile);
     if (fileName.isEmpty())
         return false;
 
@@ -108,7 +112,8 @@ void MainWindow::saveSelectionToReadableFile()
     if (!fileName.isEmpty())
     {
         QFile file(fileName);
-        if (!file.open(QFile::WriteOnly | QFile::Text)) {
+        if (!file.open(QFile::WriteOnly | QFile::Text))
+        {
             QMessageBox::warning(this, tr("QHexEdit"),
                                  tr("Cannot write file %1:\n%2.")
                                  .arg(fileName)
@@ -130,7 +135,8 @@ void MainWindow::saveToReadableFile()
     if (!fileName.isEmpty())
     {
         QFile file(fileName);
-        if (!file.open(QFile::WriteOnly | QFile::Text)) {
+        if (!file.open(QFile::WriteOnly | QFile::Text))
+        {
             QMessageBox::warning(this, tr("QHexEdit"),
                                  tr("Cannot write file %1:\n%2.")
                                  .arg(fileName)
@@ -340,7 +346,8 @@ void MainWindow::createToolBars()
 void MainWindow::loadFile(const QString &fileName)
 {
     file.setFileName(fileName);
-    if (!hexEdit->setData(file)) {
+    if (!hexEdit->setData(file))
+    {
         QMessageBox::warning(this, tr("QHexEdit"),
                              tr("Cannot read file %1:\n%2.")
                              .arg(fileName)
@@ -397,7 +404,8 @@ bool MainWindow::saveFile(const QString &fileName)
     }
     QApplication::restoreOverrideCursor();
 
-    if (!ok) {
+    if (!ok)
+    {
         QMessageBox::warning(this, tr("QHexEdit"),
                              tr("Cannot write file %1.")
                              .arg(fileName));

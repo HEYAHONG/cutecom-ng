@@ -9,48 +9,61 @@
 #ifndef WINTYPES_H
 #define WINTYPES_H
 
-namespace Scintilla::Internal {
+namespace Scintilla::Internal
+{
 
 // Release an IUnknown* and set to nullptr.
 // While IUnknown::Release must be noexcept, it isn't marked as such so produces
 // warnings which are avoided by the catch.
 template <class T>
-inline void ReleaseUnknown(T *&ppUnknown) noexcept {
-	if (ppUnknown) {
-		try {
-			ppUnknown->Release();
-		} catch (...) {
-			// Never occurs
-		}
-		ppUnknown = nullptr;
-	}
+inline void ReleaseUnknown(T *&ppUnknown) noexcept
+{
+    if (ppUnknown)
+    {
+        try
+        {
+            ppUnknown->Release();
+        }
+        catch (...)
+        {
+            // Never occurs
+        }
+        ppUnknown = nullptr;
+    }
 }
 
-struct UnknownReleaser {
-	// Called by unique_ptr to destroy/free the resource
-	template <class T>
-	void operator()(T *pUnknown) noexcept {
-		try {
-			pUnknown->Release();
-		} catch (...) {
-			// IUnknown::Release must not throw, ignore if it does.
-		}
-	}
+struct UnknownReleaser
+{
+    // Called by unique_ptr to destroy/free the resource
+    template <class T>
+    void operator()(T *pUnknown) noexcept
+    {
+        try
+        {
+            pUnknown->Release();
+        }
+        catch (...)
+        {
+            // IUnknown::Release must not throw, ignore if it does.
+        }
+    }
 };
 
 
 /// Find a function in a DLL and convert to a function pointer.
 /// This avoids undefined and conditionally defined behaviour.
 template<typename T>
-inline T DLLFunction(HMODULE hModule, LPCSTR lpProcName) noexcept {
-	if (!hModule) {
-		return nullptr;
-	}
-	FARPROC function = ::GetProcAddress(hModule, lpProcName);
-	static_assert(sizeof(T) == sizeof(function));
-	T fp {};
-	memcpy(&fp, &function, sizeof(T));
-	return fp;
+inline T DLLFunction(HMODULE hModule, LPCSTR lpProcName) noexcept
+{
+    if (!hModule)
+    {
+        return nullptr;
+    }
+    FARPROC function = ::GetProcAddress(hModule, lpProcName);
+    static_assert(sizeof(T) == sizeof(function));
+    T fp {};
+    memcpy(&fp, &function, sizeof(T));
+    return fp;
 }
 
 }

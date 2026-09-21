@@ -89,131 +89,131 @@ void QVTerminal::appendData(const QByteArray &data)
         QChar c = *it;
         switch (_state)
         {
-            case QVTerminal::Text:
-                if (c.toLatin1() == 0x1B)
-                {
-                    appendString(text);
-                    text.clear();
-                    _state = QVTerminal::Escape;
-                }
-                else if (c == '\n')
-                {
-                    appendString(text);
-                    text.clear();
-                    _layout->appendLine();
+        case QVTerminal::Text:
+            if (c.toLatin1() == 0x1B)
+            {
+                appendString(text);
+                text.clear();
+                _state = QVTerminal::Escape;
+            }
+            else if (c == '\n')
+            {
+                appendString(text);
+                text.clear();
+                _layout->appendLine();
 
-                    setCursorPos(0, _cursorPos.y() + 1);
-                }
-                else if (c.toLatin1()=='\t')
+                setCursorPos(0, _cursorPos.y() + 1);
+            }
+            else if (c.toLatin1()=='\t')
+            {
+                //Tab键(使用1tab=4space)
+                text.append("    ");
+            }
+            else if (c.toLatin1()=='\b')
+            {
+                int x=_cursorPos.x();
+                if(x>0)
                 {
-                    //Tab键(使用1tab=4space)
-                    text.append("    ");
+                    _layout->lineAt(_cursorPos.y()).remove(_cursorPos.x()-1);
+                    setCursorPos(_cursorPos.x()-1,_cursorPos.y());
                 }
-                else if (c.toLatin1()=='\b')
+            }
+            else if (c.isPrint())
+            {
+                text.append(c);
+            }
+            break;
+
+        case QVTerminal::Escape:
+            _formatValue = 0;
+            if (c == '[')
+            {
+                _state = QVTerminal::Format;
+            }
+            else if (c == '(')
+            {
+                _state = QVTerminal::ResetFont;
+            }
+            break;
+
+        case QVTerminal::Format:
+            if (c >= '0' && c <= '9')
+            {
+                _formatValue = _formatValue * 10 + (c.cell() - '0');
+            }
+            else
+            {
+                if (c == ';' || c == 'm')  // Format
                 {
-                    int x=_cursorPos.x();
-                    if(x>0)
+                    if (_formatValue == 0)  // reset format
                     {
-                        _layout->lineAt(_cursorPos.y()).remove(_cursorPos.x()-1);
-                        setCursorPos(_cursorPos.x()-1,_cursorPos.y());
+                        _curentFormat = _format;
                     }
-                }
-                else if (c.isPrint())
-                {
-                    text.append(c);
-                }
-                break;
-
-            case QVTerminal::Escape:
-                _formatValue = 0;
-                if (c == '[')
-                {
-                    _state = QVTerminal::Format;
-                }
-                else if (c == '(')
-                {
-                    _state = QVTerminal::ResetFont;
-                }
-                break;
-
-            case QVTerminal::Format:
-                if (c >= '0' && c <= '9')
-                {
-                    _formatValue = _formatValue * 10 + (c.cell() - '0');
-                }
-                else
-                {
-                    if (c == ';' || c == 'm')  // Format
+                    else if (_formatValue == 4)  // underline
                     {
-                        if (_formatValue == 0)  // reset format
-                        {
-                            _curentFormat = _format;
-                        }
-                        else if (_formatValue == 4)  // underline
-                        {
-                            _curentFormat.font().setUnderline(true);
-                        }
-                        else if (_formatValue == 7)  // reverse
-                        {
-                            QColor foreground = _curentFormat.foreground();
-                            _curentFormat.setForeground(_curentFormat.background());
-                            _curentFormat.setBackground(foreground);
-                        }
-                        else if (_formatValue / 10 == 3)  // foreground
-                        {
-                            _curentFormat.setForeground(vt100color(static_cast<char>(_formatValue % 10) + '0'));
-                        }
-                        else if (_formatValue / 10 == 4)  // background
-                        {
-                            _curentFormat.setBackground(vt100color(static_cast<char>(_formatValue % 10) + '0'));
-                        }
-
-                        if (c == ';')
-                        {
-                            _formatValue = 0;
-                            _state = QVTerminal::Format;
-                        }
-                        else
-                        {
-                            _state = QVTerminal::Text;
-                        }
+                        _curentFormat.font().setUnderline(true);
                     }
-                    else if (c >= 'A' || c <= 'D')  // Cursor command
+                    else if (_formatValue == 7)  // reverse
                     {
-                        switch (c.toLatin1())
-                        {
-                            case 'A':  // up
-                                // TODO
-                                break;
+                        QColor foreground = _curentFormat.foreground();
+                        _curentFormat.setForeground(_curentFormat.background());
+                        _curentFormat.setBackground(foreground);
+                    }
+                    else if (_formatValue / 10 == 3)  // foreground
+                    {
+                        _curentFormat.setForeground(vt100color(static_cast<char>(_formatValue % 10) + '0'));
+                    }
+                    else if (_formatValue / 10 == 4)  // background
+                    {
+                        _curentFormat.setBackground(vt100color(static_cast<char>(_formatValue % 10) + '0'));
+                    }
 
-                            case 'B':  // down
-                                // TODO
-                                break;
-
-                            case 'C':  // right
-                                setCursorPos(_cursorPos.x() + _formatValue, _cursorPos.y());
-                                break;
-
-                            case 'D':  // left
-                                setCursorPos(qMax(_cursorPos.x() - _formatValue, 0), _cursorPos.y());
-                                break;
-
-                            default:
-                                break;
-                        }
-                        _state = QVTerminal::Text;
+                    if (c == ';')
+                    {
+                        _formatValue = 0;
+                        _state = QVTerminal::Format;
                     }
                     else
                     {
                         _state = QVTerminal::Text;
                     }
                 }
-                break;
+                else if (c >= 'A' || c <= 'D')  // Cursor command
+                {
+                    switch (c.toLatin1())
+                    {
+                    case 'A':  // up
+                        // TODO
+                        break;
 
-            case QVTerminal::ResetFont:
-                _curentFormat = _format;
-                _state = QVTerminal::Text;
-                break;
+                    case 'B':  // down
+                        // TODO
+                        break;
+
+                    case 'C':  // right
+                        setCursorPos(_cursorPos.x() + _formatValue, _cursorPos.y());
+                        break;
+
+                    case 'D':  // left
+                        setCursorPos(qMax(_cursorPos.x() - _formatValue, 0), _cursorPos.y());
+                        break;
+
+                    default:
+                        break;
+                    }
+                    _state = QVTerminal::Text;
+                }
+                else
+                {
+                    _state = QVTerminal::Text;
+                }
+            }
+            break;
+
+        case QVTerminal::ResetFont:
+            _curentFormat = _format;
+            _state = QVTerminal::Text;
+            break;
         }
         it++;
     }
@@ -237,29 +237,29 @@ QColor QVTerminal::vt100color(char c)
 {
     switch (c)
     {
-        case '1':
-            return QColor(Qt::red);
+    case '1':
+        return QColor(Qt::red);
 
-        case '2':
-            return QColor(Qt::green);
+    case '2':
+        return QColor(Qt::green);
 
-        case '3':
-            return QColor(Qt::yellow);
+    case '3':
+        return QColor(Qt::yellow);
 
-        case '4':
-            return QColor(Qt::blue);
+    case '4':
+        return QColor(Qt::blue);
 
-        case '5':
-            return QColor(Qt::magenta);
+    case '5':
+        return QColor(Qt::magenta);
 
-        case '6':
-            return QColor(Qt::cyan);
+    case '6':
+        return QColor(Qt::cyan);
 
-        case '7':
-            return QColor(Qt::white);
+    case '7':
+        return QColor(Qt::white);
 
-        default:
-            return QColor(Qt::black);
+    default:
+        return QColor(Qt::black);
     }
 }
 

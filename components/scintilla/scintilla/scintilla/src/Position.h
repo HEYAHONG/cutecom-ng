@@ -14,7 +14,8 @@
  * A Line is a document or screen line.
  */
 
-namespace Sci {
+namespace Sci
+{
 
 typedef ptrdiff_t Position;
 typedef ptrdiff_t Line;

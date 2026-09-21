@@ -61,11 +61,11 @@ extern NSString *const SCIUpdateUINotification;
  * provides a canvas for painting the output.
  */
 @interface SCIContentView : NSView <
-	NSTextInputClient,
-	NSUserInterfaceValidations,
-	NSDraggingSource,
-	NSDraggingDestination,
-	NSAccessibilityStaticText>;
+    NSTextInputClient,
+    NSUserInterfaceValidations,
+    NSDraggingSource,
+    NSDraggingDestination,
+    NSAccessibilityStaticText>;
 
 - (void) setCursor: (int) cursor; // Needed by ScintillaCocoa
 
@@ -84,7 +84,7 @@ extern NSString *const SCIUpdateUINotification;
 + (Class) contentViewClass;
 
 - (void) notify: (NotificationType) type message: (NSString *) message location: (NSPoint) location
-	  value: (float) value;
+    value: (float) value;
 - (void) setCallback: (id <InfoBarCommunicator>) callback;
 
 - (void) suspendDrawing: (BOOL) suspend;
@@ -111,13 +111,13 @@ extern NSString *const SCIUpdateUINotification;
 - (void) deleteRange: (NSRange) range;
 
 - (void) setFontName: (NSString *) font
-		size: (int) size
-		bold: (BOOL) bold
-	      italic: (BOOL) italic;
+    size: (int) size
+    bold: (BOOL) bold
+    italic: (BOOL) italic;
 
 // Native call through to the backend.
 + (sptr_t) directCall: (ScintillaView *) sender message: (unsigned int) message wParam: (uptr_t) wParam
-	       lParam: (sptr_t) lParam;
+    lParam: (sptr_t) lParam;
 - (sptr_t) message: (unsigned int) message wParam: (uptr_t) wParam lParam: (sptr_t) lParam;
 - (sptr_t) message: (unsigned int) message wParam: (uptr_t) wParam;
 - (sptr_t) message: (unsigned int) message;
@@ -147,22 +147,22 @@ extern NSString *const SCIUpdateUINotification;
 - (void) setStatusText: (NSString *) text;
 
 - (BOOL) findAndHighlightText: (NSString *) searchText
-		    matchCase: (BOOL) matchCase
-		    wholeWord: (BOOL) wholeWord
-		     scrollTo: (BOOL) scrollTo
-			 wrap: (BOOL) wrap;
+    matchCase: (BOOL) matchCase
+    wholeWord: (BOOL) wholeWord
+    scrollTo: (BOOL) scrollTo
+    wrap: (BOOL) wrap;
 
 - (BOOL) findAndHighlightText: (NSString *) searchText
-		    matchCase: (BOOL) matchCase
-		    wholeWord: (BOOL) wholeWord
-		     scrollTo: (BOOL) scrollTo
-			 wrap: (BOOL) wrap
-		    backwards: (BOOL) backwards;
+    matchCase: (BOOL) matchCase
+    wholeWord: (BOOL) wholeWord
+    scrollTo: (BOOL) scrollTo
+    wrap: (BOOL) wrap
+    backwards: (BOOL) backwards;
 
 - (int) findAndReplaceText: (NSString *) searchText
-		    byText: (NSString *) newText
-		 matchCase: (BOOL) matchCase
-		 wholeWord: (BOOL) wholeWord
-		     doAll: (BOOL) doAll;
+    byText: (NSString *) newText
+    matchCase: (BOOL) matchCase
+    wholeWord: (BOOL) wholeWord
+    doAll: (BOOL) doAll;
 
 @end

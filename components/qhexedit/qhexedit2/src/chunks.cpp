@@ -61,9 +61,8 @@ QByteArray Chunks::data(qint64 pos, qint64 maxSize, QByteArray *highlighted)
 
     if (maxSize < 0)
         maxSize = _size;
-    else
-        if ((pos + maxSize) > _size)
-            maxSize = _size - pos;
+    else if ((pos + maxSize) > _size)
+        maxSize = _size - pos;
 
     _ioDevice->open(QIODevice::ReadOnly);
 

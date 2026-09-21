@@ -51,7 +51,8 @@ typedef void ILexer5;
 typedef ILexer5 *(*LexerFactoryFunction)();
 
 #ifdef __cplusplus
-namespace Lexilla {
+namespace Lexilla
+{
 #endif
 
 typedef int (LEXILLA_CALL *GetLexerCountFn)();
@@ -98,8 +99,9 @@ const char *LEXILLA_CALL GetNameSpace();
 #endif
 
 #ifdef __cplusplus
-namespace Lexilla {
-	class LexerModule;
+namespace Lexilla
+{
+class LexerModule;
 }
 // Add a static lexer (in the same binary) to Lexilla's list
 void AddStaticLexerModule(Lexilla::LexerModule *plm);

@@ -10,17 +10,20 @@
 #ifndef CASECONVERT_H
 #define CASECONVERT_H
 
-namespace Scintilla::Internal {
+namespace Scintilla::Internal
+{
 
-enum class CaseConversion {
-	fold,
-	upper,
-	lower
+enum class CaseConversion
+{
+    fold,
+    upper,
+    lower
 };
 
-class ICaseConverter {
+class ICaseConverter
+{
 public:
-	virtual size_t CaseConvertString(char *converted, size_t sizeConverted, const char *mixed, size_t lenMixed) = 0;
+    virtual size_t CaseConvertString(char *converted, size_t sizeConverted, const char *mixed, size_t lenMixed) = 0;
 };
 
 ICaseConverter *ConverterFor(CaseConversion conversion);

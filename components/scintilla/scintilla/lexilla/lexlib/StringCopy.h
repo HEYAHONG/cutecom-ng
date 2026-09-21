@@ -9,20 +9,23 @@
 #ifndef STRINGCOPY_H
 #define STRINGCOPY_H
 
-namespace Lexilla {
+namespace Lexilla
+{
 
 // Safer version of string copy functions like strcpy, wcsncpy, etc.
 // Instantiate over fixed length strings of both char and wchar_t.
 // May truncate if source doesn't fit into dest with room for NUL.
 
 template <typename T, size_t count>
-void StringCopy(T (&dest)[count], const T* source) {
-	for (size_t i=0; i<count; i++) {
-		dest[i] = source[i];
-		if (!source[i])
-			break;
-	}
-	dest[count-1] = 0;
+void StringCopy(T (&dest)[count], const T* source)
+{
+    for (size_t i=0; i<count; i++)
+    {
+        dest[i] = source[i];
+        if (!source[i])
+            break;
+    }
+    dest[count-1] = 0;
 }
 
 #define ELEMENTS(a) (sizeof(a) / sizeof(a[0]))

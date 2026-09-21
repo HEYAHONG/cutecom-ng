@@ -18,8 +18,8 @@ ModbusRTUDialog::ModbusRTUDialog(MainWindow *parent) :
     connect(session,&ModbusSessionManager::DataChanged,this,&ModbusRTUDialog::SessionDataChanged);
     if(parent!=NULL)
     {
-       SessionManager *serialsession=parent->GetSessionManager();
-       connect(serialsession,&SessionManager::dataReceived,this,&ModbusRTUDialog::dataReceived);
+        SessionManager *serialsession=parent->GetSessionManager();
+        connect(serialsession,&SessionManager::dataReceived,this,&ModbusRTUDialog::dataReceived);
     }
 
     {
@@ -45,7 +45,7 @@ ModbusRTUDialog::ModbusRTUDialog(MainWindow *parent) :
     {
         //初始化从机地址选择
         QStringList list;
-        for(int i=0;i<248;i++)
+        for(int i=0; i<248; i++)
         {
             list.append(std::to_string(i).c_str());
         }
@@ -295,8 +295,8 @@ ModbusRTUDialog::~ModbusRTUDialog()
     delete ui;
 }
 
- void ModbusRTUDialog::ClearAllOldTableData()
- {
+void ModbusRTUDialog::ClearAllOldTableData()
+{
     db_Coils->clear();
     db_DiscreteInputs->clear();
     db_HoldingRegisters->clear();
@@ -332,10 +332,10 @@ ModbusRTUDialog::~ModbusRTUDialog()
     ui->HoldingRegistersTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->InputRegistersTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
- }
+}
 
- void ModbusRTUDialog::SessionDataChanged()
- {
+void ModbusRTUDialog::SessionDataChanged()
+{
     //数据改变
     if(session!=NULL)
     {
@@ -343,20 +343,20 @@ ModbusRTUDialog::~ModbusRTUDialog()
         {
             auto tb=session->GetAllCoils();
             int row=0;
-            for(auto it=tb.begin();it!=tb.end();it++)
+            for(auto it=tb.begin(); it!=tb.end(); it++)
             {
                 QString addr;
                 {
                     uint16_t addrval=it.key();
                     if(ui->AddressFormat->currentText()=="hex")
                     {
-                        char buff[12]={0};
+                        char buff[12]= {0};
                         sprintf(buff,"%04X",(int)addrval);
                         addr=buff;
                     }
                     else
                     {
-                        char buff[12]={0};
+                        char buff[12]= {0};
                         sprintf(buff,"%04d",(int)addrval);
                         addr=buff;
                     }
@@ -367,13 +367,13 @@ ModbusRTUDialog::~ModbusRTUDialog()
                     uint16_t valueval=it.value().data;
                     if(ui->ValueFormat->currentText()=="hex")
                     {
-                        char buff[12]={0};
+                        char buff[12]= {0};
                         sprintf(buff,"%04X",(int)valueval);
                         value=buff;
                     }
                     else
                     {
-                        char buff[12]={0};
+                        char buff[12]= {0};
                         sprintf(buff,"%04d",(int)valueval);
                         value=buff;
                     }
@@ -392,20 +392,20 @@ ModbusRTUDialog::~ModbusRTUDialog()
         {
             auto tb=session->GetAllDiscreteInputs();
             int row=0;
-            for(auto it=tb.begin();it!=tb.end();it++)
+            for(auto it=tb.begin(); it!=tb.end(); it++)
             {
                 QString addr;
                 {
                     uint16_t addrval=it.key();
                     if(ui->AddressFormat->currentText()=="hex")
                     {
-                        char buff[12]={0};
+                        char buff[12]= {0};
                         sprintf(buff,"%04X",(int)addrval);
                         addr=buff;
                     }
                     else
                     {
-                        char buff[12]={0};
+                        char buff[12]= {0};
                         sprintf(buff,"%04d",(int)addrval);
                         addr=buff;
                     }
@@ -416,13 +416,13 @@ ModbusRTUDialog::~ModbusRTUDialog()
                     uint16_t valueval=it.value().data;
                     if(ui->ValueFormat->currentText()=="hex")
                     {
-                        char buff[12]={0};
+                        char buff[12]= {0};
                         sprintf(buff,"%04X",(int)valueval);
                         value=buff;
                     }
                     else
                     {
-                        char buff[12]={0};
+                        char buff[12]= {0};
                         sprintf(buff,"%04d",(int)valueval);
                         value=buff;
                     }
@@ -441,20 +441,20 @@ ModbusRTUDialog::~ModbusRTUDialog()
         {
             auto tb=session->GetAllHoldingRegisters();
             int row=0;
-            for(auto it=tb.begin();it!=tb.end();it++)
+            for(auto it=tb.begin(); it!=tb.end(); it++)
             {
                 QString addr;
                 {
                     uint16_t addrval=it.key();
                     if(ui->AddressFormat->currentText()=="hex")
                     {
-                        char buff[12]={0};
+                        char buff[12]= {0};
                         sprintf(buff,"%04X",(int)addrval);
                         addr=buff;
                     }
                     else
                     {
-                        char buff[12]={0};
+                        char buff[12]= {0};
                         sprintf(buff,"%04d",(int)addrval);
                         addr=buff;
                     }
@@ -465,13 +465,13 @@ ModbusRTUDialog::~ModbusRTUDialog()
                     uint16_t valueval=it.value().data;
                     if(ui->ValueFormat->currentText()=="hex")
                     {
-                        char buff[12]={0};
+                        char buff[12]= {0};
                         sprintf(buff,"%04X",(int)valueval);
                         value=buff;
                     }
                     else
                     {
-                        char buff[12]={0};
+                        char buff[12]= {0};
                         sprintf(buff,"%04d",(int)valueval);
                         value=buff;
                     }
@@ -490,20 +490,20 @@ ModbusRTUDialog::~ModbusRTUDialog()
         {
             auto tb=session->GetAllInputRegisters();
             int row=0;
-            for(auto it=tb.begin();it!=tb.end();it++)
+            for(auto it=tb.begin(); it!=tb.end(); it++)
             {
                 QString addr;
                 {
                     uint16_t addrval=it.key();
                     if(ui->AddressFormat->currentText()=="hex")
                     {
-                        char buff[12]={0};
+                        char buff[12]= {0};
                         sprintf(buff,"%04X",(int)addrval);
                         addr=buff;
                     }
                     else
                     {
-                        char buff[12]={0};
+                        char buff[12]= {0};
                         sprintf(buff,"%04d",(int)addrval);
                         addr=buff;
                     }
@@ -514,13 +514,13 @@ ModbusRTUDialog::~ModbusRTUDialog()
                     uint16_t valueval=it.value().data;
                     if(ui->ValueFormat->currentText()=="hex")
                     {
-                        char buff[12]={0};
+                        char buff[12]= {0};
                         sprintf(buff,"%04X",(int)valueval);
                         value=buff;
                     }
                     else
                     {
-                        char buff[12]={0};
+                        char buff[12]= {0};
                         sprintf(buff,"%04d",(int)valueval);
                         value=buff;
                     }
@@ -536,10 +536,10 @@ ModbusRTUDialog::~ModbusRTUDialog()
             }
         }
     }
- }
+}
 
- void ModbusRTUDialog::ReadCoils()
- {
+void ModbusRTUDialog::ReadCoils()
+{
     uint8_t slaveaddr=ui->SalveAddr->currentText().toInt();
     size_t  length=ui->CoilsLength->text().toInt();
     QString startaddr_str=ui->CoilsStartAddr->text();
@@ -552,9 +552,9 @@ ModbusRTUDialog::~ModbusRTUDialog()
     {
         session->RequestModbusRead(slaveaddr,ModbusSessionManager::ReadCoils,startaddr,length);
     }
- }
- void ModbusRTUDialog::WriteCoils()
- {
+}
+void ModbusRTUDialog::WriteCoils()
+{
     uint8_t slaveaddr=ui->SalveAddr->currentText().toInt();
     ModbusRTUWriteDataDialog dlg;
     if(dlg.exec()==QDialog::Accepted)
@@ -569,9 +569,9 @@ ModbusRTUDialog::~ModbusRTUDialog()
             ReadCoils();
         }
     }
- }
- void ModbusRTUDialog::ReadDiscreteInputs()
- {
+}
+void ModbusRTUDialog::ReadDiscreteInputs()
+{
     uint8_t slaveaddr=ui->SalveAddr->currentText().toInt();
     size_t  length=ui->DiscreteInputsLength->text().toInt();
     QString startaddr_str=ui->DiscreteInputsStartAddr->text();
@@ -584,9 +584,9 @@ ModbusRTUDialog::~ModbusRTUDialog()
     {
         session->RequestModbusRead(slaveaddr,ModbusSessionManager::ReadDiscreteInputs,startaddr,length);
     }
- }
- void ModbusRTUDialog::ReadHoldingRegisters()
- {
+}
+void ModbusRTUDialog::ReadHoldingRegisters()
+{
     uint8_t slaveaddr=ui->SalveAddr->currentText().toInt();
     size_t  length=ui->HoldingRegisterLength->text().toInt();
     QString startaddr_str=ui->HoldingRegisterStartAddr->text();
@@ -599,9 +599,9 @@ ModbusRTUDialog::~ModbusRTUDialog()
     {
         session->RequestModbusRead(slaveaddr,ModbusSessionManager::ReadHoldingRegisters,startaddr,length);
     }
- }
- void ModbusRTUDialog::WriteHoldingRegisters()
- {
+}
+void ModbusRTUDialog::WriteHoldingRegisters()
+{
     uint8_t slaveaddr=ui->SalveAddr->currentText().toInt();
     ModbusRTUWriteDataDialog dlg;
     if(dlg.exec()==QDialog::Accepted)
@@ -617,9 +617,9 @@ ModbusRTUDialog::~ModbusRTUDialog()
         }
     }
 
- }
- void ModbusRTUDialog::ReadInputRegisters()
- {
+}
+void ModbusRTUDialog::ReadInputRegisters()
+{
     uint8_t slaveaddr=ui->SalveAddr->currentText().toInt();
     size_t  length=ui->InputRegisterLength->text().toInt();
     QString startaddr_str=ui->InputRegisterStartAddr->text();
@@ -632,7 +632,7 @@ ModbusRTUDialog::~ModbusRTUDialog()
     {
         session->RequestModbusRead(slaveaddr,ModbusSessionManager::ReadInputRegisters,startaddr,length);
     }
- }
+}
 
 
 void ModbusRTUDialog::dataReceived(const QByteArray &data)
@@ -665,10 +665,10 @@ void ModbusRTUDialog::SendSerialData(const QByteArray data)
         {
             QString datastr;
             std::string databyte=data.toStdString();
-            for(auto it=databyte.begin();it!=databyte.end();it++)
+            for(auto it=databyte.begin(); it!=databyte.end(); it++)
             {
                 char i=(*it);
-                char buff[10]={0};
+                char buff[10]= {0};
                 sprintf(buff,"%02X ",(i & 0xFF));
                 datastr+=QString(buff);
             }
@@ -712,9 +712,15 @@ void ModbusRTUDialog::on_CoilsTable_customContextMenuRequested(const QPoint &)
 {
     QMenu *menu=new QMenu(this);
     menu->setAttribute(Qt::WA_DeleteOnClose);
-    menu->addAction(tr("ReadCoils"),[=](){ReadCoils();});
+    menu->addAction(tr("ReadCoils"),[=]()
+    {
+        ReadCoils();
+    });
     menu->addSeparator();
-    menu->addAction(tr("WriteCoils"),[=](){WriteCoils();});
+    menu->addAction(tr("WriteCoils"),[=]()
+    {
+        WriteCoils();
+    });
     menu->exec(QCursor::pos());
 }
 
@@ -723,7 +729,10 @@ void ModbusRTUDialog::on_DiscreteInputsTable_customContextMenuRequested(const QP
 {
     QMenu *menu=new QMenu(this);
     menu->setAttribute(Qt::WA_DeleteOnClose);
-    menu->addAction(tr("ReadDiscreteInputs"),[=](){ReadDiscreteInputs();});
+    menu->addAction(tr("ReadDiscreteInputs"),[=]()
+    {
+        ReadDiscreteInputs();
+    });
     menu->addSeparator();
     menu->exec(QCursor::pos());
 }
@@ -733,9 +742,15 @@ void ModbusRTUDialog::on_HoldingRegistersTable_customContextMenuRequested(const 
 {
     QMenu *menu=new QMenu(this);
     menu->setAttribute(Qt::WA_DeleteOnClose);
-    menu->addAction(tr("ReadHoldingRegisters"),[=](){ReadHoldingRegisters();});
+    menu->addAction(tr("ReadHoldingRegisters"),[=]()
+    {
+        ReadHoldingRegisters();
+    });
     menu->addSeparator();
-    menu->addAction(tr("WriteHoldingRegisters"),[=](){WriteHoldingRegisters();});
+    menu->addAction(tr("WriteHoldingRegisters"),[=]()
+    {
+        WriteHoldingRegisters();
+    });
     menu->exec(QCursor::pos());
 }
 
@@ -744,7 +759,10 @@ void ModbusRTUDialog::on_InputRegistersTable_customContextMenuRequested(const QP
 {
     QMenu *menu=new QMenu(this);
     menu->setAttribute(Qt::WA_DeleteOnClose);
-    menu->addAction(tr("ReadInputRegisters"),[=](){ReadInputRegisters();});
+    menu->addAction(tr("ReadInputRegisters"),[=]()
+    {
+        ReadInputRegisters();
+    });
     menu->addSeparator();
     menu->exec(QCursor::pos());
 }

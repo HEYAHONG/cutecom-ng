@@ -8,7 +8,8 @@
 #include <QStringListModel>
 class MainWindow;
 
-namespace Ui {
+namespace Ui
+{
 class ModbusRTUDialog;
 }
 

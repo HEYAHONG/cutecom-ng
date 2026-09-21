@@ -7,13 +7,13 @@ SearchDialog::SearchDialog(QHexEdit *hexEdit, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::SearchDialog)
 {
-  ui->setupUi(this);
-  _hexEdit = hexEdit;
+    ui->setupUi(this);
+    _hexEdit = hexEdit;
 }
 
 SearchDialog::~SearchDialog()
 {
-  delete ui;
+    delete ui;
 }
 
 qint64 SearchDialog::findNext()
@@ -79,12 +79,12 @@ QByteArray SearchDialog::getContent(int comboIndex, const QString &input)
     QByteArray findBa;
     switch (comboIndex)
     {
-        case 0:     // hex
-            findBa = QByteArray::fromHex(input.toLatin1());
-            break;
-        case 1:     // text
-            findBa = input.toUtf8();
-            break;
+    case 0:     // hex
+        findBa = QByteArray::fromHex(input.toLatin1());
+        break;
+    case 1:     // text
+        findBa = input.toUtf8();
+        break;
     }
     return findBa;
 }
@@ -97,8 +97,8 @@ qint64 SearchDialog::replaceOccurrence(qint64 idx, const QByteArray &replaceBa)
         if (ui->cbPrompt->isChecked())
         {
             result = QMessageBox::question(this, tr("QHexEdit"),
-                     tr("Replace occurrence?"),
-                     QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel);
+                                           tr("Replace occurrence?"),
+                                           QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel);
 
             if (result == QMessageBox::Yes)
             {

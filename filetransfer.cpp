@@ -25,7 +25,7 @@ FileTransfer::FileTransfer(QObject *parent, QSerialPort *serial, const QString &
 }
 
 bool FileTransfer::startTransfer()
-{   
+{
     // fill buffer with file content
     QFile file(filename);
     if (file.open(QIODevice::ReadOnly))
@@ -74,23 +74,23 @@ QString FileTransfer::errorString(TransferError error)
 {
     switch(error)
     {
-        case NoError :
-            return QString(tr("Success"));
-        case NoSyncError:
-            return QString(tr("Synchronization error"));
-        case TransmissionError:
-            return QString(tr("Transmission error"));
-        case TimeoutError:
-            return QString(tr("Transfer timeout"));
-        case RemoteCancelledError:
-            return QString(tr("Transfer cancelled by remote"));
-        case LocalCancelledError:
-            // should not be treated as an error
-            return QString(tr("Transfer cancelled"));
-        case InputFileError:
-            return QString(tr("Can't open input file"));
-        case UnknownError:
-        default:
-            return QString(tr("Unknown Error"));
+    case NoError :
+        return QString(tr("Success"));
+    case NoSyncError:
+        return QString(tr("Synchronization error"));
+    case TransmissionError:
+        return QString(tr("Transmission error"));
+    case TimeoutError:
+        return QString(tr("Transfer timeout"));
+    case RemoteCancelledError:
+        return QString(tr("Transfer cancelled by remote"));
+    case LocalCancelledError:
+        // should not be treated as an error
+        return QString(tr("Transfer cancelled"));
+    case InputFileError:
+        return QString(tr("Can't open input file"));
+    case UnknownError:
+    default:
+        return QString(tr("Unknown Error"));
     }
 }

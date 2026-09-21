@@ -45,7 +45,7 @@ const QString History::previous()
             --_current;
         prev = history[_current];
     }
-   return prev;
+    return prev;
 }
 
 const QString History::next()

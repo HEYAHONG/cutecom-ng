@@ -34,7 +34,7 @@ void SerialPortStatus::SetBitsConfig(QString config)
 
 void SerialPortStatus::SetFlowControl(QString flowcontrol)
 {
-   ui->flowcontrol->setText(flowcontrol);
+    ui->flowcontrol->setText(flowcontrol);
 }
 
 SerialPortStatus::~SerialPortStatus()

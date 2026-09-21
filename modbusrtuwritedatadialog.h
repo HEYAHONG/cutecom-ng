@@ -5,7 +5,8 @@
 #include <QStringListModel>
 #include <QVector>
 
-namespace Ui {
+namespace Ui
+{
 class ModbusRTUWriteDataDialog;
 }
 

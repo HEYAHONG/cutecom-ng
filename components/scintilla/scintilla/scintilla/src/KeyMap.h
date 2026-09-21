@@ -8,7 +8,8 @@
 #ifndef KEYMAP_H
 #define KEYMAP_H
 
-namespace Scintilla::Internal {
+namespace Scintilla::Internal
+{
 
 #define SCI_NORM KeyMod::Norm
 #define SCI_SHIFT KeyMod::Shift
@@ -21,43 +22,49 @@ namespace Scintilla::Internal {
 
 /**
  */
-class KeyModifiers {
+class KeyModifiers
+{
 public:
-	Scintilla::Keys key;
-	Scintilla::KeyMod modifiers;
-	KeyModifiers() noexcept : key{}, modifiers(KeyMod::Norm) {
-	};
-	KeyModifiers(Scintilla::Keys key_, Scintilla::KeyMod modifiers_) noexcept : key(key_), modifiers(modifiers_) {
-	}
-	bool operator<(const KeyModifiers &other) const noexcept {
-		if (key == other.key)
-			return modifiers < other.modifiers;
-		else
-			return key < other.key;
-	}
+    Scintilla::Keys key;
+    Scintilla::KeyMod modifiers;
+    KeyModifiers() noexcept : key{}, modifiers(KeyMod::Norm)
+    {
+    };
+    KeyModifiers(Scintilla::Keys key_, Scintilla::KeyMod modifiers_) noexcept : key(key_), modifiers(modifiers_)
+    {
+    }
+    bool operator<(const KeyModifiers &other) const noexcept
+    {
+        if (key == other.key)
+            return modifiers < other.modifiers;
+        else
+            return key < other.key;
+    }
 };
 
 /**
  */
-class KeyToCommand {
+class KeyToCommand
+{
 public:
-	Scintilla::Keys key;
-	Scintilla::KeyMod modifiers;
-	Scintilla::Message msg;
+    Scintilla::Keys key;
+    Scintilla::KeyMod modifiers;
+    Scintilla::Message msg;
 };
 
 /**
  */
-class KeyMap {
-	std::map<KeyModifiers, Scintilla::Message> kmap;
-	static const KeyToCommand MapDefault[];
+class KeyMap
+{
+    std::map<KeyModifiers, Scintilla::Message> kmap;
+    static const KeyToCommand MapDefault[];
 
 public:
-	KeyMap();
-	void Clear() noexcept;
-	void AssignCmdKey(Scintilla::Keys key, Scintilla::KeyMod modifiers, Scintilla::Message msg);
-	Scintilla::Message Find(Scintilla::Keys key, Scintilla::KeyMod modifiers) const;	// 0 returned on failure
-	const std::map<KeyModifiers, Scintilla::Message> &GetKeyMap() const noexcept;
+    KeyMap();
+    void Clear() noexcept;
+    void AssignCmdKey(Scintilla::Keys key, Scintilla::KeyMod modifiers, Scintilla::Message msg);
+    Scintilla::Message Find(Scintilla::Keys key, Scintilla::KeyMod modifiers) const;    // 0 returned on failure
+    const std::map<KeyModifiers, Scintilla::Message> &GetKeyMap() const noexcept;
 };
 
 }

@@ -9,12 +9,15 @@ public:
     enum CCmd {insert, removeAt, overwrite};
 
     CharCommand(Chunks * chunks, CCmd cmd, qint64 charPos, char newChar,
-                       QUndoCommand *parent=0);
+                QUndoCommand *parent=0);
 
     void undo();
     void redo();
     bool mergeWith(const QUndoCommand *command);
-    int id() const { return 1234; }
+    int id() const
+    {
+        return 1234;
+    }
 
 private:
     Chunks * _chunks;
@@ -57,17 +60,17 @@ void CharCommand::undo()
 {
     switch (_cmd)
     {
-        case insert:
-            _chunks->removeAt(_charPos);
-            break;
-        case overwrite:
-            _chunks->overwrite(_charPos, _oldChar);
-            _chunks->setDataChanged(_charPos, _wasChanged);
-            break;
-        case removeAt:
-            _chunks->insert(_charPos, _oldChar);
-            _chunks->setDataChanged(_charPos, _wasChanged);
-            break;
+    case insert:
+        _chunks->removeAt(_charPos);
+        break;
+    case overwrite:
+        _chunks->overwrite(_charPos, _oldChar);
+        _chunks->setDataChanged(_charPos, _wasChanged);
+        break;
+    case removeAt:
+        _chunks->insert(_charPos, _oldChar);
+        _chunks->setDataChanged(_charPos, _wasChanged);
+        break;
     }
 }
 
@@ -75,19 +78,19 @@ void CharCommand::redo()
 {
     switch (_cmd)
     {
-        case insert:
-            _chunks->insert(_charPos, _newChar);
-            break;
-        case overwrite:
-            _oldChar = (*_chunks)[_charPos];
-            _wasChanged = _chunks->dataChanged(_charPos);
-            _chunks->overwrite(_charPos, _newChar);
-            break;
-        case removeAt:
-            _oldChar = (*_chunks)[_charPos];
-            _wasChanged = _chunks->dataChanged(_charPos);
-            _chunks->removeAt(_charPos);
-            break;
+    case insert:
+        _chunks->insert(_charPos, _newChar);
+        break;
+    case overwrite:
+        _oldChar = (*_chunks)[_charPos];
+        _wasChanged = _chunks->dataChanged(_charPos);
+        _chunks->overwrite(_charPos, _newChar);
+        break;
+    case removeAt:
+        _oldChar = (*_chunks)[_charPos];
+        _wasChanged = _chunks->dataChanged(_charPos);
+        _chunks->removeAt(_charPos);
+        break;
     }
 }
 

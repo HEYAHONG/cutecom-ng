@@ -30,10 +30,10 @@ SessionManager::SessionManager(QObject *parent) :
     connect(serial, &QSerialPort::readyRead, this, &SessionManager::readData);
 #if (QT_VERSION >= QT_VERSION_CHECK(6,0,0))
     connect(serial, static_cast<void (QSerialPort::*)(QSerialPort::SerialPortError)>
-                (&QSerialPort::errorOccurred), this, &SessionManager::handleError);
+            (&QSerialPort::errorOccurred), this, &SessionManager::handleError);
 #else
     connect(serial, static_cast<void (QSerialPort::*)(QSerialPort::SerialPortError)>
-                (&QSerialPort::error), this, &SessionManager::handleError);
+            (&QSerialPort::error), this, &SessionManager::handleError);
 #endif
 }
 
@@ -52,38 +52,38 @@ void SessionManager::handleError(QSerialPort::SerialPortError serialPortError)
 {
     switch (serialPortError)
     {
-        // no error
-        case QSerialPort::NoError:
-            break;
+    // no error
+    case QSerialPort::NoError:
+        break;
 
-        // recoverable errors : inform user and clear error
-        case QSerialPort::OpenError:
+    // recoverable errors : inform user and clear error
+    case QSerialPort::OpenError:
 
-            QMessageBox::warning(NULL, tr("Error"), serial->errorString());
-            // reset error
-            serial->clearError();
-            break;
+        QMessageBox::warning(NULL, tr("Error"), serial->errorString());
+        // reset error
+        serial->clearError();
+        break;
 
-        // unrecoverable errors : inform user and close the port/connection
-        default:
-            if (in_progress)
+    // unrecoverable errors : inform user and close the port/connection
+    default:
+        if (in_progress)
+        {
+            QMessageBox::critical(NULL, tr("Error"), serial->errorString());
+
+            // on some error (ex: hot unplugging) the 'QSerialPort::error' property successively
+            // takes multiple values.
+            // to prevent from displaying successive error messages, the in_progress flag is
+            // set to indicate that we are not interested by next messages, until the user tries to open
+            // again the serial port
+            in_progress = false;
+            if (serial->isOpen())
             {
-                QMessageBox::critical(NULL, tr("Error"), serial->errorString());
+                serial->clearError();
 
-                // on some error (ex: hot unplugging) the 'QSerialPort::error' property successively
-                // takes multiple values.
-                // to prevent from displaying successive error messages, the in_progress flag is
-                // set to indicate that we are not interested by next messages, until the user tries to open
-                // again the serial port
-                in_progress = false;
-                if (serial->isOpen())
-                {
-                    serial->clearError();
-
-                    closeSession();
-                }
+                closeSession();
             }
-            break;
+        }
+        break;
     }
 }
 
@@ -93,23 +93,23 @@ void SessionManager::openSession(const QHash<QString, QString>& port_cfg)
 
     // try converting port config from the hash
     qint32 baud_rate = static_cast<qint32>
-            (port_cfg["baud_rate"].toInt(&ok));
+                       (port_cfg["baud_rate"].toInt(&ok));
     cfg_ok &= ok;
 
     QSerialPort::DataBits data_bits = static_cast<QSerialPort::DataBits>
-            (port_cfg["data_bits"].toInt(&ok));
+                                      (port_cfg["data_bits"].toInt(&ok));
     cfg_ok &= ok;
 
     QSerialPort::Parity parity = static_cast<QSerialPort::Parity>
-            (port_cfg["parity"].toInt(&ok));
+                                 (port_cfg["parity"].toInt(&ok));
     cfg_ok &= ok;
 
     QSerialPort::StopBits stop_bits = static_cast<QSerialPort::StopBits>
-            (port_cfg["stop_bits"].toInt(&ok));
+                                      (port_cfg["stop_bits"].toInt(&ok));
     cfg_ok &= ok;
 
     QSerialPort::FlowControl flow_control = static_cast<QSerialPort::FlowControl>
-            (port_cfg["flow_control"].toInt(&ok));
+                                            (port_cfg["flow_control"].toInt(&ok));
     cfg_ok &= ok;
 
     // a conversion didn't make it
@@ -211,14 +211,14 @@ void SessionManager::transferFile(const QString &filename, Protocol type)
 {
     switch (type)
     {
-        case XMODEM:
-            file_transfer = new XModemTransfer(0, serial, filename);
+    case XMODEM:
+        file_transfer = new XModemTransfer(0, serial, filename);
         break;
-        case YMODEM:
-        case ZMODEM:
-        default:
-            QMessageBox::warning(0,QString(tr("warning")),QString(tr("not implemented")));
-            file_transfer = new NullTransfer(0,serial,filename);
+    case YMODEM:
+    case ZMODEM:
+    default:
+        QMessageBox::warning(0,QString(tr("warning")),QString(tr("not implemented")));
+        file_transfer = new NullTransfer(0,serial,filename);
     }
 
     connect(file_transfer, &FileTransfer::transferEnded,
@@ -229,10 +229,10 @@ void SessionManager::transferFile(const QString &filename, Protocol type)
             this, &SessionManager::fileTransferProgressed);
 #if (QT_VERSION >= QT_VERSION_CHECK(6,0,0))
     disconnect(serial, static_cast<void (QSerialPort::*)(QSerialPort::SerialPortError)>
-                (&QSerialPort::errorOccurred), this, &SessionManager::handleError);
+               (&QSerialPort::errorOccurred), this, &SessionManager::handleError);
 #else
     disconnect(serial, static_cast<void (QSerialPort::*)(QSerialPort::SerialPortError)>
-                (&QSerialPort::error), this, &SessionManager::handleError);
+               (&QSerialPort::error), this, &SessionManager::handleError);
 #endif
     // perform transfer
     if (!file_transfer->startTransfer())
@@ -245,10 +245,10 @@ void SessionManager::handleFileTransferEnded(FileTransfer::TransferError error)
     // re-connect serial port error handling for non-blocking use
 #if (QT_VERSION >= QT_VERSION_CHECK(6,0,0))
     connect(serial, static_cast<void (QSerialPort::*)(QSerialPort::SerialPortError)>
-                (&QSerialPort::errorOccurred), this, &SessionManager::handleError);
+            (&QSerialPort::errorOccurred), this, &SessionManager::handleError);
 #else
     connect(serial, static_cast<void (QSerialPort::*)(QSerialPort::SerialPortError)>
-                (&QSerialPort::error), this, &SessionManager::handleError);
+            (&QSerialPort::error), this, &SessionManager::handleError);
 #endif
     // schedule file_transfer object deletion on main thread
     QCoreApplication::postEvent(file_transfer, new QEvent(QEvent::DeferredDelete));
