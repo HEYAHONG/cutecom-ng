@@ -246,6 +246,16 @@
        <number>0</number>
       </property>
       <item>
+       <widget class="QPushButton" name="dlt645Button">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="text">
+         <string>DL/T 645</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QPushButton" name="modbusButton">
         <property name="enabled">
          <bool>false</bool>
@@ -444,8 +454,7 @@
   </action>
   <action name="action_Exit">
    <property name="icon">
-    <iconset theme="application-exit">
-     <normaloff>.</normaloff>.</iconset>
+    <iconset theme="application-exit"/>
    </property>
    <property name="text">
     <string>exit</string>

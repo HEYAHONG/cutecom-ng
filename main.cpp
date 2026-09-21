@@ -48,33 +48,33 @@ int main(int argc, char *argv[])
         switch(loc.country())
         {
         case loc.China:
-            {
-                translator.load(":/zh_CN.qm");
+        {
+            translator.load(":/zh_CN.qm");
 #ifdef WIN32
-                if(!qt_translator_base_dir.isEmpty())
-                {
-                    qt_translator.load(qt_translator_base_dir+"/qt_zh_CN.qm");
-                }
-#endif
+            if(!qt_translator_base_dir.isEmpty())
+            {
+                qt_translator.load(qt_translator_base_dir+"/qt_zh_CN.qm");
             }
-            break;
+#endif
+        }
+        break;
         default:
-            {
-                translator.load(":/en_US.qm");
+        {
+            translator.load(":/en_US.qm");
 #ifdef WIN32
-                if(!qt_translator_base_dir.isEmpty())
-                {
-                    qt_translator.load(qt_translator_base_dir+"/qt_en.qm");
-                }
-#endif
+            if(!qt_translator_base_dir.isEmpty())
+            {
+                qt_translator.load(qt_translator_base_dir+"/qt_en.qm");
             }
-            break;
+#endif
+        }
+        break;
         }
         a.installTranslator(&translator);
 #ifdef WIN32
         a.installTranslator(&qt_translator);
 #endif
-    }    
+    }
     MainWindow w;
     //设置翻译指针
     w.translator=&translator;

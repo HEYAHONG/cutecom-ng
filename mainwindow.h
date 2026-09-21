@@ -18,6 +18,7 @@
 #include "qqmlloader.h"
 #include "serialportstatus.h"
 #include "modbusrtudialog.h"
+#include "dlt645dialog.h"
 #include <QMainWindow>
 #include <QTranslator>
 #include <QDebug>
@@ -70,6 +71,7 @@ private:
     OutputManager       *output_mgr;
     ConnectDialog       *connect_dlg;
     ModbusRTUDialog     *modbusrtu_dlg;
+    dlt645dialog        *dlt645_dlg;
     QWidget             *search_widget;
     QLineEdit           *search_input;
     QToolButton         *search_prev_button;
@@ -177,6 +179,8 @@ private slots:
 
     void on_modbusButton_clicked();
 
+    void on_dlt645Button_clicked();
+
 private:
 
     /**
@@ -256,8 +260,8 @@ private:
      */
     void handleEOLCharChanged(int index);
 protected:
-     void paintEvent(QPaintEvent *event);
-     void keyPressEvent(QKeyEvent *event);
+    void paintEvent(QPaintEvent *event);
+    void keyPressEvent(QKeyEvent *event);
 };
 
 #endif // MAINWINDOW_H

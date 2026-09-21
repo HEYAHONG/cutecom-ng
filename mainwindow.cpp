@@ -64,9 +64,12 @@ MainWindow::MainWindow(QWidget *parent) :
     session_mgr = new SessionManager(this);
     connect_dlg = new ConnectDialog(this);
     modbusrtu_dlg= new ModbusRTUDialog(this);
+    dlt645_dlg = new dlt645dialog(this);
 
     //连接VT100
-    connect(ui->VT100Output,&QVTerminal::OnDeviceWrite,[=](const QByteArray &data){if(session_mgr->isSessionOpen()) session_mgr->sendToSerial(data);});
+    connect(ui->VT100Output,&QVTerminal::OnDeviceWrite,[=](const QByteArray &data) {
+        if(session_mgr->isSessionOpen()) session_mgr->sendToSerial(data);
+    });
 
     {
         //设置图标
@@ -147,13 +150,13 @@ MainWindow::MainWindow(QWidget *parent) :
 
     // connect search-related signals/slots
     connect(search_prev_button, &QPushButton::clicked,
-	search_highlighter_main, &SearchHighlighter::previousOccurence);
+            search_highlighter_main, &SearchHighlighter::previousOccurence);
     connect(search_next_button, &QPushButton::clicked,
-	search_highlighter_main, &SearchHighlighter::nextOccurence);
+            search_highlighter_main, &SearchHighlighter::nextOccurence);
     connect(search_highlighter_main, &SearchHighlighter::cursorPosChanged,
-	this, &MainWindow::handleCursosPosChanged);
+            this, &MainWindow::handleCursosPosChanged);
     connect(search_highlighter_main, &SearchHighlighter::totalOccurencesChanged,
-	this, &MainWindow::handleTotalOccurencesChanged);
+            this, &MainWindow::handleTotalOccurencesChanged);
     connect(ui->searchButton, &QPushButton::toggled, this, &MainWindow::showSearchWidget);
 
     // additional configuration for bottom output
@@ -274,7 +277,7 @@ void MainWindow::load_configdoc(QString filename)
         QDomElement plugins=docroot.firstChildElement("plugins");
         {
             auto pluginslist=plugins.childNodes();
-            for(int i=0;i<pluginslist.size();i++)
+            for(int i=0; i<pluginslist.size(); i++)
             {
                 if(pluginslist.at(i).isElement() && (QString("plugin")==pluginslist.at(i).toElement().tagName()))
                 {
@@ -304,6 +307,12 @@ void MainWindow::load_configdoc(QString filename)
     if(modbusrtu_dlg!=NULL)
     {
         modbusrtu_dlg->loadconfig();
+    }
+
+    //加载dlt645dialog的设置
+    if(dlt645_dlg!=NULL)
+    {
+        dlt645_dlg->loadconfig();
     }
 }
 void MainWindow::save_configdoc(QString filename)
@@ -356,7 +365,7 @@ void MainWindow::save_configdoc(QString filename)
         }
         QDomElement plugins=docroot.firstChildElement("plugins");
         QMap<QUrl,QSharedPointer<QQmlLoader>>  qml_plugins=qml_list;
-        for(auto it=qml_plugins.begin();it!=qml_plugins.end();it++)
+        for(auto it=qml_plugins.begin(); it!=qml_plugins.end(); it++)
         {
             QUrl url=it.key();
             auto && qmlloader=*it.value().data();
@@ -374,6 +383,13 @@ void MainWindow::save_configdoc(QString filename)
     {
         modbusrtu_dlg->saveconfig();
     }
+
+    //保存dlt645dialog的设置
+    if(dlt645_dlg!=NULL)
+    {
+        dlt645_dlg->saveconfig();
+    }
+
 
     if(filename.isEmpty())
     {
@@ -412,6 +428,7 @@ void MainWindow::handleSessionOpened()
     ui->fileTransferButton->setEnabled(true);
     ui->inputBox->setEnabled(true);
     ui->modbusButton->setEnabled(true);
+    ui->dlt645Button->setEnabled(true);
 
     //启用RTS与DTR勾选框
     ui->RTScheckBox->setEnabled(true);
@@ -505,7 +522,7 @@ void MainWindow::handleSessionOpened()
 
         {
             auto list=HexWidgetList;;
-            for(auto it=list.begin();it!=list.end();it++)
+            for(auto it=list.begin(); it!=list.end(); it++)
             {
                 QWidget *widget=dynamic_cast<QWidget *>(*it);
                 if(widget!=NULL)
@@ -529,6 +546,7 @@ void MainWindow::handleSessionClosed()
     ui->fileTransferButton->setDisabled(true);
     ui->inputBox->setDisabled(true);
     ui->modbusButton->setDisabled(true);
+    ui->dlt645Button->setDisabled(true);
 
     //关闭RTS与DTR勾选框
     ui->RTScheckBox->setEnabled(false);
@@ -546,12 +564,17 @@ void MainWindow::handleSessionClosed()
         modbusrtu_dlg->hide();
     }
 
+    if(dlt645_dlg!=NULL)
+    {
+        dlt645_dlg->hide();
+    }
+
 }
 
 void MainWindow::handleFileTransfer()
 {
     QString filename = QFileDialog::getOpenFileName(
-                this, QStringLiteral("Select file to send transfer"));
+                           this, QStringLiteral("Select file to send transfer"));
 
     if (filename.isNull())
         return;
@@ -566,7 +589,7 @@ void MainWindow::handleFileTransfer()
     progress_dialog->setRange(0, 100);
     progress_dialog->setWindowModality(Qt::ApplicationModal);
     progress_dialog->setLabelText(
-                QString(tr("Initiating connection with receiver")));
+        QString(tr("Initiating connection with receiver")));
 
     // update progress dialog
     connect(session_mgr, &SessionManager::fileTransferProgressed,
@@ -574,7 +597,7 @@ void MainWindow::handleFileTransfer()
 
     int protocol = ui->protocolCombo->currentData().toInt();
     session_mgr->transferFile(filename,
-        static_cast<SessionManager::Protocol>(protocol));
+                              static_cast<SessionManager::Protocol>(protocol));
 
     // disable UI elements acting on QSerialPort instance, as long as
     // objectds involved in FileTransferred are not destroyed or back
@@ -603,14 +626,14 @@ void MainWindow::handleFileTransferEnded(FileTransfer::TransferError error)
 {
     switch (error)
     {
-        case FileTransfer::LocalCancelledError:
-            break;
-        case FileTransfer::NoError:
-            QMessageBox::information(this, tr("Cutecom-ng"), QString(tr("File transferred successfully")));
-            break;
-        default:
-            progress_dialog->setLabelText(FileTransfer::errorString(error));
-            break;
+    case FileTransfer::LocalCancelledError:
+        break;
+    case FileTransfer::NoError:
+        QMessageBox::information(this, tr("Cutecom-ng"), QString(tr("File transferred successfully")));
+        break;
+    default:
+        progress_dialog->setLabelText(FileTransfer::errorString(error));
+        break;
     }
 
     // re-enable UI elements acting on QSerialPort instance
@@ -650,7 +673,7 @@ void MainWindow::handleNewInput(QString entry)
             }
 
             bool IsHexString=true;
-            for(int i=0;i<input.size();i++)
+            for(int i=0; i<input.size(); i++)
             {
                 if(input.at(i).isNumber() || input.at(i).isLetter())
                 {
@@ -676,7 +699,7 @@ void MainWindow::handleNewInput(QString entry)
             }
             else
             {
-                for(int i=0;i<input.size();i+=2)
+                for(int i=0; i<input.size(); i+=2)
                 {
                     QString hex=QString::fromStdString(input.toStdString().substr(i,2));
                     to_send.append(hex.toInt(NULL,16));
@@ -876,22 +899,22 @@ void MainWindow::handleEOLCharChanged(int index)
 
     switch(ui->eolCombo->currentData().toInt())
     {
-        case CR:
-            _end_of_line = QByteArray("\r", 1);
-            break;
-        case LF:
-            _end_of_line = QByteArray("\n", 1);
-            break;
-        case CRLF:
-            _end_of_line = QByteArray("\r\n", 2);
-            break;
-        case None:
-            _end_of_line.clear();
-            break;
-        default:
-            Q_ASSERT_X(false, "MainWindow::handleEOLCharChanged",
-                       "unknown EOL char value: " + (char)ui->eolCombo->currentData().toInt());
-            break;
+    case CR:
+        _end_of_line = QByteArray("\r", 1);
+        break;
+    case LF:
+        _end_of_line = QByteArray("\n", 1);
+        break;
+    case CRLF:
+        _end_of_line = QByteArray("\r\n", 2);
+        break;
+    case None:
+        _end_of_line.clear();
+        break;
+    default:
+        Q_ASSERT_X(false, "MainWindow::handleEOLCharChanged",
+                   "unknown EOL char value: " + (char)ui->eolCombo->currentData().toInt());
+        break;
     }
 }
 
@@ -1010,7 +1033,7 @@ void MainWindow::on_actionhexoutput_triggered(bool checked)
         //清空内容
         {
             auto list=HexWidgetList;
-            for(auto it=list.begin();it!=list.end();it++)
+            for(auto it=list.begin(); it!=list.end(); it++)
             {
                 QWidget *widget=dynamic_cast<QWidget *>(*it);
                 if(widget!=NULL)
@@ -1031,7 +1054,7 @@ void MainWindow::on_clearButton_clicked()
     //清空hex内容
     {
         auto list=HexWidgetList;
-        for(auto it=list.begin();it!=list.end();it++)
+        for(auto it=list.begin(); it!=list.end(); it++)
         {
             QWidget *widget=dynamic_cast<QWidget *>(*it);
             if(widget!=NULL)
@@ -1076,7 +1099,7 @@ bool MainWindow::LoadQmlPlugin(QUrl qml_path,bool Show)
                 {
                     QAction *act=NULL;
                     auto submenulist=qml_plugin_menu->actions();
-                    for(auto it = submenulist.begin();it!=submenulist.end();it++)
+                    for(auto it = submenulist.begin(); it!=submenulist.end(); it++)
                     {
                         act=*it;
                         if(act->iconText()==qmlloader->GetPluginName())
@@ -1096,7 +1119,7 @@ bool MainWindow::LoadQmlPlugin(QUrl qml_path,bool Show)
                         {
                             //卸载之前的插件
 
-                            for(auto it=qml_list.begin();it!=qml_list.end();it++)
+                            for(auto it=qml_list.begin(); it!=qml_list.end(); it++)
                             {
                                 if((it->data()->GetPluginName()==qmlloader->GetPluginName())&& (qmlloader!=it->data()))
                                 {
@@ -1124,8 +1147,8 @@ bool MainWindow::LoadQmlPlugin(QUrl qml_path,bool Show)
             }
             else
             {
-               //并非插件，删除加载的qml窗口
-               qml_list.erase(qml_list.find(qml_path));
+                //并非插件，删除加载的qml窗口
+                qml_list.erase(qml_list.find(qml_path));
             }
         }
         else
@@ -1151,7 +1174,7 @@ bool MainWindow::UnloadQmlPlugin(QUrl qml_path)
         QQmlLoader *qmlloader=it->data();
         QAction *act=NULL;
         auto submenulist=qml_plugin_menu->actions();
-        for(auto it = submenulist.begin();it!=submenulist.end();it++)
+        for(auto it = submenulist.begin(); it!=submenulist.end(); it++)
         {
             act=*it;
             if(act->iconText()==qmlloader->GetPluginName())
@@ -1229,11 +1252,11 @@ void MainWindow::on_actionvt100_output_triggered(bool checked)
 void MainWindow::on_actionabout_triggered()
 {
     //更新dom设置
-   save_configdoc(QString());
+    save_configdoc(QString());
 
-   AboutDialog dlg(this);
-   dlg.setModal(true);
-   dlg.exec();
+    AboutDialog dlg(this);
+    dlg.setModal(true);
+    dlg.exec();
 }
 
 
@@ -1242,6 +1265,15 @@ void MainWindow::on_modbusButton_clicked()
     if(modbusrtu_dlg!=NULL)
     {
         modbusrtu_dlg->show();
+    }
+}
+
+
+void MainWindow::on_dlt645Button_clicked()
+{
+    if(dlt645_dlg!=NULL)
+    {
+        dlt645_dlg->show();
     }
 }
 
