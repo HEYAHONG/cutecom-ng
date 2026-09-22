@@ -4,6 +4,14 @@
 dlt645sessionmanager::dlt645sessionmanager(QObject *parent)
     : QObject{parent},session_thread(new QThread(this)),session_loop_timer(new QTimer(this))
 {
+
+    //注册类型
+    qRegisterMetaType<hdlt645_data_di_t>("hdlt645_data_di_t");
+    qRegisterMetaType<hdlt645_data_p_t>("hdlt645_data_p_t");
+    qRegisterMetaType<hdlt645_data_c_t>("hdlt645_data_c_t");
+    qRegisterMetaType<hdlt645_bcd_addr_t>("hdlt645_bcd_addr_t");
+
+
     connect(this,&dlt645sessionmanager::Start_Session,this,&dlt645sessionmanager::Start_Session_Slot);
     memset(&dlt645,0,sizeof(dlt645));
     moveToThread(session_thread);
