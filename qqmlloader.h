@@ -1,6 +1,7 @@
 ﻿#ifndef QQMLLOADER_H
 #define QQMLLOADER_H
 
+#include "HCPPBox.h"
 #include <QQuickWidget>
 #include <QDialog>
 #include <QVariant>
