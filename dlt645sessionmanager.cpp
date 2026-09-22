@@ -4,6 +4,7 @@
 dlt645sessionmanager::dlt645sessionmanager(QObject *parent)
     : QObject{parent},session_thread(new QThread(this)),session_loop_timer(new QTimer(this))
 {
+    connect(this,&dlt645sessionmanager::Start_Session,this,&dlt645sessionmanager::Start_Session_Slot);
     memset(&dlt645,0,sizeof(dlt645));
     moveToThread(session_thread);
     connect(session_thread,&QThread::started,[=]()
@@ -53,9 +54,47 @@ hdlt645_master_ctx_status_t dlt645sessionmanager::dlt645_status(void)
     return hdlt645_master_ctx_status(&dlt645.ctx);
 }
 
+bool dlt645sessionmanager::dlt645_start_session(int fct,void *cmd_ctx,size_t cmd_ctx_size)
+{
+    bool ret=false;
+
+    if(dlt645_session_idle())
+    {
+        ret=emit Start_Session(fct,cmd_ctx,cmd_ctx_size);
+    }
+    return ret;
+}
+
+bool dlt645sessionmanager::dlt645_session_idle(void)
+{
+    if(dlt645_status()==HDLT645_MASTER_CTX_STATUS_FINISHED || dlt645_status()==HDLT645_MASTER_CTX_STATUS_ERROR)
+    {
+        return true;
+    }
+
+    return false;
+}
+
 void dlt645sessionmanager::session_loop_timer_timeout(void)
 {
-    hdlt645_master_ctx_process(&dlt645.ctx,&dlt645.io);
+    hdlt645_master_ctx_status_t old_status=hdlt645_master_ctx_status(&dlt645.ctx);
+    hdlt645_master_ctx_status_t status=hdlt645_master_ctx_process(&dlt645.ctx,&dlt645.io);
+    if(status!=old_status)
+    {
+        emit StatusChanged();
+    }
+}
+
+bool dlt645sessionmanager::Start_Session_Slot(int fct,void *cmd_ctx,size_t cmd_ctx_size)
+{
+    if(dlt645_session_idle())
+    {
+        dlt645_rx_tp=std::chrono::steady_clock::now();
+        hdlt645_master_ctx_init(&dlt645.ctx,fct,cmd_ctx,cmd_ctx_size);
+        return true;
+    }
+
+    return false;
 }
 
 void dlt645sessionmanager::dataSend(const QByteArray data)

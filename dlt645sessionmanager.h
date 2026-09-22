@@ -37,6 +37,8 @@ public:
     virtual ~dlt645sessionmanager();
 
     hdlt645_master_ctx_status_t dlt645_status(void);
+    bool dlt645_start_session(int fct,void *cmd_ctx,size_t cmd_ctx_size);
+    bool dlt645_session_idle(void);
 
 signals:
 
@@ -45,8 +47,21 @@ signals:
      */
     void sendToSerial(const QByteArray &data);
 
+    /*
+     * 状态改变
+     */
+    void StatusChanged();
+
+    /*
+     * Start Session
+     */
+    bool Start_Session(int fct,void *cmd_ctx,size_t cmd_ctx_size);
+
 private slots:
     void session_loop_timer_timeout();
+
+    bool Start_Session_Slot(int fct,void *cmd_ctx,size_t cmd_ctx_size);
+
 public slots:
 
 
