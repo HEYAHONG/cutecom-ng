@@ -64,7 +64,11 @@ void dlt645dialog::log(QString log)
 
 void dlt645dialog::read_result(hdlt645_data_di_t di,const uint8_t *data,size_t datalen)
 {
-    emit Read_Result(di,data,datalen);
+    if(data==NULL || datalen == 0)
+    {
+        return;
+    }
+    emit Read_Result(di,QByteArray((const char *)data,datalen));
 }
 
 void dlt645dialog::dataReceived(const QByteArray &data)
@@ -247,19 +251,16 @@ void dlt645dialog::on_Read_Time_checkBox_stateChanged(int arg1)
 
 }
 
-void dlt645dialog::Read_Result_Solt(hdlt645_data_di_t di,const uint8_t *data,size_t datalen)
+void dlt645dialog::Read_Result_Solt(hdlt645_data_di_t di,QByteArray data)
 {
-    if(data==NULL || datalen == 0)
-    {
-        return;
-    }
 
+    size_t datalen=data.length();
     char buffer[4096+1]= {0};
     if(datalen > sizeof(buffer)/2)
     {
         datalen = sizeof(buffer)/2;
     }
-    hbase16_encode_with_null_terminator(buffer,sizeof(buffer),data,datalen);
+    hbase16_encode_with_null_terminator(buffer,sizeof(buffer),(const uint8_t *)data.data(),datalen);
 
     ui->Read_Result_textEdit->setText(buffer);
 }
@@ -300,7 +301,7 @@ void dlt645dialog::on_Read_pushButton_clicked(bool checked)
                 obj.log(QString("Read Empty!"));
                 return;
             }
-            emit obj.Read_Result(*di,data,datalen);
+            emit obj.read_result(*di,data,datalen);
         },
         [](hdlt645_master_ctx_cmd_read_t *cmd,uint8_t err)
         {
@@ -335,7 +336,7 @@ void dlt645dialog::on_Read_pushButton_clicked(bool checked)
                 obj.log(QString("Read Empty!"));
                 return;
             }
-            emit obj.Read_Result(*di,data,datalen);
+            emit obj.read_result(*di,data,datalen);
         },
         [](hdlt645_master_ctx_cmd_read_t *cmd,uint8_t err)
         {
@@ -369,7 +370,7 @@ void dlt645dialog::on_Read_pushButton_clicked(bool checked)
                 obj.log(QString("Read Empty!"));
                 return;
             }
-            emit obj.Read_Result(*di,data,datalen);
+            emit obj.read_result(*di,data,datalen);
         },
         [](hdlt645_master_ctx_cmd_read_t *cmd,uint8_t err)
         {

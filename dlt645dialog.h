@@ -36,7 +36,7 @@ public:
 signals:
 
     void Log(QString log);
-    void Read_Result(hdlt645_data_di_t di,const uint8_t *data,size_t datalen);
+    void Read_Result(hdlt645_data_di_t di,QByteArray data);
 
 private:
     Ui::dlt645dialog *ui;
@@ -52,7 +52,7 @@ private slots:
     void Log_Slot(QString log);
     void on_Read_N_checkBox_stateChanged(int arg1);
     void on_Read_Time_checkBox_stateChanged(int arg1);
-    void Read_Result_Solt(hdlt645_data_di_t di,const uint8_t *data,size_t datalen);
+    void Read_Result_Solt(hdlt645_data_di_t di,QByteArray data);
     void on_Read_pushButton_clicked(bool checked);
 };
 
