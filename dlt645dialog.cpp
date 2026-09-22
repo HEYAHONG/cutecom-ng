@@ -261,7 +261,11 @@ void dlt645dialog::Read_Result_Solt(hdlt645_data_di_t di,QByteArray data)
         datalen = sizeof(buffer)/2;
     }
     hbase16_encode_with_null_terminator(buffer,sizeof(buffer),(const uint8_t *)data.data(),datalen);
-
+    {
+        char di_buffer[16]={0};
+        hbase16_encode_with_null_terminator(di_buffer,sizeof(di_buffer),di.di,sizeof(di.di));
+        log(QString("Read %1 %2").arg(di_buffer).arg(buffer));
+    }
     ui->Read_Result_textEdit->setText(buffer);
 }
 
