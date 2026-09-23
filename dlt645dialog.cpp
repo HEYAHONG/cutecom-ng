@@ -262,11 +262,56 @@ void dlt645dialog::Read_Result_Solt(hdlt645_data_di_t di,QByteArray data)
     }
     hbase16_encode_with_null_terminator(buffer,sizeof(buffer),(const uint8_t *)data.data(),datalen);
     {
-        char di_buffer[16]={0};
+        char di_buffer[16]= {0};
         hbase16_encode_with_null_terminator(di_buffer,sizeof(di_buffer),di.di,sizeof(di.di));
         log(QString("Read %1 %2").arg(di_buffer).arg(buffer));
     }
     ui->Read_Result_textEdit->setText(buffer);
+    {
+        const hdlt645_di_data_desc_t *desc=hdlt645_di_data_desc_get(&di);
+        if(desc!=NULL)
+        {
+            switch(desc->type)
+            {
+            case HDLT645_DI_DATA_DESC_TYPE_XXXXXX_XX:
+            case HDLT645_DI_DATA_DESC_TYPE_XXXXXX_XX_SIGNED:
+            case HDLT645_DI_DATA_DESC_TYPE_XXX_X:
+            case HDLT645_DI_DATA_DESC_TYPE_XXX_X_SIGNED:
+            case HDLT645_DI_DATA_DESC_TYPE_XX_XX:
+            case HDLT645_DI_DATA_DESC_TYPE_XX_XX_SIGNED:
+            case HDLT645_DI_DATA_DESC_TYPE_X_XXX:
+            case HDLT645_DI_DATA_DESC_TYPE_X_XXX_SIGNED:
+            case HDLT645_DI_DATA_DESC_TYPE_XXX_XXX:
+            case HDLT645_DI_DATA_DESC_TYPE_XXX_XXX_SIGNED:
+            case HDLT645_DI_DATA_DESC_TYPE_XX_XXXX:
+            case HDLT645_DI_DATA_DESC_TYPE_XX_XXXX_SIGNED:
+            case HDLT645_DI_DATA_DESC_TYPE_XXXXXXXX:
+            case HDLT645_DI_DATA_DESC_TYPE_XXXXXXXX_SIGNED:
+            {
+                double value=0;
+                desc->get_data(desc,(const uint8_t *)data.data(),data.length(),&value);
+                QString value_string=QString("Value: %1").arg(QString::number(value));
+                ui->Read_Result_textEdit->append(value_string);
+            }
+            break;
+            case HDLT645_DI_DATA_DESC_TYPE_XX_XXXX_YYMMDDHHMM:
+            case HDLT645_DI_DATA_DESC_TYPE_XX_XXXX_YYMMDDHHMM_SIGNED:
+            {
+                hdlt645_di_data_desc_type_xx_xxxx_yymmddhhmm_signed_t value;
+                memset(&value,0,sizeof(value));
+                desc->get_data(desc,(const uint8_t *)data.data(),data.length(),&value);
+                QString value_string=QString("Value: %1 %2-%3-%4 %5:%6").arg(QString::number(value.val)).arg(QString::number(value.YY)).arg(QString::number(value.MM)).arg(QString::number(value.DD)).arg(QString::number(value.HH)).arg(QString::number(value.mm));
+                ui->Read_Result_textEdit->append(value_string);
+            }
+            break;
+            default:
+            {
+
+            }
+            break;
+            }
+        }
+    }
 }
 
 
