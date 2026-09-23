@@ -338,7 +338,7 @@
     </message>
     <message>
         <location filename="mainwindow.cpp" line="93"/>
-        <location filename="mainwindow.cpp" line="996"/>
+        <location filename="mainwindow.cpp" line="1003"/>
         <source>qml plugin</source>
         <translation></translation>
     </message>
@@ -391,7 +391,7 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1078"/>
+        <location filename="mainwindow.cpp" line="1085"/>
         <source>qml path</source>
         <translation></translation>
     </message>
@@ -784,74 +784,150 @@
     </message>
     <message>
         <location filename="dlt645dialog.ui" line="80"/>
-        <location filename="dlt645dialog.ui" line="242"/>
+        <location filename="dlt645dialog.ui" line="205"/>
         <source>Read</source>
         <translation></translation>
     </message>
     <message>
         <location filename="dlt645dialog.ui" line="88"/>
+        <location filename="dlt645dialog.ui" line="231"/>
+        <location filename="dlt645dialog.ui" line="322"/>
+        <location filename="dlt645dialog.ui" line="366"/>
+        <location filename="dlt645dialog.ui" line="502"/>
         <source>Addr:</source>
         <translation></translation>
     </message>
     <message>
         <location filename="dlt645dialog.ui" line="95"/>
+        <location filename="dlt645dialog.ui" line="238"/>
+        <location filename="dlt645dialog.ui" line="329"/>
+        <location filename="dlt645dialog.ui" line="373"/>
+        <location filename="dlt645dialog.ui" line="509"/>
         <source>NNNNNNNNNNNN</source>
         <translation></translation>
     </message>
     <message>
         <location filename="dlt645dialog.ui" line="98"/>
+        <location filename="dlt645dialog.ui" line="241"/>
+        <location filename="dlt645dialog.ui" line="376"/>
+        <location filename="dlt645dialog.ui" line="512"/>
         <source>000000000001</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="dlt645dialog.ui" line="122"/>
+        <location filename="dlt645dialog.ui" line="109"/>
+        <location filename="dlt645dialog.ui" line="252"/>
+        <location filename="dlt645dialog.ui" line="387"/>
         <source>DI:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="dlt645dialog.ui" line="129"/>
+        <location filename="dlt645dialog.ui" line="116"/>
+        <location filename="dlt645dialog.ui" line="259"/>
+        <location filename="dlt645dialog.ui" line="394"/>
+        <location filename="dlt645dialog.ui" line="415"/>
+        <location filename="dlt645dialog.ui" line="436"/>
         <source>NNNNNNNN</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="dlt645dialog.ui" line="132"/>
+        <location filename="dlt645dialog.ui" line="119"/>
+        <location filename="dlt645dialog.ui" line="262"/>
+        <location filename="dlt645dialog.ui" line="397"/>
+        <location filename="dlt645dialog.ui" line="418"/>
+        <location filename="dlt645dialog.ui" line="439"/>
         <source>00000000</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="dlt645dialog.ui" line="156"/>
+        <location filename="dlt645dialog.ui" line="130"/>
         <source>N:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="dlt645dialog.ui" line="166"/>
+        <location filename="dlt645dialog.ui" line="140"/>
+        <location filename="dlt645dialog.ui" line="280"/>
         <source>NN</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="dlt645dialog.ui" line="169"/>
+        <location filename="dlt645dialog.ui" line="143"/>
         <source>1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="dlt645dialog.ui" line="176"/>
-        <location filename="dlt645dialog.ui" line="220"/>
+        <location filename="dlt645dialog.ui" line="150"/>
+        <location filename="dlt645dialog.ui" line="196"/>
         <source>Enable</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="dlt645dialog.ui" line="200"/>
+        <location filename="dlt645dialog.ui" line="167"/>
         <source>Time:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="dlt645dialog.ui" line="210"/>
+        <location filename="dlt645dialog.ui" line="186"/>
         <source>yyyy-MM-dd HH:mm</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="dlt645dialog.ui" line="260"/>
+        <location filename="dlt645dialog.ui" line="223"/>
+        <location filename="dlt645dialog.ui" line="292"/>
+        <source>ReadExt</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="dlt645dialog.ui" line="273"/>
+        <source>SEQ:</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="dlt645dialog.ui" line="283"/>
+        <source>01</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="dlt645dialog.ui" line="307"/>
+        <location filename="dlt645dialog.ui" line="313"/>
+        <source>ReadAddr</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="dlt645dialog.ui" line="332"/>
+        <source>000000000000</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="dlt645dialog.ui" line="358"/>
+        <location filename="dlt645dialog.ui" line="473"/>
         <source>Write</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="dlt645dialog.ui" line="408"/>
+        <source>P:</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="dlt645dialog.ui" line="429"/>
+        <source>C:</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="dlt645dialog.ui" line="450"/>
+        <source>Data:</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="dlt645dialog.ui" line="464"/>
+        <source>ASCII</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="dlt645dialog.ui" line="494"/>
+        <location filename="dlt645dialog.ui" line="521"/>
+        <source>WriteAddr</source>
         <translation></translation>
     </message>
 </context>
