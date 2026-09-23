@@ -30,7 +30,7 @@
     <message>
         <location filename="connectdialog.ui" line="14"/>
         <source>Connect to..</source>
-        <translation>连接到</translation>
+        <translation>连接到..</translation>
     </message>
     <message>
         <location filename="connectdialog.ui" line="38"/>
@@ -193,128 +193,133 @@
     </message>
     <message>
         <location filename="mainwindow.ui" line="254"/>
+        <source>DL/T 645</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="264"/>
         <source>ModbusRTU</source>
         <translation>ModbusRTU</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="280"/>
+        <location filename="mainwindow.ui" line="290"/>
         <source>File transfer</source>
         <translation>文件传输</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="322"/>
-        <location filename="mainwindow.ui" line="372"/>
+        <location filename="mainwindow.ui" line="332"/>
+        <location filename="mainwindow.ui" line="382"/>
         <source>End Of Line char sent</source>
         <translation>发送结束符</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="325"/>
+        <location filename="mainwindow.ui" line="335"/>
         <source>EOL char</source>
         <translation>结束符</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="394"/>
+        <location filename="mainwindow.ui" line="404"/>
         <source>file</source>
         <translation>文件</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="402"/>
+        <location filename="mainwindow.ui" line="412"/>
         <source>help</source>
         <translation>帮助</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="409"/>
+        <location filename="mainwindow.ui" line="419"/>
         <source>language</source>
         <translation>语言</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="416"/>
+        <location filename="mainwindow.ui" line="426"/>
         <source>settings</source>
         <translation>设置</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="425"/>
+        <location filename="mainwindow.ui" line="435"/>
         <source>plugin</source>
         <translation>插件</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="439"/>
+        <location filename="mainwindow.ui" line="449"/>
         <source>aboutQt</source>
         <translation>关于Qt</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="442"/>
+        <location filename="mainwindow.ui" line="452"/>
         <source>about Qt</source>
         <translation>关于Qt</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="451"/>
-        <location filename="mainwindow.ui" line="454"/>
+        <location filename="mainwindow.ui" line="460"/>
+        <location filename="mainwindow.ui" line="463"/>
         <source>exit</source>
         <translation>退出</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="457"/>
+        <location filename="mainwindow.ui" line="466"/>
         <source>Alt+E</source>
         <translation>Alt+E</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="462"/>
+        <location filename="mainwindow.ui" line="471"/>
         <source>English</source>
         <translation>英语</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="465"/>
+        <location filename="mainwindow.ui" line="474"/>
         <source>change to english</source>
         <translation>切换为英文</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="470"/>
+        <location filename="mainwindow.ui" line="479"/>
         <source>Chinese</source>
         <translation>中文</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="473"/>
+        <location filename="mainwindow.ui" line="482"/>
         <source>change to chinese</source>
         <translation>切换为中文</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="484"/>
+        <location filename="mainwindow.ui" line="493"/>
         <source>dirent input</source>
         <translation>直接输入</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="501"/>
+        <location filename="mainwindow.ui" line="510"/>
         <source>hex output</source>
         <translation>HEX输出</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="509"/>
+        <location filename="mainwindow.ui" line="518"/>
         <source>load qml script</source>
         <translation>加载QML脚本</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="512"/>
+        <location filename="mainwindow.ui" line="521"/>
         <source>Ctrl+L</source>
         <translation>Ctrl+L</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="517"/>
+        <location filename="mainwindow.ui" line="526"/>
         <source>pluginmanager</source>
         <translation>插件管理器</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="528"/>
+        <location filename="mainwindow.ui" line="537"/>
         <source>main output</source>
         <translation>主输出</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="536"/>
+        <location filename="mainwindow.ui" line="545"/>
         <source>vt100 output</source>
         <translation>VT100输出</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="541"/>
+        <location filename="mainwindow.ui" line="550"/>
         <source>about</source>
         <translation>关于</translation>
     </message>
@@ -327,8 +332,8 @@
         <translation type="vanished">直接输入</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="487"/>
-        <location filename="mainwindow.ui" line="490"/>
+        <location filename="mainwindow.ui" line="496"/>
+        <location filename="mainwindow.ui" line="499"/>
         <source>write to serial when key press</source>
         <translation>当按键按下时写入串口</translation>
     </message>
@@ -337,66 +342,66 @@
         <translation type="vanished">HEX输出</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="504"/>
+        <location filename="mainwindow.ui" line="513"/>
         <source>Hex Ouput</source>
         <translation>HEX 输出</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="89"/>
-        <location filename="mainwindow.cpp" line="971"/>
+        <location filename="mainwindow.cpp" line="93"/>
+        <location filename="mainwindow.cpp" line="996"/>
         <source>qml plugin</source>
         <translation>QML插件</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="433"/>
-        <location filename="mainwindow.cpp" line="439"/>
-        <location filename="mainwindow.cpp" line="443"/>
+        <location filename="mainwindow.cpp" line="451"/>
+        <location filename="mainwindow.cpp" line="457"/>
+        <location filename="mainwindow.cpp" line="461"/>
         <source>Opened</source>
         <translation>已打开</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="540"/>
+        <location filename="mainwindow.cpp" line="560"/>
         <source>Closed</source>
         <translation>已关闭</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="569"/>
+        <location filename="mainwindow.cpp" line="594"/>
         <source>Initiating connection with receiver</source>
         <translation>初始化连接</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="598"/>
+        <location filename="mainwindow.cpp" line="623"/>
         <source>Transferring file</source>
         <translation>传输文件</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="609"/>
+        <location filename="mainwindow.cpp" line="634"/>
         <source>Cutecom-ng</source>
         <translation>Cutecom-ng</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="609"/>
+        <location filename="mainwindow.cpp" line="634"/>
         <source>File transferred successfully</source>
         <translation>文件传输成功</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="648"/>
-        <location filename="mainwindow.cpp" line="674"/>
+        <location filename="mainwindow.cpp" line="673"/>
+        <location filename="mainwindow.cpp" line="699"/>
         <source>Warning</source>
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="648"/>
+        <location filename="mainwindow.cpp" line="673"/>
         <source>Input is empty</source>
         <translation>输入为空</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="674"/>
+        <location filename="mainwindow.cpp" line="699"/>
         <source>Input is not hex string</source>
         <translation>输入不是HEX字符串</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1053"/>
+        <location filename="mainwindow.cpp" line="1078"/>
         <source>qml path</source>
         <translation>QML 路径</translation>
     </message>
@@ -499,32 +504,32 @@
         <translation>读线圈</translation>
     </message>
     <message>
-        <location filename="modbusrtudialog.cpp" line="717"/>
+        <location filename="modbusrtudialog.cpp" line="720"/>
         <source>WriteCoils</source>
         <translation>写线圈</translation>
     </message>
     <message>
-        <location filename="modbusrtudialog.cpp" line="726"/>
+        <location filename="modbusrtudialog.cpp" line="732"/>
         <source>ReadDiscreteInputs</source>
         <translation>读离散输入</translation>
     </message>
     <message>
-        <location filename="modbusrtudialog.cpp" line="736"/>
+        <location filename="modbusrtudialog.cpp" line="745"/>
         <source>ReadHoldingRegisters</source>
         <translation>读保持寄存器</translation>
     </message>
     <message>
-        <location filename="modbusrtudialog.cpp" line="738"/>
+        <location filename="modbusrtudialog.cpp" line="750"/>
         <source>WriteHoldingRegisters</source>
         <translation>写保持寄存器</translation>
     </message>
     <message>
-        <location filename="modbusrtudialog.cpp" line="747"/>
+        <location filename="modbusrtudialog.cpp" line="762"/>
         <source>ReadInputRegisters</source>
         <translation>读输入寄存器</translation>
     </message>
     <message>
-        <location filename="modbusrtudialog.cpp" line="973"/>
+        <location filename="modbusrtudialog.cpp" line="991"/>
         <source>Copy</source>
         <translation>复制</translation>
     </message>
@@ -749,19 +754,119 @@
 <context>
     <name>UndoStack</name>
     <message>
-        <location filename="components/qhexedit/qhexedit2/src/commands.cpp" line="115"/>
+        <location filename="components/qhexedit/qhexedit2/src/commands.cpp" line="118"/>
         <source>Inserting %1 bytes</source>
         <translation>插入 %1 字节</translation>
     </message>
     <message>
-        <location filename="components/qhexedit/qhexedit2/src/commands.cpp" line="137"/>
+        <location filename="components/qhexedit/qhexedit2/src/commands.cpp" line="140"/>
         <source>Delete %1 chars</source>
         <translation>删除 %1 字符</translation>
     </message>
     <message>
-        <location filename="components/qhexedit/qhexedit2/src/commands.cpp" line="162"/>
+        <location filename="components/qhexedit/qhexedit2/src/commands.cpp" line="165"/>
         <source>Overwrite %1 chars</source>
         <translation>覆盖 %1 字符</translation>
+    </message>
+</context>
+<context>
+    <name>dlt645dialog</name>
+    <message>
+        <location filename="dlt645dialog.ui" line="20"/>
+        <source>DL/T 645</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="dlt645dialog.ui" line="33"/>
+        <source>Time</source>
+        <translation>时间</translation>
+    </message>
+    <message>
+        <location filename="dlt645dialog.ui" line="42"/>
+        <source>yyyy-MM-dd HH:mm:ss</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="dlt645dialog.ui" line="49"/>
+        <source>Current Time</source>
+        <translation>当前时间</translation>
+    </message>
+    <message>
+        <location filename="dlt645dialog.ui" line="59"/>
+        <source>Sync</source>
+        <translation>同步</translation>
+    </message>
+    <message>
+        <location filename="dlt645dialog.ui" line="80"/>
+        <location filename="dlt645dialog.ui" line="242"/>
+        <source>Read</source>
+        <translation>读</translation>
+    </message>
+    <message>
+        <location filename="dlt645dialog.ui" line="88"/>
+        <source>Addr:</source>
+        <translation>地址:</translation>
+    </message>
+    <message>
+        <location filename="dlt645dialog.ui" line="95"/>
+        <source>NNNNNNNNNNNN</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="dlt645dialog.ui" line="98"/>
+        <source>000000000001</source>
+        <translation>000000000001</translation>
+    </message>
+    <message>
+        <location filename="dlt645dialog.ui" line="122"/>
+        <source>DI:</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="dlt645dialog.ui" line="129"/>
+        <source>NNNNNNNN</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="dlt645dialog.ui" line="132"/>
+        <source>00000000</source>
+        <translation>00000000</translation>
+    </message>
+    <message>
+        <location filename="dlt645dialog.ui" line="156"/>
+        <source>N:</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="dlt645dialog.ui" line="166"/>
+        <source>NN</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="dlt645dialog.ui" line="169"/>
+        <source>1</source>
+        <translation>1</translation>
+    </message>
+    <message>
+        <location filename="dlt645dialog.ui" line="176"/>
+        <location filename="dlt645dialog.ui" line="220"/>
+        <source>Enable</source>
+        <translation>使能</translation>
+    </message>
+    <message>
+        <location filename="dlt645dialog.ui" line="200"/>
+        <source>Time:</source>
+        <translation>时间:</translation>
+    </message>
+    <message>
+        <location filename="dlt645dialog.ui" line="210"/>
+        <source>yyyy-MM-dd HH:mm</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="dlt645dialog.ui" line="260"/>
+        <source>Write</source>
+        <translation>写</translation>
     </message>
 </context>
 </TS>

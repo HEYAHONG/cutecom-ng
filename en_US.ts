@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1">
+<TS version="2.1" language="en_US">
 <context>
     <name>AboutDialog</name>
     <message>
         <location filename="aboutdialog.ui" line="14"/>
         <location filename="aboutdialog.ui" line="24"/>
         <source>about</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="aboutdialog.ui" line="40"/>
         <source>Version:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="aboutdialog.ui" line="79"/>
         <source>license</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="aboutdialog.ui" line="84"/>
         <source>config</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -30,72 +30,72 @@
     <message>
         <location filename="connectdialog.ui" line="14"/>
         <source>Connect to..</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="connectdialog.ui" line="38"/>
         <source>Device</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="connectdialog.ui" line="52"/>
         <source>Baud rate</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="connectdialog.ui" line="66"/>
         <source>Data bits</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="connectdialog.ui" line="76"/>
         <source>Stop bits</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="connectdialog.ui" line="86"/>
         <source>Parity</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="connectdialog.ui" line="102"/>
         <source>Flow control</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="connectdialog.ui" line="127"/>
         <source>cancel</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="connectdialog.ui" line="134"/>
         <source>open device</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="connectdialog.ui" line="143"/>
         <source>Dump File</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="connectdialog.ui" line="158"/>
         <source>Path</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="connectdialog.ui" line="165"/>
         <source>Type</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="connectdialog.ui" line="172"/>
         <source>text</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="connectdialog.ui" line="182"/>
         <source>raw</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -103,42 +103,42 @@
     <message>
         <location filename="filetransfer.cpp" line="78"/>
         <source>Success</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="filetransfer.cpp" line="80"/>
         <source>Synchronization error</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="filetransfer.cpp" line="82"/>
         <source>Transmission error</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="filetransfer.cpp" line="84"/>
         <source>Transfer timeout</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="filetransfer.cpp" line="86"/>
         <source>Transfer cancelled by remote</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="filetransfer.cpp" line="89"/>
         <source>Transfer cancelled</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="filetransfer.cpp" line="91"/>
         <source>Can&apos;t open input file</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="filetransfer.cpp" line="94"/>
         <source>Unknown Error</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -146,7 +146,7 @@
     <message>
         <location filename="hexlistitem.ui" line="20"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -154,241 +154,246 @@
     <message>
         <location filename="mainwindow.ui" line="14"/>
         <source>cutecom-ng</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="29"/>
         <source>Connect</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="39"/>
         <source>Disconnect</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="49"/>
         <source>RTS</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="59"/>
         <source>DTR</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="95"/>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="102"/>
         <source>Search</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="223"/>
         <source>HEX</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="254"/>
+        <source>DL/T 645</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="264"/>
         <source>ModbusRTU</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="280"/>
+        <location filename="mainwindow.ui" line="290"/>
         <source>File transfer</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="322"/>
-        <location filename="mainwindow.ui" line="372"/>
+        <location filename="mainwindow.ui" line="332"/>
+        <location filename="mainwindow.ui" line="382"/>
         <source>End Of Line char sent</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="325"/>
+        <location filename="mainwindow.ui" line="335"/>
         <source>EOL char</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="394"/>
+        <location filename="mainwindow.ui" line="404"/>
         <source>file</source>
         <oldsource>&amp;file</oldsource>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="402"/>
+        <location filename="mainwindow.ui" line="412"/>
         <source>help</source>
         <oldsource>&amp;help</oldsource>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="409"/>
+        <location filename="mainwindow.ui" line="419"/>
         <source>language</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="416"/>
+        <location filename="mainwindow.ui" line="426"/>
         <source>settings</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="425"/>
+        <location filename="mainwindow.ui" line="435"/>
         <source>plugin</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="439"/>
+        <location filename="mainwindow.ui" line="449"/>
         <source>aboutQt</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="442"/>
+        <location filename="mainwindow.ui" line="452"/>
         <source>about Qt</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="451"/>
-        <location filename="mainwindow.ui" line="454"/>
+        <location filename="mainwindow.ui" line="460"/>
+        <location filename="mainwindow.ui" line="463"/>
         <source>exit</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="457"/>
+        <location filename="mainwindow.ui" line="466"/>
         <source>Alt+E</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="462"/>
+        <location filename="mainwindow.ui" line="471"/>
         <source>English</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="465"/>
+        <location filename="mainwindow.ui" line="474"/>
         <source>change to english</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="470"/>
+        <location filename="mainwindow.ui" line="479"/>
         <source>Chinese</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="473"/>
+        <location filename="mainwindow.ui" line="482"/>
         <source>change to chinese</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="484"/>
+        <location filename="mainwindow.ui" line="493"/>
         <source>dirent input</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="501"/>
+        <location filename="mainwindow.ui" line="510"/>
         <source>hex output</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="509"/>
+        <location filename="mainwindow.ui" line="518"/>
         <source>load qml script</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="512"/>
+        <location filename="mainwindow.ui" line="521"/>
         <source>Ctrl+L</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="517"/>
+        <location filename="mainwindow.ui" line="526"/>
         <source>pluginmanager</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="528"/>
+        <location filename="mainwindow.ui" line="537"/>
         <source>main output</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="536"/>
+        <location filename="mainwindow.ui" line="545"/>
         <source>vt100 output</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="541"/>
+        <location filename="mainwindow.ui" line="550"/>
         <source>about</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="487"/>
-        <location filename="mainwindow.ui" line="490"/>
+        <location filename="mainwindow.ui" line="496"/>
+        <location filename="mainwindow.ui" line="499"/>
         <source>write to serial when key press</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="504"/>
+        <location filename="mainwindow.ui" line="513"/>
         <source>Hex Ouput</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="89"/>
-        <location filename="mainwindow.cpp" line="971"/>
+        <location filename="mainwindow.cpp" line="93"/>
+        <location filename="mainwindow.cpp" line="996"/>
         <source>qml plugin</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="433"/>
-        <location filename="mainwindow.cpp" line="439"/>
-        <location filename="mainwindow.cpp" line="443"/>
+        <location filename="mainwindow.cpp" line="451"/>
+        <location filename="mainwindow.cpp" line="457"/>
+        <location filename="mainwindow.cpp" line="461"/>
         <source>Opened</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="540"/>
+        <location filename="mainwindow.cpp" line="560"/>
         <source>Closed</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="569"/>
+        <location filename="mainwindow.cpp" line="594"/>
         <source>Initiating connection with receiver</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="598"/>
+        <location filename="mainwindow.cpp" line="623"/>
         <source>Transferring file</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="609"/>
+        <location filename="mainwindow.cpp" line="634"/>
         <source>Cutecom-ng</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="609"/>
+        <location filename="mainwindow.cpp" line="634"/>
         <source>File transferred successfully</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="648"/>
-        <location filename="mainwindow.cpp" line="674"/>
+        <location filename="mainwindow.cpp" line="673"/>
+        <location filename="mainwindow.cpp" line="699"/>
         <source>Warning</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="648"/>
+        <location filename="mainwindow.cpp" line="673"/>
         <source>Input is empty</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="674"/>
+        <location filename="mainwindow.cpp" line="699"/>
         <source>Input is not hex string</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1053"/>
+        <location filename="mainwindow.cpp" line="1078"/>
         <source>qml path</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -396,12 +401,12 @@
     <message>
         <location filename="modbusrtudialog.ui" line="14"/>
         <source>ModbusRTU</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="modbusrtudialog.ui" line="24"/>
         <source>Coils</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="modbusrtudialog.ui" line="38"/>
@@ -409,7 +414,7 @@
         <location filename="modbusrtudialog.ui" line="231"/>
         <location filename="modbusrtudialog.ui" line="326"/>
         <source>StartAddr:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="modbusrtudialog.ui" line="77"/>
@@ -417,102 +422,102 @@
         <location filename="modbusrtudialog.ui" line="270"/>
         <location filename="modbusrtudialog.ui" line="365"/>
         <source>Length:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="modbusrtudialog.ui" line="119"/>
         <source>DiscreteInputs</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="modbusrtudialog.ui" line="214"/>
         <source>HoldingRegisters</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="modbusrtudialog.ui" line="309"/>
         <source>InputRegisters</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="modbusrtudialog.ui" line="404"/>
         <source>DataSend</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="modbusrtudialog.ui" line="421"/>
         <source>MaxLine:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="modbusrtudialog.ui" line="434"/>
         <source>1000</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="modbusrtudialog.ui" line="471"/>
         <source>SlaveAddr:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="modbusrtudialog.ui" line="497"/>
         <source>AddressFormat:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="modbusrtudialog.ui" line="523"/>
         <source>ValueFormat:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="modbusrtudialog.cpp" line="307"/>
         <source>Address</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="modbusrtudialog.cpp" line="307"/>
         <source>Value</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="modbusrtudialog.cpp" line="307"/>
         <source>Time</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="modbusrtudialog.cpp" line="715"/>
         <source>ReadCoils</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="modbusrtudialog.cpp" line="717"/>
+        <location filename="modbusrtudialog.cpp" line="720"/>
         <source>WriteCoils</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="modbusrtudialog.cpp" line="726"/>
+        <location filename="modbusrtudialog.cpp" line="732"/>
         <source>ReadDiscreteInputs</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="modbusrtudialog.cpp" line="736"/>
+        <location filename="modbusrtudialog.cpp" line="745"/>
         <source>ReadHoldingRegisters</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="modbusrtudialog.cpp" line="738"/>
+        <location filename="modbusrtudialog.cpp" line="750"/>
         <source>WriteHoldingRegisters</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="modbusrtudialog.cpp" line="747"/>
+        <location filename="modbusrtudialog.cpp" line="762"/>
         <source>ReadInputRegisters</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="modbusrtudialog.cpp" line="973"/>
+        <location filename="modbusrtudialog.cpp" line="991"/>
         <source>Copy</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -520,58 +525,58 @@
     <message>
         <location filename="modbusrtuwritedatadialog.ui" line="33"/>
         <source>StartAddr:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="modbusrtuwritedatadialog.ui" line="46"/>
         <source>0</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="modbusrtuwritedatadialog.ui" line="56"/>
         <source>Hex</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="modbusrtuwritedatadialog.ui" line="79"/>
         <source>HexData</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="modbusrtuwritedatadialog.ui" line="106"/>
         <source>read after write</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="modbusrtuwritedatadialog.ui" line="129"/>
         <source>Add</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="modbusrtuwritedatadialog.ui" line="136"/>
         <source>Del</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="modbusrtuwritedatadialog.ui" line="156"/>
         <source>Ok</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="modbusrtuwritedatadialog.cpp" line="113"/>
         <location filename="modbusrtuwritedatadialog.cpp" line="137"/>
         <source>information</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="modbusrtuwritedatadialog.cpp" line="113"/>
         <source>Data is empty</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="modbusrtuwritedatadialog.cpp" line="137"/>
         <source>Data is invalid</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -579,42 +584,42 @@
     <message>
         <location filename="pluginmanager.ui" line="17"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="pluginmanager.ui" line="65"/>
         <source>LoadQml</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="pluginmanager.ui" line="72"/>
         <source>UnloadQml</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="pluginmanager.cpp" line="20"/>
         <source>pluginmanager</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="pluginmanager.cpp" line="41"/>
         <source>name</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="pluginmanager.cpp" line="42"/>
         <source>type</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="pluginmanager.cpp" line="43"/>
         <source>path</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="pluginmanager.cpp" line="66"/>
         <source>qml path</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -622,37 +627,37 @@
     <message>
         <location filename="components/scintilla/scintilla/scintilla/src/ScintillaBase.cxx" line="549"/>
         <source>Undo</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="components/scintilla/scintilla/scintilla/src/ScintillaBase.cxx" line="550"/>
         <source>Redo</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="components/scintilla/scintilla/scintilla/src/ScintillaBase.cxx" line="552"/>
         <source>Cut</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="components/scintilla/scintilla/scintilla/src/ScintillaBase.cxx" line="553"/>
         <source>Copy</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="components/scintilla/scintilla/scintilla/src/ScintillaBase.cxx" line="554"/>
         <source>Paste</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="components/scintilla/scintilla/scintilla/src/ScintillaBase.cxx" line="555"/>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="components/scintilla/scintilla/scintilla/src/ScintillaBase.cxx" line="557"/>
         <source>Select All</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -660,7 +665,7 @@
     <message>
         <location filename="qqmlloader.cpp" line="104"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -668,12 +673,12 @@
     <message>
         <location filename="components/QVTerminal/QVTerminal/src/qvterminal.cpp" line="49"/>
         <source>Paste</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="components/QVTerminal/QVTerminal/src/qvterminal.cpp" line="50"/>
         <source>Ctrl+V</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -681,12 +686,12 @@
     <message>
         <location filename="searchwidget.ui" line="32"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="searchwidget.ui" line="75"/>
         <source>Search...</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -694,23 +699,23 @@
     <message>
         <location filename="serialportstatus.ui" line="23"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="serialportstatus.ui" line="140"/>
         <source>S:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="serialportstatus.ui" line="147"/>
         <location filename="serialportstatus.ui" line="161"/>
         <source>0</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="serialportstatus.ui" line="154"/>
         <source>R:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -719,35 +724,135 @@
         <location filename="sessionmanager.cpp" line="62"/>
         <location filename="sessionmanager.cpp" line="71"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="sessionmanager.cpp" line="220"/>
         <source>warning</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="sessionmanager.cpp" line="220"/>
         <source>not implemented</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
     <name>UndoStack</name>
     <message>
-        <location filename="components/qhexedit/qhexedit2/src/commands.cpp" line="115"/>
+        <location filename="components/qhexedit/qhexedit2/src/commands.cpp" line="118"/>
         <source>Inserting %1 bytes</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="components/qhexedit/qhexedit2/src/commands.cpp" line="137"/>
+        <location filename="components/qhexedit/qhexedit2/src/commands.cpp" line="140"/>
         <source>Delete %1 chars</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="components/qhexedit/qhexedit2/src/commands.cpp" line="162"/>
+        <location filename="components/qhexedit/qhexedit2/src/commands.cpp" line="165"/>
         <source>Overwrite %1 chars</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
+    </message>
+</context>
+<context>
+    <name>dlt645dialog</name>
+    <message>
+        <location filename="dlt645dialog.ui" line="20"/>
+        <source>DL/T 645</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="dlt645dialog.ui" line="33"/>
+        <source>Time</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="dlt645dialog.ui" line="42"/>
+        <source>yyyy-MM-dd HH:mm:ss</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="dlt645dialog.ui" line="49"/>
+        <source>Current Time</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="dlt645dialog.ui" line="59"/>
+        <source>Sync</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="dlt645dialog.ui" line="80"/>
+        <location filename="dlt645dialog.ui" line="242"/>
+        <source>Read</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="dlt645dialog.ui" line="88"/>
+        <source>Addr:</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="dlt645dialog.ui" line="95"/>
+        <source>NNNNNNNNNNNN</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="dlt645dialog.ui" line="98"/>
+        <source>000000000001</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="dlt645dialog.ui" line="122"/>
+        <source>DI:</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="dlt645dialog.ui" line="129"/>
+        <source>NNNNNNNN</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="dlt645dialog.ui" line="132"/>
+        <source>00000000</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="dlt645dialog.ui" line="156"/>
+        <source>N:</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="dlt645dialog.ui" line="166"/>
+        <source>NN</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="dlt645dialog.ui" line="169"/>
+        <source>1</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="dlt645dialog.ui" line="176"/>
+        <location filename="dlt645dialog.ui" line="220"/>
+        <source>Enable</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="dlt645dialog.ui" line="200"/>
+        <source>Time:</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="dlt645dialog.ui" line="210"/>
+        <source>yyyy-MM-dd HH:mm</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="dlt645dialog.ui" line="260"/>
+        <source>Write</source>
+        <translation></translation>
     </message>
 </context>
 </TS>
