@@ -442,3 +442,70 @@ void dlt645dialog::on_Read_pushButton_clicked(bool checked)
 
 }
 
+
+void dlt645dialog::on_Write_pushButton_clicked(bool checked)
+{
+    if(session==NULL || !session->dlt645_session_idle())
+    {
+        return;
+    }
+    bool is_ok=false;
+    uint64_t addr_num=ui->Write_Addr_lineEdit->text().toLongLong(&is_ok,16);
+    uint64_t di_num=ui->Write_DI_lineEdit->text().toLongLong(&is_ok,16);
+    uint64_t p_num=ui->Write_P_lineEdit->text().toLongLong(&is_ok,16);
+    uint64_t c_num=ui->Write_C_lineEdit->text().toLongLong(&is_ok,16);
+    memset(&cmd_write,0,sizeof(cmd_write));
+    memset(cmd_write_buffer,0,sizeof(cmd_write_buffer));
+    size_t data_len=0;
+    QByteArray data_text(ui->Write_Data_lineEdit->text().toUtf8());
+    if(ui->Write_Data_checkBox->checkState() != Qt::Checked)
+    {
+        data_len=hbase16_decode(cmd_write_buffer,sizeof(cmd_write_buffer),data_text.data(),data_text.length());
+    }
+    else
+    {
+        if(data_text.length() > sizeof(cmd_write_buffer))
+        {
+            data_len=sizeof(cmd_write_buffer);
+        }
+        else
+        {
+            data_len=data_text.length();
+        }
+        memcpy(cmd_write_buffer,data_text.data(),data_len);
+    }
+
+    {
+        hdlt645_bcd_addr_t addr;
+        hdlt645_bcd_addr_set(&addr,addr_num);
+        hdlt645_data_di_t di;
+        hdlt645_data_di_set(&di,di_num);
+        hdlt645_data_p_t p;
+        hdlt645_data_p_set(&p,p_num);
+        hdlt645_data_c_t c;
+        hdlt645_data_c_set(&c,c_num);
+        hdlt645_master_ctx_cmd_write_init(&cmd_write,
+                                          &addr,
+                                          &di,
+                                          &p,
+                                          &c,
+                                          cmd_write_buffer,
+                                          data_len,
+                                          [](hdlt645_master_ctx_cmd_write_t *cmd,uint8_t err)
+        {
+            if(cmd==NULL || cmd->usr == 0)
+            {
+                return;
+            }
+            dlt645dialog &obj=*(dlt645dialog *)cmd->usr;
+            obj.log(QString("Write Error %1").arg(QString::number(err,16)));
+        },this);
+    }
+
+    if(session!=NULL && session->dlt645_session_idle())
+    {
+        session->dlt645_start_session(HDLT645_FRAME_CONTROL_FCT_WRITE,&cmd_write,sizeof(cmd_write));
+    }
+
+}
+

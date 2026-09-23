@@ -19,6 +19,8 @@ class dlt645dialog : public QDialog
     dlt645sessionmanager *session;
     hdlt645_master_ctx_cmd_time_t cmd_time;
     hdlt645_master_ctx_cmd_read_t cmd_read;
+    hdlt645_master_ctx_cmd_write_t cmd_write;
+    uint8_t cmd_write_buffer[HDLT645_FRAME_DATALENGTH_MAX_WRITE];
 public:
     explicit dlt645dialog(MainWindow *parent = nullptr);
     ~dlt645dialog();
@@ -54,6 +56,7 @@ private slots:
     void on_Read_Time_checkBox_stateChanged(int arg1);
     void Read_Result_Solt(hdlt645_data_di_t di,QByteArray data);
     void on_Read_pushButton_clicked(bool checked);
+    void on_Write_pushButton_clicked(bool checked);
 };
 
 #endif // DLT645DIALOG_H
