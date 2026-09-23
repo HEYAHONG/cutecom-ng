@@ -953,6 +953,10 @@ void MainWindow::on_actionEnglish_triggered()
     {
         modbusrtu_dlg->retranslateUi();
     }
+    if(dlt645_dlg!=NULL)
+    {
+        dlt645_dlg->retranslateUi();
+    }
 }
 
 
@@ -968,7 +972,10 @@ void MainWindow::on_actionChinese_triggered()
     {
         modbusrtu_dlg->retranslateUi();
     }
-
+    if(dlt645_dlg!=NULL)
+    {
+        dlt645_dlg->retranslateUi();
+    }
 }
 
 
