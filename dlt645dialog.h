@@ -19,7 +19,10 @@ class dlt645dialog : public QDialog
     dlt645sessionmanager *session;
     hdlt645_master_ctx_cmd_time_t cmd_time;
     hdlt645_master_ctx_cmd_read_t cmd_read;
+    hdlt645_master_ctx_cmd_readext_t cmd_readext;
+    hdlt645_master_ctx_cmd_readaddr_t cmd_readaddr;
     hdlt645_master_ctx_cmd_write_t cmd_write;
+    hdlt645_master_ctx_cmd_writeaddr_t cmd_writeaddr;
     uint8_t cmd_write_buffer[HDLT645_FRAME_DATALENGTH_MAX_WRITE];
 public:
     explicit dlt645dialog(MainWindow *parent = nullptr);
@@ -39,10 +42,12 @@ signals:
 
     void Log(QString log);
     void Read_Result(hdlt645_data_di_t di,QByteArray data);
+    void ReadAddr_Result(hdlt645_bcd_addr_t addr);
 
 private:
     Ui::dlt645dialog *ui;
     void read_result(hdlt645_data_di_t di,const uint8_t *data,size_t datalen);
+    void readaddr_result(hdlt645_bcd_addr_t addr);
 public slots:
     void dataReceived(const QByteArray &data);
     void sendToSerial(const QByteArray &data);
@@ -55,8 +60,12 @@ private slots:
     void on_Read_N_checkBox_stateChanged(int arg1);
     void on_Read_Time_checkBox_stateChanged(int arg1);
     void Read_Result_Solt(hdlt645_data_di_t di,QByteArray data);
+    void ReadAddr_Result_Solt(hdlt645_bcd_addr_t addr);
     void on_Read_pushButton_clicked(bool checked);
     void on_Write_pushButton_clicked(bool checked);
+    void on_ReadExt_pushButton_clicked(bool checked);
+    void on_ReadAddr_pushButton_clicked(bool checked);
+    void on_WriteAddr_pushButton_clicked(bool checked);
 };
 
 #endif // DLT645DIALOG_H

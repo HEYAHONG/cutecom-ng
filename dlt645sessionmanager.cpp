@@ -83,6 +83,11 @@ bool dlt645sessionmanager::dlt645_session_idle(void)
     return false;
 }
 
+int  dlt645sessionmanager::dlt645_get_fct(void)
+{
+    return dlt645.ctx.cmd.fct;
+}
+
 void dlt645sessionmanager::session_loop_timer_timeout(void)
 {
     hdlt645_master_ctx_status_t old_status=hdlt645_master_ctx_status(&dlt645.ctx);

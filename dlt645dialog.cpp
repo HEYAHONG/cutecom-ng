@@ -18,6 +18,7 @@ dlt645dialog::dlt645dialog(MainWindow *parent)
 
     connect(this,&dlt645dialog::Log,this,&dlt645dialog::Log_Slot);
     connect(this,&dlt645dialog::Read_Result,this,&dlt645dialog::Read_Result_Solt);
+    connect(this,&dlt645dialog::ReadAddr_Result,this,&dlt645dialog::ReadAddr_Result_Solt);
 
     if(parent == NULL)
     {
@@ -69,6 +70,11 @@ void dlt645dialog::read_result(hdlt645_data_di_t di,const uint8_t *data,size_t d
         return;
     }
     emit Read_Result(di,QByteArray((const char *)data,datalen));
+}
+
+void dlt645dialog::readaddr_result(hdlt645_bcd_addr_t addr)
+{
+    emit ReadAddr_Result(addr);
 }
 
 void dlt645dialog::dataReceived(const QByteArray &data)
@@ -140,6 +146,10 @@ void dlt645dialog::SessionStatusChanged()
         case HDLT645_MASTER_CTX_STATUS_FINISHED:
         {
             log("Finished!");
+            if(session->dlt645_get_fct() == HDLT645_FRAME_CONTROL_FCT_READADDR)
+            {
+                readaddr_result(cmd_readaddr.addr);
+            }
         }
         break;
         case HDLT645_MASTER_CTX_STATUS_INIT:
@@ -267,6 +277,7 @@ void dlt645dialog::Read_Result_Solt(hdlt645_data_di_t di,QByteArray data)
         log(QString("Read %1 %2").arg(di_buffer).arg(buffer));
     }
     ui->Read_Result_textEdit->setText(buffer);
+    ui->ReadExt_Result_textEdit->setText(buffer);
     {
         const hdlt645_di_data_desc_t *desc=hdlt645_di_data_desc_get(&di);
         if(desc!=NULL)
@@ -292,6 +303,7 @@ void dlt645dialog::Read_Result_Solt(hdlt645_data_di_t di,QByteArray data)
                 desc->get_data(desc,(const uint8_t *)data.data(),data.length(),&value);
                 QString value_string=QString("Value: %1").arg(QString::number(value));
                 ui->Read_Result_textEdit->append(value_string);
+                ui->ReadExt_Result_textEdit->append(value_string);
             }
             break;
             case HDLT645_DI_DATA_DESC_TYPE_XX_XXXX_YYMMDDHHMM:
@@ -302,6 +314,7 @@ void dlt645dialog::Read_Result_Solt(hdlt645_data_di_t di,QByteArray data)
                 desc->get_data(desc,(const uint8_t *)data.data(),data.length(),&value);
                 QString value_string=QString("Value: %1 %2-%3-%4 %5:%6").arg(QString::number(value.val)).arg(QString::number(value.YY)).arg(QString::number(value.MM)).arg(QString::number(value.DD)).arg(QString::number(value.HH)).arg(QString::number(value.mm));
                 ui->Read_Result_textEdit->append(value_string);
+                ui->ReadExt_Result_textEdit->append(value_string);
             }
             break;
             default:
@@ -312,6 +325,17 @@ void dlt645dialog::Read_Result_Solt(hdlt645_data_di_t di,QByteArray data)
             }
         }
     }
+}
+
+void dlt645dialog::ReadAddr_Result_Solt(hdlt645_bcd_addr_t addr)
+{
+    uint64_t addr_num=hdlt645_bcd_addr_get(&addr);
+    QString addr_str=QString::number(addr_num,16);
+    while(addr_str.length() < 12)
+    {
+        addr_str = QString("0")+addr_str;
+    }
+    ui->ReadAddr_Result_lineEdit->setText(addr_str);
 }
 
 
@@ -507,5 +531,91 @@ void dlt645dialog::on_Write_pushButton_clicked(bool checked)
         session->dlt645_start_session(HDLT645_FRAME_CONTROL_FCT_WRITE,&cmd_write,sizeof(cmd_write));
     }
 
+}
+
+
+void dlt645dialog::on_ReadExt_pushButton_clicked(bool checked)
+{
+    if(session==NULL || !session->dlt645_session_idle())
+    {
+        return;
+    }
+    bool is_ok=false;
+    uint64_t addr_num=ui->ReadExt_Addr_lineEdit->text().toLongLong(&is_ok,16);
+    uint64_t di_num=ui->ReadExt_DI_lineEdit->text().toLongLong(&is_ok,16);
+    uint64_t seq=ui->ReadExt_Seq_lineEdit->text().toLongLong(&is_ok,16);
+
+    {
+        hdlt645_data_di_t di;
+        hdlt645_data_di_set(&di,di_num);
+        hdlt645_bcd_addr_t addr;
+        hdlt645_bcd_addr_set(&addr,addr_num);
+        hdlt645_master_ctx_cmd_readext_init(&cmd_readext,
+                                            &addr,
+                                            &di,
+                                            seq,
+                                            [](hdlt645_master_ctx_cmd_readext_t *cmd,hdlt645_data_di_t *di,const uint8_t *data,size_t datalen,uint8_t seq)
+        {
+            if(cmd==NULL || cmd->usr == 0 )
+            {
+                return;
+            }
+            dlt645dialog &obj=*(dlt645dialog *)cmd->usr;
+            if(data == NULL || datalen == 0)
+            {
+                obj.log(QString("ReadExt Empty!"));
+                return;
+            }
+            emit obj.read_result(*di,data,datalen);
+        },
+        [](hdlt645_master_ctx_cmd_readext_t *cmd,uint8_t err)
+        {
+            if(cmd==NULL || cmd->usr == 0)
+            {
+                return;
+            }
+            dlt645dialog &obj=*(dlt645dialog *)cmd->usr;
+            obj.log(QString("ReadExt Error %1").arg(QString::number(err,16)));
+
+        },this);
+
+    }
+
+    if(session!=NULL && session->dlt645_session_idle())
+    {
+        session->dlt645_start_session(HDLT645_FRAME_CONTROL_FCT_READEXT,&cmd_readext,sizeof(cmd_readext));
+    }
+}
+
+
+void dlt645dialog::on_ReadAddr_pushButton_clicked(bool checked)
+{
+    if(session==NULL || !session->dlt645_session_idle())
+    {
+        return;
+    }
+
+    if(session!=NULL && session->dlt645_session_idle())
+    {
+        session->dlt645_start_session(HDLT645_FRAME_CONTROL_FCT_READADDR,&cmd_readaddr,sizeof(cmd_readaddr));
+    }
+}
+
+
+void dlt645dialog::on_WriteAddr_pushButton_clicked(bool checked)
+{
+    if(session==NULL || !session->dlt645_session_idle())
+    {
+        return;
+    }
+
+    bool is_ok=false;
+    uint64_t addr_num=ui->WriteAddr_Addr_lineEdit->text().toLongLong(&is_ok,16);
+    hdlt645_bcd_addr_set(&cmd_writeaddr.addr,addr_num);
+
+    if(session!=NULL && session->dlt645_session_idle())
+    {
+        session->dlt645_start_session(HDLT645_FRAME_CONTROL_FCT_WRITEADDR,&cmd_writeaddr,sizeof(cmd_writeaddr));
+    }
 }
 

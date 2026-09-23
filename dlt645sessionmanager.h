@@ -38,6 +38,7 @@ public:
 
     hdlt645_master_ctx_status_t dlt645_status(void);
     bool dlt645_start_session(int fct,void *cmd_ctx,size_t cmd_ctx_size);
+    int  dlt645_get_fct(void);
     bool dlt645_session_idle(void);
 
 signals:
